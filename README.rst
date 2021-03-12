@@ -1,4 +1,4 @@
-Math Magik (v0.1.3)
+Math Magik (v0.1.4)
 ####################
 :Author:    Roie R. Black
 :Email: roie.black@gmail.com
