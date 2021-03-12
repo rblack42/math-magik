@@ -11,7 +11,7 @@ setup(
     author_email='roie.black@gmail.com',
     url='https://github.com/rblack42/math-magik',
     license='BSD',
-    version='0.1.3',
+    version='0.1.4',
     package_dir={'': 'mmdesigner'},
     packages=find_packages('mmdesigner'),
     entry_points={
