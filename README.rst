@@ -10,7 +10,7 @@ Math Magik (v0.0.17)
     :stub-columns: 1
 
     * - tests
-      - | |travis| |appveyor| |requires|
+      - | |travis| |appveyor| |coverage| |requires|
     * - package
       - | |version| |wheel| |supported-versions|
         | |commits-since|
@@ -47,6 +47,10 @@ Math Magik (v0.0.17)
 .. |commits-since| image:: https://img.shields.io/github/commits-since/rblack42/math-magik/v0.0.17.svg
     :alt: Commits since latest release
     :target: https://github.com/rblack42/math-magik/compare/v0.0.17...master
+
+..  |coverage| image:: https://coveralls.io/repos/github/rblack42/math-magik/badge.svg
+    :target: https://coveralls.io/github/rblack42/math-magic
+    :alt: Code Coverage"
 
 .. end-badges
 
