@@ -1,3 +1,4 @@
+MANIFEST.in
 README.rst
 setup.cfg
 setup.py
@@ -7,3 +8,4 @@ mmdesigner/mmdesigner.egg-info/dependency_links.txt
 mmdesigner/mmdesigner.egg-info/entry_points.txt
 mmdesigner/mmdesigner.egg-info/requires.txt
 mmdesigner/mmdesigner.egg-info/top_level.txt
+tests/test_version.py

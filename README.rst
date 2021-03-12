@@ -1,5 +1,8 @@
-Math Magik (v0.0.17) #################### :Author:    Roie R. Black :Email:
-roie.black@gmail.com :Docs:      https://rblack42.github.io/math-magik
+Math Magik (v0.0.3)
+####################
+:Author:    Roie R. Black
+:Email: roie.black@gmail.com
+:Docs:      https://rblack42.github.io/math-magik
 
 ..  start-badges
 

@@ -1,14 +1,9 @@
-.PHONY: venv
-venv:	.envrc
-	direnv allow
+# math-magik Makefile
+PROJECT := math_magik
+MK	:= mk
 
-.envrc:
-	echo 'layout python3' > .envrc
-
-.PHONY: reqs
-reqs:
-	pip install -r requirements.txt
-
-.PHONY: test
-test:
-	python -m pytest
+-include $(MK)/help.mk
+-include $(MK)/python.mk
+-include $(MK)/pypi.mk
+-include $(MK)/version.mk
+-include $(MK)/sphinx.mk
