@@ -50,11 +50,17 @@ Math Magik (v0.0.17)
 
 .. end-badges
 
+..  image:: rst/_static/lpp.gif
+    :align: center
+    :width: 600
+
+
 This project used OpenSCAD and a few supporting libraries to generate 3D models
-of indoor free-flight model airplanes. The accompanying Python software
-performs analysis on the design to produce an estimate of the weight and center
-of gravity of the design. This project is the subject of an article in the 2021
-edition of the National Free Flight Society Symposium.
+of indoor free-flight model airplanes. The accompanying Python software assists
+in creating a design and performs analysis on the design to produce an estimate
+of the weight and center of gravity of the design. This project is the subject
+of an article in the 2021 edition of the National Free Flight Society
+Symposium.
 
 
 
