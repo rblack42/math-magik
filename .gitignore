@@ -9,4 +9,4 @@
 *.py[cod]
 __pycache__
 .direnv
-
+.pytest_cache
