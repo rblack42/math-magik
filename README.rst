@@ -28,21 +28,21 @@ Math Magik (v0.1.4)
     :alt: Requirements Status
     :target: https://requires.io/github/rblack42/math-magik/requirements/?branch=master
 
-.. |version| image:: https://img.shields.io/pypi/v/math-magik.svg
+.. |version| image:: https://img.shields.io/pypi/v/mmdesigner.svg
     :alt: PyPI Package latest release
-    :target: https://pypi.org/project/math-magik
+    :target: https://pypi.org/project/mmdesigner
 
-.. |wheel| image:: https://img.shields.io/pypi/wheel/math-magik.svg
+.. |wheel| image:: https://img.shields.io/pypi/wheel/mmdesigner.svg
     :alt: PyPI Wheel
-    :target: https://pypi.org/project/math-magik
+    :target: https://pypi.org/project/mmdesigner
 
-.. |supported-versions| image:: https://img.shields.io/pypi/pyversions/math-magik.svg
+.. |supported-versions| image:: https://img.shields.io/pypi/pyversions/mmdesigner.svg
     :alt: Supported versions
-    :target: https://pypi.org/project/math-magik
+    :target: https://pypi.org/project/mmdesigner
 
-.. |supported-implementations| image:: https://img.shields.io/pypi/implementation/math-magik.svg
+.. |supported-implementations| image:: https://img.shields.io/pypi/implementation/mmdesigner.svg
     :alt: Supported implementations
-    :target: https://pypi.org/project/math-magik
+    :target: https://pypi.org/project/mmdesigner
 
 .. |commits-since| image:: https://img.shields.io/github/commits-since/rblack42/math-magik/v0.0.17.svg
     :alt: Commits since latest release
