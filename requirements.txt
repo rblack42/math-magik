@@ -1,4 +1,7 @@
 wheel
 twine
 pytest
+pytest-cov
+coveralls
+flake8
 
