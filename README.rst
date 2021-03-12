@@ -1,8 +1,5 @@
-Math Magik (v0.0.17)
-####################
-:Author:    Roie R. Black
-:Email:     roie.black@gmail.com
-:Docs:      https://rblack42.github.io/math-magik
+Math Magik (v0.0.17) #################### :Author:    Roie R. Black :Email:
+roie.black@gmail.com :Docs:      https://rblack42.github.io/math-magik
 
 ..  start-badges
 
@@ -16,7 +13,7 @@ Math Magik (v0.0.17)
         | |commits-since|
 
 
-.. |travis| image:: https://api.travis-ci.org/rblack42/math-magik.svg?branch=master
+.. |travis| image:: https://api.travis-ci.com/rblack42/math-magik.svg?branch=master
     :alt: Travis-CI Build Status
     :target: https://travis-ci.com/rblack42/math-magik
 
