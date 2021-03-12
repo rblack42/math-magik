@@ -18,7 +18,7 @@ Math Magik (v0.0.17)
 
 .. |travis| image:: https://api.travis-ci.org/rblack42/math-magik.svg?branch=master
     :alt: Travis-CI Build Status
-    :target: https://travis-ci.org/rblack42/math-magik
+    :target: https://travis-ci.com/rblack42/math-magik
 
 .. |appveyor| image:: https://ci.appveyor.com/api/projects/status/github/rblack42/math-magik?branch=master&svg=true
     :alt: AppVeyor Build Status
