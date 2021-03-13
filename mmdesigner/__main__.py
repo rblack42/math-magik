@@ -1,6 +1,5 @@
 import logging
 
-from mmdesigner import __version__ as version
 from mmdesigner import get_main_window, _state
 
 
@@ -19,6 +18,5 @@ def main():
 
 
 # python -m math_magik
-if __name__ =='__main__':
+if __name__ == '__main__':
     main()
-

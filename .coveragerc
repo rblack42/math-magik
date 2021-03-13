@@ -1,0 +1,4 @@
+[run]
+include = mmdesigner/*
+omit = *test_*, *__main__.py
+branch = True

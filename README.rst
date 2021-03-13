@@ -13,7 +13,7 @@ Math Magik (v0.1.5)
       - | |travis| |appveyor| |coverage| |requires|
     * - package
       - | |version| |wheel| |supported-versions|
-        | |commits-since|
+        | |commits-since| |status|
 
 
 .. |travis| image:: https://api.travis-ci.com/rblack42/math-magik.svg?branch=master
@@ -42,6 +42,10 @@ Math Magik (v0.1.5)
 
 .. |supported-implementations| image:: https://img.shields.io/pypi/implementation/mmdesigner.svg
     :alt: Supported implementations
+    :target: https://pypi.org/project/mmdesigner
+
+.. |status| image:: https://img.shields.io/pypi/status/mmdesigner
+    :alt: development status
     :target: https://pypi.org/project/mmdesigner
 
 .. |commits-since| image:: https://img.shields.io/github/commits-since/rblack42/math-magik/v0.1.5.svg
