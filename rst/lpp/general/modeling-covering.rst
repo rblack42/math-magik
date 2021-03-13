@@ -1,0 +1,18 @@
+Modeling the Covering
+#####################
+
+OpenSCAD_ does not provide a simple way to add covering to our design. However, I did find some code written by `Justin Lin`_. Justin creates a moduke called **Bezier Surface** which takes an @D matrix of control points and fits a smooth surface through all those points. We can then polt the smooth surface and give it a color so we can see it. i am using a blue glass color which is transparent so we can se e the structure behind the surface.
+
+even better, we can submit this surface to the same analysis we are using to get weights and center of gravity data and add this new feature to our analysis.
+
+Generating Control points
+*************************
+
+This process depends on an array of control points which capture the basic shape we wish to cover. The fin is not much of a challenge, but the wing and stabilizer do present a few issues.
+
+Center Sections
+===============
+
+Both the wing and stab have nice rectangular planforms with the same circular arc airfoil at all points. We can generate control points using the equations for the airfoil, and step across the span using any step size we wish. Sivce the airfoil is constant across the center span, we do not need a lot of points.
+
+

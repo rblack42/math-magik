@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Math-Magik Model Airplanes &#8212; Math Magik 0.1.5 documentation</title>
+    <link rel="stylesheet" href="_static/sphinx13.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Indoor Model Aviation" href="introduction.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script>
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="usage/installation.html">Get it</a></li>
+    <li><a href="#">Docs</a></li>
+    <li><a href="develop.html">Extend/Develop</a></li>
+  </ul>
+  <div>
+    <a href="index.html">
+      <img src="_static/logo.png" alt="PyLiT" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="introduction.html" title="Indoor Model Aviation"
+             accesskey="N">next</a> |</li>
+        <li><a href="index.html">Home</a>&#160;|</li>
+        <li><a href="#">Documentation</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">Math-Magik Model Airplanes</a></li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="#">
+              <img class="logo" src="_static/badge.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="#">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Math-Magik Model Airplanes</a><ul>
+<li><a class="reference internal" href="#limited-pennyplane">Limited Pennyplane</a></li>
+<li><a class="reference internal" href="#appendices">Appendices</a><ul>
+<li><a class="reference internal" href="#designer-class-list">Designer Class List</a></li>
+<li><a class="reference internal" href="#magik-library">Magik Library</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#glossary">Glossary</a><ul>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="introduction.html"
+                        title="next chapter">Indoor Model Aviation</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/contents.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>Read time: 0.1 minutes (5 words)</p>
+<div class="section" id="math-magik-model-airplanes">
+<span id="contents"></span><h1>Math-Magik Model Airplanes<a class="headerlink" href="#math-magik-model-airplanes" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Indoor Model Aviation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#building-plans">Building Plans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#d-modeling">3D Modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#math-magik">Math Magik</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="design-goals.html">Design Goals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="design-goals.html#visualize-the-model">Visualize the Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design-goals.html#ensure-conformance-to-rules">Ensure Conformance to Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design-goals.html#estimate-model-weight">Estimate Model Weight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design-goals.html#locating-center-of-gravity">Locating Center of Gravity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design-goals.html#perform-aerodynamic-analysis">Perform Aerodynamic Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="openscad.html">OpenSCAD</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="openscad.html#primitive-shapes">Primitive Shapes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openscad.html#translating-and-rotating-a-model">translating and Rotating a model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openscad.html#combining-shapes">Combining Shapes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openscad.html#modules">Modules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="building-process.html">Building an Indoor Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="building-process.html#clear-off-your-workspace">1. Clear off your workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building-process.html#lay-out-your-plan">2. Lay out your plan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building-process.html#gather-your-materials">3. Gather your materials:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building-process.html#build-the-fuselage">4. Build the Fuselage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building-process.html#glue-the-wing-and-stab-posts-in-place">4.4. Glue the wing and stab posts in place</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building-process.html#attach-front-bearing-and-rear-hook">4.5. Attach front bearing and rear hook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building-process.html#build-the-wing">5. Build the Wing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="model-directory-structure.html">Model Directory Structure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="model-directory-structure.html#what-is-a-directory">What is a Directory?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model-directory-structure.html#step-1-create-a-project-directory">Step 1: Create a Project Directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model-directory-structure.html#step-2-identify-major-components">Step 2: Identify Major Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model-directory-structure.html#sub-subdirectories">Sub-Subdirectories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model-directory-structure.html#directory-trees">Directory Trees</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scad-object-files.html">SCAD Object Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scad-object-files.html#object-directories">Object Directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scad-object-files.html#connecting-objects">Connecting Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scad-object-files.html#object-shape-files">Object SHape FIles</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="debugging-scad-code.html">Debugging OpenSCAD Code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="debugging-scad-code.html#echo-output">Echo Output</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="design-analysis.html">Design Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="design-analysis.html#organizing-the-design">Organizing the Design</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="python-project-setup.html">Python Project Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_builder.html">ModelBuilder</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="model_builder.html#root-directory">Root Directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_builder.html#assemblies">Assemblies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_builder.html#generating-modules">Generating Modules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="weight-and-balance.html">Weight and Balance Calculations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="weight-and-balance.html#designing-for-analysis">Designing for Analysis</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="limited-pennyplane">
+<h2>Limited Pennyplane<a class="headerlink" href="#limited-pennyplane" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="lpp/index.html">Math Magik LPP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lpp/math-magik-lpp.html">math-magik-lpp</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="appendices">
+<h2>Appendices<a class="headerlink" href="#appendices" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="flight-box.html">Flight Box</a></li>
+</ul>
+</div>
+<div class="section" id="designer-class-list">
+<h3>Designer Class List<a class="headerlink" href="#designer-class-list" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="magik-library">
+<h3>Magik Library<a class="headerlink" href="#magik-library" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+<div class="section" id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zbibliography.html">Bibliography</a></li>
+</ul>
+</div>
+<div class="section" id="indices-and-tables">
+<h3>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="introduction.html" title="Indoor Model Aviation"
+             >next</a> |</li>
+        <li><a href="index.html">Home</a>&#160;|</li>
+        <li><a href="#">Documentation</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">Math-Magik Model Airplanes</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Roie R. Black.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.2.
+    </div>
+  </body>
+</html>

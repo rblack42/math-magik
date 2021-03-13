@@ -1,6 +1,15 @@
 from setuptools import setup, find_packages
 import io
+import re
+from os.path import dirname
+from os.path import join
 
+def read(*names, **kwargs):
+    with io.open(
+        join(dirname(__file__), *names),
+        encoding=kwargs.get('encoding', 'utf8')
+    ) as fh:
+        return fh.read()
 
 setup(
     name='mmdesigner',

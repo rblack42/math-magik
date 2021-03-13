@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Flight Box &#8212; Math Magik 0.1.5 documentation</title>
+    <link rel="stylesheet" href="_static/sphinx13.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Glossary" href="glossary.html" />
+    <link rel="prev" title="math-magik-lpp" href="lpp/math-magik-lpp.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script>
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="usage/installation.html">Get it</a></li>
+    <li><a href="contents.html">Docs</a></li>
+    <li><a href="develop.html">Extend/Develop</a></li>
+  </ul>
+  <div>
+    <a href="index.html">
+      <img src="_static/logo.png" alt="PyLiT" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="glossary.html" title="Glossary"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="lpp/math-magik-lpp.html" title="math-magik-lpp"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Home</a>&#160;|</li>
+        <li><a href="contents.html">Documentation</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">Flight Box</a></li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="contents.html">
+              <img class="logo" src="_static/badge.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="contents.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Flight Box</a><ul>
+<li><a class="reference internal" href="#basic-construction">Basic Construction</a></li>
+<li><a class="reference internal" href="#openscad-design">OpenSCAD Design</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="lpp/math-magik-lpp.html"
+                        title="previous chapter">math-magik-lpp</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="glossary.html"
+                        title="next chapter">Glossary</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/flight-box.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>Read time: 4.0 minutes (402 words)</p>
+<div class="section" id="flight-box">
+<span id="id1"></span><h1>Flight Box<a class="headerlink" href="#flight-box" title="Permalink to this headline">¶</a></h1>
+<p>Since indoor model airplanes are so extremely light and fragile, it is
+important that you give thought to how you are gong to transport the model.
+Most builders do not show up at a flying site with just one model. Often, they
+bring several for each event they want to fly. Many serious flyers build a nice
+carrying case for their models. I decided to design one for Math-Magik!</p>
+<p>When I was first getting into indoor competitions back in my college days, I
+met Bud Tenny, who was the founding editor of a now-classic series of
+newsletters called “Indoor News and Views”. These newsletters provided a wealth of information
+on building indoor airplanes, and provided tips on how to fly them. Often there
+were sketches of simple boxes made out of cardboard, or foam board that looked
+like possibilities. However, I also have a copy of Ron Williams “Building and
+Flying Indoor Model Airplanes” (<span id="id2">[<a class="reference internal" href="zbibliography.html#id2">Wil08</a>]</span>) , and ran into the ECIM
+case, originally designed by the <a class="reference external" href="http://www.ecim.club/">East Coast Indoor Modelers</a> group. The design presented here is a
+version of that case:</p>
+<a class="reference internal image-reference" href="_images/flight-box.png"><img alt="_images/flight-box.png" class="align-center" src="_images/flight-box.png" style="width: 500px;" /></a>
+<div class="section" id="basic-construction">
+<h2>Basic Construction<a class="headerlink" href="#basic-construction" title="Permalink to this headline">¶</a></h2>
+<p>As seen in this image, the box is made up of three sections. One holds a number
+of wings (four are shown here). One holds the stabilizers, and the middle
+section holds fuselages and propellers. The two end sections are hinged to the
+center section so it opens as seen above. Closed, this design measures 22”w x
+9”h x 16”d. The outer sections are 6 inches deep and the center section ins 4
+inches deep.</p>
+<p>The sides are constructed out of 1/8” plywood and all corners are braced with
+1/2” pine strips. The hinges are piano hinges that run the full height of the
+edges.</p>
+</div>
+<div class="section" id="openscad-design">
+<h2>OpenSCAD Design<a class="headerlink" href="#openscad-design" title="Permalink to this headline">¶</a></h2>
+<p>Designing this box with <a class="reference external" href="https://www.openscad.org/">OpenSCAD</a> turns out to be a nice way to figure out how
+parts of the airplane will be transported and stored. The design of the
+airplane structure presented so far allows both the wing and stabilizer to be
+removed and stored separately. BY attaching the wing posts to the boxy and
+using paper tubes for the attachments on top of those posts, the wings are not
+cluttered with structure and can be stacked neatly. The stabilizers also stack
+nicely.</p>
+<p>Laying the body on its side lets those be stacked as well.</p>
+<p>That leaves the propellers! They can be stacked separately in the space above
+the fuselage sections,.</p>
+<p>When all of these items are placed in the box design, there is still room for
+another model. My current thinking is to adds an A-6 model or two to this box’s
+payload!</p>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="glossary.html" title="Glossary"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="lpp/math-magik-lpp.html" title="math-magik-lpp"
+             >previous</a> |</li>
+        <li><a href="index.html">Home</a>&#160;|</li>
+        <li><a href="contents.html">Documentation</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">Flight Box</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Roie R. Black.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.2.
+    </div>
+  </body>
+</html>

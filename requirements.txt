@@ -5,4 +5,7 @@ pytest-cov
 coveralls
 flake8
 bump2version
+sphinx
+sphinxcontrib.tikz
+sphinxcontrib.bibtex
 

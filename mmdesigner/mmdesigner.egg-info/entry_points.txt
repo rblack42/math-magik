@@ -1,3 +1,0 @@
-[mmdesigner2]
-mmdesigner = mmdesigner.main
-

@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Modeling the Covering &#8212; Math Magik 0.1.5 documentation</title>
+    <link rel="stylesheet" href="../../_static/sphinx13.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Perfect Joints" href="perfect-joints.html" />
+    <link rel="prev" title="The Magik Knife" href="magik-knife.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script>
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    <li><a href="../../index.html">Home</a></li>
+    <li><a href="../../usage/installation.html">Get it</a></li>
+    <li><a href="../../contents.html">Docs</a></li>
+    <li><a href="../../develop.html">Extend/Develop</a></li>
+  </ul>
+  <div>
+    <a href="../../index.html">
+      <img src="../../_static/logo.png" alt="PyLiT" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="perfect-joints.html" title="Perfect Joints"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="magik-knife.html" title="The Magik Knife"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">Home</a>&#160;|</li>
+        <li><a href="../../contents.html">Documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Math Magik LPP</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Modeling the Covering</a></li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../contents.html">
+              <img class="logo" src="../../_static/badge.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../../contents.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Modeling the Covering</a><ul>
+<li><a class="reference internal" href="#generating-control-points">Generating Control points</a><ul>
+<li><a class="reference internal" href="#center-sections">Center Sections</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="magik-knife.html"
+                        title="previous chapter">The Magik Knife</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="perfect-joints.html"
+                        title="next chapter">Perfect Joints</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/lpp/general/modeling-covering.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>Read time: 2.1 minutes (207 words)</p>
+<div class="section" id="modeling-the-covering">
+<h1>Modeling the Covering<a class="headerlink" href="#modeling-the-covering" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://www.openscad.org/">OpenSCAD</a> does not provide a simple way to add covering to our design. However, I did find some code written by <a class="reference external" href="https://openhome.cc/eGossip/OpenSCAD/">Justin Lin</a>. Justin creates a moduke called <strong>Bezier Surface</strong> which takes an &#64;D matrix of control points and fits a smooth surface through all those points. We can then polt the smooth surface and give it a color so we can see it. i am using a blue glass color which is transparent so we can se e the structure behind the surface.</p>
+<p>even better, we can submit this surface to the same analysis we are using to get weights and center of gravity data and add this new feature to our analysis.</p>
+<div class="section" id="generating-control-points">
+<h2>Generating Control points<a class="headerlink" href="#generating-control-points" title="Permalink to this headline">¶</a></h2>
+<p>This process depends on an array of control points which capture the basic shape we wish to cover. The fin is not much of a challenge, but the wing and stabilizer do present a few issues.</p>
+<div class="section" id="center-sections">
+<h3>Center Sections<a class="headerlink" href="#center-sections" title="Permalink to this headline">¶</a></h3>
+<p>Both the wing and stab have nice rectangular planforms with the same circular arc airfoil at all points. We can generate control points using the equations for the airfoil, and step across the span using any step size we wish. Sivce the airfoil is constant across the center span, we do not need a lot of points.</p>
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="perfect-joints.html" title="Perfect Joints"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="magik-knife.html" title="The Magik Knife"
+             >previous</a> |</li>
+        <li><a href="../../index.html">Home</a>&#160;|</li>
+        <li><a href="../../contents.html">Documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >Math Magik LPP</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Modeling the Covering</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Roie R. Black.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.2.
+    </div>
+  </body>
+</html>
