@@ -13,5 +13,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v1
-      - run: $PYTHON -m pip install -r requirements.txt
-      - run: $PYTHON -m pytest -vvvv
+      - run: pip install -r requirements.txt
+      - run: python3 -m pytest -vvvv
