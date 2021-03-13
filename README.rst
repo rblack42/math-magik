@@ -10,7 +10,7 @@ Math Magik (v0.1.5)
     :stub-columns: 1
 
     * - tests
-      - | |travis| |appveyor| |coverage| |requires|
+      - | |travis| |appveyor| |github| |coverage| |requires|
     * - package
       - | |version| |wheel| |supported-versions|
         | |commits-since| |status|
@@ -23,6 +23,10 @@ Math Magik (v0.1.5)
 .. |appveyor| image:: https://ci.appveyor.com/api/projects/status/github/rblack42/math-magik?branch=master&svg=true
     :alt: AppVeyor Build Status
     :target: https://ci.appveyor.com/project/rblack42/math-magik
+
+.. |github| image:: https://github.com/rblack42/math-magik/actions/workflows/main.yml/badge.svg
+    :alt: Github Workflows
+    :target: https://github.com/rblack42/math-magik
 
 .. |requires| image:: https://requires.io/github/rblack42/math-magik/requirements.svg?branch=master
     :alt: Requirements Status
