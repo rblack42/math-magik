@@ -5,7 +5,13 @@ import io
 setup(
     name='mmdesigner',
     description='Indoor model airplane design using OpenSCAD',
-    long_description=io.open('README.rst', encoding='utf-8').read(),
+    long_description=re.compile(
+        '^.. start-badges.*^.. end-badges',
+        re.M | re.S
+    ).sub(
+        '',
+        read('README.rst')
+    ),
     long_description_content_type='text/x-rst',
     author='Roie R. Black',
     author_email='roie.black@gmail.com',

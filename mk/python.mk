@@ -1,7 +1,3 @@
-.PHONY: run
-run:    ## Run project application
-	python3 -m $(PROJECT)
-
 .PHONY: pyinit
 pyinit:	## Create Python virtual environment
 	test -d .direnv || \
@@ -24,4 +20,8 @@ changes:	## create CHANGES file from git logs
 .PHONY: pydev
 pydev:		## Install package in development mode
 	python -m pip install --editable .
+
+.PHONY: run
+run:
+	python -m mmdesigner
 

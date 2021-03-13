@@ -52,12 +52,12 @@ Math Magik (v0.1.4)
     :target: https://coveralls.io/github/rblack42/math-magic
     :alt: Code Coverage"
 
-.. end-badges
 
 ..  image:: rst/_static/lpp.gif
     :align: center
     :width: 600
 
+.. end-badges
 
 This project used OpenSCAD and a few supporting libraries to generate 3D models
 of indoor free-flight model airplanes. The accompanying Python software assists
