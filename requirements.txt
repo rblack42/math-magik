@@ -2,6 +2,7 @@ wheel
 twine
 pytest
 pytest-cov
+pytest-mock
 coveralls
 flake8
 bump2version
