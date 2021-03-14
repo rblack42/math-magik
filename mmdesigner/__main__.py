@@ -1,11 +1,11 @@
 import logging
 
-from mmdesigner import get_main_window, _state
+from mmdesigner.gui import Gui
 
 
 def main():
-    _state.init()
-    main_window = get_main_window()
+    gui = Gui("mmdesigner", "800x600")
+    main_window = gui.get_main_window()
     main_window.withdraw()
     # setup widgets
     main_window.deiconify()
@@ -14,7 +14,6 @@ def main():
     finally:
         # save settings
         pass
-    logging.info("Exiting mmdesigner normlly...")
 
 
 # python -m math_magik

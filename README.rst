@@ -12,8 +12,7 @@ Math Magik (v0.1.5)
     * - tests
       - | |travis| |appveyor| |github| |coverage| |requires|
     * - package
-      - | |version| |wheel| |supported-versions|
-        | |commits-since| |status|
+      - | |version| |wheel| |supported-versions| |commits-since| |status|
 
 
 .. |travis| image:: https://api.travis-ci.com/rblack42/math-magik.svg?branch=master
@@ -56,8 +55,8 @@ Math Magik (v0.1.5)
     :alt: Commits since latest release
     :target: https://github.com/rblack42/math-magik/compare/v0.1.5...master
 
-..  |coverage| image:: https://coveralls.io/repos/github/rblack42/math-magik/badge.svg
-    :target: https://coveralls.io/github/rblack42/math-magic
+.. |coverage| image:: https://coveralls.io/repos/github/rblack42/math-magik/badge.svg
+    :target: https://coveralls.io/github/rblack42/math-magik
     :alt: Code Coverage"
 
 

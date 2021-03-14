@@ -11,7 +11,7 @@ pyreqs: requirements.txt 	## Load Python requirements
 
 .PHONY: test
 test: ## Run unit tests
-	pytest --cov=mmdesigner --cov-report term
+	pytest
 
 .PHONY: changes
 changes:	## create CHANGES file from git logs
