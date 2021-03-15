@@ -13,8 +13,17 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v1
-      - run: pip install -r requirements.txt
-      - run: pip install python3-tk
+
+      - name: set up tkinter
+        run: |
+          sudo apt-get update
+          sudo apt-get install tk-dev python3-tk
+
+      - name: install app dependencies
+        run: |
+          sudo apt-get install python3-pip
+          python3 -m pip  install -r requirements.txt
+
       - name: run headless tests
         uses: GabrielBB/xvfb-action@v1
         with:
