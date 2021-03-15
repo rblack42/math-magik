@@ -22,4 +22,5 @@ jobs:
             exec Xvfb $disp -screen $screen $geom 2>/tmp/Xvfb.log &
             export DISPLAY=:12
             python3 -m pytest -vvvv
-        run: kill $!
+        - name: kill virtual display
+            run: kill $!
