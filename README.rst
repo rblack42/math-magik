@@ -55,7 +55,7 @@ Math Magik (v0.1.5)
     :alt: Commits since latest release
     :target: https://github.com/rblack42/math-magik/compare/v0.1.5...master
 
-.. |coverage| image:: https://coveralls.io/repos/github/rblack42/math-magik/badge.sv?branch=master
+.. |coverage| image:: https://coveralls.io/repos/github/rblack42/math-magik/badge.svg?branch=master
     :target: https://coveralls.io/github/rblack42/math-magik?branch=master
     :alt: Code Coverage"
 
