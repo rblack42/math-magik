@@ -3,6 +3,7 @@ twine
 pytest
 pytest-cov
 pytest-mock
+pillow
 coveralls
 flake8
 bump2version

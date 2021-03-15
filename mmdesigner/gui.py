@@ -1,4 +1,5 @@
 import tkinter as tk
+from PIL import Image
 
 
 class Gui(tk.Tk):
@@ -15,7 +16,8 @@ class Gui(tk.Tk):
         return self
 
     def set_icon(self):
-        photo = tk.PhotoImage(file='mmdesigner/lpp.png')
+        img = Image.open("mmdesigner/lpp.png")
+        photo = tk.PhotoImage(img)
         self.iconphoto(False, photo)
 
 
