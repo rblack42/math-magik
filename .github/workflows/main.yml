@@ -14,13 +14,8 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v1
       - run: pip install -r requirements.txt
-        run: pip install tk-dev python3-tk
-        run: |
-            disp:12
-            screen:0
-            geom=640x480x24
-            exec Xvfb $disp -screen $screen $geom 2>/tmp/Xvfb.log &
-            export DISPLAY=:12
-            python3 -m pytest -vvvv
-        - name: kill virtual display
-            run: kill $!
+      - run: pip install tk-dev python3-tk
+      - name: run headless tests
+        uses: GabrielBB/xvfb-action@v1
+        with:
+            run: python3 -m pytest -vvv

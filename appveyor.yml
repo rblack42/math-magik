@@ -1,7 +1,6 @@
 image:
   - macos
   - Visual Studio 2019
-  - Ubuntu
 
 stack: python 3
 
