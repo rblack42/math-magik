@@ -3,6 +3,11 @@
 Math-Magik Model Airplanes
 ##########################
 
+..  toctree::
+    :maxdepth: 1
+
+    preface
+
 Development Notes
 *****************
 

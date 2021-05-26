@@ -9,6 +9,8 @@
 ..  |MM|    replace::   *Math-Magik*
 ..  _MM:    https://github.com/rblack42/math-magik
 
+..  _OpenSCAD:          https://openscad.org/
+
 ..  |OS|    replace::   *Open Source*
 
 ..	|PY|	replace::	*Python*
@@ -20,3 +22,4 @@
 
 ..  _Sphinx:            https://sphinx-doc.org/
 
+..  _tkinter:           https://docs.python.org/3/library/tkinter.html
