@@ -1,55 +1,61 @@
-# Configuration file for the Sphinx documentation builder.
-#
-# This file only contains a selection of the most common options. For a full
-# list see the documentation:
-# https://www.sphinx-doc.org/en/master/usage/configuration.html
+import os
+import re
+import sys
 
-# -- Path setup --------------------------------------------------------------
+sys.path.insert(0, os.path.abspath('.'))
+import sphinx
 
-# If extensions (or modules to document with autodoc) are in another directory,
-# add these directories to sys.path here. If the directory is relative to the
-# documentation root, use os.path.abspath to make it absolute, like shown here.
-#
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
-
+# Include todo list
+todo_include_todos = True
 
 # -- Project information -----------------------------------------------------
 
-project = 'n'
+project = 'Math-Magik'
 copyright = '2021, Roie R. Black'
 author = 'Roie R. Black'
+version = '0.1.0'
 
 # The full version, including alpha/beta/rc tags
-release = '0.1.0'
+release = version
 
 
 # -- General configuration ---------------------------------------------------
 
-# Add any Sphinx extension module names here, as strings. They can be
-# extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
-# ones.
 extensions = [
+    'sphinx_ext.wordcount',
+        'sphinx.ext.todo',
 ]
 
-# Add any paths that contain templates here, relative to this directory.
+master_doc = 'contents'
 templates_path = ['_templates']
-
-# List of patterns, relative to source directory, that match files and
-# directories to ignore when looking for source files.
-# This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
+project = 'Math Magik'
+copyright = '2021, Roie R. Black'
+release = version
+show_authors = True
+
+rst_prolog = """
+..  include::   /header.inc
+"""
 
 # -- Options for HTML output -------------------------------------------------
 
-# The theme to use for HTML and HTML Help pages.  See the documentation for
-# a list of builtin themes.
-#
-html_theme = 'alabaster'
-
-# Add any paths that contain custom static files (such as style sheets) here,
-# relative to this directory. They are copied after the builtin static files,
-# so a file named "default.css" will overwrite the builtin "default.css".
+html_theme = 'sphinx13'
+html_theme_path = ['_themes']
 html_static_path = ['_static']
+html_sidebars = {'index': ['indexsidebar.html', 'searchbox.html']}
+html_additional_pages = {'index': 'index.html'}
+html_logo = '_static/badge.svg'
+
+# -- Options for LaTeX output --------------------------------------------------
+
+latex_documents = [('contents', 'magik.tex', 'Math Magik Projects',
+                    'Roie R. Black', 'manual', 1)]
+latex_logo = '_static/pylit.png'
+
+latex_elements = {
+    'papersize': 'letterpaper',
+    'pointsize': '11pt',
+    'fontenc': r'\usepackage[LGR,X2,T1]{fontenc}',
+}

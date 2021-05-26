@@ -1,0 +1,294 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Step 2: Basic Sphinx Setup &#8212; Math Magik 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinx13.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx13.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="GitHub Setup" href="../appendix/github-setup.html" />
+    <link rel="prev" title="Math-Magik Model Airplanes" href="../contents.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script>
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../usage/installation.html">Get it</a></li>
+    <li><a href="../contents.html">Docs</a></li>
+    <li><a href="../develop.html">Extend/Develop</a></li>
+  </ul>
+  <div>
+    <a href="../index.html">
+      <img src="../_static/logo.png" alt="PyLiT" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../appendix/github-setup.html" title="GitHub Setup"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../contents.html" title="Math-Magik Model Airplanes"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Home</a>&#160;|</li>
+        <li><a href="../contents.html">Documentation</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">Step 2: Basic Sphinx Setup</a></li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../contents.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Step 2: Basic Sphinx Setup</a><ul>
+<li><a class="reference internal" href="#installing-sphinx">Installing Sphinx</a></li>
+<li><a class="reference internal" href="#set-up-a-sphinx-project">Set up a Sphinx Project</a></li>
+<li><a class="reference internal" href="#run-sphinx-quickstart">RUn <strong>Sphinx Quickstart</strong></a></li>
+<li><a class="reference internal" href="#create-a-documentation-run-configuration">Create a Documentation Run Configuration</a></li>
+<li><a class="reference internal" href="#test-build">Test Build</a></li>
+<li><a class="reference internal" href="#push-to-gh">Push to <em>GitHub</em></a></li>
+<li><a class="reference internal" href="#adding-a-custom-theme">Adding a Custom Theme</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../contents.html"
+                        title="previous chapter">Math-Magik Model Airplanes</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../appendix/github-setup.html"
+                        title="next chapter"><em>GitHub</em> Setup</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/devnotes/02-basic-sphinx-setup.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>Read time: 7.1 minutes (714 words)</p>
+<section id="step-2-basic-sphinx-setup">
+<h1>Step 2: Basic Sphinx Setup<a class="headerlink" href="#step-2-basic-sphinx-setup" title="Permalink to this headline">¶</a></h1>
+<p>All projects should be documented. I am not talking about sprinkling code with
+comments, that is not documentation. A well documented project has material
+aimed at the users of the product, and the developers of the project. The users
+obviously need to know how to use the product, and developers need to know how and why it
+was put together the way it is presented. Those developers may need to fix
+bugs in the project, or add new features. The developers may not even have been
+part of the original team that put the project together.</p>
+<p>Sadly, many projects fail to address these documentation needs.</p>
+<p>The <em>Python</em> world has settled on a nice documentation tool called <a class="reference external" href="https://sphinx-doc.org/">Sphinx</a>. This
+tool processes simple text documents written in a simple markup language called
+<em>reStructuredText</em>, that is quite readable even without processing. The <a class="reference external" href="https://sphinx-doc.org/">Sphinx</a> tool can
+generate many different types of output, but we will focus only on two:
+<a class="reference internal" href="../glossary.html#term-HTML"><span class="xref std std-term">HTML</span></a> for display on the web, and <a class="reference internal" href="../glossary.html#term-LaTeX"><span class="xref std std-term">LaTeX</span></a> which can be used to
+generate <a class="reference internal" href="../glossary.html#term-PDF"><span class="xref std std-term">PDF</span></a> output.</p>
+<section id="installing-sphinx">
+<h2>Installing <a class="reference external" href="https://sphinx-doc.org/">Sphinx</a><a class="headerlink" href="#installing-sphinx" title="Permalink to this headline">¶</a></h2>
+<p>Since <a class="reference external" href="https://sphinx-doc.org/">Sphinx</a> is a <em>Python</em> tool, installation is accomplished using the standard
+:command”<cite>pip</cite> tool. This can be run from a <a class="reference internal" href="../glossary.html#term-command-line"><span class="xref std std-term">command line</span></a>, but since I
+am going to develop this project using <a class="reference external" href="https://jetbrains.com/pycharm/">PyCharm</a> we will install it inside the
+<a class="reference internal" href="../glossary.html#term-IDE"><span class="xref std std-term">IDE</span></a>:</p>
+<p>Start up PyCharm and open the project. Then select <span class="menuselection">PyCharm ‣
+Preferences</span> Next select <span class="menuselection">Project: math-magik ‣ Python
+Interpreter</span>. Click on the <span class="menuselection">gear</span> icon at the right side of the
+selection window. This window will create a Python <em>virtual environent` where
+all project dependencies will be manages separated from any other |PY| projects
+you might be working on. The default **venv*</em> directory will be initialized
+with a <em>Python</em> interpreter and all packages needed for the project will be
+installed inside this directory as well.</p>
+<p>Click <span class="menuselection">OK</span> when you are satisfied with the entries. Once the
+<strong>venv</strong> directory has been set up make sure that the <em>Python</em> interpreter points
+to  <strong>venv/bin/python</strong>.</p>
+<p>Next, create a new <strong>requirements.txt</strong> file in the top level project
+directory. Open this file and add this line:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sphinx
+</pre></div>
+</div>
+<p>Once that line is in place, select <span class="menuselection">Install requirement</span> and the
+<a class="reference internal" href="../glossary.html#term-IDE"><span class="xref std std-term">IDE</span></a> will install <a class="reference external" href="https://sphinx-doc.org/">Sphinx</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All future project requirements will be lsted in this file and installed
+the same way.</p>
+</div>
+</section>
+<section id="set-up-a-sphinx-project">
+<h2>Set up a <a class="reference external" href="https://sphinx-doc.org/">Sphinx</a> Project<a class="headerlink" href="#set-up-a-sphinx-project" title="Permalink to this headline">¶</a></h2>
+<p>We will be publishing the documentation for this project using <em>GitHub</em> <em>Pages</em>, a
+free hosting service to <em>GitHub</em> users. All <a class="reference internal" href="../glossary.html#term-HTML"><span class="xref std std-term">HTML</span></a> web pages stored in a
+<strong>docs</strong> directory in the project will be made visible after we do a little
+setup work on <em>GitHub</em>.</p>
+<p>Start off by creating two directories: <strong>docs</strong> and <strong>rst</strong>. We will create our
+documentation source files under the <strong>rst</strong> directory and generate web pages
+in the <strong>docs</strong> directory. Both of these directories can be created using the
+<span class="menuselection">File ‣ New ‣ Directory</span> menu.</p>
+</section>
+<section id="run-sphinx-quickstart">
+<h2>RUn <strong>Sphinx Quickstart</strong><a class="headerlink" href="#run-sphinx-quickstart" title="Permalink to this headline">¶</a></h2>
+<p>Select <span class="menuselection">Tools ‣ Run Sphinx Quickstart</span>. Change the path shown
+so it points to the <strong>rst</strong> directory, then click <span class="menuselection">OK</span>.</p>
+<p>In the console panel you will be asked a few questions. Just press :kbd``Enter`
+except for these entries:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Author - Add your name</p></li>
+<li><p>Project Release - Most projects start off with release 0.1.0</p></li>
+</ul>
+</div></blockquote>
+<p>This step creates several files in the <strong>rst</strong> directory.</p>
+<p>You should check the <strong>conf.py</strong> file to make sure your setting are correct.</p>
+</section>
+<section id="create-a-documentation-run-configuration">
+<h2>Create a Documentation Run Configuration<a class="headerlink" href="#create-a-documentation-run-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Select <span class="menuselection">Run ‣ Edit Configurations</span>. Click on
+<span class="menuselection">Add new configuration ‣ Sphinx Task</span>. Make sure the <strong>Input</strong>
+field points to the <strong>rst</strong> directory and the <strong>Output</strong> field points to the
+<strong>docs</strong> directory. When you are ready, click on <span class="menuselection">OK</span>.</p>
+</section>
+<section id="test-build">
+<h2>Test Build<a class="headerlink" href="#test-build" title="Permalink to this headline">¶</a></h2>
+<p>Now you can test the documentation setup by selecting <span class="menuselection">Run ‣
+Sphinx Task</span>. With any luck, your first documentation build will appear in the
+<strong>docs</strong> folder.</p>
+</section>
+<section id="push-to-gh">
+<h2>Push to <em>GitHub</em><a class="headerlink" href="#push-to-gh" title="Permalink to this headline">¶</a></h2>
+<p>We can now push the changes to the project to <em>GitHub</em>. Unfortunately, doing
+everything needed for this step inside <a class="reference external" href="https://jetbrains.com/pycharm/">PyCharm</a> proved impossible. PyCharm had
+already added both its special <strong>.idea</strong> directory and the 88venv** directory,
+both of which I did not want posted on <em>GitHub</em>. The fix was to open up a
+<a class="reference internal" href="../glossary.html#term-command-line"><span class="xref std std-term">command line</span></a> and do these commands:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ git reset .idea
+$ git reset venv
+$ git status
+$ git add .
+$ git status
+$ git commit -m <span class="s2">&quot;Initial Sphinx setup&quot;</span>
+$ git push
+</pre></div>
+</div>
+<p>At this point, navigate to your project on <em>GitHub</em> and select
+<span class="menuselection">Settings</span>. Scroll down to the <strong>Github Pages</strong> area.
+Make sure the branch is <strong>main</strong> and the <strong>docs</strong> folder is selected. Once
+these are set click on <span class="menuselection">Save</span>. You can now navigate to the
+public pages:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>https://rblack42.github.io/math-magik
+</pre></div>
+</div>
+</section>
+<section id="adding-a-custom-theme">
+<h2>Adding a Custom Theme<a class="headerlink" href="#adding-a-custom-theme" title="Permalink to this headline">¶</a></h2>
+<p>By default, <a class="reference external" href="https://sphinx-doc.org/">Sphinx</a> uses a pretty bland theme. I looked at several themes on
+the Internet and discovered that I looked to one <a class="reference external" href="https://sphinx-doc.org/">Sphinx</a> uses on its own
+project pages! So, I copied that theme into this project The additions are now
+in the project directory and changes to the <strong>conf.py</strong> file are in place as
+well.</p>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Add documentation on customizing this theme.</p>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../appendix/github-setup.html" title="GitHub Setup"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../contents.html" title="Math-Magik Model Airplanes"
+             >previous</a> |</li>
+        <li><a href="../index.html">Home</a>&#160;|</li>
+        <li><a href="../contents.html">Documentation</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">Step 2: Basic Sphinx Setup</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Roie R. Black.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+    </div>
+  </body>
+</html>
