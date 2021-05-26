@@ -1,0 +1,12 @@
+# Pycharm
+.idea
+
+# Python
+venv
+__pycache__
+*.py[cod]
+
+# Sphinx
+.doctrees
+_build
+
