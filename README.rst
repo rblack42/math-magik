@@ -4,12 +4,23 @@ Math Magik (v0.1.6)
 :Email: roie.black@gmail.com
 :Docs:      https://rblack42.github.io/math-magik
 
-..  include::   rst/references.inc
+..  start-badges
+
+.. list-table::
+    :stub-columns: 1
+
+    * - tests
+      - | |github|
+
+.. |github| image:: https://github.com/rblack42/math-magik/actions/workflows/main.yml/badge.svg
+    :alt: Github Workflows
+    :target: https://github.com/rblack42/math-magik
 
 ..  image:: rst/_static/lpp.gif
     :align: center
     :width: 600
 
+.. end-badges
 
 This project uses OpenSCAD_ and a few supporting libraries to generate 3D models
 of free-flight model airplanes. The accompanying Python software assists
