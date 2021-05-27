@@ -98,6 +98,7 @@
   <ul>
 <li><a class="reference internal" href="#">Step 4: Continuous Integration</a><ul>
 <li><a class="reference internal" href="#github-workflows">GitHub Workflows</a></li>
+<li><a class="reference internal" href="#id1">Travis-CI</a></li>
 </ul>
 </li>
 </ul>
@@ -133,7 +134,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <p>Read time: 1.5 minutes (152 words)</p>
+  <p>Read time: 3.6 minutes (358 words)</p>
 <section id="step-4-continuous-integration">
 <h1>Step 4: Continuous Integration<a class="headerlink" href="#step-4-continuous-integration" title="Permalink to this headline">¶</a></h1>
 <p>Many program development projects (most?) rely on <em>Continuous Integration</em> to ensure their code is
@@ -197,6 +198,42 @@ then run tests on your code.</p>
 <span class="linenos">36</span>        <span class="no">pytest</span>
 </pre></div>
 </div>
+</section>
+<section id="id1">
+<h2>Travis-CI<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Setting up testing on <a class="reference external" href="https://travis-ci.com/">Travis-CI</a> is similar. We need to create another control
+file, this one named <strong>.travis.yml</strong>. This needs to be placed in the root
+directory of the project. For this initial example, we will again test on a
+Linux host.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nt">language</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="nt">python</span><span class="p">:</span>
+<span class="linenos"> 4</span>  <span class="p p-Indicator">-</span> <span class="s">&quot;3.9&quot;</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="nt">install</span><span class="p">:</span>
+<span class="linenos"> 7</span>  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pip install --upgrade pip</span>
+<span class="linenos"> 8</span>    <span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="nt">script</span><span class="p">:</span>
+<span class="linenos">11</span>    <span class="l l-Scalar l-Scalar-Plain">pytest</span>
+</pre></div>
+</div>
+<p>To activate testing, you need to set up an account on <a class="reference external" href="https://travis-ci.com/">Travis-CI</a>, which can be
+done using your username and password from <em>GitHub</em>. Once that has been done, log
+in and you click on <span class="menuselection">Settings</span>. On this page you will see a
+<span class="menuselection">Sync account</span> button that will make sure you see all
+repositories you have on <em>GitHub</em> (I have over 100!). Scroll down until you see the
+project you are working on and click on the <span class="menuselection">Setting button on
+the right side of the repository name. In the next panel, make sure both the
+:menuselection:`Build pushed branches</span> and <span class="menuselection">Build pushed pull
+requests</span> are selected.</p>
+<p>Now, navigate to your <em>GitHub</em> account and click on your account image. Select
+<span class="menuselection">Settings ‣ Applications</span>. You need to grant <a class="reference external" href="https://travis-ci.com/">Travis-CI</a> access
+to your account so it can receive notifications every time you push new changes
+to <em>GitHub</em>. When that happens, <a class="reference external" href="https://travis-ci.com/">Travis-CI</a> will create a new <a class="reference internal" href="../glossary.html#term-virtual-machine"><span class="xref std std-term">virtual
+machine</span></a>, clone your updated code, and run the tests specified in the control
+file.</p>
+<p>As with <em>GitHub</em>, we can add a badge to the <strong>README.rst</strong> file showing the results.</p>
 </section>
 </section>
 

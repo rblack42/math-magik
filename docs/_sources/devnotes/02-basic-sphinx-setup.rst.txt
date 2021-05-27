@@ -22,7 +22,7 @@ Installing Sphinx_
 ******************
 
 Since Sphinx_ is a |PY| tool, installation is accomplished using the standard
-:command"`pip` tool. This can be run from a :term:`command line`, but since I
+:command:`pip` tool. This can be run from a :term:`command line`, but since I
 am going to develop this project using PyCharm_ we will install it inside the
 :term:`IDE`:
 
