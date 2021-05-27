@@ -4,7 +4,7 @@ changes:
 
 .PHONY: docs
 docs:
-	cd rst & |
+	cd rst && \
 	sphinx-build -b html -d _build/doctrees . ../docs
 
 .PHONY: spelling

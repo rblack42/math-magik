@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Step 4: Continuous Integration &#8212; Math Magik 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinx13.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx13.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Contributing" href="../develop.html" />
+    <link rel="prev" title="Step 3: Testing Setup" href="03-testing-setup.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script>
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../usage/installation.html">Get it</a></li>
+    <li><a href="../contents.html">Docs</a></li>
+    <li><a href="../develop.html">Extend/Develop</a></li>
+  </ul>
+  <div>
+    <a href="../index.html">
+      <img src="../_static/logo.png" alt="PyLiT" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../develop.html" title="Contributing"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="03-testing-setup.html" title="Step 3: Testing Setup"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Home</a>&#160;|</li>
+        <li><a href="../contents.html">Documentation</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">Step 4: Continuous Integration</a></li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../contents.html">
+              <img class="logo" src="../_static/badge.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../contents.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Step 4: Continuous Integration</a><ul>
+<li><a class="reference internal" href="#github-workflows">GitHub Workflows</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="03-testing-setup.html"
+                        title="previous chapter">Step 3: Testing Setup</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../develop.html"
+                        title="next chapter">Contributing</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/devnotes/04-continuous-integration.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>Read time: 1.5 minutes (152 words)</p>
+<section id="step-4-continuous-integration">
+<h1>Step 4: Continuous Integration<a class="headerlink" href="#step-4-continuous-integration" title="Permalink to this headline">¶</a></h1>
+<p>Many program development projects (most?) rely on <em>Continuous Integration</em> to ensure their code is
+always ready for deployment on a number of platforms.</p>
+<p>For <em>Open Source</em> developers, there are a number of free <em>Continuous Integration</em> services that can be used
+to test projects on a number of different platforms.</p>
+<p>This project will use three services for <em>Continuous Integration</em> testing:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://github.com/"><em>GitHub</em></a></p></li>
+<li><p><a class="reference external" href="https://travis-ci.com/">Travis-CI</a></p></li>
+<li><p><a class="reference external" href="https://www.appveyor.com/">AppVeyor</a></p></li>
+</ul>
+</div></blockquote>
+<p>In this section, we will configure all three services for basic project testing.</p>
+<section id="github-workflows">
+<h2>GitHub Workflows<a class="headerlink" href="#github-workflows" title="Permalink to this headline">¶</a></h2>
+<p>Hosting your project on <em>GitHub</em> provides an easy way to test your code.  Setting
+up a basic test process is as easy as clicking on <span class="menuselection">Actions</span> then
+scrolling down until you see the <span class="menuselection">Python application</span> entry.
+Selecting this will create a new directory in your project named <strong>.github</strong>.
+Under a <strong>workflows</strong> subdirectory you will find a file named
+<strong>python_app.yml</strong>. This is a <a class="reference internal" href="../glossary.html#term-YAML"><span class="xref std std-term">YAML</span></a> file contsaining instructions on how
+to clone your project into a <a class="reference internal" href="../glossary.html#term-virtual-machine"><span class="xref std std-term">virtual machine</span></a>, install any dependencies,
+then run tests on your code.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># This workflow will install Python dependencies, run tests and lint with a single version of Python</span>
+<span class="linenos"> 2</span><span class="c1"># For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Python application</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="nt">on</span><span class="p">:</span>
+<span class="linenos"> 7</span>  <span class="nt">push</span><span class="p">:</span>
+<span class="linenos"> 8</span>    <span class="nt">branches</span><span class="p">:</span> <span class="p p-Indicator">[</span> <span class="nv">main</span> <span class="p p-Indicator">]</span>
+<span class="linenos"> 9</span>  <span class="nt">pull_request</span><span class="p">:</span>
+<span class="linenos">10</span>    <span class="nt">branches</span><span class="p">:</span> <span class="p p-Indicator">[</span> <span class="nv">main</span> <span class="p p-Indicator">]</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="nt">jobs</span><span class="p">:</span>
+<span class="linenos">13</span>  <span class="nt">build</span><span class="p">:</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span>    <span class="nt">runs-on</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span>    <span class="nt">steps</span><span class="p">:</span>
+<span class="linenos">18</span>    <span class="p p-Indicator">-</span> <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
+<span class="linenos">19</span>    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Set up Python 3.9</span>
+<span class="linenos">20</span>      <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v2</span>
+<span class="linenos">21</span>      <span class="nt">with</span><span class="p">:</span>
+<span class="linenos">22</span>        <span class="nt">python-version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.9</span>
+<span class="linenos">23</span>    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+<span class="linenos">24</span>      <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+<span class="linenos">25</span>        <span class="no">python -m pip install --upgrade pip</span>
+<span class="linenos">26</span>        <span class="no">pip install flake8 pytest</span>
+<span class="linenos">27</span>        <span class="no">if [ -f requirements.txt ]; then pip install -r requirements.txt; fi</span>
+<span class="linenos">28</span>    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Lint with flake8</span>
+<span class="linenos">29</span>      <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+<span class="linenos">30</span>        <span class="no"># stop the build if there are Python syntax errors or undefined names</span>
+<span class="linenos">31</span>        <span class="no">flake8 tests --count --select=E9,F63,F7,F82 --show-source --statistics</span>
+<span class="linenos">32</span>        <span class="no"># exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide</span>
+<span class="linenos">33</span>        <span class="no">flake8 tests --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics</span>
+<span class="linenos">34</span>    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Test with pytest</span>
+<span class="linenos">35</span>      <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+<span class="linenos">36</span>        <span class="no">pytest</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../develop.html" title="Contributing"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="03-testing-setup.html" title="Step 3: Testing Setup"
+             >previous</a> |</li>
+        <li><a href="../index.html">Home</a>&#160;|</li>
+        <li><a href="../contents.html">Documentation</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">Step 4: Continuous Integration</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Roie R. Black.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+    </div>
+  </body>
+</html>
