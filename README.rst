@@ -16,7 +16,7 @@ Math Magik (v0.1.6)
     :alt: Github Workflows
     :target: https://github.com/rblack42/math-magik
 
-.. |travis| image:: https://api.travis-ci.com/rblack42/math-magik.svg?branch=master
+.. |travis| image:: https://travis-ci.com/rblack42/math-magik.svg?branch=main
     :alt: Travis-CI Build Status
     :target: https://travis-ci.com/rblack42/math-magik
 
