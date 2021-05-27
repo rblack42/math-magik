@@ -10,11 +10,15 @@ Math Magik (v0.1.6)
     :stub-columns: 1
 
     * - tests
-      - | |github| |
+      - | |github| |travis| |
 
 .. |github| image:: https://github.com/rblack42/math-magik/actions/workflows/python-app.yml/badge.svg
     :alt: Github Workflows
     :target: https://github.com/rblack42/math-magik
+
+.. |travis| image:: https://api.travis-ci.com/rblack42/math-magik.svg?branch=master
+    :alt: Travis-CI Build Status
+    :target: https://travis-ci.com/rblack42/math-magik
 
 ..  image:: rst/_static/lpp.gif
     :align: center

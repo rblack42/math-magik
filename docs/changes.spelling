@@ -1,2 +1,4 @@
-changes.rst:1: (repo)  2021-05-26: added GH repo setup notes
-changes.rst:6: (nojekyll)  2021-05-26: added nojekyll file for GH Pages
+changes.rst:1: (gh)  2021-05-27: added gh status badge to readme
+changes.rst:1: (readme)  2021-05-27: added gh status badge to readme
+changes.rst:2: (github)  2021-05-27: initial CI testing on github
+changes.rst:3: (yml)  2021-05-27: Create python-app.yml
