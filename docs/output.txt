@@ -1,0 +1,1 @@
+devnotes/02-basic-sphinx-setup.rst:14: [redirected with Found] https://www.sphinx-doc.org/ to https://www.sphinx-doc.org/en/master/

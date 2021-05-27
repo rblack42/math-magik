@@ -1,0 +1,12 @@
+dev
+devnotes
+kbd
+Macbook
+Magik
+magik
+nojekyll
+rblack
+repo
+rst
+Todo
+

@@ -9,6 +9,7 @@ __pycache__
 # Sphinx
 .doctrees
 _build
+*.spelling
 
 # Vim
 *.swp

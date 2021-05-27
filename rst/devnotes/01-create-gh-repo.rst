@@ -16,7 +16,7 @@ are not important in this project.
 
 Navigate to their website and click on the :menuselection:`sign up` button on
 the page. You will need to come up with a suitable user name (mine is **rblack42**)
-and provide a password and a valid ema1l address. Once your account is active,
+and provide a password and a valid email address. Once your account is active,
 you will have a home page on |GH| that you can reach by navigating to |GH| like
 so:
 
@@ -53,11 +53,11 @@ Before you proceed further in this project, you need to get a few tools installe
 
     * PyCharm_ - a free |PY| :term:`Integrated Development Environment` (:term:`IDE`)
 
-    * Git_ _ for source code management
+    * Git_ - for source code management
 
 I like to use the :term:`command line` for some things, but for this project, I will focus on using PyCharm_ as much as possible.
 
-Details on installing these tools on your machine ae included in the Appendix (:ref:`tool-setup`)
+Details on installing these tools on your machine are included in the Appendix (:ref:`tool-setup`)
 
 Clone this Repo
 ***************
@@ -67,12 +67,12 @@ local workstation to start development work. I keep all of my active development
 projects in a directory named **_dev** on my development machine (I use a
 Macbook Pro).
 This sets up a new directory in **_dev** with the project name. This is a git-
-repository already ready to post changes to the project back up to the |GH|_
+repository already ready to post changes to the project back up to the |GH|
 server.
 
 ..	note::
 
-    if you qre a developer and wish to contribute to the |MM| project, please
+    if you are a developer and wish to contribute to the |MM| project, please
     follow the instructions at :ref:develop to get properly set up. If you
     "clone" the main project directly, you will not be able to post your
     changes in a way I can use.

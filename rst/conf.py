@@ -23,8 +23,13 @@ release = version
 
 extensions = [
     'sphinx_ext.wordcount',
-        'sphinx.ext.todo',
+    'sphinx.ext.todo',
+    'sphinxcontrib.spelling',
 ]
+
+linkckeck_timeout = 3
+linkcheck_retries = 2
+spelling_word_list_filename = ['spelling_wordlist.txt']
 
 master_doc = 'contents'
 templates_path = ['_templates']

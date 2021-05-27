@@ -27,7 +27,7 @@ am going to develop this project using PyCharm_ we will install it inside the
 :term:`IDE`:
 
 Start up PyCharm and open the project. Then select :menuselection:`PyCharm -->
-Preferences` Next select :menuselection:`Project: math-magik --> Python
+Preferences` Next select :menuselection:`Project: ... --> Python
 Interpreter`. Click on the :menuselection:`gear` icon at the right side of the
 selection window. This window will create a Python *virtual environent` where
 all project dependencies will be manages separated from any other |PY| projects
@@ -51,8 +51,7 @@ Once that line is in place, select :menuselection:`Install requirement` and the
 
 ..	note::
 
-
-    All future project requirements will be lsted in this file and installed
+    All future project requirements will be listed in this file and installed
     the same way.
 
 Set up a Sphinx_ Project
@@ -68,7 +67,7 @@ documentation source files under the **rst** directory and generate web pages
 in the **docs** directory. Both of these directories can be created using the
 :menuselection:`File --> New --> Directory` menu.
 
-RUn **Sphinx Quickstart**
+Run **Sphinx Quickstart**
 *************************
 
 Select :menuselection:`Tools --> Run Sphinx Quickstart`. Change the path shown
@@ -105,7 +104,7 @@ Push to |GH|
 
 We can now push the changes to the project to |GH|. Unfortunately, doing
 everything needed for this step inside PyCharm_ proved impossible. PyCharm had
-already added both its special **.idea** directory and the 88venv** directory,
+already added both its special **.idea** directory and the **venv** directory,
 both of which I did not want posted on |GH|. The fix was to open up a
 :term:`command line` and do these commands:
 

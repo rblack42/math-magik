@@ -15,16 +15,16 @@
 ..  |OS|                    replace::   *Open Source*
 
 ..	|PY|	                replace::	*Python*
-..	_PY:	https://www.python.org/
+..	_PY:	                https://www.python.org/
 
-..  _PyCharm:           https://jetbrains.com/pycharm/
+..  _PyCharm:               https://www.jetbrains.com/pycharm/
 
-..  |RST|   replace:: *reStructuredText*
+..  |RST|                   replace:: *reStructuredText*
 
-..  _Sphinx:            https://sphinx-doc.org/
+..  _Sphinx:                https://www.sphinx-doc.org/en/master/
 
-..  |TDD|               replace::   *Test Driven Development*
+..  |TDD|                   replace::   *Test Driven Development*
 
-..  _tkinter:           https://docs.python.org/3/library/tkinter.html
+..  _tkinter:               https://docs.python.org/3/library/tkinter.html
 
-..  _Travis-CI:         https;//travis-ci.com/
+..  _Travis-CI:             https://travis-ci.com/
