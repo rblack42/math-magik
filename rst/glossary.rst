@@ -14,7 +14,7 @@ Glossary
         Hypertext Markup Language. The language e=used for web page layout.
 
     IDE
-    Integrated developemt Environment
+    Integrated development Environment
         A tool, usually language specific used by developers that packages
         everything needed to write and maintain program code.
 

@@ -18,6 +18,13 @@ Development Notes
 
     devnotes/*
 
+..  toctree::
+    :maxdepth: 1
+    :hidden:
+
+    develop
+    changes
+
 Appendix
 ********
 
