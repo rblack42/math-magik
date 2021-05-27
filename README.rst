@@ -10,7 +10,7 @@ Math Magik (v0.1.6)
     :stub-columns: 1
 
     * - tests
-      - | |github| |travis| |
+      - | |github| |travis| |appveyor| |
 
 .. |github| image:: https://github.com/rblack42/math-magik/actions/workflows/python-app.yml/badge.svg
     :alt: Github Workflows
@@ -19,6 +19,10 @@ Math Magik (v0.1.6)
 .. |travis| image:: https://travis-ci.com/rblack42/math-magik.svg?branch=main
     :alt: Travis-CI Build Status
     :target: https://travis-ci.com/rblack42/math-magik
+
+.. |appveyor| image:: https://ci.appveyor.com/api/projects/status/pevivsa6n5adw5lw?svg=true
+    :alt: AppVeyor Build Status
+    :target: https://ci.appveyor.com/project/rblack42/math-magik
 
 ..  image:: rst/_static/lpp.gif
     :align: center
