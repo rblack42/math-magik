@@ -12,7 +12,7 @@ Math Magik (v0.1.6)
     * - tests
       - | |github|
 
-.. |github| image:: https://github.com/rblack42/math-magik/actions/workflows/main.yml/badge.svg
+.. |github| image:: https://github.com/rblack42/math-magik/actions/workflows/python-app.yml/badge.svg
     :alt: Github Workflows
     :target: https://github.com/rblack42/math-magik
 
