@@ -24,3 +24,12 @@ Glossary
     PDF
         Portable Document format. A standard document format developed by Adobe.
 
+    virtual machine
+        A prograa that simulates a real system well enough to install a
+        standard operating system and other software in an isolated
+        environment. Commonly used in software testing, or expreimenting with
+        operating systems.
+
+    YAML
+        Yet Another Markup Language
+

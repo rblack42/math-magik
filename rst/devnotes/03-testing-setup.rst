@@ -1,5 +1,5 @@
-Testing Setup
-#############
+Step 3: Testing Setup
+#####################
 
 This project used |TDD|, a development process designed to create more reliable
 programs.
