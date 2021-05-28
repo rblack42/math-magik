@@ -5,3 +5,4 @@ click
 click-default-group
 pytest-cov
 coverage
+coveralls
