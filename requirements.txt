@@ -1,3 +1,5 @@
 sphinx
 sphinxcontrib-spelling
 pytest
+click
+click-default-group

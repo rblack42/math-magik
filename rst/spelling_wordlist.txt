@@ -1,12 +1,19 @@
 dev
 devnotes
+gh
+github
+HTML
 kbd
 Macbook
 Magik
 magik
 nojekyll
 rblack
+readme
 repo
 rst
+subdirectory
+
 Todo
+yml
 
