@@ -18,7 +18,7 @@ Features
 A primary focus in software development is the defining of specific set of
 "features" to be added to the project. We do not just blast code hoping
 something useful will result. Good software development involves much more
-thinking that coding.  We can identify specific components we know our project
+thinking than coding.  We can identify specific components we know our project
 will need, or look at the project from the user's point of view and start
 looking at actions the user should be able to take. The order of development is
 up to the development team. Some do "top-down" development, refining an
@@ -39,29 +39,29 @@ when the interface has changed substantially. They mark some milestone in the
 development. The most common format for version numbers is `semantic
 versioning`_:
 
-	* Major -  the user interface has changed substantially, breaking the old
-	  interface.
+    * Major -  the user interface has changed substantially, breaking the old
+      interface.
 
-	* Minor - add functionality without changing old features
+    * Minor - add functionality without changing old features
 
-	* Patch - bug fixes that do not change functionality
+    * Patch - bug fixes that do not change functionality
 
 Development Approach
 ********************
 
 As much as possible, I will work this way:
 
-	* Identify a new feature I want the software to provide
+    * Identify a new feature I want the software to provide
 
-	* Write one or more tests that will confirm that the new feature works as
-	  desired.
+    * Write one or more tests that will confirm that the new feature works as
+      desired.
 
-	* Write code that implements this new feature. Commits can be made as each
-	  test passes. Increment the *Patch* level when a test passes.
+    * Write code that implements this new feature. Commits can be made as each
+      test passes. Increment the *Patch* level when a test passes.
 
-	* When the tests all pass, commit the new code and increment the *Minor* level
+    * When the tests all pass, commit the new code and increment the *Minor* level
 
-Deciding when enough functionality hs been added to let the code go public will
+Deciding when enough functionality has been added to let the code go public will
 be the point in time where the *Major* level will be incremented.
 
 First Code
@@ -73,13 +73,13 @@ The application to be provided with this project will be named **mmdesigner**.
 It will be made available on PyPi_ so any Python developer can install it
 easily using :command:`pip`. We will deal with publishing on PyPi_ later.
 
-FOr now, we start off be creating the python package structure:
+For now, we start off be creating the python package structure:
 
-..	code-block:: shell
+..  code-block:: shell
 
-	$ cd ~/_dev/math-magik
-	$ mkdir mmdesigner
-	$ touch mmdesigner/__init__.py
+    $ cd ~/_dev/math-magik
+    $ mkdir mmdesigner
+    $ touch mmdesigner/__init__.py
 
 At this point, the package can be imported into other |PY| code. That is not
 very useful with no real code available yet, so where do we start?
@@ -122,5 +122,50 @@ Setting up the application involves adding two more files to the project.
     :caption: mmdesigner/cli.py
 
 
+Test Coverage
+*************
 
+WIth some real code in place, it is time to set up test coverage, which checks your tests to make sure all of your code is covered by a test. There is an old saying among programmers:
+
+    If you have not tested it, it does not work!
+
+Adding coverage is fairly simple. We add two new packages to our **requirements.txt** file:
+
+..  code-block:: text
+
+    pytest-cov
+    coverage
+    coveralls
+
+Next, we create a **pytest** configuration file that will add the parameters
+needed to activate coverage reporting.
+
+
+..  literalinclude::    ../../pytest.ini
+    :caption: pytest.ini
+    :linenos:
+
+
+We also need a configuration file for the coverage tests:
+
+..  literalinclude::    ../../.coveragerc
+    :linenos:
+    :caption: .coveragerc
+
+Now when you run tests, you will see a report on the lines covered and missed.
+Many projects work to cover 100% of their code, but doing so can be difficult.
+A high percentage is a good indicator that testing is high quality.
+
+We can generate a badge for the **README** file by using another free service:
+Coveralls_
+
+Generating the badge will be done by Travis-CI_ by adding an **after-success**
+block t the **.travis.yml** file. All we need to do to set this up is log in on
+Coveralls_ and set up the project, then tell |GH| to allow Coveralls_ to access
+our project.
+
+..  todo::
+
+    Add fule description on activating |CI| testting and badge generation in
+    the appendix
 
