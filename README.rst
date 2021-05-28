@@ -25,8 +25,8 @@ Math Magik (v0.1.6)
     :target: https://ci.appveyor.com/project/rblack42/math-magik
 
 
-.. |coverage| image:: https://coveralls.io/repos/github/rblack42/math-magik/badge.svg?branch=master
-    :target: https://coveralls.io/github/rblack42/math-magik?branch=master
+.. |coverage| image:: https://coveralls.io/repos/github/rblack42/math-magik/badge.svg?branch=main
+    :target: https://coveralls.io/github/rblack42/math-magik?branch=main
     :alt: Code Coverage"
 
 ..  image:: rst/_static/lpp.gif
