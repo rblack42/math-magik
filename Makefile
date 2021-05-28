@@ -17,3 +17,7 @@ linkcheck:
 	cd rst && \
 	sphinx-build -b linkcheck -vvv -d _build/doctrees . ../docs
 
+.PHONY: test
+test:
+	python -m pytest
+	flake8 tests

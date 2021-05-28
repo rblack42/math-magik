@@ -25,7 +25,7 @@ up a basic test process is as easy as clicking on :menuselection:`Actions` then
 scrolling down until you see the :menuselection:`Python application` entry.
 Selecting this will create a new directory in your project named **.github**.
 Under a **workflows** subdirectory you will find a file named
-**python_app.yml**. This is a :term:`YAML` file contsaining instructions on how
+**python_app.yml**. This is a :term:`YAML` file containing instructions on how
 to clone your project into a :term:`virtual machine`, install any dependencies,
 then run tests on your code.
 
