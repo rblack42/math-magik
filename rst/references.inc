@@ -1,6 +1,7 @@
 ..  _AppVeyor:              https://www.appveyor.com/
 ..  |CI|                    replace::   *Continuous Integration*
 
+..  _Coveralls:             https://coveralls.io/
 ..	|GH|	                replace:: *GitHub*
 ..	_GH:	                https://github.com/
 

@@ -12,10 +12,11 @@ Glossary
 
     Given When Then
         A version of |TDD| where we define the state of the project (Given) and
-        an action we will tae (When) and the result we expect (Then).  See
+        an action we will take (When) and the result we expect (Then).  See
         `given when then`_
 
-    HTML Hypertext Markup Language. The language
+    HTML
+        Hypertext Markup Language. The language
         used for web page layout.
 
     IDE
@@ -33,12 +34,12 @@ Glossary
         Test Driven Development
 
     semantic versioning
-        A style if version numbering common in software devellopment. See `semantic versioning`_
+        A style if version numbering common in software development. See `semantic versioning`_
 
     virtual machine
-        A prograa that simulates a real system well enough to install a
+        A program that simulates a real system well enough to install a
         standard operating system and other software in an isolated
-        environment. Commonly used in software testing, or expreimenting with
+        environment. Commonly used in software testing, or experimenting with
         operating systems.
 
     YAML

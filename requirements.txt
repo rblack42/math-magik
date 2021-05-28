@@ -3,3 +3,5 @@ sphinxcontrib-spelling
 pytest
 click
 click-default-group
+pytest-cov
+coverage

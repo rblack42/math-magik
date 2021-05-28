@@ -104,6 +104,7 @@
 <li><a class="reference internal" href="#feature-1-check-version">Feature 1: Check Version</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#test-coverage">Test Coverage</a></li>
 </ul>
 </li>
 </ul>
@@ -139,7 +140,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <p>Read time: 6.3 minutes (628 words)</p>
+  <p>Read time: 8.3 minutes (826 words)</p>
 <section id="step-4-test-driven-development-start">
 <h1>Step 4: Test Driven Development Start<a class="headerlink" href="#step-4-test-driven-development-start" title="Permalink to this headline">¶</a></h1>
 <p>My plan for this project is to use a version of <em>Test Driven Development</em> known as <a class="reference internal" href="../glossary.html#term-Given-When-Then"><span class="xref std std-term">Given
@@ -156,7 +157,7 @@ to your project at any point in the development process.</p>
 <p>A primary focus in software development is the defining of specific set of
 &quot;features&quot; to be added to the project. We do not just blast code hoping
 something useful will result. Good software development involves much more
-thinking that coding.  We can identify specific components we know our project
+thinking than coding.  We can identify specific components we know our project
 will need, or look at the project from the user's point of view and start
 looking at actions the user should be able to take. The order of development is
 up to the development team. Some do &quot;top-down&quot; development, refining an
@@ -195,7 +196,7 @@ test passes. Increment the <em>Patch</em> level when a test passes.</p></li>
 <li><p>When the tests all pass, commit the new code and increment the <em>Minor</em> level</p></li>
 </ul>
 </div></blockquote>
-<p>Deciding when enough functionality hs been added to let the code go public will
+<p>Deciding when enough functionality has been added to let the code go public will
 be the point in time where the <em>Major</em> level will be incremented.</p>
 </section>
 <section id="first-code">
@@ -204,7 +205,7 @@ be the point in time where the <em>Major</em> level will be incremented.</p>
 <p>The application to be provided with this project will be named <strong>mmdesigner</strong>.
 It will be made available on <a class="reference external" href="https://pypi.org/">PyPi</a> so any Python developer can install it
 easily using <strong class="command">pip</strong>. We will deal with publishing on <a class="reference external" href="https://pypi.org/">PyPi</a> later.</p>
-<p>FOr now, we start off be creating the python package structure:</p>
+<p>For now, we start off be creating the python package structure:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/_dev/math-magik
 $ mkdir mmdesigner
 $ touch mmdesigner/__init__.py
@@ -222,8 +223,8 @@ we do not need to write much code to get this part working.</p>
 <p>Add <strong>click</strong> to the <strong>requirements.txt</strong> file and make sure it is installed.</p>
 </div>
 <p>Here is the test code</p>
-<div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">tests/test_version.py</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">tests/test_version.py</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">mmdesigner</span>
 <span class="linenos">2</span><span class="kn">from</span> <span class="nn">mmdesigner</span> <span class="kn">import</span> <span class="n">__version__</span>
 <span class="linenos">3</span>
@@ -240,8 +241,8 @@ check the version from the command line. That means we need to set up a basic
 application that takes a parameter asking for the version. By convention, this
 parameter will be <strong>--version</strong>.</p>
 <p>Setting up the application involves adding two more files to the project.</p>
-<div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">mmdesigner/__main__.py</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">mmdesigner/__main__.py</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">.cli</span> <span class="kn">import</span> <span class="n">cli</span>
 <span class="linenos">2</span>
 <span class="linenos">3</span><span class="c1"># python -m mmdesigner</span>
@@ -250,8 +251,8 @@ parameter will be <strong>--version</strong>.</p>
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-text">mmdesigner/cli.py</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">mmdesigner/cli.py</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">click</span>
 <span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">mmdesigner</span>
 <span class="linenos"> 3</span><span class="kn">from</span> <span class="nn">mmdesigner</span> <span class="kn">import</span> <span class="n">__version__</span>
@@ -266,6 +267,76 @@ parameter will be <strong>--version</strong>.</p>
 </div>
 </div>
 </section>
+</section>
+<section id="test-coverage">
+<h2>Test Coverage<a class="headerlink" href="#test-coverage" title="Permalink to this headline">¶</a></h2>
+<p>WIth some real code in place, it is time to set up test coverage, which checks your tests to make sure all of your code is covered by a test. There is an old saying among programmers:</p>
+<blockquote>
+<div><p>If you have not tested it, it does not work!</p>
+</div></blockquote>
+<p>Adding coverage is fairly simple. We add two new packages to our <strong>requirements.txt</strong> file:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>pytest-cov
+coverage
+coveralls
+</pre></div>
+</div>
+<p>Next, we create a <strong>pytest</strong> configuration file that will add the parameters
+needed to activate coverage reporting.</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">pytest.ini</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="p">[</span><span class="n">pytest</span><span class="p">]</span>
+<span class="linenos"> 2</span><span class="n">testpaths</span> <span class="o">=</span>
+<span class="linenos"> 3</span>    <span class="n">tests</span>
+<span class="linenos"> 4</span><span class="n">norecursedirs</span> <span class="o">=</span>
+<span class="linenos"> 5</span>    <span class="o">.</span><span class="n">git</span>
+<span class="linenos"> 6</span>    <span class="n">venv</span>
+<span class="linenos"> 7</span>    <span class="n">build</span>
+<span class="linenos"> 8</span>    <span class="n">dist</span>
+<span class="linenos"> 9</span>    <span class="n">docs</span>
+<span class="linenos">10</span>    <span class="n">rst</span>
+<span class="linenos">11</span>    <span class="n">mmdesigner</span><span class="o">/</span><span class="n">mmdesigner</span><span class="o">.</span><span class="n">egg</span><span class="o">-</span><span class="n">info</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="n">addopts</span> <span class="o">=</span>
+<span class="linenos">14</span>    <span class="o">-</span><span class="n">r</span> <span class="n">a</span>
+<span class="linenos">15</span>    <span class="o">-</span><span class="n">v</span>
+<span class="linenos">16</span>    <span class="o">--</span><span class="n">cov</span>
+<span class="linenos">17</span>    <span class="o">--</span><span class="n">cov</span><span class="o">-</span><span class="n">config</span> <span class="o">.</span><span class="n">coveragerc</span>
+<span class="linenos">18</span>    <span class="o">--</span><span class="n">cov</span><span class="o">-</span><span class="n">report</span> <span class="n">term</span><span class="o">-</span><span class="n">missing</span>
+<span class="linenos">19</span>
+</pre></div>
+</div>
+</div>
+<p>We also need a configuration file for the coverage tests:</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">.coveragerc</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="p">[</span><span class="n">run</span><span class="p">]</span>
+<span class="linenos"> 2</span><span class="n">include</span> <span class="o">=</span> <span class="n">mmdesigner</span><span class="o">/*</span>
+<span class="linenos"> 3</span><span class="n">omit</span> <span class="o">=</span> <span class="o">*</span><span class="n">test_</span><span class="o">*</span>
+<span class="linenos"> 4</span><span class="n">branch</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="p">[</span><span class="n">report</span><span class="p">]</span>
+<span class="linenos"> 7</span><span class="n">exclude_lines</span> <span class="o">=</span>
+<span class="linenos"> 8</span><span class="c1"># Have to re-enable the standard pragma</span>
+<span class="linenos"> 9</span>    <span class="n">pragma</span><span class="p">:</span> <span class="n">no</span> <span class="n">cover</span>
+<span class="linenos">10</span>    <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="o">.</span><span class="n">__main__</span><span class="o">.</span><span class="p">:</span>
+<span class="linenos">11</span>    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<p>Now when you run tests, you will see a report on the lines covered and missed.
+Many projects work to cover 100% of their code, but doing so can be difficult.
+A high percentage is a good indicator that testing is high quality.</p>
+<p>We can generate a badge for the <strong>README</strong> file by using another free service:
+<a class="reference external" href="https://coveralls.io/">Coveralls</a></p>
+<p>Generating the badge will be done by <a class="reference external" href="https://travis-ci.com/">Travis-CI</a> by adding an <strong>after-success</strong>
+block t the <strong>.travis.yml</strong> file. All we need to do to set this up is log in on
+<a class="reference external" href="https://coveralls.io/">Coveralls</a> and set up the project, then tell <em>GitHub</em> to allow <a class="reference external" href="https://coveralls.io/">Coveralls</a> to access
+our project.</p>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Add fule description on activating <em>Continuous Integration</em> testting and badge generation in
+the appendix</p>
+</div>
 </section>
 </section>
 
