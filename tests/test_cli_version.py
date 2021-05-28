@@ -1,5 +1,4 @@
 from click.testing import CliRunner
-import mmdesigner
 from mmdesigner.cli import cli
 from mmdesigner import __version__
 
