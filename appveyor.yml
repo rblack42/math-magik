@@ -35,5 +35,6 @@ for:
     - python3 -m pip install -r requirements.txt
     - brew install openscad
     - ln -s /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD /usr/local/bin/openscad
+    - openscad --version
   test-script:
     - python -m pytest
