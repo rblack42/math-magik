@@ -35,7 +35,7 @@ Math Magik (v0.1.6)
 
 .. end-badges
 
-This project uses :program:`OpenSCAD` and a few supporting libraries to generate 3D models
+This project uses *OpenSCAD* and a few supporting libraries to generate 3D models
 of free-flight model airplanes. The accompanying Python software assists
 in creating a design and performs analysis on the design to produce an estimate
 of the weight and center of gravity of the design. This project is the subject
@@ -44,7 +44,7 @@ Symposium.
 
 The project documentation is available at the link above. There you will find
 material detailing the Python code developed to support this project, and
-information on how :program`OpenSCAD` can be used to build 3D models of proposed designs.
+information on how *OpenSCAD* can be used to build 3D models of proposed designs.
 The primary focus of this documentation is the design of a Limited Pennyplane
 indoor model, but other designs will be included here as well.
 

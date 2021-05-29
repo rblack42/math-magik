@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Step 6: OpenSCAD Manager &#8212; Math Magik 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinx13.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx13.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Contributing" href="../develop.html" />
+    <link rel="prev" title="Step 4: Test Driven Development Start" href="05-development-start.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script>
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../usage/installation.html">Get it</a></li>
+    <li><a href="../contents.html">Docs</a></li>
+    <li><a href="../develop.html">Extend/Develop</a></li>
+  </ul>
+  <div>
+    <a href="../index.html">
+      <img src="../_static/logo.png" alt="PyLiT" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../develop.html" title="Contributing"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="05-development-start.html" title="Step 4: Test Driven Development Start"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Home</a>&#160;|</li>
+        <li><a href="../contents.html">Documentation</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">Step 6: OpenSCAD Manager</a></li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../contents.html">
+              <img class="logo" src="../_static/badge.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../contents.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Step 6: OpenSCAD Manager</a><ul>
+<li><a class="reference internal" href="#feature-2-add-openscad-management-class">Feature 2: Add OpenSCAD Management class</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="05-development-start.html"
+                        title="previous chapter">Step 4: Test Driven Development Start</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../develop.html"
+                        title="next chapter">Contributing</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/devnotes/06-openscad-manager.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>Read time: 1.8 minutes (182 words)</p>
+<section id="step-6-openscad-manager">
+<h1>Step 6: OpenSCAD Manager<a class="headerlink" href="#step-6-openscad-manager" title="Permalink to this headline">¶</a></h1>
+<p>Most of the analysis of a design will be done using an <a class="reference internal" href="../glossary.html#term-STL"><span class="xref std std-term">STL</span></a> file which
+describes a part we create. Before we worry about generating the parts, we can
+set up a <em>Python</em> class that will manage access to <a class="reference external" href="https://openscad.org/">OpenSCAD</a> from the command
+line.</p>
+<section id="feature-2-add-openscad-management-class">
+<h2>Feature 2: Add OpenSCAD Management class<a class="headerlink" href="#feature-2-add-openscad-management-class" title="Permalink to this headline">¶</a></h2>
+<p>The primary purpose of the <a class="reference external" href="https://openscad.org/">OpenSCAD</a> manager class is to isolate running
+OpenSCAD to perform needed operations. For our first test of this class, we
+will launch OpenSCAD and fetch the version of the program we are using.
+Unfortunately, getting the <em>Continuous Integration</em> servers to install the version I have on my
+machine (installed with <a class="reference external" href="https://brew.sh/">Homebrew</a>) has proven difficult, so we will not test the
+actual version, just ensure we get valid output.</p>
+<p>The code we need to write will assume that OpenSCAD is on the system path and
+can be launched with the name <strong class="program">openscad</strong>.</p>
+<p>Here is our first test for this cloass:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">tests/test_OpenSCAD.py</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">mmdesigner.OpenSCAD</span> <span class="kn">import</span> <span class="n">OpenSCAD</span>
+<span class="linenos">2</span><span class="kn">import</span> <span class="nn">os</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="k">def</span> <span class="nf">test_OSC_version</span><span class="p">():</span>
+<span class="linenos">6</span>    <span class="n">mgr</span> <span class="o">=</span> <span class="n">OpenSCAD</span><span class="p">()</span>
+<span class="linenos">7</span>    <span class="n">version</span> <span class="o">=</span> <span class="n">mgr</span><span class="o">.</span><span class="n">get_version</span><span class="p">()</span>
+<span class="linenos">8</span>    <span class="k">assert</span> <span class="n">version</span> <span class="o">==</span> <span class="s2">&quot;2019.05&quot;</span>
+<span class="linenos">9</span>
+</pre></div>
+</div>
+</div>
+<p>And here is the start of our class:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">mmdesigner/OpenSCAD.py</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">class</span> <span class="nc">OpenSCAD</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 6</span>        <span class="k">pass</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span>    <span class="k">def</span> <span class="nf">get_version</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 9</span>        <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">&#39;openscad&#39;</span><span class="p">,</span><span class="s1">&#39;--version&#39;</span><span class="p">],</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="linenos">10</span>        <span class="n">version</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
+<span class="linenos">11</span>        <span class="k">return</span> <span class="n">version</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="linenos">14</span>    <span class="n">mgr</span> <span class="o">=</span> <span class="n">OpenSCAD</span><span class="p">()</span>
+<span class="linenos">15</span>    <span class="n">mgr</span><span class="o">.</span><span class="n">get_version</span><span class="p">()</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span>
+</pre></div>
+</div>
+</div>
+<p>With this running locally, we now need to modify the <em>Continuous Integration</em> service control files
+and get <em>OpenSCAD</em> installed on their <em>virtual machines</em> for testing. This took some
+research, but i finally managed to get things working.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../develop.html" title="Contributing"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="05-development-start.html" title="Step 4: Test Driven Development Start"
+             >previous</a> |</li>
+        <li><a href="../index.html">Home</a>&#160;|</li>
+        <li><a href="../contents.html">Documentation</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">Step 6: OpenSCAD Manager</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Roie R. Black.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+    </div>
+  </body>
+</html>
