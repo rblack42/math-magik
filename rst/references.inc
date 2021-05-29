@@ -9,6 +9,7 @@
 
 ..  _given when then:       https://martinfowler.com/bliki/GivenWhenThen.html
 
+..  _Homebrew:              https://brew.sh/
 ..  _Linus Torvalds:        https://en.wikipedia.org/wiki/Linus_Torvalds
 ..  |MM|                    replace::   *Math-Magik*
 ..  _MM:                    https://github.com/rblack42/math-magik
@@ -16,6 +17,7 @@
 ..  _OpenSCAD:              https://openscad.org/
 
 ..  |OS|                    replace::   *Open Source*
+..  |OSC|                   replace::   *OpenSCAD*
 
 ..	|PY|	                replace::	*Python*
 ..	_PY:	                https://www.python.org/

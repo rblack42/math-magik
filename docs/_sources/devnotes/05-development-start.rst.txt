@@ -125,7 +125,7 @@ Setting up the application involves adding two more files to the project.
 Test Coverage
 *************
 
-WIth some real code in place, it is time to set up test coverage, which checks your tests to make sure all of your code is covered by a test. There is an old saying among programmers:
+With some real code in place, it is time to set up test coverage, which checks your tests to make sure all of your code is covered by a test. There is an old saying among programmers:
 
     If you have not tested it, it does not work!
 
@@ -166,6 +166,6 @@ our project.
 
 ..  todo::
 
-    Add fule description on activating |CI| testting and badge generation in
+    Add full description on activating |CI| testing and badge generation in
     the appendix
 

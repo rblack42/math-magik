@@ -30,6 +30,9 @@ Glossary
     PDF
         Portable Document format. A standard document format developed by Adobe.
 
+    STL
+        Standard Tessellation Language
+
     TDD
         Test Driven Development
 
