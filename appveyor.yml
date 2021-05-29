@@ -1,26 +1,38 @@
 image:
 - macos
 - Visual Studio 2019
-- Ubuntu
 
 stack: python 3
 
-environment:
-  PY_DIR: C:\Python39-x64
+for:
+-
+  matrix:
+    only:
+      - image: Visual Studio 2019
+  build: off
+  environment:
+    PY_DIR: C:\Python39-x64
 
-clone_depth: 25
+  init:
+    - set PATH=%PY_DIR%;%PY_DIR%\Scripts;%PATH%
+    -  set PATH="C:\Program Files\openscad";%PATH%
+  install:
+    - python --version
+    - python -m pip install --upgrade pip
+    - python -m pip install -r requirements.txt
+    - choco install openscad
 
-build: off
-
-init:
-- cmd: set PATH=%PY_DIR%;%PY_DIR%\Scripts;%PATH%
-- cmd: set PATH="C:\Program Files\openscad";%PATH%
-
-install:
-- python --version
-- python -m pip install --upgrade pip
-- python -m pip install -r requirements.txt
-- choco install openscad
-
-test_script:
-  - python -m pytest
+  test_script:
+    - python -m pytest
+  matrix:
+    only:
+      - image: macos
+  environment:
+    PYTHON: 3.9
+  install:
+    - python3 -m pip install --upgrade pip
+    - python3 -m pip install -r requirements.txt
+    - brew install openscad
+    - ln -s /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD /usr/local/bi    n/openscad
+  test-script:
+    - python -m pytest
