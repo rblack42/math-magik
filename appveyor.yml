@@ -15,7 +15,7 @@ for:
 
   init:
     - set PATH=%PY_DIR%;%PY_DIR%\Scripts;%PATH%
-    -  set PATH="C:\Program Files\openscad";%PATH%
+    - set PATH=C:\Program Files\OpenSCAD;%PATH%
   install:
     - python --version
     - python -m pip install --upgrade pip
