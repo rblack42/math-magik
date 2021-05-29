@@ -6,7 +6,9 @@ python:
 install:
   - pip install --upgrade pip
   - pip install -r requirements.txt
-  - sudo apt-get install openscad
+  - sudo add-apt-repository ppa:openscad/releases
+  - sudo qdd-apt-repository update
+  - sudo apt install openscad
 
 script:
     python -m pytest
