@@ -1,2 +1,1 @@
-changes.rst:33: (scrupt)  2021-05-27: fix typo in appveyor scrupt
-changes.rst:40: (upates)  2021-05-27: upates to github CI docs
+changes.rst:1: (pypi)  2021-05-30: start of pypi setup

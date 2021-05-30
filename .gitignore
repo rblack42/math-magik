@@ -17,3 +17,13 @@ _build
 
 # Mac
 .DS_Store
+
+.pytest_cache
+
+# PyPi
+build
+dist
+*.egg-info
+
+.coverage
+

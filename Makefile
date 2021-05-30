@@ -1,28 +1,11 @@
-.PHONY:	changes
-changes:
-	git log --oneline --pretty=format:"* %ad: %s" --date=short > CHANGES
+# math-magik Makefile
+PROJECT := math_magik
+MK	:= mk
 
-.PHONY: docs
-docs:
-	cd rst && \
-	sphinx-build -b html -d _build/doctrees . ../docs
+-include $(MK)/help.mk
+-include $(MK)/python.mk
+-include $(MK)/pypi.mk
+-include $(MK)/version.mk
+-include $(MK)/sphinx.mk
 
-.PHONY: spelling
-spelling:
-	cd rst && \
-	sphinx-build -b spelling -d _build/doctrees . ../docs
-
-.PHONY: linkcheck
-linkcheck:
-	cd rst && \
-	sphinx-build -b linkcheck -vvv -d _build/doctrees . ../docs
-
-.PHONY: test
-test:
-	python -m pytest
-	flake8 tests
-
-.PHONY: clean
-clean:
-	rm -rf rst/_build
 
