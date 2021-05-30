@@ -1,3 +1,4 @@
+* 2021-05-30: added introduction docs
 * 2021-05-29: update to docs on mass properties
 * 2021-05-29: missing numpy-stl requirement
 * 2021-05-29: added mass properties code
@@ -30,14 +31,14 @@
 * 2021-05-28: added basic cli and version report feature
 * 2021-05-28: ready to start code development
 * 2021-05-27: add appveyor badge
-* 2021-05-27: fix typo in appveyor scrupt
+* 2021-05-27: fix typo in appveyor script
 * 2021-05-27: appveyor script cleanup
 * 2021-05-27: appveyor failed - build off not recognized
 * 2021-05-27: adding appveyor testing on Windows
 * 2021-05-27: travis-ci badge link references wrong branch
 * 2021-05-27: added badge for travis-ci
 * 2021-05-27: adding Travis-CI testing
-* 2021-05-27: upates to github CI docs
+* 2021-05-27: updates to github CI docs
 * 2021-05-27: added gh status badge to readme
 * 2021-05-27: initial CI testing on github
 * 2021-05-27: Create python-app.yml

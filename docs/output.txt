@@ -1,0 +1,1 @@
+introduction.rst:52: [redirected with Found] https://www.fedex.com/ to https://www.fedex.com/global/choose-location.html

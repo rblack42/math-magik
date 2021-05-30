@@ -109,7 +109,7 @@ class OpenSCAD(object):
         return err_code
 
     def get_bounds(self):
-        """Return bouns data as a list"""
+        """Return bounds data as a list"""
         return [
                 self.maxx, self.minx,
                 self.maxy, self.miny,

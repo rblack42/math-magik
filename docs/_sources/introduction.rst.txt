@@ -2,7 +2,7 @@ Introduction
 ############
 
 In 1955, at the age of nine, I was introduced to the world of model airplanes
-by a neighbor who flew a model of the Henderson Gadfly in front of his home.
+by a neighbor who flew a model of the |Gadfly|_ in front of his home.
 That fascinating flight marked the start of my career in Aerospace Engineering.
 I set out to build and fly my own model airplanes.  That experience taught me a
 lot about the basics of flight.  Eventually, I began building gas-powered
@@ -26,7 +26,7 @@ very inexpensive to build, and teach you a lot about aeronautical engineering,
 which I ended up studying extensively at Virginia Tech.
 
 Then life got in the way. After graduate school, I entered the USAF and started
-conducting advanced research into Computational Fluid Dynamics, figuring out
+conducting advanced research in the emerging field of |CFD|_, figuring out
 how how air behaves when it flows over an airplane using high-power computers.
 I also started flying "real" airplanes (private ones, not Air Force ones). My
 model building was put on hold for a long spell.

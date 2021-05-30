@@ -1,9 +1,16 @@
 ..  _AppVeyor:              https://www.appveyor.com/
+
+..  |CFD|                   replace::   *Computational Fluid Dynamics*
+..  _CFD:                   https://en.wikipedia.org/wiki/Computational_fluid_dynamics
+
 ..  |CI|                    replace::   *Continuous Integration*
 
 ..  _Coveralls:             https://coveralls.io/
 
 ..  _FedEx:                 https://www.fedex.com/
+
+..  |Gadfly|                replace:: Hendersen-Glenny Gadfly
+..  _Gadfly:                https://en.wikipedia.org/wiki/Henderson-Glenny_Gadfly
 ..	|GH|	                replace:: *GitHub*
 ..	_GH:	                https://github.com/
 
