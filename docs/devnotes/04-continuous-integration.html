@@ -160,42 +160,37 @@ Under a <strong>workflows</strong> subdirectory you will find a file named
 <strong>python_app.yml</strong>. This is a <a class="reference internal" href="../glossary.html#term-YAML"><span class="xref std std-term">YAML</span></a> file containing instructions on how
 to clone your project into a <a class="reference internal" href="../glossary.html#term-virtual-machine"><span class="xref std std-term">virtual machine</span></a>, install any dependencies,
 then run tests on your code.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># This workflow will install Python dependencies, run tests and lint with a single version of Python</span>
-<span class="linenos"> 2</span><span class="c1"># For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions</span>
-<span class="linenos"> 3</span>
-<span class="linenos"> 4</span><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Python application</span>
-<span class="linenos"> 5</span>
-<span class="linenos"> 6</span><span class="nt">on</span><span class="p">:</span>
-<span class="linenos"> 7</span>  <span class="nt">push</span><span class="p">:</span>
-<span class="linenos"> 8</span>    <span class="nt">branches</span><span class="p">:</span> <span class="p p-Indicator">[</span> <span class="nv">main</span> <span class="p p-Indicator">]</span>
-<span class="linenos"> 9</span>  <span class="nt">pull_request</span><span class="p">:</span>
-<span class="linenos">10</span>    <span class="nt">branches</span><span class="p">:</span> <span class="p p-Indicator">[</span> <span class="nv">main</span> <span class="p p-Indicator">]</span>
-<span class="linenos">11</span>
-<span class="linenos">12</span><span class="nt">jobs</span><span class="p">:</span>
-<span class="linenos">13</span>  <span class="nt">build</span><span class="p">:</span>
-<span class="linenos">14</span>
-<span class="linenos">15</span>    <span class="nt">runs-on</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
-<span class="linenos">16</span>
-<span class="linenos">17</span>    <span class="nt">steps</span><span class="p">:</span>
-<span class="linenos">18</span>    <span class="p p-Indicator">-</span> <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
-<span class="linenos">19</span>    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Set up Python 3.9</span>
-<span class="linenos">20</span>      <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v2</span>
-<span class="linenos">21</span>      <span class="nt">with</span><span class="p">:</span>
-<span class="linenos">22</span>        <span class="nt">python-version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.9</span>
-<span class="linenos">23</span>    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
-<span class="linenos">24</span>      <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-<span class="linenos">25</span>        <span class="no">python -m pip install --upgrade pip</span>
-<span class="linenos">26</span>        <span class="no">pip install flake8 pytest</span>
-<span class="linenos">27</span>        <span class="no">if [ -f requirements.txt ]; then pip install -r requirements.txt; fi</span>
-<span class="linenos">28</span>    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Lint with flake8</span>
-<span class="linenos">29</span>      <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-<span class="linenos">30</span>        <span class="no"># stop the build if there are Python syntax errors or undefined names</span>
-<span class="linenos">31</span>        <span class="no">python -m flake8 tests --count --select=E9,F63,F7,F82 --show-source --statistics</span>
-<span class="linenos">32</span>        <span class="no"># exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide</span>
-<span class="linenos">33</span>        <span class="no">python -m flake8 tests --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics</span>
-<span class="linenos">34</span>    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Test with pytest</span>
-<span class="linenos">35</span>      <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-<span class="linenos">36</span>        <span class="no">python -m pytest</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Python application</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="nt">on</span><span class="p">:</span>
+<span class="linenos"> 4</span>  <span class="nt">push</span><span class="p">:</span>
+<span class="linenos"> 5</span>    <span class="nt">branches</span><span class="p">:</span> <span class="p p-Indicator">[</span> <span class="nv">main</span> <span class="p p-Indicator">]</span>
+<span class="linenos"> 6</span>  <span class="nt">pull_request</span><span class="p">:</span>
+<span class="linenos"> 7</span>    <span class="nt">branches</span><span class="p">:</span> <span class="p p-Indicator">[</span> <span class="nv">main</span> <span class="p p-Indicator">]</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="nt">jobs</span><span class="p">:</span>
+<span class="linenos">10</span>  <span class="nt">build</span><span class="p">:</span>
+<span class="linenos">11</span>    <span class="nt">runs-on</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="linenos">12</span>    <span class="nt">steps</span><span class="p">:</span>
+<span class="linenos">13</span>    <span class="p p-Indicator">-</span> <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
+<span class="linenos">14</span>    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Set up Python 3.9</span>
+<span class="linenos">15</span>      <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v2</span>
+<span class="linenos">16</span>      <span class="nt">with</span><span class="p">:</span>
+<span class="linenos">17</span>        <span class="nt">python-version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.9</span>
+<span class="linenos">18</span>    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+<span class="linenos">19</span>      <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+<span class="linenos">20</span>        <span class="no">python -m pip install --upgrade pip</span>
+<span class="linenos">21</span>        <span class="no">pip install flake8 pytest</span>
+<span class="linenos">22</span>        <span class="no">if [ -f requirements.txt ]; then pip install -r requirements.txt; fi</span>
+<span class="linenos">23</span>        <span class="no">sudo apt-get update</span>
+<span class="linenos">24</span>        <span class="no">sudo apt-get install openscad</span>
+<span class="linenos">25</span>    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Lint with flake8</span>
+<span class="linenos">26</span>      <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+<span class="linenos">27</span>        <span class="no">python -m flake8 tests --count --select=E9,F63,F7,F82 --show-source --statistics</span>
+<span class="linenos">28</span>        <span class="no">python -m flake8 tests --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics</span>
+<span class="linenos">29</span>    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Test with pytest</span>
+<span class="linenos">30</span>      <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+<span class="linenos">31</span>        <span class="no">python -m pytest</span>
 </pre></div>
 </div>
 </section>
@@ -205,21 +200,24 @@ then run tests on your code.</p>
 file, this one named <strong>.travis.yml</strong>. This needs to be placed in the root
 directory of the project. For this initial example, we will again test on a
 Linux host.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nt">language</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nt">dist</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">focal</span>
 <span class="linenos"> 2</span>
-<span class="linenos"> 3</span><span class="nt">python</span><span class="p">:</span>
-<span class="linenos"> 4</span>  <span class="p p-Indicator">-</span> <span class="s">&quot;3.9&quot;</span>
-<span class="linenos"> 5</span>
-<span class="linenos"> 6</span><span class="nt">install</span><span class="p">:</span>
-<span class="linenos"> 7</span>  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pip install --upgrade pip</span>
-<span class="linenos"> 8</span>    <span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt</span>
-<span class="linenos"> 9</span>    <span class="l l-Scalar l-Scalar-Plain">sudo apt-get install openscad</span>
-<span class="linenos">10</span>
-<span class="linenos">11</span><span class="nt">script</span><span class="p">:</span>
-<span class="linenos">12</span>    <span class="l l-Scalar l-Scalar-Plain">python -m pytest</span>
+<span class="linenos"> 3</span><span class="nt">language</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="nt">python</span><span class="p">:</span>
+<span class="linenos"> 6</span>  <span class="p p-Indicator">-</span> <span class="s">&quot;3.9&quot;</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="nt">install</span><span class="p">:</span>
+<span class="linenos"> 9</span>  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pip install --upgrade pip</span>
+<span class="linenos">10</span>  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt</span>
+<span class="linenos">11</span>  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sudo apt-get update</span>
+<span class="linenos">12</span>  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sudo apt-get install openscad</span>
 <span class="linenos">13</span>
-<span class="linenos">14</span><span class="nt">after_success</span><span class="p">:</span>
-<span class="linenos">15</span>  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">coveralls</span>
+<span class="linenos">14</span><span class="nt">script</span><span class="p">:</span>
+<span class="linenos">15</span>    <span class="l l-Scalar l-Scalar-Plain">python -m pytest</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="nt">after_success</span><span class="p">:</span>
+<span class="linenos">18</span>  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">coveralls</span>
 </pre></div>
 </div>
 <p>To activate testing, you need to set up an account on <a class="reference external" href="https://travis-ci.com/">Travis-CI</a>, which can be
