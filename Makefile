@@ -21,3 +21,8 @@ linkcheck:
 test:
 	python -m pytest
 	flake8 tests
+
+.PHONY: clean
+clean:
+	rm -rf rst/_build
+

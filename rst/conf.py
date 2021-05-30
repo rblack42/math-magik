@@ -2,6 +2,7 @@ import os
 import re
 import sys
 
+sys.path.insert(0, os.path.abspath('..'))
 sys.path.insert(0, os.path.abspath('.'))
 import sphinx
 
@@ -24,6 +25,8 @@ release = version
 extensions = [
     'sphinx_ext.wordcount',
     'sphinx.ext.todo',
+    'sphinx.ext.autodoc',
+    'sphinx.ext.viewcode',
     'sphinxcontrib.spelling',
 ]
 

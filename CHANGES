@@ -1,3 +1,43 @@
+* 2021-05-29: update to docs on mass properties
+* 2021-05-29: missing numpy-stl requirement
+* 2021-05-29: added mass properties code
+* 2021-05-29: appveyor path problem
+* 2021-05-29: changed openscad version test to be >= 2019
+* 2021-05-29: found typo in appveyor script - finally
+* 2021-05-29: broken appveyor script
+* 2021-05-29: more appveyor puzzles in mac section
+* 2021-05-29: appveyor still fails in mac section
+* 2021-05-29: typo in mac section of appveyor script
+* 2021-05-29: typo in appveyor script
+* 2021-05-29: installing openscad on appveyor
+* 2021-05-29: installing openscad on github workflows
+* 2021-05-29: switching travis-ci to ubuntu 20.04
+* 2021-05-29: more testing openscad installs on travis-ci
+* 2021-05-29: another openscad install try in travis-ci
+* 2021-05-29: try to install newer openscad on travis-ci
+* 2021-05-28: still not loading current version of openscad
+* 2021-05-28: fix to update apt
+* 2021-05-28: fixed typo in openscad install sequence
+* 2021-05-28: fix add openscad repository stalls on travis-ci
+* 2021-05-28: set travis to install current openscad
+* 2021-05-28: fix for travis-ci not installing openscad
+* 2021-05-28: running openscad now
+* 2021-05-28: changed branch to main on ci services
+* 2021-05-28: added coveralls to travis.yml
+* 2021-05-28: added coverage testing
+* 2021-05-28: flake8 needs to be run as a module
+* 2021-05-28: ci testing not finding module
+* 2021-05-28: added basic cli and version report feature
+* 2021-05-28: ready to start code development
+* 2021-05-27: add appveyor badge
+* 2021-05-27: fix typo in appveyor scrupt
+* 2021-05-27: appveyor script cleanup
+* 2021-05-27: appveyor failed - build off not recognized
+* 2021-05-27: adding appveyor testing on Windows
+* 2021-05-27: travis-ci badge link references wrong branch
+* 2021-05-27: added badge for travis-ci
+* 2021-05-27: adding Travis-CI testing
+* 2021-05-27: upates to github CI docs
 * 2021-05-27: added gh status badge to readme
 * 2021-05-27: initial CI testing on github
 * 2021-05-27: Create python-app.yml

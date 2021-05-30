@@ -4,6 +4,7 @@ from mmdesigner.OpenSCAD import OpenSCAD
 
 
 def test_OSC_version():
+    """Test app returns installed OpenSCAD version"""
     mgr = OpenSCAD()
     version = mgr.get_version()
     year, rel = version.split(".")
@@ -11,6 +12,7 @@ def test_OSC_version():
 
 
 def test_OSC_STL_generator():
+    """Test generation of STL file from specified SCAD file"""
     mgr = OpenSCAD()
     scad_file = "tests/test_data/spar.scad"
     stl_file = "tests/test_data/spar.stl"
@@ -21,11 +23,13 @@ def test_OSC_STL_generator():
 
 
 def test_OSC_STL_bad_file():
+    """Test error return on bad file name"""
     mgr = OpenSCAD()
     assert mgr.gen_stl("bad") == 1
 
 
 def test_OSC_STL_bd_stl_name():
+    """Test error return on non-scad file name"""
     stl_file = "tests/test_data/spar.stl"
     mgr = OpenSCAD()
     assert mgr.gen_stl(stl_file) == 1

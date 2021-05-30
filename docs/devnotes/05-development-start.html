@@ -21,11 +21,11 @@
     <link rel="prev" title="Step 4: Continuous Integration" href="04-continuous-integration.html" />
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
           rel='stylesheet' type='text/css' />
- 
+
     <style type="text/css">
       table.right { float: right; margin-left: 20px; }
       table.right td { border: 1px solid #ccc; }
-      
+
     </style>
     <script>
       // intelligent scrolling of the sidebar content
@@ -78,6 +78,9 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
           <a href="06-openscad-manager.html" title="Step 6: OpenSCAD Manager"
              accesskey="N">next</a> |</li>
         <li class="right" >
@@ -86,7 +89,7 @@
         <li><a href="../index.html">Home</a>&#160;|</li>
         <li><a href="../contents.html">Documentation</a> &#187;</li>
 
-        <li class="nav-item nav-item-this"><a href="">Step 4: Test Driven Development Start</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Step 4: Test Driven Development Start</a></li>
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -139,7 +142,7 @@
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
-            
+
   <p>Read time: 8.3 minutes (826 words)</p>
 <section id="step-4-test-driven-development-start">
 <h1>Step 4: Test Driven Development Start<a class="headerlink" href="#step-4-test-driven-development-start" title="Permalink to this headline">¶</a></h1>
@@ -155,16 +158,16 @@ to your project at any point in the development process.</p>
 <section id="features">
 <h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
 <p>A primary focus in software development is the defining of specific set of
-&quot;features&quot; to be added to the project. We do not just blast code hoping
+“features” to be added to the project. We do not just blast code hoping
 something useful will result. Good software development involves much more
 thinking than coding.  We can identify specific components we know our project
-will need, or look at the project from the user's point of view and start
+will need, or look at the project from the user’s point of view and start
 looking at actions the user should be able to take. The order of development is
-up to the development team. Some do &quot;top-down&quot; development, refining an
-application as they go. Others do a &quot;bottom-up&quot; approach where a bunch of
+up to the development team. Some do “top-down” development, refining an
+application as they go. Others do a “bottom-up” approach where a bunch of
 component parts are created, then integrated into the project providing more
-and more functionality. The is no one &quot;right' approach.</p>
-<p>Since I am the &quot;team&quot; at present, I will do a mix of both approaches. This
+and more functionality. The is no one “right’ approach.</p>
+<p>Since I am the “team” at present, I will do a mix of both approaches. This
 diary will show the reasoning behind each step I take.</p>
 </section>
 <section id="versioning">
@@ -230,8 +233,9 @@ we do not need to write much code to get this part working.</p>
 <span class="linenos">3</span>
 <span class="linenos">4</span>
 <span class="linenos">5</span><span class="k">def</span> <span class="nf">test_version</span><span class="p">():</span>
-<span class="linenos">6</span>    <span class="n">mm</span> <span class="o">=</span> <span class="n">mmdesigner</span>
-<span class="linenos">7</span>    <span class="k">assert</span> <span class="n">mm</span><span class="o">.</span><span class="n">version</span><span class="p">()</span> <span class="o">==</span> <span class="n">__version__</span>
+<span class="linenos">6</span>    <span class="sd">&quot;&quot;&quot;Return current application version string&quot;&quot;&quot;</span>
+<span class="linenos">7</span>    <span class="n">mm</span> <span class="o">=</span> <span class="n">mmdesigner</span>
+<span class="linenos">8</span>    <span class="k">assert</span> <span class="n">mm</span><span class="o">.</span><span class="n">version</span><span class="p">()</span> <span class="o">==</span> <span class="n">__version__</span>
 </pre></div>
 </div>
 </div>
@@ -239,7 +243,7 @@ we do not need to write much code to get this part working.</p>
 <p>However, we are not done with this step. I also want the user to be able to
 check the version from the command line. That means we need to set up a basic
 application that takes a parameter asking for the version. By convention, this
-parameter will be <strong>--version</strong>.</p>
+parameter will be <strong>–version</strong>.</p>
 <p>Setting up the application involves adding two more files to the project.</p>
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-text">mmdesigner/__main__.py</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
@@ -354,6 +358,9 @@ the appendix</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
           <a href="06-openscad-manager.html" title="Step 6: OpenSCAD Manager"
              >next</a> |</li>
         <li class="right" >
@@ -362,7 +369,7 @@ the appendix</p>
         <li><a href="../index.html">Home</a>&#160;|</li>
         <li><a href="../contents.html">Documentation</a> &#187;</li>
 
-        <li class="nav-item nav-item-this"><a href="">Step 4: Test Driven Development Start</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Step 4: Test Driven Development Start</a></li>
       </ul>
     </div>
     <div class="footer" role="contentinfo">

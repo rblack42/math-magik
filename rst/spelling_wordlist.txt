@@ -1,19 +1,35 @@
+appveyor
+Bigge
+ci
+cli
 dev
 devnotes
+Fairfax
 gh
 github
+Hodson
 HTML
 kbd
+Lakehurst
+lpp
 Macbook
 Magik
 magik
 nojekyll
+numpy
+openscad
+ornithopter
+Pennyplane
 rblack
 readme
 repo
 rst
+slusarczyk
+stl
 subdirectory
 
 Todo
+travis
+ubuntu
 yml
 

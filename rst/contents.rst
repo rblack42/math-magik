@@ -8,6 +8,14 @@ Math-Magik Model Airplanes
 
     preface
 
+    introduction
+
+    basic-concepts
+
+    lpp-design
+
+    design-analysis
+
 Development Notes
 *****************
 
@@ -33,6 +41,15 @@ Appendix
     :glob:
 
     appendix/*
+
+Code
+****
+
+..  toctree::
+    :maxdepth: 1
+    :glob:
+
+    code/*
 
 Glossary
 ********

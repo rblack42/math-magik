@@ -5,16 +5,18 @@ import subprocess
 
 
 class OpenSCAD(object):
-
+    """Management class for OpenSCAD command line interface"""
     def __init__(self):
         pass
 
     def get_version(self):
+        """return installed OpenScAD version"""
         result = subprocess.run(['openscad','--version'], capture_output=True)
         version = result.stderr.decode().split()[2]
         return version
 
     def gen_stl(self, scad_path):
+        """ Generate STL file from specified SCAD file"""
         err_code = 1
         if not os.path.isfile(scad_path):
             return err_code
@@ -35,6 +37,7 @@ class OpenSCAD(object):
         return err_code
 
     def _get_bounds(self):
+        """set internal bounds variables"""
         minx = maxx = miny = maxy = minz = maxz = None
         obj = self.mesh
         for p in obj.points:
@@ -61,6 +64,7 @@ class OpenSCAD(object):
         self.maxz = maxz
 
     def dump_to_json(self, json_path):
+        """write mas properties data to specified JSON file"""
         json = "{\n"
         json += '  "maxx": "%s",\n' % self.maxx
         json += '  "minx": "%s",\n' % self.minx
@@ -88,6 +92,7 @@ class OpenSCAD(object):
 
 
     def get_properties(self, scad_file):
+        """Calculate mass properties from specified SCAD file"""
         scad_path = os.path.abspath(scad_file)
         err_code = self.gen_stl(scad_path)
         base, ext = scad_path.split(".")
@@ -104,6 +109,7 @@ class OpenSCAD(object):
         return err_code
 
     def get_bounds(self):
+        """Return bouns data as a list"""
         return [
                 self.maxx, self.minx,
                 self.maxy, self.miny,

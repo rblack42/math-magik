@@ -1,4 +1,2 @@
-changes.rst:1: (gh)  2021-05-27: added gh status badge to readme
-changes.rst:1: (readme)  2021-05-27: added gh status badge to readme
-changes.rst:2: (github)  2021-05-27: initial CI testing on github
-changes.rst:3: (yml)  2021-05-27: Create python-app.yml
+changes.rst:33: (scrupt)  2021-05-27: fix typo in appveyor scrupt
+changes.rst:40: (upates)  2021-05-27: upates to github CI docs

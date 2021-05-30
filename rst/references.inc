@@ -2,6 +2,8 @@
 ..  |CI|                    replace::   *Continuous Integration*
 
 ..  _Coveralls:             https://coveralls.io/
+
+..  _FedEx:                 https://www.fedex.com/
 ..	|GH|	                replace:: *GitHub*
 ..	_GH:	                https://github.com/
 

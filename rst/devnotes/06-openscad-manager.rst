@@ -63,6 +63,6 @@ the part properties. These will be saved in a :term:`JSON` output file:
 
 ..  literalinclude::     ../../mmdesigner/OpenSCAD.py
     :linenos:
-    :catpion: mmdesigner/OpenSCaD.py
+    :caption: mmdesigner/OpenSCAD.py
 
 This code depends on **numpy-stl** which needs to be added to the **requirements.txt** file.
