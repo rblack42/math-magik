@@ -24,11 +24,17 @@ Glossary
         A tool, usually language specific used by developers that packages
         everything needed to write and maintain program code.
 
+    JSON
+        JavaScript Object Notation - a text-based file format for data interchange.
+
     LaTeX
         A popular high-end publishing language used to produce professional publications.
 
     PDF
         Portable Document format. A standard document format developed by Adobe.
+
+    SCAD
+        Code file extension for *OpenSCAD*
 
     STL
         Standard Tessellation Language

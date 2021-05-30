@@ -97,7 +97,12 @@
   <h3><a href="../contents.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Step 6: OpenSCAD Manager</a><ul>
-<li><a class="reference internal" href="#feature-2-add-openscad-management-class">Feature 2: Add OpenSCAD Management class</a></li>
+<li><a class="reference internal" href="#feature-2-add-openscad-management-class">Feature 2: Add OpenSCAD Management class</a><ul>
+<li><a class="reference internal" href="#test-openscad-version">Test OpenSCAD Version</a></li>
+<li><a class="reference internal" href="#test-openscad-stl-generation">Test OpenSCAD STL Generation</a></li>
+<li><a class="reference internal" href="#mass-property-generator">Mass Property Generator</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -133,7 +138,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <p>Read time: 1.8 minutes (182 words)</p>
+  <p>Read time: 2.6 minutes (256 words)</p>
 <section id="step-6-openscad-manager">
 <h1>Step 6: OpenSCAD Manager<a class="headerlink" href="#step-6-openscad-manager" title="Permalink to this headline">¶</a></h1>
 <p>Most of the analysis of a design will be done using an <a class="reference internal" href="../glossary.html#term-STL"><span class="xref std std-term">STL</span></a> file which
@@ -150,46 +155,125 @@ machine (installed with <a class="reference external" href="https://brew.sh/">Ho
 actual version, just ensure we get valid output.</p>
 <p>The code we need to write will assume that OpenSCAD is on the system path and
 can be launched with the name <strong class="program">openscad</strong>.</p>
-<p>Here is our first test for this cloass:</p>
+<section id="test-openscad-version">
+<h3>Test OpenSCAD Version<a class="headerlink" href="#test-openscad-version" title="Permalink to this headline">¶</a></h3>
+<p>Users will need to install at least OpenSCAD version 2019.05, so we will set up
+a test to check that.</p>
+<p>Here is our first test for this class:</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">tests/test_OpenSCAD.py</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">mmdesigner.OpenSCAD</span> <span class="kn">import</span> <span class="n">OpenSCAD</span>
-<span class="linenos">2</span>
-<span class="linenos">3</span>
-<span class="linenos">4</span><span class="k">def</span> <span class="nf">test_OSC_version</span><span class="p">():</span>
-<span class="linenos">5</span>    <span class="n">mgr</span> <span class="o">=</span> <span class="n">OpenSCAD</span><span class="p">()</span>
-<span class="linenos">6</span>    <span class="n">version</span> <span class="o">=</span> <span class="n">mgr</span><span class="o">.</span><span class="n">get_version</span><span class="p">()</span>
-<span class="linenos">7</span>    <span class="n">year</span><span class="p">,</span> <span class="n">rel</span> <span class="o">=</span> <span class="n">version</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
-<span class="linenos">8</span>    <span class="k">assert</span> <span class="nb">int</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2019</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">os</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">json</span>
+<span class="linenos"> 3</span><span class="kn">from</span> <span class="nn">mmdesigner.OpenSCAD</span> <span class="kn">import</span> <span class="n">OpenSCAD</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="k">def</span> <span class="nf">test_OSC_version</span><span class="p">():</span>
+<span class="linenos"> 7</span>    <span class="n">mgr</span> <span class="o">=</span> <span class="n">OpenSCAD</span><span class="p">()</span>
+<span class="linenos"> 8</span>    <span class="n">version</span> <span class="o">=</span> <span class="n">mgr</span><span class="o">.</span><span class="n">get_version</span><span class="p">()</span>
+<span class="linenos"> 9</span>    <span class="n">year</span><span class="p">,</span> <span class="n">rel</span> <span class="o">=</span> <span class="n">version</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+<span class="linenos">10</span>    <span class="k">assert</span> <span class="nb">int</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2019</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="k">def</span> <span class="nf">test_OSC_STL_generator</span><span class="p">():</span>
+<span class="linenos">14</span>    <span class="n">mgr</span> <span class="o">=</span> <span class="n">OpenSCAD</span><span class="p">()</span>
+<span class="linenos">15</span>    <span class="n">scad_file</span> <span class="o">=</span> <span class="s2">&quot;tests/test_data/spar.scad&quot;</span>
+<span class="linenos">16</span>    <span class="n">stl_file</span> <span class="o">=</span> <span class="s2">&quot;tests/test_data/spar.stl&quot;</span>
+<span class="linenos">17</span>    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">stl_file</span><span class="p">):</span>
+<span class="linenos">18</span>        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">stl_file</span><span class="p">)</span>
+<span class="linenos">19</span>    <span class="n">mgr</span><span class="o">.</span><span class="n">gen_stl</span><span class="p">(</span><span class="n">scad_file</span><span class="p">)</span>
+<span class="linenos">20</span>    <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">stl_file</span><span class="p">)</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span><span class="k">def</span> <span class="nf">test_OSC_STL_bad_file</span><span class="p">():</span>
+<span class="linenos">24</span>    <span class="n">mgr</span> <span class="o">=</span> <span class="n">OpenSCAD</span><span class="p">()</span>
+<span class="linenos">25</span>    <span class="k">assert</span> <span class="n">mgr</span><span class="o">.</span><span class="n">gen_stl</span><span class="p">(</span><span class="s2">&quot;bad&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="linenos">26</span>
+<span class="linenos">27</span>
+<span class="linenos">28</span><span class="k">def</span> <span class="nf">test_OSC_STL_bd_stl_name</span><span class="p">():</span>
+<span class="linenos">29</span>    <span class="n">stl_file</span> <span class="o">=</span> <span class="s2">&quot;tests/test_data/spar.stl&quot;</span>
+<span class="linenos">30</span>    <span class="n">mgr</span> <span class="o">=</span> <span class="n">OpenSCAD</span><span class="p">()</span>
+<span class="linenos">31</span>    <span class="k">assert</span> <span class="n">mgr</span><span class="o">.</span><span class="n">gen_stl</span><span class="p">(</span><span class="n">stl_file</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="linenos">32</span>
+<span class="linenos">33</span>
+<span class="linenos">34</span><span class="k">def</span> <span class="nf">test_mass_properties</span><span class="p">():</span>
+<span class="linenos">35</span>    <span class="n">mgr</span> <span class="o">=</span> <span class="n">OpenSCAD</span><span class="p">()</span>
+<span class="linenos">36</span>    <span class="n">scad_file</span> <span class="o">=</span> <span class="s2">&quot;tests/test_data/spar.scad&quot;</span>
+<span class="linenos">37</span>    <span class="n">err_code</span> <span class="o">=</span> <span class="n">mgr</span><span class="o">.</span><span class="n">get_properties</span><span class="p">(</span><span class="n">scad_file</span><span class="p">)</span>
+<span class="linenos">38</span>    <span class="k">assert</span> <span class="n">err_code</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="linenos">39</span>    <span class="k">assert</span> <span class="n">mgr</span><span class="o">.</span><span class="n">get_bounds</span><span class="p">()</span> <span class="o">==</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
+<span class="linenos">40</span>
+<span class="linenos">41</span>
+<span class="linenos">42</span><span class="k">def</span> <span class="nf">test_OSC_json</span><span class="p">():</span>
+<span class="linenos">43</span>    <span class="n">mgr</span> <span class="o">=</span> <span class="n">OpenSCAD</span><span class="p">()</span>
+<span class="linenos">44</span>    <span class="n">scad_file</span> <span class="o">=</span> <span class="s2">&quot;tests/test_data/spar.scad&quot;</span>
+<span class="linenos">45</span>    <span class="n">json_file</span> <span class="o">=</span> <span class="s2">&quot;tests/test_data/spar.json&quot;</span>
+<span class="linenos">46</span>    <span class="n">err_code</span> <span class="o">=</span> <span class="n">mgr</span><span class="o">.</span><span class="n">get_properties</span><span class="p">(</span><span class="n">scad_file</span><span class="p">)</span>
+<span class="linenos">47</span>    <span class="k">assert</span> <span class="n">err_code</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="linenos">48</span>    <span class="n">mgr</span><span class="o">.</span><span class="n">dump_to_json</span><span class="p">(</span><span class="n">json_file</span><span class="p">)</span>
+<span class="linenos">49</span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">jin</span><span class="p">:</span>
+<span class="linenos">50</span>        <span class="n">jdata</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">jin</span><span class="p">)</span>
+<span class="linenos">51</span>        <span class="k">assert</span> <span class="nb">float</span><span class="p">(</span><span class="n">jdata</span><span class="p">[</span><span class="s2">&quot;maxy&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="mf">5.0</span>
 </pre></div>
 </div>
 </div>
 <p>And here is the start of our class:</p>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-text">mmdesigner/OpenSCAD.py</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">subprocess</span>
-<span class="linenos"> 2</span>
-<span class="linenos"> 3</span><span class="k">class</span> <span class="nc">OpenSCAD</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-<span class="linenos"> 4</span>
-<span class="linenos"> 5</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos"> 6</span>        <span class="k">pass</span>
-<span class="linenos"> 7</span>
-<span class="linenos"> 8</span>    <span class="k">def</span> <span class="nf">get_version</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos"> 9</span>        <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">&#39;openscad&#39;</span><span class="p">,</span><span class="s1">&#39;--version&#39;</span><span class="p">],</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="linenos">10</span>        <span class="n">version</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
-<span class="linenos">11</span>        <span class="k">return</span> <span class="n">version</span>
-<span class="linenos">12</span>
-<span class="linenos">13</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-<span class="linenos">14</span>    <span class="n">mgr</span> <span class="o">=</span> <span class="n">OpenSCAD</span><span class="p">()</span>
-<span class="linenos">15</span>    <span class="n">mgr</span><span class="o">.</span><span class="n">get_version</span><span class="p">()</span>
-<span class="linenos">16</span>
-<span class="linenos">17</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">os</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">stl</span>
+<span class="linenos"> 3</span><span class="kn">from</span> <span class="nn">stl</span> <span class="kn">import</span> <span class="n">mesh</span>
+<span class="linenos"> 4</span><span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="k">class</span> <span class="nc">OpenSCAD</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">10</span>        <span class="k">pass</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span>    <span class="k">def</span> <span class="nf">get_version</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">13</span>        <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">&#39;openscad&#39;</span><span class="p">,</span><span class="s1">&#39;--version&#39;</span><span class="p">],</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <p>With this running locally, we now need to modify the <em>Continuous Integration</em> service control files
 and get <em>OpenSCAD</em> installed on their <em>virtual machines</em> for testing. This took some
 research, but i finally managed to get things working.</p>
+</section>
+<section id="test-openscad-stl-generation">
+<h3>Test OpenSCAD STL Generation<a class="headerlink" href="#test-openscad-stl-generation" title="Permalink to this headline">¶</a></h3>
+<p>Our next task involves getting OpenSCAD to generate an <a class="reference internal" href="../glossary.html#term-STL"><span class="xref std std-term">STL</span></a> file from
+the associated <a class="reference internal" href="../glossary.html#term-SCAD"><span class="xref std std-term">SCAD</span></a> file.</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">mmdesigner/OpenSCAD.py</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>        <span class="n">version</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
+<span class="linenos"> 2</span>        <span class="k">return</span> <span class="n">version</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span>    <span class="k">def</span> <span class="nf">gen_stl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scad_path</span><span class="p">):</span>
+<span class="linenos"> 5</span>        <span class="n">err_code</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="linenos"> 6</span>        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">scad_path</span><span class="p">):</span>
+<span class="linenos"> 7</span>            <span class="k">return</span> <span class="n">err_code</span>
+<span class="linenos"> 8</span>        <span class="k">if</span> <span class="n">scad_path</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.scad&quot;</span><span class="p">):</span>
+<span class="linenos"> 9</span>            <span class="n">base</span><span class="p">,</span> <span class="n">ext</span> <span class="o">=</span> <span class="n">scad_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+<span class="linenos">10</span>            <span class="n">stl_path</span> <span class="o">=</span> <span class="n">base</span>  <span class="o">+</span> <span class="s2">&quot;.stl&quot;</span>
+<span class="linenos">11</span>            <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos">12</span>                <span class="s1">&#39;openscad&#39;</span><span class="p">,</span>
+<span class="linenos">13</span>                <span class="n">scad_path</span><span class="p">,</span>
+<span class="linenos">14</span>                <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
+<span class="linenos">15</span>                <span class="n">stl_path</span>
+<span class="linenos">16</span>            <span class="p">]</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span>            <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="linenos">19</span>            <span class="n">err_code</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">returncode</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mass-property-generator">
+<h3>Mass Property Generator<a class="headerlink" href="#mass-property-generator" title="Permalink to this headline">¶</a></h3>
+<p>Now that we can generate an <a class="reference internal" href="../glossary.html#term-STL"><span class="xref std std-term">STL</span></a> file, we can analyze that file to get
+the part properties. These will be saved in a <a class="reference internal" href="../glossary.html#term-JSON"><span class="xref std std-term">JSON</span></a> output file:</p>
+<p>This code depends on <strong>numpy-stl</strong> which needs to be added to the <strong>requirements.txt</strong> file.</p>
+</section>
 </section>
 </section>
 

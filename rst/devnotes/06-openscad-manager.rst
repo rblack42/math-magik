@@ -17,23 +17,52 @@ machine (installed with Homebrew_) has proven difficult, so we will not test the
 actual version, just ensure we get valid output.
 
 The code we need to write will assume that OpenSCAD is on the system path and
-can be launched with the name :program:`openscad`. 
+can be launched with the name :program:`openscad`.
 
-Here is our first test for this cloass:
+Test OpenSCAD Version
+=====================
 
-..	literalinclude::	../../tests/test_OpenSCAD.py
-	:linenos:
-	:caption: tests/test_OpenSCAD.py
+Users will need to install at least OpenSCAD version 2019.05, so we will set up
+a test to check that.
+
+Here is our first test for this class:
+
+..  literalinclude::    ../../tests/test_OpenSCAD.py
+    :linenos:
+    :caption: tests/test_OpenSCAD.py
 
 
 And here is the start of our class:
 
-..	literalinclude::	../../mmdesigner/OpenSCAD.py
-	:linenos:
-	:caption: mmdesigner/OpenSCAD.py
+..  literalinclude::    ../../mmdesigner/OpenSCAD.py
+    :linenos:
+    :lines: 1-13
+    :caption: mmdesigner/OpenSCAD.py
+
 
 With this running locally, we now need to modify the |CI| service control files
 and get |OSC| installed on their *virtual machines* for testing. This took some
 research, but i finally managed to get things working.
 
+Test OpenSCAD STL Generation
+============================
 
+Our next task involves getting OpenSCAD to generate an :term:`STL` file from
+the associated :term:`SCAD` file.
+
+..  literalinclude::    ../../mmdesigner/OpenSCAD.py
+    :linenos:
+    :lines: 14-32
+    :caption: mmdesigner/OpenSCAD.py
+
+Mass Property Generator
+=======================
+
+Now that we can generate an :term:`STL` file, we can analyze that file to get
+the part properties. These will be saved in a :term:`JSON` output file:
+
+..  literalinclude::     ../../mmdesigner/OpenSCAD.py
+    :linenos:
+    :catpion: mmdesigner/OpenSCaD.py
+
+This code depends on **numpy-stl** which needs to be added to the **requirements.txt** file.
