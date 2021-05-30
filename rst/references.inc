@@ -31,6 +31,7 @@
 ..	|PY|	                replace::	*Python*
 ..	_PY:	                https://www.python.org/
 
+..  |PyPi|                  replace:: *Python Package Index*
 ..  _PyPi:                  https://pypi.org/
 
 ..  _PyCharm:               https://www.jetbrains.com/pycharm/
