@@ -128,13 +128,14 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <p>Read time: 0.3 minutes (34 words)</p>
+  <p>Read time: 0.5 minutes (50 words)</p>
 <section id="module-mmdesigner.TreeWalker">
 <span id="treewalker-py"></span><h1>TreeWalker.py<a class="headerlink" href="#module-mmdesigner.TreeWalker" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="mmdesigner.TreeWalker.TreeWalker">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mmdesigner.TreeWalker.</span></span><span class="sig-name descname"><span class="pre">TreeWalker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mmdesigner/TreeWalker.html#TreeWalker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmdesigner.TreeWalker.TreeWalker" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="py method">
+<dd><p>Model tree action class</p>
+<dl class="py method">
 <dt class="sig sig-object py" id="mmdesigner.TreeWalker.TreeWalker.check_path">
 <span class="sig-name descname"><span class="pre">check_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mmdesigner/TreeWalker.html#TreeWalker.check_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmdesigner.TreeWalker.TreeWalker.check_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Confirm proposed model path contains at least one .scad file</p>
@@ -168,6 +169,18 @@
 <dt class="sig sig-object py" id="mmdesigner.TreeWalker.TreeWalker.get_model_path">
 <span class="sig-name descname"><span class="pre">get_model_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mmdesigner/TreeWalker.html#TreeWalker.get_model_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmdesigner.TreeWalker.TreeWalker.get_model_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return current model path</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mmdesigner.TreeWalker.TreeWalker.process_files">
+<span class="sig-name descname"><span class="pre">process_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mmdesigner/TreeWalker.html#TreeWalker.process_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmdesigner.TreeWalker.TreeWalker.process_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run callback on all selected files</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mmdesigner.TreeWalker.TreeWalker.process_leaf_files">
+<span class="sig-name descname"><span class="pre">process_leaf_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mmdesigner/TreeWalker.html#TreeWalker.process_leaf_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmdesigner.TreeWalker.TreeWalker.process_leaf_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run callback on only leaf files</p>
 </dd></dl>
 
 </dd></dl>

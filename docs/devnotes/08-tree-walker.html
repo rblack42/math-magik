@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Step 8: Walking the Model Tree &#8212; Math Magik 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinx13.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx13.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Contributing" href="../develop.html" />
+    <link rel="prev" title="Step 7: Publishing on PyPi" href="07-publishing%20-on-pypi.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script>
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../usage/installation.html">Get it</a></li>
+    <li><a href="../contents.html">Docs</a></li>
+    <li><a href="../develop.html">Extend/Develop</a></li>
+  </ul>
+  <div>
+    <a href="../index.html">
+      <img src="../_static/logo.png" alt="PyLiT" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../develop.html" title="Contributing"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="07-publishing%20-on-pypi.html" title="Step 7: Publishing on PyPi"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Home</a>&#160;|</li>
+        <li><a href="../contents.html">Documentation</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">Step 8: Walking the Model Tree</a></li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../contents.html">
+              <img class="logo" src="../_static/badge.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../contents.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Step 8: Walking the Model Tree</a><ul>
+<li><a class="reference internal" href="#class-constructor">Class Constructor</a><ul>
+<li><a class="reference internal" href="#validating-the-model-path">Validating the Model Path</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#generating-file-lists">Generating File Lists</a></li>
+<li><a class="reference internal" href="#processing-files">Processing Files</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="07-publishing%20-on-pypi.html"
+                        title="previous chapter">Step 7: Publishing on PyPi</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../develop.html"
+                        title="next chapter">Contributing</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/devnotes/08-tree-walker.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>Read time: 3.0 minutes (302 words)</p>
+<section id="step-8-walking-the-model-tree">
+<h1>Step 8: Walking the Model Tree<a class="headerlink" href="#step-8-walking-the-model-tree" title="Permalink to this headline">¶</a></h1>
+<p>In thinking through the design of a model using <em>OpenSCAD</em>, I decided to generate a
+directory tree where each level contained at lease one <a class="reference internal" href="../glossary.html#term-SCAD"><span class="xref std std-term">SCAD</span></a> file
+defining either a single part to be constructed, or an assembly of parts producing
+something like a wing. Once that decision had been made the need
+for a routine that can “walk’ this design tree and process files became obvious.</p>
+<p>In this section, we will develop the <strong>TreeWalker</strong> class which will manage
+navigating the directory tree and providing a way to activate a <em>callback</em>
+method to perform some action on files in each directory. This class will need
+to provide a way to specify the root directory for a model, the rile extension
+we are interested in, and the callback method to activate.</p>
+<section id="class-constructor">
+<h2>Class Constructor<a class="headerlink" href="#class-constructor" title="Permalink to this headline">¶</a></h2>
+<p>The class constructor will take a single parameter, which is the root path to
+the model we are going to process. To make sure we actually point to a model
+directory, we will require that the specified directory contain at least on
+<a class="reference internal" href="../glossary.html#term-SCAD"><span class="xref std std-term">SCAD</span></a> file</p>
+<p>Here is a test that can verify this: <a class="reference internal" href="../code/unit-tests.html#tests.test_TreeWalker.test_valid_model_path" title="tests.test_TreeWalker.test_valid_model_path"><code class="xref py py-func docutils literal notranslate"><span class="pre">tests.test_TreeWalker.test_valid_model_path()</span></code></a></p>
+<p>Here is the code that confirms we have a valid model path:
+<a class="reference internal" href="../code/TreeWalker.html#mmdesigner.TreeWalker.TreeWalker.check_path" title="mmdesigner.TreeWalker.TreeWalker.check_path"><code class="xref py py-meth docutils literal notranslate"><span class="pre">mmdesigner.TreeWalker.TreeWalker.check_path()</span></code></a></p>
+<section id="validating-the-model-path">
+<h3>Validating the Model Path<a class="headerlink" href="#validating-the-model-path" title="Permalink to this headline">¶</a></h3>
+<p>All valid model directories must have at lease one <a class="reference internal" href="../glossary.html#term-SCAD"><span class="xref std std-term">SCAD</span></a> file, so we
+will check that in the constructor. Tests should confirm that passing a model
+path that is not a directory, or a directory that contains mo valid
+<a class="reference internal" href="../glossary.html#term-SCAD"><span class="xref std std-term">SCAD</span></a> file will be rejected. All methods should return immediately if
+the registered model path is None.</p>
+</section>
+</section>
+<section id="generating-file-lists">
+<h2>Generating File Lists<a class="headerlink" href="#generating-file-lists" title="Permalink to this headline">¶</a></h2>
+<p>The class should provide a <strong>get_file_list</strong> method that returns a list of all
+files ending with the registered extension. This list will collect all part and
+assembly files. A second method, <strong>get_leaf_file_list</strong>, will return only those
+files in leaf directories (containing no subdirectories). These files are the
+model parts we need to manufacture to build the model.</p>
+</section>
+<section id="processing-files">
+<h2>Processing Files<a class="headerlink" href="#processing-files" title="Permalink to this headline">¶</a></h2>
+<p>Finally, we will provide two routines that actually activate the callback
+routines: <strong>process_files</strong> and <strong>process_leaf_files</strong>.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../develop.html" title="Contributing"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="07-publishing%20-on-pypi.html" title="Step 7: Publishing on PyPi"
+             >previous</a> |</li>
+        <li><a href="../index.html">Home</a>&#160;|</li>
+        <li><a href="../contents.html">Documentation</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">Step 8: Walking the Model Tree</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Roie R. Black.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+    </div>
+  </body>
+</html>
