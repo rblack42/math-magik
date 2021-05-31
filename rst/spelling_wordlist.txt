@@ -1,6 +1,8 @@
 appveyor
 Bigge
+bumpversion
 cd
+cfg
 ci
 cli
 cmd
@@ -12,6 +14,7 @@ github
 gz
 Hodson
 HTML
+init
 kbd
 Lakehurst
 lpp

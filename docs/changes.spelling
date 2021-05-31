@@ -1,1 +1,3 @@
-changes.rst:1: (makefile)  2021-05-30: moved to modular makefile system
+changes.rst:5: (bumpversion)  2021-05-31: version string correction in bumpversion.cfg
+changes.rst:5: (cfg)  2021-05-31: version string correction in bumpversion.cfg
+changes.rst:6: (init)  2021-05-31: version is in __init__.py

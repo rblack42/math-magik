@@ -7,4 +7,6 @@ pytest-cov
 coverage
 coveralls
 numpy-stl
-
+bump2version
+twine
+wheel

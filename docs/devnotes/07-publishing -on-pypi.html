@@ -186,7 +186,7 @@ contains information about the project that will end up being displayed on
 <span class="linenos">26</span>    <span class="n">author_email</span><span class="o">=</span><span class="s1">&#39;roie.black@gmail.com&#39;</span><span class="p">,</span>
 <span class="linenos">27</span>    <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://github.com/rblack42/math-magik&#39;</span><span class="p">,</span>
 <span class="linenos">28</span>    <span class="n">license</span><span class="o">=</span><span class="s1">&#39;BSD&#39;</span><span class="p">,</span>
-<span class="linenos">29</span>    <span class="n">version</span><span class="o">=</span><span class="s1">&#39;0.1.6&#39;</span><span class="p">,</span>
+<span class="linenos">29</span>    <span class="n">version</span><span class="o">=</span><span class="s1">&#39;0.1.8&#39;</span><span class="p">,</span>
 <span class="linenos">30</span>    <span class="n">packages</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mmdesigner&#39;</span><span class="p">],</span>
 <span class="linenos">31</span><span class="n">entry_points</span><span class="o">=</span> <span class="p">{</span>
 <span class="linenos">32</span>        <span class="s2">&quot;console_scripts&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -241,21 +241,21 @@ shown (the latest) after publishing it.</p>
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-text">.bumpversion.cfg</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
 <div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">[bumpversion]</span>
-<span class="linenos"> 2</span><span class="na">current_version</span> <span class="o">=</span> <span class="s">0.1.6</span>
+<span class="linenos"> 2</span><span class="na">current_version</span> <span class="o">=</span> <span class="s">0.1.8</span>
 <span class="linenos"> 3</span><span class="na">commit</span> <span class="o">=</span> <span class="s">True</span>
 <span class="linenos"> 4</span><span class="na">tag</span> <span class="o">=</span> <span class="s">True</span>
 <span class="linenos"> 5</span>
-<span class="linenos"> 6</span><span class="k">[bumpversion:file:mmdesigner/__version__.py]</span>
-<span class="linenos"> 7</span><span class="na">search</span> <span class="o">=</span> <span class="s">__version__ = &quot;{current_version}&quot;</span>
-<span class="linenos"> 8</span><span class="na">replace</span> <span class="o">=</span> <span class="s">__version__ = &quot;{new_version}&quot;</span>
+<span class="linenos"> 6</span><span class="k">[bumpversion:file:mmdesigner/__init__.py]</span>
+<span class="linenos"> 7</span><span class="na">search</span> <span class="o">=</span> <span class="s">__version__ = &quot;v{current_version}&quot;</span>
+<span class="linenos"> 8</span><span class="na">replace</span> <span class="o">=</span> <span class="s">__version__ = &quot;v{new_version}&quot;</span>
 <span class="linenos"> 9</span>
 <span class="linenos">10</span><span class="k">[bumpversion:file:setup.py]</span>
 <span class="linenos">11</span><span class="na">search</span> <span class="o">=</span> <span class="s">{current_version}</span>
 <span class="linenos">12</span><span class="na">replace</span> <span class="o">=</span> <span class="s">{new_version}</span>
 <span class="linenos">13</span>
 <span class="linenos">14</span><span class="k">[bumpversion:file:README.rst]</span>
-<span class="linenos">15</span><span class="na">search</span> <span class="o">=</span> <span class="s">{current_version}</span>
-<span class="linenos">16</span><span class="na">replace</span> <span class="o">=</span> <span class="s">{new_version}</span>
+<span class="linenos">15</span><span class="na">search</span> <span class="o">=</span> <span class="s">v{current_version}</span>
+<span class="linenos">16</span><span class="na">replace</span> <span class="o">=</span> <span class="s">v{new_version}</span>
 </pre></div>
 </div>
 </div>

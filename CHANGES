@@ -1,3 +1,10 @@
+* 2021-05-31: Bump version: 0.1.7 → 0.1.8
+* 2021-05-31: syncing versions for bumpversion
+* 2021-05-31: fixed permissions on setup.py
+* 2021-05-31: removed v in setup.py version string
+* 2021-05-31: version string correction in bumpversion.cfg
+* 2021-05-31: version is in __init__.py
+* 2021-05-31: updated docs on pypi setup
 * 2021-05-30: added docs on installing tools
 * 2021-05-30: moved to modular makefile system
 * 2021-05-30: start of pypi setup
