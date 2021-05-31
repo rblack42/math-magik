@@ -1,0 +1,60 @@
+import os
+
+
+class TreeWalker(object):
+
+    def __init__(self, model_path, ext='', callback=None):
+        self.model_path = self.check_path(model_path)
+        self.callback = callback
+        self.ext = ext
+
+    def check_path(self, model_path):
+        """Confirm proposed model path contains at least one .scad file"""
+        if os.path.isdir(model_path):
+            files = os.listdir(model_path)
+            for f in files:
+                if f.endswith(".scad"):
+                    return model_path
+        else:
+            return None
+
+    def get_model_path(self):
+        """Return current model path"""
+        return self.model_path
+
+    def get_extension(self):
+        """Return current extension"""
+        return self.ext
+
+    def get_callback(self):
+        """Return the current callback"""
+        return self.callback
+
+    def get_file_list(self):
+        """Return list of files with selected extension"""
+        files = []
+        for dirpath, dirnames, filenames in os.walk(self.model_path):
+            print(filenames)
+            for f in filenames:
+                path = os.path.abspath(os.path.join(dirpath, f))
+                if path.endswith(self.ext):
+                    files.append(path)
+        return files
+
+    def get_leaf_file_list(self):
+        """Return list of leaf files (parts)"""
+        llist = []
+        for dirpath, dirnames, filenames in os.walk(self.model_path):
+            if len(dirnames) != 0: continue
+            for f in filenames:
+                path = os.path.abspath(os.path.join(dirpath, f))
+                if path.endswith(self.ext):
+                    llist.append(path)
+        return llist
+
+if __name__ == "__main__":
+    tw = TreeWalker("../tests/test_data/model","scad","")
+    print(tw.get_model_path)
+    files = tw.get_leaf_file_list()
+    print(files)
+

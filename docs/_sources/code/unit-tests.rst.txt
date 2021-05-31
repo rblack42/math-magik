@@ -11,3 +11,6 @@ Unit Tests
 
 ..  automodule::    tests.test_OpenSCAD
     :members:
+
+..  automodule::    tests/test_TreeWalker
+    :members:

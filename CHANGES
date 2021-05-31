@@ -1,3 +1,6 @@
+* 2021-05-31: Fix to commits-since badge
+* 2021-05-31: added pypi badges to README
+* 2021-05-31: published to pypi as v0.1.8
 * 2021-05-31: Bump version: 0.1.7 → 0.1.8
 * 2021-05-31: syncing versions for bumpversion
 * 2021-05-31: fixed permissions on setup.py
