@@ -12,6 +12,11 @@ Math Magik (v0.1.8)
     * - tests
       - | |github| |travis| |appveyor| |coverage|
 
+    * - package
+      - | |version| |wheel| |supported-versions| |commits-since| |status|
+
+
+
 .. |github| image:: https://github.com/rblack42/math-magik/actions/workflows/python-app.yml/badge.svg
     :alt: Github Workflows
     :target: https://github.com/rblack42/math-magik
@@ -28,6 +33,30 @@ Math Magik (v0.1.8)
 .. |coverage| image:: https://coveralls.io/repos/github/rblack42/math-magik/badge.svg?branch=main
     :target: https://coveralls.io/github/rblack42/math-magik?branch=main
     :alt: Code Coverage"
+
+.. |requires| image:: https://requires.io/github/rblack42/math-magik/requirements.svg?branch=main
+    :alt: Requirements Status
+    :target: https://requires.io/github/rblack42/math-magik/requirements/?branch=main
+
+.. |version| image:: https://img.shields.io/pypi/v/mmdesigner.svg
+    :alt: PyPI Package latest release
+    :target: https://pypi.org/project/mmdesigner
+
+.. |wheel| image:: https://img.shields.io/pypi/wheel/mmdesigner.svg
+    :alt: PyPI Wheel
+    :target: https://pypi.org/project/mmdesigner
+
+.. |supported-versions| image:: https://img.shields.io/pypi/pyversions/mmdesigner.svg
+    :alt: Supported versions
+    :target: https://pypi.org/project/mmdesigner
+
+.. |supported-implementations| image:: https://img.shields.io/pypi/implementation/mmdesigner.svg
+    :alt: Supported implementations
+    :target: https://pypi.org/project/mmdesigner
+
+.. |status| image:: https://img.shields.io/pypi/status/mmdesigner
+    :alt: development status
+    :target: https://pypi.org/project/mmdesigner
 
 ..  image:: rst/_static/lpp.gif
     :align: center
