@@ -1,7 +1,9 @@
 appveyor
 Bigge
+cd
 ci
 cli
+cmd
 dev
 devnotes
 Fairfax
@@ -15,6 +17,9 @@ lpp
 Macbook
 Magik
 magik
+makefile
+Makefile
+Makefiles
 nojekyll
 numpy
 openscad
@@ -28,6 +33,8 @@ rst
 slusarczyk
 stl
 subdirectory
+subdirectories
+subfolder
 
 Todo
 travis

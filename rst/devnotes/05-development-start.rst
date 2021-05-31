@@ -1,8 +1,8 @@
 Step 4: Test Driven Development Start
 #####################################
 
-My plan for this project is to use a version of |TDD| known as :term:`Given
-When Then`. Basically, this requires identifying the state of the test world
+My plan for this project is to use a version of |TDD| known as `Given
+When Then`_. Basically, this requires identifying the state of the test world
 before a test (the *Given* part), then identifying the action to be taken (the
 *When* part. Finally, the expected results are defined 9the *When* part). All
 of these steps are set up before any code is even written. The idea is to make

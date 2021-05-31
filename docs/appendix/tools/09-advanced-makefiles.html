@@ -1,0 +1,348 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Advanced Makefile &#8212; Math Magik 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/sphinx13.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx13.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="OpenSCAD.py" href="../../code/OpenSCAD.html" />
+    <link rel="prev" title="The Command Line" href="05-command-line.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script>
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    <li><a href="../../index.html">Home</a></li>
+    <li><a href="../../usage/installation.html">Get it</a></li>
+    <li><a href="../../contents.html">Docs</a></li>
+    <li><a href="../../develop.html">Extend/Develop</a></li>
+  </ul>
+  <div>
+    <a href="../../index.html">
+      <img src="../../_static/logo.png" alt="PyLiT" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../code/OpenSCAD.html" title="OpenSCAD.py"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="05-command-line.html" title="The Command Line"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">Home</a>&#160;|</li>
+        <li><a href="../../contents.html">Documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="../tool-setup.html" accesskey="U">Tool Setup</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Advanced Makefile</a></li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../contents.html">
+              <img class="logo" src="../../_static/badge.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../../contents.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Advanced Makefile</a><ul>
+<li><a class="reference internal" href="#finding-source-files">Finding Source Files</a></li>
+<li><a class="reference internal" href="#learning-more">Learning More</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="05-command-line.html"
+                        title="previous chapter">The Command Line</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../../code/OpenSCAD.html"
+                        title="next chapter">OpenSCAD.py</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/appendix/tools/09-advanced-makefiles.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>Read time: 5.7 minutes (571 words)</p>
+<section id="advanced-makefile">
+<h1>Advanced Makefile<a class="headerlink" href="#advanced-makefile" title="Permalink to this headline">¶</a></h1>
+<p>I use <a class="reference external" href="https://www.gnu.org/software/make/">Make</a> to build many programs from the command line. There are more
+advanced tools around, but I feel that beginning programming students need to
+be exposed to <a class="reference external" href="https://www.gnu.org/software/make/">Make</a> so they can see how powerful such build tools are, and be
+able to use them in their programming projects. <a class="reference external" href="https://www.gnu.org/software/make/">Make</a> has been around so long,
+and it is part of so many projects, they just have to learn a bit about it.</p>
+<p>I usually start students off in exploring <a class="reference external" href="https://www.gnu.org/software/make/">Make</a> with very simple patterns, but
+eventually they need to see the real power of such a tool.</p>
+<p>So, in developing a Graphics library for students to use in my programming
+class, I decided to add a few more powerful features of <a class="reference external" href="https://www.gnu.org/software/make/">Make</a> to the project
+<code class="docutils literal notranslate"><span class="pre">Makefile</span></code>.</p>
+<p>In this note, I will develop a Makefile suitable to use in a <em>test driven
+development</em> based C++ project. As part of this development, we will design a
+project directory structure suitable for building a library, intended to be
+used in other C++ projects. The <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> will build, test, and install that
+library code on all major development systems: Windows, Linux, and Mac.</p>
+<section id="finding-source-files">
+<h2>Finding Source Files<a class="headerlink" href="#finding-source-files" title="Permalink to this headline">¶</a></h2>
+<p>Simple student <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> setups begin with a list of the course files in a
+project. These files are usually collected into a common project directory,
+along side of other directories for testing, building and documentation. Here
+is a starting point for a good project directory layout:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>project_directory\
+    |
+    +- src\ - holds main project code
+    |
+    +- include\ library header files
+    |
+    +- lib\ holds library code files
+    |
+    +- bin\ - holds all files generated by building the project
+    |
+    +- bin\prod - holds all files generated for production
+    |
+    +- bin\debug - holds all files generated for testing
+    |
+    +- test\ - holds project test code
+    |
+    +- docs\ documentation for the project ( sphinx based for me!)
+</pre></div>
+</div>
+<p>The first part of the project <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> lists the two programs this file
+will build. One is the main application, and the second is a test program that
+runs a set of tests we will use to make sure the code works properly. More on
+that later</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Makefile - for CALassembler</span>
+
+<span class="n">APP_TARGET</span>  <span class="o">=</span>   <span class="n">demo</span>
+<span class="n">TEST_TARGET</span> <span class="o">=</span>   <span class="n">run_tests</span>
+</pre></div>
+</div>
+<p>Next, we name the major directories we use in this project. Creating names
+makes it easy to modify this file for another project later:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># directories ---------------------------------------------</span>
+<span class="n">SRC_DIR</span>     <span class="o">=</span> <span class="n">src</span>
+<span class="n">LIB_DIR</span>     <span class="o">=</span> <span class="n">lib</span>
+<span class="n">TEST_DIR</span>    <span class="o">=</span> <span class="n">tests</span>
+<span class="n">INC_DIR</span>     <span class="o">=</span> <span class="n">include</span>
+</pre></div>
+</div>
+<p>In the next section, we set up a few names that will hold options we use on
+various commands later. Notice that “+=” operator. You can add things to a name
+in a later step using this trick.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># system dependencies
+CFLAGS = -I $(INC_DIR)
+CFLAGS += -MMD
+</pre></div>
+</div>
+<p>This next section tries to deal with building the application on different
+operating systems. This code will check the operating system and set a few
+names differently depending on what system we are running on. The big
+difference here is that programs on Windows need to be named <code class="docutils literal notranslate"><span class="pre">something.exe`,</span>
+<span class="pre">but</span> <span class="pre">on</span> <span class="pre">Mac/Linus,</span> <span class="pre">they</span> <span class="pre">are</span> <span class="pre">just</span> <span class="pre">named</span> <span class="pre">``something</span></code>. We set up a name called
+<code class="docutils literal notranslate"><span class="pre">EXT</span></code> and set it to <code class="docutils literal notranslate"><span class="pre">.exe</span></code> on windows, and nothing on other systems. You
+will see this at work later.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ifeq ($(OS), Windows_NT)
+    EXT = .exe
+    RM = del
+    CFLAGS += -std=c++11
+    CXX = C:\usr\local\mingw32\bin\g++.exe
+    PREFIX =
+else
+    EXT =
+    PREFIX = ./
+    RM = rm -f
+    CXX = g++
+    UNAME_S = $(shell uname -s)
+    ifeq ($(UNAME_S), Darwin)
+        CFLAGS +=
+    endif
+    ifeq ($(UNAME_S), Linux)
+        CFLAGS +=
+    endif
+endif
+</pre></div>
+</div>
+<p>Now, we can have <a class="reference external" href="https://www.gnu.org/software/make/">Make</a> search the project directories for any source files that
+will need to be processed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># filw lists ----------------------------------------------
+SRC_FILES   = $(wildcard $(SRC_DIR)/*.cpp)
+LIB_FILES   = $(wildcard $(LIB_DIR)/*.cpp)
+TEST_FILES  = $(wildcard $(TEST_DIR)/*.cpp)
+SRC_OBJS    = $(SRC_FILES:.cpp=.o)
+LIB_OBJS    = $(LIB_FILES:.cpp=.o)
+TEST_OBJS   = $(TEST_FILES:.cpp=.o)
+ALL_OBJS    = $(SRC_OBJS) $(LIB_OBJS) $(TEST_OBJS)
+DEPENDS = $(ALL_OBJS:.o=.d)
+</pre></div>
+</div>
+<p>In this section we have set up something that makes projects easier to manage.
+The <code class="docutils literal notranslate"><span class="pre">g++</span></code> compiler can be told to read all the source files and figure out
+what each one depends on. It does this by looking at the <code class="docutils literal notranslate"><span class="pre">include</span></code> lines. The
+output of this step is a file called <code class="docutils literal notranslate"><span class="pre">something.d</span></code> (for depends). We will use
+these files to make sure Make can build your code in the most efficient manner.</p>
+<p>The last part of the Makefile sets up the rules needed to build all the project
+components. These rules are similar to these we went over earlier, and should be
+easy enough to figure out. Exactly what options are used for each build tool is
+something we can worry about later for this example.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Build targets -------------------------------------------
+
+.PHONY:
+all:    $(APP_TARGET)$(EXT) $(TEST_TARGET)$(EXT)
+
+$(APP_TARGET)$(EXT):    $(SRC_OBJS) $(LIB_OBJS)
+	$(CXX) -o $@ $(LFLAGS) $^
+
+$(TEST_TARGET)$(EXT):   $(TEST_OBJS) $(LIB_OBJS)
+	$(CXX) -o $@ $(LFLAGS) $^
+
+.PHONY:
+clean:
+	$(RM) $(APP_TARGET)$(EXT) $(TEST_TARGET)$(EXT)
+	$(RM) $(ALL_OBJS) $(DEPENDS)
+
+.PHONY:
+run:    $(APP_TARGET)$(EXT)
+	$(PREFIX)$(APP_TARGET) -d test.cal
+
+.PHONY:
+test:   $(TEST_TARGET)$(EXT)
+	$(PREFIX)$(TEST_TARGET)
+
+.PHONY:
+docs:
+	cd documentation &amp;&amp; make html
+
+.PHONY:
+view:
+	open -a Firefox documentation/_build/index.html
+
+.PHONY:
+spelling:
+	cd documentation &amp;&amp; make spelling
+
+# implicit rules ------------------------------------------
+
+%.o:    %.cpp
+	$(CXX) -c $(CFLAGS) $&lt; -o $@
+
+-include $(DEPENDS)
+</pre></div>
+</div>
+</section>
+<section id="learning-more">
+<h2>Learning More<a class="headerlink" href="#learning-more" title="Permalink to this headline">¶</a></h2>
+<p>This gives you a sense of what Make can do. You can learn a lot by scanning
+projects on <a class="reference external" href="https://github.com/"><em>GitHub</em></a>  and looking to see how they use Makefiles to build their
+programs.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../code/OpenSCAD.html" title="OpenSCAD.py"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="05-command-line.html" title="The Command Line"
+             >previous</a> |</li>
+        <li><a href="../../index.html">Home</a>&#160;|</li>
+        <li><a href="../../contents.html">Documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="../tool-setup.html" >Tool Setup</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Advanced Makefile</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Roie R. Black.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+    </div>
+  </body>
+</html>

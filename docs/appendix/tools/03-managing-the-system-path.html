@@ -1,0 +1,259 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Configuring the PATH on Windows 10 &#8212; Math Magik 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/sphinx13.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx13.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Installing Make" href="04-installing-make.html" />
+    <link rel="prev" title="Python Setup" href="02-installing-python.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script>
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    <li><a href="../../index.html">Home</a></li>
+    <li><a href="../../usage/installation.html">Get it</a></li>
+    <li><a href="../../contents.html">Docs</a></li>
+    <li><a href="../../develop.html">Extend/Develop</a></li>
+  </ul>
+  <div>
+    <a href="../../index.html">
+      <img src="../../_static/logo.png" alt="PyLiT" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="04-installing-make.html" title="Installing Make"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="02-installing-python.html" title="Python Setup"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">Home</a>&#160;|</li>
+        <li><a href="../../contents.html">Documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="../tool-setup.html" accesskey="U">Tool Setup</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Configuring the PATH on Windows 10</a></li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../contents.html">
+              <img class="logo" src="../../_static/badge.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../../contents.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Configuring the PATH on Windows 10</a><ul>
+<li><a class="reference internal" href="#the-system-path">The System PATH</a></li>
+<li><a class="reference internal" href="#step-1-find-your-executable">Step 1: Find your Executable</a></li>
+<li><a class="reference internal" href="#step-2-open-up-the-path-edit-tool">Step 2: Open Up the PATH Edit Tool</a></li>
+<li><a class="reference internal" href="#step-3-open-a-new-command-prompt">Step 3: Open a New Command Prompt</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="02-installing-python.html"
+                        title="previous chapter">Python Setup</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="04-installing-make.html"
+                        title="next chapter">Installing Make</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/appendix/tools/03-managing-the-system-path.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>Read time: 5.7 minutes (572 words)</p>
+<section id="configuring-the-path-on-windows-10">
+<h1>Configuring the PATH on Windows 10<a class="headerlink" href="#configuring-the-path-on-windows-10" title="Permalink to this headline">¶</a></h1>
+<p>When you work on the command line, you will name a program as part of the
+command, then provide additional parameters needed by that program on the rest
+of the line. The command line is just a space separated list of text parts,
+most of which are available to the program to process as it sees fit.</p>
+<p>Sure, some of you launch programs by clicking on icons. In that case, Windows
+uses information recorded with that icon to figure out how to launch your
+program and provide options.</p>
+<p>The tricky part is making sure the operating system can actually find the
+program file.</p>
+<section id="the-system-path">
+<h2>The System PATH<a class="headerlink" href="#the-system-path" title="Permalink to this headline">¶</a></h2>
+<p>Windows maintains a list of places to look for programs. That list is recorded
+in something called the “System PATH Environment Variable”. We can get a look
+at that list by doing this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; <span class="nb">set</span> path
+<span class="nv">Path</span><span class="o">=</span>C:<span class="se">\P</span>rogram Files<span class="p">;</span>C:<span class="se">\P</span>ython39<span class="p">;</span> ...
+</pre></div>
+</div>
+<p>This list can be pretty long.</p>
+<p>Windows 10 has an interesting tool called “where” to locate files. It really is
+not useful for finding things in general, but we can check the Python
+executable here:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; where python.*
+C:<span class="se">\P</span>ython39<span class="se">\p</span>ython.exe
+</pre></div>
+</div>
+<p>When I look for my favorite programmer’s editor <code class="docutils literal notranslate"><span class="pre">gvim</span></code>, this is what I see:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; where gvim.*
+C:<span class="se">\W</span>indows<span class="se">\g</span>vim.bat
+</pre></div>
+</div>
+<p>A “batch” file (ending with <code class="docutils literal notranslate"><span class="pre">.bat</span></code>) is a script Windows uses to manage things.
+In this case, the <code class="docutils literal notranslate"><span class="pre">gvim</span></code> installer added this file for me when I told it I
+wanted to run <cite>vim`</cite> from the command line.</p>
+<p>We will not look at that file here. Instead, we want to see how to make Windows
+find our program files, even if the installer failed to set things up
+correctly.</p>
+</section>
+<section id="step-1-find-your-executable">
+<h2>Step 1: Find your Executable<a class="headerlink" href="#step-1-find-your-executable" title="Permalink to this headline">¶</a></h2>
+<p>This is actually harder than it should be on Windows. When you install any
+program, you have some say where things will land, but many beginners miss
+that. Now, you have to hunt for your program. Most of the time the program will
+end up under <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files</span></code> or <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files</span> <span class="pre">(x86)</span></code>. You will
+probably find the executable file in a subdirectory under one of those places.
+The directory name will give you a clue. For example, Git is installed in
+<code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\Git\cmd</span></code>. The actual program name will end with <code class="docutils literal notranslate"><span class="pre">.exe</span></code>.
+For git the file is named <code class="docutils literal notranslate"><span class="pre">git.exe</span></code>.</p>
+<p>Once you have located your program, write down the path to the directory where
+that executable file lives.</p>
+<p>For <a class="reference external" href="https://git-scm.com/">Git</a>, this would be <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\Git\cmd</span></code></p>
+</section>
+<section id="step-2-open-up-the-path-edit-tool">
+<h2>Step 2: Open Up the PATH Edit Tool<a class="headerlink" href="#step-2-open-up-the-path-edit-tool" title="Permalink to this headline">¶</a></h2>
+<p>Once you know where your program lives, type “system properties” in the Windows
+search box at the bottom left of the screen.</p>
+<p>Next, click on “System Info” in the “Related Settings” section.</p>
+<p>Now, click on “Advanced system settings” (Phew!)</p>
+<p>Click on the “Environment Variables” button at the bottom of this page.</p>
+<p>In the bottom panel, labeled “System variables”, scroll down until you see an
+entry named “Path”. Select that line, then click on the “Edit” button.</p>
+<p>In the edit panel that opens up, click on “New”, and type in the path you
+identified earlier. On most of my systems, I put simple executable files in
+<code class="docutils literal notranslate"><span class="pre">C:\tools\bin</span></code>, so that is what I would type in to make sure these simple
+programs can tun from the command line.</p>
+<p>You can add several new places to look here. Just click on “New” each time.</p>
+<p>When you are done, Click on “OK”, them close all the windows you have left
+open.</p>
+</section>
+<section id="step-3-open-a-new-command-prompt">
+<h2>Step 3: Open a New Command Prompt<a class="headerlink" href="#step-3-open-a-new-command-prompt" title="Permalink to this headline">¶</a></h2>
+<p>Windows loads all of this PATH information when it first opens up a command
+prompt window. Any such windows you have open at this point will not see your
+new PATH settings. Close them, then reopen them. Now try to start your program.
+If it still does not work, try that “where” tool, and if that fails, try
+editing the PATH variable again, you may have made a typing mistake!</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="04-installing-make.html" title="Installing Make"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="02-installing-python.html" title="Python Setup"
+             >previous</a> |</li>
+        <li><a href="../../index.html">Home</a>&#160;|</li>
+        <li><a href="../../contents.html">Documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="../tool-setup.html" >Tool Setup</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Configuring the PATH on Windows 10</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Roie R. Black.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+    </div>
+  </body>
+</html>

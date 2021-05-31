@@ -1,1 +1,1 @@
-changes.rst:1: (pypi)  2021-05-30: start of pypi setup
+changes.rst:1: (makefile)  2021-05-30: moved to modular makefile system

@@ -11,6 +11,7 @@
 
 ..  |Gadfly|                replace:: Hendersen-Glenny Gadfly
 ..  _Gadfly:                https://en.wikipedia.org/wiki/Henderson-Glenny_Gadfly
+
 ..	|GH|	                replace:: *GitHub*
 ..	_GH:	                https://github.com/
 
@@ -20,6 +21,9 @@
 
 ..  _Homebrew:              https://brew.sh/
 ..  _Linus Torvalds:        https://en.wikipedia.org/wiki/Linus_Torvalds
+
+..  _Make:                  https://www.gnu.org/software/make/
+
 ..  |MM|                    replace::   *Math-Magik*
 ..  _MM:                    https://github.com/rblack42/math-magik
 
@@ -47,3 +51,5 @@
 ..  _tkinter:               https://docs.python.org/3/library/tkinter.html
 
 ..  _Travis-CI:             https://travis-ci.com/
+
+..  _Ubuntu:                https://ubuntu.com/

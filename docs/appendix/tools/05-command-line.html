@@ -1,0 +1,370 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>The Command Line &#8212; Math Magik 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/sphinx13.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx13.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Advanced Makefile" href="09-advanced-makefiles.html" />
+    <link rel="prev" title="Installing Make" href="04-installing-make.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script>
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    <li><a href="../../index.html">Home</a></li>
+    <li><a href="../../usage/installation.html">Get it</a></li>
+    <li><a href="../../contents.html">Docs</a></li>
+    <li><a href="../../develop.html">Extend/Develop</a></li>
+  </ul>
+  <div>
+    <a href="../../index.html">
+      <img src="../../_static/logo.png" alt="PyLiT" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="09-advanced-makefiles.html" title="Advanced Makefile"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="04-installing-make.html" title="Installing Make"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">Home</a>&#160;|</li>
+        <li><a href="../../contents.html">Documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="../tool-setup.html" accesskey="U">Tool Setup</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">The Command Line</a></li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../contents.html">
+              <img class="logo" src="../../_static/badge.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../../contents.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">The Command Line</a><ul>
+<li><a class="reference internal" href="#finding-the-command-line">Finding the Command Line</a><ul>
+<li><a class="reference internal" href="#windows-command-line">Windows Command Line</a></li>
+<li><a class="reference internal" href="#mac-command-line">Mac Command Line</a></li>
+<li><a class="reference internal" href="#linux-command-line">Linux Command Line</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#entering-commands">Entering Commands</a><ul>
+<li><a class="reference internal" href="#the-file-system">The File System</a></li>
+<li><a class="reference internal" href="#the-current-directory">The “Current Directory”</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="04-installing-make.html"
+                        title="previous chapter">Installing Make</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="09-advanced-makefiles.html"
+                        title="next chapter">Advanced Makefile</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/appendix/tools/05-command-line.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>Read time: 9.8 minutes (975 words)</p>
+<section id="the-command-line">
+<span id="command-line"></span><h1>The Command Line<a class="headerlink" href="#the-command-line" title="Permalink to this headline">¶</a></h1>
+<p>You are in for a shock!</p>
+<p>We will work using a classical interface to the operating system called the
+<a class="reference internal" href="../../glossary.html#term-command-line"><span class="xref std std-term">command line</span></a>. All systems support this kind of interface, and using
+this mechanism to control your machine is sometimes needed. When you work on a
+remote server, out there in the <a class="reference internal" href="../../glossary.html#term-cloud"><span class="xref std std-term">cloud</span></a>, there is no graphical user
+interface available. You have to use the <a class="reference internal" href="../../glossary.html#term-command-line"><span class="xref std std-term">command line</span></a>!</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Students in my classes usually show up owning a Windows PC, or maybe a Mac.
+Rarely, they have one running some flavor of Linux. I try to accommodate
+all three kinds of users, so these notes will cover all of these systems.</p>
+</div>
+<p>Here is the command line on my Mac:</p>
+<img alt="../../_images/mac-terminal.png" class="align-center" src="../../_images/mac-terminal.png" />
+<p>Pretty dull, right? No fancy icons, not much color. The key thing here, is that
+everything is text-based. The software needed to create this interface is
+extremely simple. For that reason alone, this is the interface of choice for
+doing simple text-based tasks on any computer.</p>
+<section id="finding-the-command-line">
+<h2>Finding the Command Line<a class="headerlink" href="#finding-the-command-line" title="Permalink to this headline">¶</a></h2>
+<p>Let’s launch this new interface:</p>
+<section id="windows-command-line">
+<h3>Windows Command Line<a class="headerlink" href="#windows-command-line" title="Permalink to this headline">¶</a></h3>
+<p>Windows likes to call their interface the “command prompt”. You can bring up
+this interface by doing this:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Click on the “Search” area at the bottom left of your screen</p></li>
+<li><p>Enter “cmd” (without the quotes). The <a class="reference internal" href="../../glossary.html#term-command-prompt"><span class="xref std std-term">command prompt</span></a> window
+should appear,</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You probably will want to “pin” this window’s icon on the task bar at the
+bottom of your screen. Right-click on that icon and select “Pin to
+Taskbar”. Then, to launch a <a class="reference internal" href="../../glossary.html#term-command-line"><span class="xref std std-term">command line</span></a> window, just click on
+that icon.</p>
+</div>
+</section>
+<section id="mac-command-line">
+<h3>Mac Command Line<a class="headerlink" href="#mac-command-line" title="Permalink to this headline">¶</a></h3>
+<p>On the Mac, you will open the <code class="docutils literal notranslate"><span class="pre">Terminal</span></code> application. Using the <code class="docutils literal notranslate"><span class="pre">Finder</span></code>
+tool, navigate to <span class="menuselection">Applications -&gt; Utility -&gt; Terminal.app</span>.
+Click on that to start the application.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Follow the guide above to “pin” this icon to the Mac <code class="docutils literal notranslate"><span class="pre">Dock</span></code>.</p>
+</div>
+</section>
+<section id="linux-command-line">
+<h3>Linux Command Line<a class="headerlink" href="#linux-command-line" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I use some flavor of <a class="reference external" href="https://ubuntu.com/">Ubuntu</a> Linux in this project. If you are
+running some other Linux distribution, consult your user guides (or cheat
+and Google for help).</p>
+</div>
+<p>Assuming you are running the desktop version of <a class="reference external" href="https://ubuntu.com/">Ubuntu</a>, you can open a
+<a class="reference internal" href="../../glossary.html#term-Shell"><span class="xref std std-term">shell</span></a> interface (that is Linux-speak for <a class="reference internal" href="../../glossary.html#term-command-prompt"><span class="xref std std-term">command prompt</span></a>) by
+doing this:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Click on the “gear” icon (the <a class="reference external" href="https://ubuntu.com/">Ubuntu</a> applications search tool) and type
+in “Term” in the search box. I usually select <code class="docutils literal notranslate"><span class="pre">Xterm</span></code> on my systems,
+but there is another simpler <code class="docutils literal notranslate"><span class="pre">Terminal</span></code> application as well.</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+<section id="entering-commands">
+<h2>Entering Commands<a class="headerlink" href="#entering-commands" title="Permalink to this headline">¶</a></h2>
+<p>In all three cases above, you end up staring at a blank window with some kind
+of <em>prompt</em> displayed. Typically, the <em>prompt</em> is a simple line like these :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Windows:
+
+    **C:\&gt;**
+
+Mac/Linux:
+
+    **/Users/rblack $**
+</pre></div>
+</div>
+<p>Your cursor is placed after the <em>prompt</em> characters, and the system waits fr
+you t type something on that line. What you type is a <em>command</em> to the
+operating system, usually the name of some program you want to run. If needed,
+you add additional chunks of text, called <em>aparameters</em> that provide additional
+information to the program. An example <em>command</em> might look like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ g++ -o hello.exe hello.cpp
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I am going t use the Mac/Linux <em>prompt</em> format, shortened to just the
+single <em>prompt</em> character for the example in this course. You should look
+for the right prompt for your system. The example above is what you would
+type on a Windows system.</p>
+</div>
+<p>This example <em>command</em> names a program, <strong>g++</strong>, which is a <em>compiler</em> for a
+C++ program.  Each chunk of text after that is a parameter that the program
+needs. We will explore this in more detail later. For now, that is enough to
+introduce working on the command line.</p>
+<section id="the-file-system">
+<h3>The File System<a class="headerlink" href="#the-file-system" title="Permalink to this headline">¶</a></h3>
+<p>All modern computers keep their files organized in a “tree” of directories,
+subdirectories, and files.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is called a “tree” because it looks like one if you drew it out.
+However, the “root” of this tree is usually at the top of the tree. Weird,
+but the image works.</p>
+</div>
+<p>The basic concept is found in any office setting. A piece of paper (a “file”)
+is placed in a “folder”. That folder might be placed in another folder, and
+ultimately in a filing cabinet. We give each gadget in this system a short
+name. On Windows, the filing cabinet gets a letter, like “C”. We define the
+location of some file using the series of names separated by slashes. On
+Windows, we use a back-slash, on Linux/Mac, we use a forward slash.</p>
+<p>The complete set of names defining the location of some file is called the file
+“path”:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>C:folder1folder2filename</p></li>
+</ul>
+</div></blockquote>
+<p>The top level in this system is often called the “root” folder -er- directory.</p>
+<p>Linux/Mac systems do not use a disk drive letter. Instead a disk is “mounted”
+at some location in this file system “tree”, so we never have to think about
+that. On these systems the top-most level is simple identified as “/”.</p>
+</section>
+<section id="the-current-directory">
+<h3>The “Current Directory”<a class="headerlink" href="#the-current-directory" title="Permalink to this headline">¶</a></h3>
+<p>When you work on the command line, you are always working within some
+“directory” on your file system. That directory is called the “current
+directory”</p>
+<p>Essentially, you are working with that folder open on your desk. You can see
+the files in that folder, and the folders within that folder. To get into a
+subfolder (or move up in the file system, you must “change directories”.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>cd subfolder - moves your current directory to this subfolder</p></li>
+<li><p>cd .. - moves you up one level in the directory “tree”</p></li>
+</ul>
+</div></blockquote>
+<p>On Mac and Linux, when you open up the terminal window, you are placed in your
+“home directory”:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>/home/username - on Linux</p></li>
+<li><p>/Users/username - on Mac</p></li>
+</ul>
+</div></blockquote>
+<p>On the PC, you are placed in a system directory, which is not where you will
+want to work.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>C:\Windows</p></li>
+</ul>
+</div></blockquote>
+<p>There is a “home directory” on Windows, usually at:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>C:\users\username</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Did you notice those slashes in those directory names? On Windows, you use
+the back slash, on any other system the forward slash. The slashes separate
+directory names from the files.</p>
+</div>
+<p>This complete string identifies exactly where on your system a particular file
+is located.  You are actually navigating through a system of folders
+(directories) and sub-folders in order to locate a particular file.  This can
+go on as deep as you like, but the total sequence of names and slashes, called
+the “path” is likely to get pretty long!</p>
+<p>We will learn the commands that are needed to work on you system as we proceed.
+For now, this is just an introduction. We need to set up our system before we
+can get to work!</p>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="09-advanced-makefiles.html" title="Advanced Makefile"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="04-installing-make.html" title="Installing Make"
+             >previous</a> |</li>
+        <li><a href="../../index.html">Home</a>&#160;|</li>
+        <li><a href="../../contents.html">Documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="../tool-setup.html" >Tool Setup</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">The Command Line</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Roie R. Black.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+    </div>
+  </body>
+</html>

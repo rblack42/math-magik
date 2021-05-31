@@ -1,3 +1,4 @@
+* 2021-05-30: moved to modular makefile system
 * 2021-05-30: start of pypi setup
 * 2021-05-30: more documentation updates
 * 2021-05-30: added introduction docs
