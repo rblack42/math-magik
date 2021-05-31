@@ -1,4 +1,4 @@
-Math Magik (v0.1.8)
+Math Magik (v0.1.9)
 ####################
 :Author:    Roie R. Black
 :Email: roie.black@gmail.com
@@ -58,9 +58,9 @@ Math Magik (v0.1.8)
     :alt: development status
     :target: https://pypi.org/project/mmdesigner
 
-.. |commits-since| image:: https://img.shields.io/github/commits-since/rblack42/math-magik/v0.1.8.svg
+.. |commits-since| image:: https://img.shields.io/github/commits-since/rblack42/math-magik/v0.1.9.svg
     :alt: Commits since latest release
-    :target: https://github.com/rblack42/math-magik/compare/v0.1.8...main
+    :target: https://github.com/rblack42/math-magik/compare/v0.1.9...main
 
 ..  image:: rst/_static/lpp.gif
     :align: center
