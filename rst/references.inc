@@ -7,7 +7,7 @@
 
 ..  _Coveralls:             https://coveralls.io/
 
-..  _FedEx:                 https://www.fedex.com/
+..  _FedEx:                 https://www.fedex.com/en-us/home.html
 
 ..  |Gadfly|                replace:: Hendersen-Glenny Gadfly
 ..  _Gadfly:                https://en.wikipedia.org/wiki/Henderson-Glenny_Gadfly
@@ -23,6 +23,9 @@
 ..  _Linus Torvalds:        https://en.wikipedia.org/wiki/Linus_Torvalds
 
 ..  _Make:                  https://www.gnu.org/software/make/
+
+..  |MMAKE|                 replace::   *Modular Make*
+..  _MMAKE:                 https://github.com/rblack42/modular-make/
 
 ..  |MM|                    replace::   *Math-Magik*
 ..  _MM:                    https://github.com/rblack42/math-magik

@@ -9,6 +9,7 @@ devnotes
 Fairfax
 gh
 github
+gz
 Hodson
 HTML
 kbd
@@ -20,11 +21,13 @@ magik
 makefile
 Makefile
 Makefiles
+mmdesigner
 nojekyll
 numpy
 openscad
 ornithopter
 Pennyplane
+py
 pypi
 rblack
 readme
@@ -38,6 +41,8 @@ subfolder
 
 Todo
 travis
+txt
 ubuntu
+whl
 yml
 

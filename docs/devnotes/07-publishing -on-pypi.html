@@ -97,6 +97,21 @@
             <p class="logo"><a href="../contents.html">
               <img class="logo" src="../_static/badge.svg" alt="Logo"/>
             </a></p>
+  <h3><a href="../contents.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Step 7: Publishing on PyPi</a><ul>
+<li><a class="reference internal" href="#setup-files">Setup Files</a></li>
+<li><a class="reference internal" href="#updating-version-numbers">Updating Version Numbers</a></li>
+<li><a class="reference internal" href="#publishing-the-project">Publishing the Project</a><ul>
+<li><a class="reference internal" href="#building-a-package-for-pypi">Building a Package for PyPi</a></li>
+<li><a class="reference internal" href="#test-the-package-for-pypi">Test The Package for PyPi</a></li>
+<li><a class="reference internal" href="#publish-the-package">Publish the Package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="06-openscad-manager.html"
                         title="previous chapter">Step 6: OpenSCAD Manager</a></p>
@@ -128,7 +143,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <p>Read time: 0.5 minutes (49 words)</p>
+  <p>Read time: 4.9 minutes (492 words)</p>
 <section id="step-7-publishing-on-pypi">
 <h1>Step 7: Publishing on <a class="reference external" href="https://pypi.org/">PyPi</a><a class="headerlink" href="#step-7-publishing-on-pypi" title="Permalink to this headline">¶</a></h1>
 <p>Python packages, including the <em>mmdesigner</em> application we are building, usually
@@ -136,6 +151,209 @@ end up being published on the <a class="reference external" href="https://pypi.o
 install this tool on their systems using the standard <strong class="command">pip</strong> command.</p>
 <p>Our next job involves adding the structure needed to publish and maintain the
 project on <a class="reference external" href="https://pypi.org/">PyPi</a>.</p>
+<section id="setup-files">
+<h2>Setup Files<a class="headerlink" href="#setup-files" title="Permalink to this headline">¶</a></h2>
+<p>To publish a project on <a class="reference external" href="https://pypi.org/">PyPi</a>, a <strong>setup.py</strong> file is required. This file
+contains information about the project that will end up being displayed on
+<a class="reference external" href="https://pypi.org/">PyPi</a> for interested folks to examine. Here is the file for this project:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">setup.py</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">io</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">re</span>
+<span class="linenos"> 4</span><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">dirname</span>
+<span class="linenos"> 5</span><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="o">*</span><span class="n">names</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="linenos"> 8</span>    <span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
+<span class="linenos"> 9</span>        <span class="n">join</span><span class="p">(</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="o">*</span><span class="n">names</span><span class="p">),</span>
+<span class="linenos">10</span>        <span class="n">encoding</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;encoding&#39;</span><span class="p">,</span> <span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
+<span class="linenos">11</span>    <span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+<span class="linenos">12</span>        <span class="k">return</span> <span class="n">fh</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="n">setup</span><span class="p">(</span>
+<span class="linenos">15</span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;mmdesigner&#39;</span><span class="p">,</span>
+<span class="linenos">16</span>    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Indoor model airplane design using OpenSCAD&#39;</span><span class="p">,</span>
+<span class="linenos">17</span>    <span class="n">long_description</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+<span class="linenos">18</span>        <span class="s1">&#39;^.. start-badges.*^.. end-badges&#39;</span><span class="p">,</span>
+<span class="linenos">19</span>        <span class="n">re</span><span class="o">.</span><span class="n">M</span> <span class="o">|</span> <span class="n">re</span><span class="o">.</span><span class="n">S</span>
+<span class="linenos">20</span>    <span class="p">)</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
+<span class="linenos">21</span>        <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="linenos">22</span>        <span class="n">read</span><span class="p">(</span><span class="s1">&#39;README.rst&#39;</span><span class="p">)</span>
+<span class="linenos">23</span>    <span class="p">),</span>
+<span class="linenos">24</span>    <span class="n">long_description_content_type</span><span class="o">=</span><span class="s1">&#39;text/x-rst&#39;</span><span class="p">,</span>
+<span class="linenos">25</span>    <span class="n">author</span><span class="o">=</span><span class="s1">&#39;Roie R. Black&#39;</span><span class="p">,</span>
+<span class="linenos">26</span>    <span class="n">author_email</span><span class="o">=</span><span class="s1">&#39;roie.black@gmail.com&#39;</span><span class="p">,</span>
+<span class="linenos">27</span>    <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://github.com/rblack42/math-magik&#39;</span><span class="p">,</span>
+<span class="linenos">28</span>    <span class="n">license</span><span class="o">=</span><span class="s1">&#39;BSD&#39;</span><span class="p">,</span>
+<span class="linenos">29</span>    <span class="n">version</span><span class="o">=</span><span class="s1">&#39;0.1.6&#39;</span><span class="p">,</span>
+<span class="linenos">30</span>    <span class="n">packages</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mmdesigner&#39;</span><span class="p">],</span>
+<span class="linenos">31</span><span class="n">entry_points</span><span class="o">=</span> <span class="p">{</span>
+<span class="linenos">32</span>        <span class="s2">&quot;console_scripts&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="linenos">33</span>            <span class="s2">&quot;mm = mmdesigner.__main__:main&quot;</span>
+<span class="linenos">34</span>        <span class="p">]</span>
+<span class="linenos">35</span>    <span class="p">},</span>
+<span class="linenos">36</span>    <span class="n">python_requires</span><span class="o">=</span><span class="s1">&#39;&gt;=3.7, &lt;3.10&#39;</span><span class="p">,</span>
+<span class="linenos">37</span>    <span class="n">classifiers</span><span class="o">=</span><span class="p">[</span>
+<span class="linenos">38</span>        <span class="s1">&#39;Development Status :: 4 - Beta&#39;</span><span class="p">,</span>
+<span class="linenos">39</span>        <span class="s1">&#39;Intended Audience :: Developers&#39;</span><span class="p">,</span>
+<span class="linenos">40</span>        <span class="s1">&#39;Framework :: tox&#39;</span><span class="p">,</span>
+<span class="linenos">41</span>        <span class="s1">&#39;License :: OSI Approved :: BSD License&#39;</span><span class="p">,</span>
+<span class="linenos">42</span>        <span class="s1">&#39;Programming Language :: Python&#39;</span><span class="p">,</span>
+<span class="linenos">43</span>        <span class="s1">&#39;Programming Language :: Python :: 3&#39;</span><span class="p">,</span>
+<span class="linenos">44</span>        <span class="s1">&#39;Programming Language :: Python :: 3.7&#39;</span><span class="p">,</span>
+<span class="linenos">45</span>        <span class="s1">&#39;Programming Language :: Python :: 3.8&#39;</span><span class="p">,</span>
+<span class="linenos">46</span>        <span class="s1">&#39;Programming Language :: Python :: 3.9&#39;</span><span class="p">,</span>
+<span class="linenos">47</span>        <span class="s1">&#39;Programming Language :: Python :: Implementation :: CPython&#39;</span><span class="p">,</span>
+<span class="linenos">48</span>        <span class="s1">&#39;Programming Language :: Python :: Implementation :: PyPy&#39;</span><span class="p">,</span>
+<span class="linenos">49</span>        <span class="s1">&#39;Topic :: Software Development :: Testing&#39;</span><span class="p">,</span>
+<span class="linenos">50</span>    <span class="p">],</span>
+<span class="linenos">51</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Details on all of this can be found in the <a class="reference external" href="https://pypi.org/">pyPi</a> documentation.</p>
+<p>I also added one more file which aids in creating the package uploaded to <a class="reference external" href="https://pypi.org/">PyPi</a></p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">setup.cfg</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">[</span><span class="n">bdist_wheel</span><span class="p">]</span>
+<span class="linenos">2</span><span class="n">universal</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="updating-version-numbers">
+<h2>Updating Version Numbers<a class="headerlink" href="#updating-version-numbers" title="Permalink to this headline">¶</a></h2>
+<p>There is a version number in the <strong>setup.py</strong> file. Every time we create a
+version of the project that we want to let users access on <a class="reference external" href="https://pypi.org/">PyPi</a> we will need
+to update this number. <a class="reference external" href="https://pypi.org/">PyPi</a> does not let you update the version currently
+shown (the latest) after publishing it.</p>
+<p>So far, the version number appears in three places in this project:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>README.rst - seen on <em>GitHub</em></p></li>
+<li><p>mmdesigner/__version__.py - the master project version number</p></li>
+<li><p>setup.py - <a class="reference external" href="https://pypi.org/">PyPi</a> control file</p></li>
+</ul>
+</div></blockquote>
+<p>Managing all three of these can be a problem, so there is a nice tool that helps keep them on track: <strong>bump2version</strong>.</p>
+<p>Using this tool, which we can add to the requirements.txt file, involves creating a configuration file that looks like this:</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">.bumpversion.cfg</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">[bumpversion]</span>
+<span class="linenos"> 2</span><span class="na">current_version</span> <span class="o">=</span> <span class="s">0.1.6</span>
+<span class="linenos"> 3</span><span class="na">commit</span> <span class="o">=</span> <span class="s">True</span>
+<span class="linenos"> 4</span><span class="na">tag</span> <span class="o">=</span> <span class="s">True</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="k">[bumpversion:file:mmdesigner/__version__.py]</span>
+<span class="linenos"> 7</span><span class="na">search</span> <span class="o">=</span> <span class="s">__version__ = &quot;{current_version}&quot;</span>
+<span class="linenos"> 8</span><span class="na">replace</span> <span class="o">=</span> <span class="s">__version__ = &quot;{new_version}&quot;</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="k">[bumpversion:file:setup.py]</span>
+<span class="linenos">11</span><span class="na">search</span> <span class="o">=</span> <span class="s">{current_version}</span>
+<span class="linenos">12</span><span class="na">replace</span> <span class="o">=</span> <span class="s">{new_version}</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="k">[bumpversion:file:README.rst]</span>
+<span class="linenos">15</span><span class="na">search</span> <span class="o">=</span> <span class="s">{current_version}</span>
+<span class="linenos">16</span><span class="na">replace</span> <span class="o">=</span> <span class="s">{new_version}</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The project is named <strong>bump2version</strong>, but the configuration file is just
+<strong>bumpversion</strong>. The original project developer abandoned the project, and
+a new maintainer renamed it.</p>
+</div>
+<p>With this file n place, we can increment any part of a <a class="reference internal" href="../glossary.html#term-semantic-versioning"><span class="xref std std-term">semantic versioning</span></a> number using one of the new <strong>Makefile</strong> commands provided in the <a class="reference external" href="https://github.com/rblack42/modular-make/"><em>Modular Make</em></a> collection:</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">mk/version.mk</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nf">.PHONY</span><span class="o">:</span> <span class="n">inc</span>-<span class="n">major</span>
+<span class="linenos"> 2</span><span class="nf">inc-major</span><span class="o">:</span>	<span class="c">## increment major version number</span>
+<span class="linenos"> 3</span>	@bump2version major
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="nf">.PHONY</span><span class="o">:</span> <span class="n">inc</span>-<span class="n">minor</span>
+<span class="linenos"> 6</span><span class="nf">inc-minor</span><span class="o">:</span>	<span class="c">## increment minor version number</span>
+<span class="linenos"> 7</span>	@bump2version minor
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="nf">.PHONY</span><span class="o">:</span> <span class="n">inc</span>-<span class="n">patch</span>
+<span class="linenos">10</span><span class="nf">inc-patch</span><span class="o">:</span>	<span class="c">## increment patch version number</span>
+<span class="linenos">11</span>	@bump2version patch
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="nf">.PHONY</span><span class="o">:</span>	<span class="n">version</span>
+<span class="linenos">14</span><span class="nf">version</span><span class="o">:</span> <span class="c">## display current version number</span>
+<span class="linenos">15</span>	@cat mmdesigner/__init__.py
+</pre></div>
+</div>
+</div>
+</section>
+<section id="publishing-the-project">
+<h2>Publishing the Project<a class="headerlink" href="#publishing-the-project" title="Permalink to this headline">¶</a></h2>
+<p>Now, when the project reaches a milestone point and you want to release a new version on <a class="reference external" href="https://pypi.org/">PyPi</a>, we need to do a few things:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Bump the version number as needed</p></li>
+<li><p>Build the package for <a class="reference external" href="https://pypi.org/">PyPi</a></p></li>
+<li><p>Test the new version to make sure it will upload properly</p></li>
+<li><p>Publish the version officially</p></li>
+</ul>
+</div></blockquote>
+<p>We have already covered the tools needed to bump the version number properly.</p>
+<section id="building-a-package-for-pypi">
+<h3>Building a Package for <a class="reference external" href="https://pypi.org/">PyPi</a><a class="headerlink" href="#building-a-package-for-pypi" title="Permalink to this headline">¶</a></h3>
+<p>To build the package for <a class="reference external" href="https://pypi.org/">PyPi</a>, all we need to do is run the <strong>setup.py</strong> script using <em>Python</em>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ python setup.py sdist bdist_wheel
+</pre></div>
+</div>
+<p>This command will build two files n a new <strong>dist</strong> directory in the project root directory:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>mmdesigner-x.x.x-py2.py3-none-any-whl</p></li>
+<li><p>mmdesigner-x.x.x.tar.gz</p></li>
+</ul>
+</div></blockquote>
+<p>The first file is the one that will be delivered to a user running the <strong>pip</strong>
+command. The second one contains the source code for the project. This is just
+the contents of the <strong>mmdesigner</strong> directory, not the full documentation and
+test code available on <em>GitHub</em>.</p>
+</section>
+<section id="test-the-package-for-pypi">
+<h3>Test The Package for <a class="reference external" href="https://pypi.org/">PyPi</a><a class="headerlink" href="#test-the-package-for-pypi" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://pypi.org/">PyPi</a> has a test server that can be used to check the package before it goes
+public. We will use the <strong>twine</strong> tool to send this project to the test server:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ twine upload --repository testpypi dist/* --skip-existing
+</pre></div>
+</div>
+<p>This will upload the new version. If you try to upload an existing version,
+nothing will actually be uploaded.</p>
+</section>
+<section id="publish-the-package">
+<h3>Publish the Package<a class="headerlink" href="#publish-the-package" title="Permalink to this headline">¶</a></h3>
+<p>Finally, we use <strong>twine</strong> to publish the new version officially:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ twine upload  dist/* --skip-existing
+</pre></div>
+</div>
+<p>All of these commands are included in a <a class="reference external" href="https://github.com/rblack42/modular-make/"><em>Modular Make</em></a> module:</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">mk/pypi.mk</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="na">.PHONY: build</span>
+<span class="linenos"> 2</span><span class="na">build:	## package project for PyPi</span>
+<span class="linenos"> 3</span>	<span class="na">rm -rf build dist</span>
+<span class="linenos"> 4</span>	<span class="na">python setup.py sdist bdist_wheel</span>
+<span class="linenos"> 5</span>	<span class="na">twine check dist/*</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="na">.PHONY: pypitest</span>
+<span class="linenos"> 8</span><span class="na">pypitest:	 build  ## upload project to pypi test server</span>
+<span class="linenos"> 9</span>	<span class="na">twine upload --repository testpypi dist/* --skip-existing</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="na">.PHONY: upload</span>
+<span class="linenos">12</span><span class="na">upload:	build ## upload new version to PyPi</span>
+<span class="linenos">13</span>	<span class="na">twine upload dist/* --skip-existing</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
 </section>
 
 

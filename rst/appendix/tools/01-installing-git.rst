@@ -27,7 +27,7 @@ Installing Git on your Mac
 
 If you use a Mac, there is an installer available for that as well.
 
-    *   `Git installer for Mac <https://sourceforge.net/projects/git-osx-installer/files/latest/download>`_
+    *   `Git installer for Mac <https://versaweb.dl.sourceforge.net/project/git-osx-installer/git-2.6.2-intel-universal-mavericks.dmg>`_
 
 However, I recommend that you install Homebrew_ and use that tool to install
 it. Homebrew_ is a nice package loading system many Mac developers use to
