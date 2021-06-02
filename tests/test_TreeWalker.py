@@ -1,4 +1,5 @@
 import os
+import shutil
 from mmdesigner.TreeWalker import TreeWalker
 
 count = 0
@@ -74,3 +75,22 @@ def test_process_leaf_files():
     tw = TreeWalker(root, "scad", bump_count)
     tw.process_leaf_files()
     assert count == 4
+
+def test_delete_files():
+    """Check that clean removes selected files"""
+    root = "tests/test_data/model"
+    p1 = "tests/test_data/model"
+    p2 = "tests/test_data/model/wing"
+    f1 = os.path.join(p1,"clean1.tst")
+    f2 = os.path.join(p2,"clean2.tst")
+    with open(f1, "w") as fout:
+        fout.write("testing")
+    shutil.copyfile(f1,f2)
+    tw = TreeWalker(root, "scad", None)
+    current_ext = tw.get_extension()
+    tw.clean("tst")
+    assert not os.path.isfile(f1)
+    assert not os.path.isfile(f2)
+    assert tw.get_extension() == current_ext
+
+

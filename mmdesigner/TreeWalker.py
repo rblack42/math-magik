@@ -68,6 +68,16 @@ class TreeWalker(object):
             self.callback(f)
 
 
+    def clean(self, ext):
+        """delete files with specified extension from tree"""
+        current_ext = self.ext
+        self.ext = ext
+        files = self.get_file_list()
+        for f in files:
+            os.remove(f)
+        self.ext = current_ext
+
+
 count = 0
 def bump_count(path):
     global count
