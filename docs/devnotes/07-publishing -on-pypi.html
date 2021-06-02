@@ -17,7 +17,7 @@
     <script src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Contributing" href="../develop.html" />
+    <link rel="next" title="Step 8: Walking the Model Tree" href="08-tree-walker.html" />
     <link rel="prev" title="Step 6: OpenSCAD Manager" href="06-openscad-manager.html" />
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
           rel='stylesheet' type='text/css' />
@@ -81,7 +81,7 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="../develop.html" title="Contributing"
+          <a href="08-tree-walker.html" title="Step 8: Walking the Model Tree"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="06-openscad-manager.html" title="Step 6: OpenSCAD Manager"
@@ -116,8 +116,8 @@
   <p class="topless"><a href="06-openscad-manager.html"
                         title="previous chapter">Step 6: OpenSCAD Manager</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../develop.html"
-                        title="next chapter">Contributing</a></p>
+  <p class="topless"><a href="08-tree-walker.html"
+                        title="next chapter">Step 8: Walking the Model Tree</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -186,7 +186,7 @@ contains information about the project that will end up being displayed on
 <span class="linenos">26</span>    <span class="n">author_email</span><span class="o">=</span><span class="s1">&#39;roie.black@gmail.com&#39;</span><span class="p">,</span>
 <span class="linenos">27</span>    <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://github.com/rblack42/math-magik&#39;</span><span class="p">,</span>
 <span class="linenos">28</span>    <span class="n">license</span><span class="o">=</span><span class="s1">&#39;BSD&#39;</span><span class="p">,</span>
-<span class="linenos">29</span>    <span class="n">version</span><span class="o">=</span><span class="s1">&#39;0.1.8&#39;</span><span class="p">,</span>
+<span class="linenos">29</span>    <span class="n">version</span><span class="o">=</span><span class="s1">&#39;0.1.9&#39;</span><span class="p">,</span>
 <span class="linenos">30</span>    <span class="n">packages</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mmdesigner&#39;</span><span class="p">],</span>
 <span class="linenos">31</span><span class="n">entry_points</span><span class="o">=</span> <span class="p">{</span>
 <span class="linenos">32</span>        <span class="s2">&quot;console_scripts&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -241,7 +241,7 @@ shown (the latest) after publishing it.</p>
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-text">.bumpversion.cfg</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
 <div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">[bumpversion]</span>
-<span class="linenos"> 2</span><span class="na">current_version</span> <span class="o">=</span> <span class="s">0.1.8</span>
+<span class="linenos"> 2</span><span class="na">current_version</span> <span class="o">=</span> <span class="s">0.1.9</span>
 <span class="linenos"> 3</span><span class="na">commit</span> <span class="o">=</span> <span class="s">True</span>
 <span class="linenos"> 4</span><span class="na">tag</span> <span class="o">=</span> <span class="s">True</span>
 <span class="linenos"> 5</span>
@@ -373,7 +373,7 @@ nothing will actually be uploaded.</p>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="../develop.html" title="Contributing"
+          <a href="08-tree-walker.html" title="Step 8: Walking the Model Tree"
              >next</a> |</li>
         <li class="right" >
           <a href="06-openscad-manager.html" title="Step 6: OpenSCAD Manager"

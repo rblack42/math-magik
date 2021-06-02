@@ -25,9 +25,14 @@ Glossary
         (Given) and an action we will take (When) and the result we expect
         (Then).  See `given when then`_
 
+    CG
+    Center of Gravity
+        The "balance point" of a part or assembly. Measured from some reference
+        point, usually the origin of the coordinate system used to design the
+        part or assembly.
+
     HTML
-        Hypertext Markup Language. The language
-        used for web page layout.
+        Hyper Text Markup Language. The language used to create web pages.
 
     IDE
     Integrated development Environment

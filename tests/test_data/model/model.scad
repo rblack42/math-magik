@@ -10,9 +10,5 @@ module model() {
     translate([10,0,-3/8]) stab();
   }
 }
-  
-model();
 
-// mark cg
-translate([5.8235,0.0000,0.2440]) 
-color("red") sphere(r=1/8);
+model();

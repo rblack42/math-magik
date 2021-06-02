@@ -17,6 +17,7 @@ class OpenSCAD(object):
 
     def gen_stl(self, scad_path):
         """ Generate STL file from specified SCAD file"""
+        print("Generating STL file from ", scad_path)
         err_code = 1
         if not os.path.isfile(scad_path):
             return err_code
@@ -106,6 +107,7 @@ class OpenSCAD(object):
         self.ixx, self.ixy, self.ixz = inertia[0]
         self.iyx, self.iyy, self.iyz = inertia[1]
         self.izx, self.izy, self.izz = inertia[2]
+        self.dump_to_json(self.json_file)
         return err_code
 
     def get_bounds(self):

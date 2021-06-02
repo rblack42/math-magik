@@ -127,6 +127,7 @@
 
 <div class="viewcode-block" id="OpenSCAD.gen_stl"><a class="viewcode-back" href="../../code/OpenSCAD.html#mmdesigner.OpenSCAD.OpenSCAD.gen_stl">[docs]</a>    <span class="k">def</span> <span class="nf">gen_stl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scad_path</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Generate STL file from specified SCAD file&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Generating STL file from &quot;</span><span class="p">,</span> <span class="n">scad_path</span><span class="p">)</span>
         <span class="n">err_code</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">scad_path</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">err_code</span>
@@ -216,6 +217,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">ixx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ixy</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ixz</span> <span class="o">=</span> <span class="n">inertia</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">iyx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">iyy</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">iyz</span> <span class="o">=</span> <span class="n">inertia</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">izx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">izy</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">izz</span> <span class="o">=</span> <span class="n">inertia</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dump_to_json</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">json_file</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">err_code</span></div>
 
 <div class="viewcode-block" id="OpenSCAD.get_bounds"><a class="viewcode-back" href="../../code/OpenSCAD.html#mmdesigner.OpenSCAD.OpenSCAD.get_bounds">[docs]</a>    <span class="k">def</span> <span class="nf">get_bounds</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

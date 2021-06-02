@@ -22,6 +22,8 @@
 ..  _Homebrew:              https://brew.sh/
 ..  _Linus Torvalds:        https://en.wikipedia.org/wiki/Linus_Torvalds
 
+..  |LPP|                   replace:: *Limited Pennyplane*
+
 ..  _Make:                  https://www.gnu.org/software/make/
 
 ..  |MMAKE|                 replace::   *Modular Make*

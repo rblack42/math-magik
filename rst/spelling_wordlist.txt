@@ -9,6 +9,7 @@ cmd
 dev
 devnotes
 Fairfax
+forwardmost
 gh
 github
 gz
@@ -33,6 +34,7 @@ Pennyplane
 py
 pypi
 rblack
+rearmost
 readme
 repo
 rst

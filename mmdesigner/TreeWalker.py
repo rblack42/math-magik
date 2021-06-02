@@ -64,6 +64,7 @@ class TreeWalker(object):
         """Run callback on only leaf files"""
         files = self.get_leaf_file_list()
         for f in files:
+            print("Processing:", f)
             self.callback(f)
 
 

@@ -16,6 +16,8 @@ Math-Magik Model Airplanes
 
     design-analysis
 
+    mass-properties
+
 Development Notes
 *****************
 
