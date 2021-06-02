@@ -175,7 +175,17 @@
         <span class="n">files</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_leaf_file_list</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Processing:&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span><span class="n">f</span><span class="p">)</span></div></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span><span class="n">f</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TreeWalker.clean"><a class="viewcode-back" href="../../code/TreeWalker.html#mmdesigner.TreeWalker.TreeWalker.clean">[docs]</a>    <span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ext</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;delete files with specified extension from tree&quot;&quot;&quot;</span>
+        <span class="n">current_ext</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ext</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ext</span> <span class="o">=</span> <span class="n">ext</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_file_list</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ext</span> <span class="o">=</span> <span class="n">current_ext</span></div></div>
 
 
 <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>

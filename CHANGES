@@ -1,3 +1,5 @@
+* 2021-06-02: completed generator module
+* 2021-06-01: added basic generator code and mass property docs
 * 2021-05-31: Bump version: 0.1.8 → 0.1.9
 * 2021-05-31: TreeWalker class completed
 * 2021-05-31: Added TreeWalker code

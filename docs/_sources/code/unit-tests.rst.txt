@@ -14,3 +14,6 @@ Unit Tests
 
 ..  automodule::    tests.test_TreeWalker
     :members:
+
+..  automodule::    tests.test_Generator
+    :members:

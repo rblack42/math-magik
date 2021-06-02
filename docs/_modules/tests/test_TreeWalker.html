@@ -109,6 +109,7 @@
             
   <h1>Source code for tests.test_TreeWalker</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">from</span> <span class="nn">mmdesigner.TreeWalker</span> <span class="kn">import</span> <span class="n">TreeWalker</span>
 
 <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
@@ -184,6 +185,25 @@
     <span class="n">tw</span> <span class="o">=</span> <span class="n">TreeWalker</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;scad&quot;</span><span class="p">,</span> <span class="n">bump_count</span><span class="p">)</span>
     <span class="n">tw</span><span class="o">.</span><span class="n">process_leaf_files</span><span class="p">()</span>
     <span class="k">assert</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">4</span></div>
+
+<div class="viewcode-block" id="test_delete_files"><a class="viewcode-back" href="../../code/unit-tests.html#tests.test_TreeWalker.test_delete_files">[docs]</a><span class="k">def</span> <span class="nf">test_delete_files</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Check that clean removes selected files&quot;&quot;&quot;</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="s2">&quot;tests/test_data/model&quot;</span>
+    <span class="n">p1</span> <span class="o">=</span> <span class="s2">&quot;tests/test_data/model&quot;</span>
+    <span class="n">p2</span> <span class="o">=</span> <span class="s2">&quot;tests/test_data/model/wing&quot;</span>
+    <span class="n">f1</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span><span class="s2">&quot;clean1.tst&quot;</span><span class="p">)</span>
+    <span class="n">f2</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">p2</span><span class="p">,</span><span class="s2">&quot;clean2.tst&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fout</span><span class="p">:</span>
+        <span class="n">fout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;testing&quot;</span><span class="p">)</span>
+    <span class="n">shutil</span><span class="o">.</span><span class="n">copyfile</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span><span class="n">f2</span><span class="p">)</span>
+    <span class="n">tw</span> <span class="o">=</span> <span class="n">TreeWalker</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;scad&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">current_ext</span> <span class="o">=</span> <span class="n">tw</span><span class="o">.</span><span class="n">get_extension</span><span class="p">()</span>
+    <span class="n">tw</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="s2">&quot;tst&quot;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">f1</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">f2</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">tw</span><span class="o">.</span><span class="n">get_extension</span><span class="p">()</span> <span class="o">==</span> <span class="n">current_ext</span></div>
+
+
 </pre></div>
 
             <div class="clearer"></div>

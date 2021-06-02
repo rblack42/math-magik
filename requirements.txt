@@ -10,3 +10,4 @@ numpy-stl
 bump2version
 twine
 wheel
+openpyxl
