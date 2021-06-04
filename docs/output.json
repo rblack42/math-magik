@@ -17,34 +17,36 @@
 {"filename": "appendix/tools/05-command-line.rst", "lineno": 8, "status": "unchecked", "code": 0, "uri": "#term-cloud", "info": ""}
 {"filename": "appendix/tools/05-command-line.rst", "lineno": 8, "status": "unchecked", "code": 0, "uri": "#term-command-line", "info": ""}
 {"filename": "appendix/tools/05-command-line.rst", "lineno": 45, "status": "unchecked", "code": 0, "uri": "#term-command-prompt", "info": ""}
+{"filename": "mmdesigner/command-line-interface.rst", "lineno": 38, "status": "unchecked", "code": 0, "uri": "#term-environment-variable", "info": ""}
+{"filename": "mmdesigner/command-line-interface.rst", "lineno": 4, "status": "unchecked", "code": 0, "uri": "#term-graphical-user-interface", "info": ""}
 {"filename": "devnotes/07-publishing -on-pypi.rst", "lineno": 63, "status": "unchecked", "code": 0, "uri": "#term-semantic-versioning", "info": ""}
 {"filename": "devnotes/04-continuous-integration.rst", "lineno": 23, "status": "unchecked", "code": 0, "uri": "#term-virtual-machine", "info": ""}
 {"filename": "devnotes/08-tree-walker.rst", "lineno": 24, "status": "unchecked", "code": 0, "uri": "#tests.test_TreeWalker.test_valid_model_path", "info": ""}
 {"filename": "devnotes/01-create-gh-repo.rst", "lineno": 60, "status": "unchecked", "code": 0, "uri": "#tool-setup", "info": ""}
-{"filename": "appendix/tools/04-installing-make.rst", "lineno": 14, "status": "working", "code": 0, "uri": "http://ftp.gnu.org/gnu/make/", "info": ""}
 {"filename": "appendix/tools/01-installing-git.rst", "lineno": 32, "status": "working", "code": 0, "uri": "https://brew.sh/", "info": ""}
+{"filename": "appendix/tools/04-installing-make.rst", "lineno": 14, "status": "working", "code": 0, "uri": "http://ftp.gnu.org/gnu/make/", "info": ""}
 {"filename": "introduction.rst", "lineno": 28, "status": "working", "code": 0, "uri": "https://en.wikipedia.org/wiki/Computational_fluid_dynamics", "info": ""}
 {"filename": "introduction.rst", "lineno": 4, "status": "working", "code": 0, "uri": "https://en.wikipedia.org/wiki/Henderson-Glenny_Gadfly", "info": ""}
 {"filename": "preface.rst", "lineno": 36, "status": "working", "code": 0, "uri": "https://docs.python.org/3/library/tkinter.html", "info": ""}
-{"filename": "appendix/tools/02-installing-python.rst", "lineno": 19, "status": "redirected", "code": 301, "uri": "http://www.python.org", "info": "https://www.python.org/", "text": "permanently"}
-{"filename": "devnotes/01-create-gh-repo.rst", "lineno": 4, "status": "working", "code": 0, "uri": "https://en.wikipedia.org/wiki/Linus_Torvalds", "info": ""}
-{"filename": "devnotes/05-development-start.rst", "lineno": 159, "status": "working", "code": 0, "uri": "https://coveralls.io/", "info": ""}
 {"filename": "appendix/tools/01-installing-git.rst", "lineno": 5, "status": "working", "code": 0, "uri": "https://git-scm.com/", "info": ""}
+{"filename": "devnotes/01-create-gh-repo.rst", "lineno": 4, "status": "working", "code": 0, "uri": "https://en.wikipedia.org/wiki/Linus_Torvalds", "info": ""}
+{"filename": "appendix/tools/02-installing-python.rst", "lineno": 19, "status": "redirected", "code": 301, "uri": "http://www.python.org", "info": "https://www.python.org/", "text": "permanently"}
+{"filename": "devnotes/05-development-start.rst", "lineno": 159, "status": "working", "code": 0, "uri": "https://coveralls.io/", "info": ""}
 {"filename": "devnotes/05-development-start.rst", "lineno": 4, "status": "working", "code": 0, "uri": "https://martinfowler.com/bliki/GivenWhenThen.html", "info": ""}
-{"filename": "appendix/tools/01-installing-git.rst", "lineno": 15, "status": "redirected", "code": 302, "uri": "https://github.com/git-for-windows/git/releases/download/v2.31.1.windows.1/Git-2.31.1-32-bit.exe", "info": "https://github-releases.githubusercontent.com/23216272/242a1e00-8eef-11eb-89d1-a907611d34bb?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20210602%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210602T020619Z&X-Amz-Expires=300&X-Amz-Signature=4b56d8424b8b36dcb32d5f847b2ed2b53b5004442c00e80cf7f2031cab5200ac&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=23216272&response-content-disposition=attachment%3B%20filename%3DGit-2.31.1-32-bit.exe&response-content-type=application%2Foctet-stream", "text": "with Found"}
-{"filename": "devnotes/07-publishing -on-pypi.rst", "lineno": 63, "status": "working", "code": 0, "uri": "https://github.com/rblack42/modular-make/", "info": ""}
-{"filename": "devnotes/05-development-start.rst", "lineno": 72, "status": "working", "code": 0, "uri": "https://pypi.org/", "info": ""}
-{"filename": "devnotes/05-development-start.rst", "lineno": 36, "status": "working", "code": 0, "uri": "https://semver.org/", "info": ""}
 {"filename": "appendix/tools/09-advanced-makefiles.rst", "lineno": 107, "status": "working", "code": 0, "uri": "https://github.com/", "info": ""}
 {"filename": "devnotes/06-openscad-manager.rst", "lineno": 4, "status": "working", "code": 0, "uri": "https://openscad.org/", "info": ""}
+{"filename": "devnotes/05-development-start.rst", "lineno": 72, "status": "working", "code": 0, "uri": "https://pypi.org/", "info": ""}
+{"filename": "devnotes/05-development-start.rst", "lineno": 36, "status": "working", "code": 0, "uri": "https://semver.org/", "info": ""}
+{"filename": "appendix/tools/01-installing-git.rst", "lineno": 15, "status": "redirected", "code": 302, "uri": "https://github.com/git-for-windows/git/releases/download/v2.31.1.windows.1/Git-2.31.1-32-bit.exe", "info": "https://github-releases.githubusercontent.com/23216272/242a1e00-8eef-11eb-89d1-a907611d34bb?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20210604%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210604T022123Z&X-Amz-Expires=300&X-Amz-Signature=5a63fc21c3f6e929b5aaf8784ac3cab9dacf61ea9e9ab065c3102368b09f11e2&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=23216272&response-content-disposition=attachment%3B%20filename%3DGit-2.31.1-32-bit.exe&response-content-type=application%2Foctet-stream", "text": "with Found"}
 {"filename": "devnotes/03-testing-setup.rst", "lineno": 15, "status": "working", "code": 0, "uri": "https://travis-ci.com/", "info": ""}
-{"filename": "preface.rst", "lineno": 63, "status": "working", "code": 0, "uri": "https://github.com/rblack42/math-magik", "info": ""}
 {"filename": "appendix/tools/01-installing-git.rst", "lineno": 30, "status": "working", "code": 0, "uri": "https://versaweb.dl.sourceforge.net/project/git-osx-installer/git-2.6.2-intel-universal-mavericks.dmg", "info": ""}
+{"filename": "preface.rst", "lineno": 63, "status": "working", "code": 0, "uri": "https://github.com/rblack42/math-magik", "info": ""}
 {"filename": "devnotes/03-testing-setup.rst", "lineno": 15, "status": "working", "code": 0, "uri": "https://www.appveyor.com/", "info": ""}
-{"filename": "appendix/tools/09-advanced-makefiles.rst", "lineno": 4, "status": "working", "code": 0, "uri": "https://www.gnu.org/software/make/", "info": ""}
+{"filename": "devnotes/07-publishing -on-pypi.rst", "lineno": 63, "status": "working", "code": 0, "uri": "https://github.com/rblack42/modular-make/", "info": ""}
 {"filename": "introduction.rst", "lineno": 52, "status": "working", "code": 0, "uri": "https://www.fedex.com/en-us/home.html", "info": ""}
+{"filename": "appendix/tools/05-command-line.rst", "lineno": 71, "status": "working", "code": 0, "uri": "https://ubuntu.com/", "info": ""}
+{"filename": "appendix/tools/09-advanced-makefiles.rst", "lineno": 4, "status": "working", "code": 0, "uri": "https://www.gnu.org/software/make/", "info": ""}
 {"filename": "devnotes/02-basic-sphinx-setup.rst", "lineno": 14, "status": "working", "code": 0, "uri": "https://www.sphinx-doc.org/en/master/", "info": ""}
 {"filename": "appendix/tools/02-installing-python.rst", "lineno": 7, "status": "working", "code": 0, "uri": "https://www.python.org/", "info": ""}
 {"filename": "appendix/tools/02-installing-python.rst", "lineno": 32, "status": "working", "code": 0, "uri": "https://www.python.org/ftp/python/3.9.5/python-3.9.5-amd64.exe", "info": ""}
 {"filename": "devnotes/01-create-gh-repo.rst", "lineno": 54, "status": "working", "code": 0, "uri": "https://www.jetbrains.com/pycharm/", "info": ""}
-{"filename": "appendix/tools/05-command-line.rst", "lineno": 71, "status": "working", "code": 0, "uri": "https://ubuntu.com/", "info": ""}

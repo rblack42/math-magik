@@ -30,7 +30,7 @@ setup(
     packages=['mmdesigner'],
 entry_points= {
         "console_scripts": [
-            "mm = mmdesigner.__main__:main"
+            "mm = mmdesigner.cli:cli"
         ]
     },
     python_requires='>=3.7, <3.10',

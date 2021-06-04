@@ -4,7 +4,7 @@ from mmdesigner import __version__
 
 
 def test_cli_version():
-    """Test cli OCS version option"""
+    """Test cli version option"""
     runner = CliRunner()
 
     # Given mmdesigner is a valid python package

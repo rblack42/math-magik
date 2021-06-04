@@ -6,7 +6,7 @@ Unit Tests
 
 ..  automodule::    tests.test_version
     :members:
-..  automodule::    tests.test_cli_version
+..  automodule::    tests.test_cli
     :members:
 
 ..  automodule::    tests.test_OpenSCAD

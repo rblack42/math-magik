@@ -18,6 +18,15 @@ Math-Magik Model Airplanes
 
     mass-properties
 
+mmdesigner
+**********
+
+..  toctree::
+    :maxdepth: 1
+    :glob:
+
+    mmdesigner/*
+
 Development Notes
 *****************
 

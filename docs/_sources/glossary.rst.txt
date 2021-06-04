@@ -31,6 +31,15 @@ Glossary
         point, usually the origin of the coordinate system used to design the
         part or assembly.
 
+    environment variable
+        Operating systems let users set special variables that can be accessed
+        by software later. These variables can be used to store sensitive data
+        that should not be accidentally be coded into software.
+
+    GUI
+    graphical user interface
+        The traditional mouse driven point and click interface.
+
     HTML
         Hyper Text Markup Language. The language used to create web pages.
 
