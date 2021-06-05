@@ -113,19 +113,26 @@
 <span class="kn">from</span> <span class="nn">mmdesigner</span> <span class="kn">import</span> <span class="n">__version__</span>
 
 
-<div class="viewcode-block" id="test_cli_version"><a class="viewcode-back" href="../../code/unit-tests.html#tests.test_cli.test_cli_version">[docs]</a><span class="k">def</span> <span class="nf">test_cli_version</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Test cli version option&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="test_cli_running"><a class="viewcode-back" href="../../code/unit-tests.html#tests.test_cli.test_cli_running">[docs]</a><span class="k">def</span> <span class="nf">test_cli_running</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Test cli reports running&quot;&quot;&quot;</span>
     <span class="n">runner</span> <span class="o">=</span> <span class="n">CliRunner</span><span class="p">()</span>
-
-    <span class="c1"># Given mmdesigner is a valid python package</span>
-
-    <span class="c1"># When we invoke the cli module with the version argument</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">cli</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;--version&#39;</span><span class="p">])</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">cli</span><span class="p">)</span>
     <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">exit_code</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="k">assert</span> <span class="s2">&quot;Running&quot;</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">output</span></div>
 
-    <span class="c1"># Then we have no errors, and the version number matches.</span>
-    <span class="n">version</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
-    <span class="k">assert</span> <span class="n">version</span> <span class="o">==</span> <span class="n">__version__</span></div>
+<div class="viewcode-block" id="test_cli_version"><a class="viewcode-back" href="../../code/unit-tests.html#tests.test_cli.test_cli_version">[docs]</a><span class="k">def</span> <span class="nf">test_cli_version</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;test cli version option&quot;&quot;&quot;</span>
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">CliRunner</span><span class="p">()</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">cli</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;--version&quot;</span><span class="p">])</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">exit_code</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="k">assert</span> <span class="s2">&quot;Version&quot;</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">output</span></div>
+
+<div class="viewcode-block" id="test_cli_help_option"><a class="viewcode-back" href="../../code/unit-tests.html#tests.test_cli.test_cli_help_option">[docs]</a><span class="k">def</span> <span class="nf">test_cli_help_option</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;test cli help option&quot;&quot;&quot;</span>
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">CliRunner</span><span class="p">()</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">cli</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;--help&#39;</span><span class="p">])</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">exit_code</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="k">assert</span> <span class="s2">&quot;Usage&quot;</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">output</span></div>
 </pre></div>
 
             <div class="clearer"></div>

@@ -3,16 +3,23 @@ from mmdesigner.cli import cli
 from mmdesigner import __version__
 
 
-def test_cli_version():
-    """Test cli version option"""
+def test_cli_running():
+    """Test cli reports running"""
     runner = CliRunner()
-
-    # Given mmdesigner is a valid python package
-
-    # When we invoke the cli module with the version argument
-    result = runner.invoke(cli, ['--version'])
+    result = runner.invoke(cli)
     assert result.exit_code == 0
+    assert "Running" in result.output
 
-    # Then we have no errors, and the version number matches.
-    version = result.output.split()[2]
-    assert version == __version__
+def test_cli_version():
+    """test cli version option"""
+    runner = CliRunner()
+    result = runner.invoke(cli, ["--version"])
+    assert result.exit_code == 0
+    assert "Version" in result.output
+
+def test_cli_help_option():
+    """test cli help option"""
+    runner = CliRunner()
+    result = runner.invoke(cli, ['--help'])
+    assert result.exit_code == 0
+    assert "Usage" in result.output

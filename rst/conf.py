@@ -28,6 +28,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.viewcode',
     'sphinxcontrib.spelling',
+    'sphinxcontrib.programoutput',
 ]
 
 linkckeck_timeout = 3

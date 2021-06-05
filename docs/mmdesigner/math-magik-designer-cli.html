@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Command Line Interface &#8212; Math Magik 0.1.0 documentation</title>
+    <title>Math Magik Designer CLI &#8212; Math Magik 0.1.0 documentation</title>
     <link rel="stylesheet" href="../_static/sphinx13.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -89,7 +89,7 @@
         <li><a href="../index.html">Home</a>&#160;|</li>
         <li><a href="../contents.html">Documentation</a> &#187;</li>
 
-        <li class="nav-item nav-item-this"><a href="">Command Line Interface</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Math Magik Designer CLI</a></li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -99,8 +99,8 @@
             </a></p>
   <h3><a href="../contents.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Command Line Interface</a><ul>
-<li><a class="reference internal" href="#model-path">Model Path</a></li>
+<li><a class="reference internal" href="#">Math Magik Designer CLI</a><ul>
+<li><a class="reference internal" href="#command-line-interface">Command Line Interface</a></li>
 </ul>
 </li>
 </ul>
@@ -114,7 +114,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/mmdesigner/command-line-interface.rst.txt"
+      <li><a href="../_sources/mmdesigner/math-magik-designer-cli.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -136,43 +136,29 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <p>Read time: 2.3 minutes (232 words)</p>
-<section id="command-line-interface">
-<h1>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h1>
-<p>The <strong>mmdesigner</strong> program supports a full <a class="reference internal" href="../glossary.html#term-command-line"><span class="xref std std-term">command line</span></a> interface, and
-supports a <a class="reference internal" href="../glossary.html#term-graphical-user-interface"><span class="xref std std-term">graphical user interface</span></a> as well. In this section, we will
-cover the basic commands supported.</p>
-<section id="model-path">
-<h2>Model Path<a class="headerlink" href="#model-path" title="Permalink to this headline">¶</a></h2>
-<p>Each design managed by <strong>mmdesigner</strong> will be fully contained in a directory
-named with the model name. This name may contain spaces, since modelers should
-be able to name their models as they see fit.</p>
-<p>Inside that model directory, the designer will create a top-level <a class="reference internal" href="../glossary.html#term-SCAD"><span class="xref std std-term">SCAD</span></a>
-file, again named with the model name, that assembles the full model. The
-existence of this model file will be used to confirm that the directory
-contains a model specification.</p>
+  <p>Read time: 0.8 minutes (77 words)</p>
+<section id="math-magik-designer-cli">
+<h1>Math Magik Designer CLI<a class="headerlink" href="#math-magik-designer-cli" title="Permalink to this headline">¶</a></h1>
+<p>The <em>Math-Magik</em> design application, named <strong>mmd</strong>, can be launched as either a
+<a class="reference internal" href="../glossary.html#term-command-line"><span class="xref std std-term">command line</span></a> tool, or as a <a class="reference internal" href="../glossary.html#term-graphical-user-interface"><span class="xref std std-term">graphical user interface</span></a> tool.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>There can be other <a class="reference internal" href="../glossary.html#term-SCAD"><span class="xref std std-term">SCAD</span></a> files in the model directory, but they will
-be ignored by <strong>mmdesigner</strong>.</p>
+<p>The <a class="reference internal" href="../glossary.html#term-GUI"><span class="xref std std-term">GUI</span></a> version is undergoing development at present.</p>
 </div>
-<p>Inside the model directory, there will be a system of subdirectories within
-this directory defining how the model will be constructed.</p>
-<p>The designer should be able to specify a folder where a model will be managed.
-The directory containing a model design folder is called the <strong>model_path</strong></p>
-<p>The <strong>mmdesigner</strong> tool will accept a <strong>–path</strong> option that specifies the
-location of the parent directory containing the model directory we wish to work
-on. A second parameter, <strong>–model</strong> will be used to specify the model name. If
-that name contains spaces, it must be enclosed in quotes on the <a class="reference internal" href="../glossary.html#term-command-line"><span class="xref std std-term">command
-line</span></a>.</p>
-<p>To simplify things, the user can set an <a class="reference internal" href="../glossary.html#term-environment-variable"><span class="xref std std-term">environment variable</span></a>
-specifying both of these settings.</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>MMDESIGNER_PATH</strong> - path to model directories</p></li>
-<li><p><strong>MMDESIGNER_MODEL</strong> - current working model (below <strong>MMDESIGNER_PATH</strong>)</p></li>
-</ul>
-</div></blockquote>
+<section id="command-line-interface">
+<h2>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h2>
+<p>In this section, we will show the <strong>mmd</strong> application can be used in your model design work.</p>
+<p>First, just typing <strong>mmd</strong> on the <a class="reference internal" href="../glossary.html#term-command-line"><span class="xref std std-term">command line</span></a> will display a help
+message to show you all available commands and options that can be used.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ mmd
+mmdesigner version v0.1.9
+</pre></div>
+</div>
+<p>You can also ask for help explicitly”</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ mmd --help
+mmdesigner version v0.1.9
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -201,7 +187,7 @@ specifying both of these settings.</p>
         <li><a href="../index.html">Home</a>&#160;|</li>
         <li><a href="../contents.html">Documentation</a> &#187;</li>
 
-        <li class="nav-item nav-item-this"><a href="">Command Line Interface</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Math Magik Designer CLI</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

@@ -1,5 +1,6 @@
 sphinx
 sphinxcontrib-spelling
+sphinxcontrib-programoutput
 pytest
 click
 click-default-group
