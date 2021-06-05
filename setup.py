@@ -26,7 +26,7 @@ setup(
     author_email='roie.black@gmail.com',
     url='https://github.com/rblack42/math-magik',
     license='BSD',
-    version='0.1.9',
+    version='0.1.10',
     packages=['mmdesigner'],
 entry_points= {
         "console_scripts": [
