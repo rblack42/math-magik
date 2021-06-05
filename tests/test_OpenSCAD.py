@@ -28,7 +28,7 @@ def test_OSC_STL_bad_file():
     assert mgr.gen_stl("bad") == 1
 
 
-def test_OSC_STL_bd_stl_name():
+def test_OSC_STL_bad_stl_name():
     """Test error return on non-scad file name"""
     stl_file = "tests/test_data/spar.stl"
     mgr = OpenSCAD()

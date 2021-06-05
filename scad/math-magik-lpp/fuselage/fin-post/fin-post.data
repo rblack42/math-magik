@@ -1,0 +1,11 @@
+//#####################################
+// fin-post-data.scad
+// (c) 2021 by Roie R. Black
+//*************************************
+include <colors.scad>
+
+post_length = 7/16;
+tube_height = 5/16;
+post_size = 1/16;
+post_color = WOOD_Balsa;
+density = 5;

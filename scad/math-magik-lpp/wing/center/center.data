@@ -1,0 +1,17 @@
+//#####################################
+// center-data.scad
+// (c) 2021 by Roie R. Black
+//=====================================
+include <../wing.data>
+
+
+pos_le = [spar_size/2,0,0];
+pos_rib1 = [r1c/2 + spar_size,r1y-rib_thickness/2,-spar_size/2];
+pos_rib2 = [r2c/2 + spar_size,r2y,-spar_size/2];
+pos_rib3 = [r3c/2 + spar_size,r3y,-spar_size/2];
+pos_rib4 = [r4c/2 + spar_size,r4y,-spar_size/2];
+pos_rib5 = [r5c/2 + spar_size,r5y+rib_thickness/2,-spar_size/2];
+pos_te = [chord-spar_size/2,0,0];
+
+
+

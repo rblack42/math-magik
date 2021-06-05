@@ -53,6 +53,16 @@ class TreeWalker(object):
                     llist.append(path)
         return llist
 
+    def get_non_leaf_file_list(self):
+        nllist = []
+        for dirpath, dirnames, filenames in os.walk(self.model_path):
+            if len(dirnames) == 0: continue
+            for f in filenames:
+                path = os.path.abspath(os.path.join(dirpath, f))
+                if path.endswith(self.ext):
+                    nllist.append(path)
+        return nllist
+
     def process_files(self):
         """Run callback on all selected files"""
         files = self.get_file_list()

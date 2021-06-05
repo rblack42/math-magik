@@ -1,0 +1,13 @@
+//#####################################
+// prop_spar-data.scad
+// (c) 2021 by Roie R. Black
+//*************************************
+include <colors.scad>
+
+
+prop_spar_inner_radius = 1/32;
+prop_spar_outer_radius = 1/64;
+prop_spar_length = 4;
+
+density = 5.5;
+prop_spar_color = WOOD_Balsa;

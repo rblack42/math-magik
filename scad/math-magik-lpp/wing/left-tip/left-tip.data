@@ -1,0 +1,15 @@
+//#####################################
+// left-tip-data.scad
+// (c) 2021 by Roie R. Black
+//=====================================
+include <../wing.data>
+
+span = tip_span;
+radius = 2;
+density = 5;
+
+//-------------------------------------
+// calculated values
+
+le_length = span - radius;
+

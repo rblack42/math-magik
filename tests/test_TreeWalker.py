@@ -51,6 +51,13 @@ def test_leaf_file_list():
     files = tw.get_leaf_file_list()
     assert len(files) == 4
 
+def test_non_lesf_file_list():
+    """Test that non-leaf file list is correct"""
+    root = "tests/test_data/model"
+    tw = TreeWalker(root, "scad", "")
+    files = tw.get_non_leaf_file_list()
+    assert len(files) == 2
+
 def bump_count(path):
     global count
 

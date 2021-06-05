@@ -1,0 +1,11 @@
+//#####################################
+// front-wing-post-data.scad
+// (c) 2021 by Roie R. Black
+//*************************************
+include <../fuselage.data>
+include <colors.scad>
+
+stab_post_color = WOOD_Balsa;
+stab_post_height = 0.5;
+
+density = 5;

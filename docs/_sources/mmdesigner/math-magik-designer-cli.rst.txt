@@ -22,4 +22,13 @@ You can also ask for help explicitly"
 
 ..	command-output::	mmd --help
 
+Unfortunately, this help message does not show you everything about possible
+commands. The list of commands shown have additional parameters you can see by
+asking for help on them:
+
+..  command-output::    mmd stl --help
+
+Here the **-all** parameter will attempt to do a :term:`STL` files for the
+entire design. (This can take a while!)
+
 

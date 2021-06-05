@@ -1,0 +1,15 @@
+//#####################################
+// rear-wing-post-data.scad
+// (c) 2021 by Roie R. Black
+//*************************************
+include <../fuselage.data>
+include <colors.scad>
+
+post_color = WOOD_Balsa;
+
+//---------------------------------------
+// calculated values
+post_height = wing_elevation;
+
+density=5;
+

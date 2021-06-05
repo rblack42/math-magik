@@ -1,0 +1,23 @@
+//#####################################
+// prop-blade-data.scad
+// (c) 2021 by Roie R. Black
+//*************************************
+include <colors.scad>
+include <../constraints.data>
+
+// Propeller dimensions
+prop_radius = max_prop_diameter/2;
+prop_pitch_angle = 40;
+prop_blade_offset = 0.5;
+
+//-------------------------------------
+// calculated by analysis
+prop_forward_x = -1.3287;
+
+//------------------------------------
+// positioning data
+
+pos_blade1 = [0,0,prop_blade_offset,0,0,prop_pitch_angle];
+pos_blade2 = [0,0,-prop_blade_offset,180,0,-prop_pitch_angle];
+
+pos_wire_shaft = [-1/64,0,0];

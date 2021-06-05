@@ -136,7 +136,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <p>Read time: 0.8 minutes (77 words)</p>
+  <p>Read time: 1.2 minutes (123 words)</p>
 <section id="math-magik-designer-cli">
 <h1>Math Magik Designer CLI<a class="headerlink" href="#math-magik-designer-cli" title="Permalink to this headline">¶</a></h1>
 <p>The <em>Math-Magik</em> design application, named <strong>mmd</strong>, can be launched as either a
@@ -151,14 +151,38 @@
 <p>First, just typing <strong>mmd</strong> on the <a class="reference internal" href="../glossary.html#term-command-line"><span class="xref std std-term">command line</span></a> will display a help
 message to show you all available commands and options that can be used.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ mmd
-mmdesigner version v0.1.9
+Running... all=False
 </pre></div>
 </div>
 <p>You can also ask for help explicitly”</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ mmd --help
-mmdesigner version v0.1.9
+Usage: mmd [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  --version  Display version info and exit.
+  --help     Show this message and exit.
+
+Commands:
+  stl*     Generating part STL files
+  analyze  Analyze design
+  plan     Generate PDF templates
 </pre></div>
 </div>
+<p>Unfortunately, this help message does not show you everything about possible
+commands. The list of commands shown have additional parameters you can see by
+asking for help on them:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ mmd stl --help
+Usage: mmd stl [OPTIONS]
+
+  Generating part STL files
+
+Options:
+  --all   Force generating part and assembly STL files.
+  --help  Show this message and exit.
+</pre></div>
+</div>
+<p>Here the <strong>-all</strong> parameter will attempt to do a <a class="reference internal" href="../glossary.html#term-STL"><span class="xref std std-term">STL</span></a> files for the
+entire design. (This can take a while!)</p>
 </section>
 </section>
 

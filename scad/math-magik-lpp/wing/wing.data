@@ -1,0 +1,55 @@
+//#####################################
+// wing-data.scad
+// (c) 2021 by Roie R. Black
+//=====================================
+include <../constraints.data>
+include <MMlib/functions.scad>
+
+
+center_span = 12;
+chord = max_wing_chord;
+camber = 4;
+num_center_ribs = 5;
+spar_size = 1/16;
+rib_thickness = 1/32;
+
+//tip_dihedral = 1.75;
+tip_dihedral = 0;
+radius = 2;
+
+
+//=====================================
+// calculated values
+tip_projected_span = (max_projected_wing_span - center_span)/2;
+
+tip_angle = atan2(tip_dihedral, tip_projected_span);
+//tip_angle = 0;
+tip_span = tip_projected_span/cos(tip_angle);
+
+rib_spacing = center_span / num_center_ribs;
+
+r1c = chord - 2 * spar_size;
+r1y = -center_span/2 + spar_size/2;
+
+r2c = r1c;
+r2y = -center_span/4 + spar_size/2;
+
+r3c = r1c;
+r3y = 0;
+
+r4c = r2c;
+r4y = -r2y;
+
+r5c = r1c;
+r5y = -r1y;
+
+rib_radius = radius(r1c, camber);
+
+
+//==========================================
+// wing positioning data
+
+pos1 = [0,center_span/2,spar_size/2,180+tip_angle,0,0];
+pos2 = [0,-center_span/2,-spar_size/2,-tip_angle,0,0];
+pos3 = [-1/32-1/64,0,-1/32];
+pos4 = [5+1/32+1/64,0,-1/32];

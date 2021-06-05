@@ -1,0 +1,14 @@
+//#####################################
+// right-tip-data.scad
+// (c) 2021 by Roie R. Black
+//=====================================
+include <../stab.data>
+
+stab_tip_span = tip_span;
+radius = 2;
+
+//-------------------------------------
+// calculated values
+
+tip_le_length = stab_tip_span - radius;
+
