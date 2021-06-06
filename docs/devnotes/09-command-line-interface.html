@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Step 9: Command Line Interface &#8212; Math Magik 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinx13.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx13.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/a4_railroad_diagram.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Contributing" href="../develop.html" />
+    <link rel="prev" title="Step 8: Walking the Model Tree" href="08-tree-walker.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script>
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../usage/installation.html">Get it</a></li>
+    <li><a href="../contents.html">Docs</a></li>
+    <li><a href="../develop.html">Extend/Develop</a></li>
+  </ul>
+  <div>
+    <a href="../index.html">
+      <img src="../_static/logo.png" alt="PyLiT" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../develop.html" title="Contributing"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="08-tree-walker.html" title="Step 8: Walking the Model Tree"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Home</a>&#160;|</li>
+        <li><a href="../contents.html">Documentation</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">Step 9: Command Line Interface</a></li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../contents.html">
+              <img class="logo" src="../_static/badge.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../contents.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Step 9: Command Line Interface</a><ul>
+<li><a class="reference internal" href="#cli-setup">CLI Setup</a></li>
+<li><a class="reference internal" href="#create-the-entry-point">Create the Entry Point</a></li>
+<li><a class="reference internal" href="#command-flow">Command Flow</a><ul>
+<li><a class="reference internal" href="#basic-command-format">Basic Command Format</a></li>
+<li><a class="reference internal" href="#program-commands">Program Commands</a><ul>
+<li><a class="reference internal" href="#versions">Versions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#stl">STL</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#center-of-gravity">Center of Gravity</a></li>
+<li><a class="reference internal" href="#excel">Excel</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="08-tree-walker.html"
+                        title="previous chapter">Step 8: Walking the Model Tree</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../develop.html"
+                        title="next chapter">Contributing</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/devnotes/09-command-line-interface.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>Read time: 7.5 minutes (745 words)</p>
+<section id="step-9-command-line-interface">
+<h1>Step 9: Command Line Interface<a class="headerlink" href="#step-9-command-line-interface" title="Permalink to this headline">¶</a></h1>
+<p>At this point, we have enough parts to tie things together with a <a class="reference internal" href="../glossary.html#term-command-line-interface"><span class="xref std std-term">command line
+interface</span></a>. This will make the application useful enough to release.</p>
+<p>There are a number of ways to build a <a class="reference internal" href="../glossary.html#term-CLI"><span class="xref std std-term">CLI</span></a> in Python. For this project,
+we will use the <a class="reference external" href="https://palletsprojects.com/p/click/">Click</a> package to simplify the code needed.</p>
+<section id="cli-setup">
+<h2>CLI Setup<a class="headerlink" href="#cli-setup" title="Permalink to this headline">¶</a></h2>
+<p>The first thing we need to do is establish how this application will be
+configured for the user. Basically, we will add code to the <strong>mmdesigner</strong>
+package that can be activated this way:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ python -m mmdesigner
+</pre></div>
+</div>
+<p>This will start up the basic application. The full application will accept a
+number of arguments after that command to define exactly what we want to
+happen. We will get to that. For now, let’s set up the code to respond to the
+user what the basic command is used</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Real users will not need to type n this command, we will simplify things
+greatly later.</p>
+</div>
+</section>
+<section id="create-the-entry-point">
+<h2>Create the Entry Point<a class="headerlink" href="#create-the-entry-point" title="Permalink to this headline">¶</a></h2>
+<p>We will be writing a single file, <strong>cli.py</strong>, which will define the entry point
+for the application. That entry point will be a function named <strong>cli</strong>. To
+launch that method, we need to add a <strong>__main__.py</strong> file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">.cli</span> <span class="kn">import</span> <span class="n">cli</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="c1"># python -m mmdesigner</span>
+<span class="linenos">4</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="linenos">5</span>    <span class="n">cli</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This file will be activated by <em>Python</em> when we run the command shown above.</p>
+</section>
+<section id="command-flow">
+<h2>Command Flow<a class="headerlink" href="#command-flow" title="Permalink to this headline">¶</a></h2>
+<p>We will show the command line options using a <a class="reference internal" href="../glossary.html#term-railroad-diagram"><span class="xref std std-term">railroad diagram</span></a>
+commonly used when defining languages. They look a bit like model railroad
+tracks, with switches and loops. The basic idea is simple enough. You will see
+a number of diagrams, each defining a rule of some kind. The top-level rule is
+where you start. You start “traveling” along that top-level rule. If you
+encounter a rounded box, you type exactly what is seen in the box. If you
+encounter a switch (branch) you can choose to go either way. If you encounter a
+rectangular box, well there is another rule you jump to and follow that track
+until you get to the end. Return to the rule you left to get to this rule. When
+you get to the end of the top-level rule, the command is complete: press
+<kbd class="kbd docutils literal notranslate">Enter</kbd></p>
+<section id="basic-command-format">
+<h3>Basic Command Format<a class="headerlink" href="#basic-command-format" title="Permalink to this headline">¶</a></h3>
+<p>Here is our top-level rule:</p>
+<p class="railroad-diagram-container"><svg class="railroad-diagram" height="42" viewBox="0 0 378 42" width="378" data-dbg-cls="Element" data-dbg-w="0"><g data-dbg-cls="Element" data-dbg-w="0"><g data-dbg-cls="Sequence" data-dbg-w="376"><path d="M1 21h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M377 21h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M1 21h20m-20 -10v20" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M21 21h10" data-dbg-cls="Path" data-dbg-w="0"></path><g class="node terminal" data-dbg-cls="Node" data-dbg-w="46"><path d="M31 21h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M77 21h0" data-dbg-cls="Path" data-dbg-w="0"></path><rect height="22" rx="10" ry="10" width="46" x="31" y="10" data-dbg-cls="Element" data-dbg-w="0"></rect><text x="54.0" y="21" data-dbg-cls="Element" data-dbg-w="0">mmd</text></g><path d="M77 21h10" data-dbg-cls="Path" data-dbg-w="0"></path><g data-dbg-cls="Choice" data-dbg-w="131"><path d="M87 21h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M218 21h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M87 21a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M198 1a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M107 1h91" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M87 21h20" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M198 21h20" data-dbg-cls="Path" data-dbg-w="0"></path><g data-dbg-cls="OneOrMore" data-dbg-w="91"><path d="M107 21h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M198 21h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M107 21h10" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M188 21h10" data-dbg-cls="Path" data-dbg-w="0"></path><g class="node non-terminal" data-dbg-cls="Node" data-dbg-w="71"><path d="M117 21h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M188 21h0" data-dbg-cls="Path" data-dbg-w="0"></path><rect height="22" rx="0" ry="0" width="71" x="117" y="10" data-dbg-cls="Element" data-dbg-w="0"></rect><text x="152.5" y="21" data-dbg-cls="Element" data-dbg-w="0">option</text></g><path d="M117 21a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M188 21a10 10 0 0 1 10 10v0a10 10 0 0 1 -10 10" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M117 41h71" data-dbg-cls="Path" data-dbg-w="0"></path></g></g><g data-dbg-cls="Choice" data-dbg-w="139"><path d="M218 21h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M357 21h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M218 21a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M337 1a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M238 1h99" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M218 21h20" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M337 21h20" data-dbg-cls="Path" data-dbg-w="0"></path><g data-dbg-cls="OneOrMore" data-dbg-w="99"><path d="M238 21h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M337 21h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M238 21h10" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M327 21h10" data-dbg-cls="Path" data-dbg-w="0"></path><g class="node non-terminal" data-dbg-cls="Node" data-dbg-w="79"><path d="M248 21h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M327 21h0" data-dbg-cls="Path" data-dbg-w="0"></path><rect height="22" rx="0" ry="0" width="79" x="248" y="10" data-dbg-cls="Element" data-dbg-w="0"></rect><text x="287.5" y="21" data-dbg-cls="Element" data-dbg-w="0">command</text></g><path d="M248 21a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M327 21a10 10 0 0 1 10 10v0a10 10 0 0 1 -10 10" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M248 41h79" data-dbg-cls="Path" data-dbg-w="0"></path></g></g><path d="M357 21h20m0 -10v20" data-dbg-cls="Path" data-dbg-w="0"></path></g></g></svg></p><p>According to this rule, we can have zero or more options, and zero or more commands.</p>
+<p>Now, lets define the options:</p>
+<p class="railroad-diagram-container"><svg class="railroad-diagram" height="54" viewBox="0 0 161 54" width="161" data-dbg-cls="Element" data-dbg-w="0"><g data-dbg-cls="Element" data-dbg-w="0"><g data-dbg-cls="Sequence" data-dbg-w="159"><path d="M1 12h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M160 12h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M1 12h20m-20 -10v20" data-dbg-cls="Path" data-dbg-w="0"></path><g data-dbg-cls="Choice" data-dbg-w="119"><path d="M21 12h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M140 12h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M21 12h20" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M120 12h20" data-dbg-cls="Path" data-dbg-w="0"></path><g class="node terminal" data-dbg-cls="Node" data-dbg-w="71"><path d="M41 12h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M112 12h8" data-dbg-cls="Path" data-dbg-w="0"></path><rect height="22" rx="10" ry="10" width="71" x="41" y="1" data-dbg-cls="Element" data-dbg-w="0"></rect><text x="76.5" y="12" data-dbg-cls="Element" data-dbg-w="0">--help</text></g><path d="M21 12a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M120 42a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10" data-dbg-cls="Path" data-dbg-w="0"></path><g class="node terminal" data-dbg-cls="Node" data-dbg-w="79"><path d="M41 42h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M120 42h0" data-dbg-cls="Path" data-dbg-w="0"></path><rect height="22" rx="10" ry="10" width="79" x="41" y="31" data-dbg-cls="Element" data-dbg-w="0"></rect><text x="80.5" y="42" data-dbg-cls="Element" data-dbg-w="0">--debug</text></g></g><path d="M140 12h20m0 -10v20" data-dbg-cls="Path" data-dbg-w="0"></path></g></g></svg></p><p>The only options we support are specified using two dashes followed (no spaces by either:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>help - display a help message and exit</p></li>
+<li><p>debug - enable debug output (not normally needed, but handy when things
+go wrong).</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="program-commands">
+<h3>Program Commands<a class="headerlink" href="#program-commands" title="Permalink to this headline">¶</a></h3>
+<p>Here are the supported commands:</p>
+<p class="railroad-diagram-container"><svg class="railroad-diagram" height="219" viewBox="0 0 417 219" width="417" data-dbg-cls="Element" data-dbg-w="0"><g data-dbg-cls="Element" data-dbg-w="0"><g data-dbg-cls="Sequence" data-dbg-w="415"><path d="M1 21h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M416 21h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M1 21h20m-20 -10v20" data-dbg-cls="Path" data-dbg-w="0"></path><g data-dbg-cls="Choice" data-dbg-w="375"><path d="M21 21h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M396 21h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M21 21a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M376 1a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M41 1h335" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M21 21h20" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M376 21h20" data-dbg-cls="Path" data-dbg-w="0"></path><g data-dbg-cls="Choice" data-dbg-w="335"><path d="M41 21h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M376 21h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M41 21h20" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M356 21h20" data-dbg-cls="Path" data-dbg-w="0"></path><g class="node terminal" data-dbg-cls="Node" data-dbg-w="88"><path d="M61 21h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M149 21h207" data-dbg-cls="Path" data-dbg-w="0"></path><rect height="22" rx="10" ry="10" width="88" x="61" y="10" data-dbg-cls="Element" data-dbg-w="0"></rect><text x="105.0" y="21" data-dbg-cls="Element" data-dbg-w="0">versions</text></g><path d="M41 21a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M356 51a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10" data-dbg-cls="Path" data-dbg-w="0"></path><g class="node terminal" data-dbg-cls="Node" data-dbg-w="79"><path d="M61 51h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M140 51h216" data-dbg-cls="Path" data-dbg-w="0"></path><rect height="22" rx="10" ry="10" width="79" x="61" y="40" data-dbg-cls="Element" data-dbg-w="0"></rect><text x="100.5" y="51" data-dbg-cls="Element" data-dbg-w="0">summary</text></g><path d="M41 21a10 10 0 0 1 10 10v49a10 10 0 0 0 10 10" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M356 90a10 10 0 0 0 10 -10v-49a10 10 0 0 1 10 -10" data-dbg-cls="Path" data-dbg-w="0"></path><g data-dbg-cls="Sequence" data-dbg-w="220"><path d="M61 90h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M281 90h75" data-dbg-cls="Path" data-dbg-w="0"></path><g class="node terminal" data-dbg-cls="Node" data-dbg-w="46"><path d="M61 90h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M107 90h0" data-dbg-cls="Path" data-dbg-w="0"></path><rect height="22" rx="10" ry="10" width="46" x="61" y="79" data-dbg-cls="Element" data-dbg-w="0"></rect><text x="84.0" y="90" data-dbg-cls="Element" data-dbg-w="0">stl</text></g><path d="M107 90h10" data-dbg-cls="Path" data-dbg-w="0"></path><g data-dbg-cls="Choice" data-dbg-w="164"><path d="M117 90h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M281 90h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M117 90a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M261 70a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M137 70h124" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M117 90h20" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M261 90h20" data-dbg-cls="Path" data-dbg-w="0"></path><g data-dbg-cls="OneOrMore" data-dbg-w="124"><path d="M137 90h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M261 90h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M137 90h10" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M251 90h10" data-dbg-cls="Path" data-dbg-w="0"></path><g class="node non-terminal" data-dbg-cls="Node" data-dbg-w="104"><path d="M147 90h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M251 90h0" data-dbg-cls="Path" data-dbg-w="0"></path><rect height="22" rx="0" ry="0" width="104" x="147" y="79" data-dbg-cls="Element" data-dbg-w="0"></rect><text x="199.0" y="90" data-dbg-cls="Element" data-dbg-w="0">stl&#95;option</text></g><path d="M147 90a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M251 90a10 10 0 0 1 10 10v0a10 10 0 0 1 -10 10" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M147 110h104" data-dbg-cls="Path" data-dbg-w="0"></path></g></g></g><path d="M41 21a10 10 0 0 1 10 10v97a10 10 0 0 0 10 10" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M356 138a10 10 0 0 0 10 -10v-97a10 10 0 0 1 10 -10" data-dbg-cls="Path" data-dbg-w="0"></path><g data-dbg-cls="Sequence" data-dbg-w="295"><path d="M61 138h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M356 138h0" data-dbg-cls="Path" data-dbg-w="0"></path><g class="node terminal" data-dbg-cls="Node" data-dbg-w="104"><path d="M61 138h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M165 138h0" data-dbg-cls="Path" data-dbg-w="0"></path><rect height="22" rx="10" ry="10" width="104" x="61" y="127" data-dbg-cls="Element" data-dbg-w="0"></rect><text x="113.0" y="138" data-dbg-cls="Element" data-dbg-w="0">properties</text></g><path d="M165 138h10" data-dbg-cls="Path" data-dbg-w="0"></path><g data-dbg-cls="Choice" data-dbg-w="181"><path d="M175 138h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M356 138h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M175 138a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M336 118a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M195 118h141" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M175 138h20" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M336 138h20" data-dbg-cls="Path" data-dbg-w="0"></path><g data-dbg-cls="OneOrMore" data-dbg-w="141"><path d="M195 138h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M336 138h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M195 138h10" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M326 138h10" data-dbg-cls="Path" data-dbg-w="0"></path><g class="node non-terminal" data-dbg-cls="Node" data-dbg-w="121"><path d="M205 138h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M326 138h0" data-dbg-cls="Path" data-dbg-w="0"></path><rect height="22" rx="0" ry="0" width="121" x="205" y="127" data-dbg-cls="Element" data-dbg-w="0"></rect><text x="265.5" y="138" data-dbg-cls="Element" data-dbg-w="0">prop&#95;options</text></g><path d="M205 138a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M326 138a10 10 0 0 1 10 10v0a10 10 0 0 1 -10 10" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M205 158h121" data-dbg-cls="Path" data-dbg-w="0"></path></g></g></g><path d="M41 21a10 10 0 0 1 10 10v136a10 10 0 0 0 10 10" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M356 177a10 10 0 0 0 10 -10v-136a10 10 0 0 1 10 -10" data-dbg-cls="Path" data-dbg-w="0"></path><g class="node terminal" data-dbg-cls="Node" data-dbg-w="46"><path d="M61 177h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M107 177h249" data-dbg-cls="Path" data-dbg-w="0"></path><rect height="22" rx="10" ry="10" width="46" x="61" y="166" data-dbg-cls="Element" data-dbg-w="0"></rect><text x="84.0" y="177" data-dbg-cls="Element" data-dbg-w="0">cog</text></g><path d="M41 21a10 10 0 0 1 10 10v166a10 10 0 0 0 10 10" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M356 207a10 10 0 0 0 10 -10v-166a10 10 0 0 1 10 -10" data-dbg-cls="Path" data-dbg-w="0"></path><g class="node terminal" data-dbg-cls="Node" data-dbg-w="62"><path d="M61 207h0" data-dbg-cls="Path" data-dbg-w="0"></path><path d="M123 207h233" data-dbg-cls="Path" data-dbg-w="0"></path><rect height="22" rx="10" ry="10" width="62" x="61" y="196" data-dbg-cls="Element" data-dbg-w="0"></rect><text x="92.0" y="207" data-dbg-cls="Element" data-dbg-w="0">excel</text></g></g></g><path d="M396 21h20m0 -10v20" data-dbg-cls="Path" data-dbg-w="0"></path></g></g></svg></p><section id="versions">
+<h4>Versions<a class="headerlink" href="#versions" title="Permalink to this headline">¶</a></h4>
+<p>This command displays the program version, and the version data for <a class="reference external" href="https://openscad.org/">OpenSCAD</a>,
+<a class="reference external" href="https://www.python.org/"><em>Python</em></a>,  and <a class="reference external" href="https://pypi.org/project/numpy-stl/">numpy-stl</a> required to perform analysis work on the design.</p>
+</section>
+</section>
+<section id="stl">
+<h3>STL<a class="headerlink" href="#stl" title="Permalink to this headline">¶</a></h3>
+<p>This command runs <em>OpenSCAD</em> to generate <a class="reference internal" href="../glossary.html#term-STL"><span class="xref std std-term">STL</span></a> files. Normally, only part
+files are processed. However adding an <strong>–all</strong> option will force generation
+of <a class="reference internal" href="../glossary.html#term-STL"><span class="xref std std-term">STL</span></a> files for assemblies as well. Be warned that these can take some
+time to generate, and may fail if your design is not well structured.</p>
+<p>Some parts may take some time to process. For that reason, the program
+calculates a hash code for each part <a class="reference internal" href="../glossary.html#term-SCAD"><span class="xref std std-term">SCAD</span></a> file, and checks that code when
+asked to generate an <a class="reference internal" href="../glossary.html#term-STL"><span class="xref std std-term">STL</span></a> file. If the hash code has not been changed,
+indicating a change in the design, then a new <a class="reference internal" href="../glossary.html#term-STL"><span class="xref std std-term">STL</span></a> file will not be
+produced.</p>
+</section>
+<section id="properties">
+<h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<p>Generating the properties of all the design parts requires having generated
+<a class="reference internal" href="../glossary.html#term-STL"><span class="xref std std-term">STL</span></a> files first. If you ask for properties and the <a class="reference internal" href="../glossary.html#term-STL"><span class="xref std std-term">STL</span></a> file is
+missing, it will be generated.  Normally, this command just processes part
+files, however you can add an <strong>–all</strong> option after the command to force
+generating properties for assemblies as well. The center of gravity
+calculations for assemblies will be wrong initially since <em>OpenSCAD</em> assumes all
+materials have a unit density. The <strong>cog</strong> command generates a correct estimate
+of the center of gravity based on design densities recorded for each part.</p>
+</section>
+<section id="center-of-gravity">
+<h3>Center of Gravity<a class="headerlink" href="#center-of-gravity" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>cog</strong> command examines the material properties specified for each part
+and calculates the correct center of gravity for the complete design. This
+command also calculates the moment of inertial tensor for the design, however
+that data is not used at present. It will be used in performance analysis to be
+added to this project later.</p>
+</section>
+<section id="excel">
+<h3>Excel<a class="headerlink" href="#excel" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>excel</strong> command generates an Excel spreadsheet containing all the
+property data for parts and assemblies found in the design. Be careful with
+this spreadsheet.  It is not formatted nicely, and any changes you make to it
+will be lost when you run this command again. I suggest copying it to another
+place on your system if you want to modify it.</p>
+<p>The spreadsheet will set up the calculations needed to determine the center of
+gravity. If the design material properties have been set, those will be
+included in the spreadsheet. Otherwise a unit density will be used in the
+spreadsheet.</p>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../develop.html" title="Contributing"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="08-tree-walker.html" title="Step 8: Walking the Model Tree"
+             >previous</a> |</li>
+        <li><a href="../index.html">Home</a>&#160;|</li>
+        <li><a href="../contents.html">Documentation</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">Step 9: Command Line Interface</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Roie R. Black.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+    </div>
+  </body>
+</html>

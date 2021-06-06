@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx13.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/a4_railroad_diagram.css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -195,7 +196,7 @@ a test to check that.</p>
 <span class="linenos">28</span>    <span class="k">assert</span> <span class="n">mgr</span><span class="o">.</span><span class="n">gen_stl</span><span class="p">(</span><span class="s2">&quot;bad&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
 <span class="linenos">29</span>
 <span class="linenos">30</span>
-<span class="linenos">31</span><span class="k">def</span> <span class="nf">test_OSC_STL_bd_stl_name</span><span class="p">():</span>
+<span class="linenos">31</span><span class="k">def</span> <span class="nf">test_OSC_STL_bad_stl_name</span><span class="p">():</span>
 <span class="linenos">32</span>    <span class="sd">&quot;&quot;&quot;Test error return on non-scad file name&quot;&quot;&quot;</span>
 <span class="linenos">33</span>    <span class="n">stl_file</span> <span class="o">=</span> <span class="s2">&quot;tests/test_data/spar.stl&quot;</span>
 <span class="linenos">34</span>    <span class="n">mgr</span> <span class="o">=</span> <span class="n">OpenSCAD</span><span class="p">()</span>
@@ -249,7 +250,7 @@ research, but i finally managed to get things working.</p>
 <section id="test-openscad-stl-generation">
 <h3>Test OpenSCAD STL Generation<a class="headerlink" href="#test-openscad-stl-generation" title="Permalink to this headline">¶</a></h3>
 <p>Our next task involves getting OpenSCAD to generate an <a class="reference internal" href="../glossary.html#term-STL"><span class="xref std std-term">STL</span></a> file from
-the associated <a class="reference internal" href="../glossary.html#term-SCAD"><span class="xref std std-term">SCAD</span></a> file.</p>
+the associated <span class="xref std std-term">SCAD</span> file.</p>
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-text">mmdesigner/OpenSCAD.py</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>        <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">&#39;openscad&#39;</span><span class="p">,</span><span class="s1">&#39;--version&#39;</span><span class="p">],</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>

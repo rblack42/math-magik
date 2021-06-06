@@ -11,9 +11,17 @@ Glossary
         system provide a variety of services: web pages, data storage,
         applications. I guess "cloud" is easier to type then "Internet".
 
+
     command line
         A user interface where you type in commands to get the operating system
         to run some program or command. Available on all systems.
+
+    CLI
+    command line interface
+        The application code that provides a way fr the user to control how an
+        application runs. This interface provides for basic commands and
+        optional arguments that define exactly what features of the program
+        will be activated.
 
     command prompt
         When you open a :term:`command line` window, you are shown a "command
@@ -57,14 +65,18 @@ Glossary
     PDF
         Portable Document format. A standard document format developed by Adobe.
 
-    SCAD
-        Code file extension for *OpenSCAD*
+    railroad diagram
+        A graphical depiction of a grammar rule, commonly used  in designing
+        programming languages.  SCAD Code file extension for *OpenSCAD*
 
     STL
         Standard Tessellation Language
 
     TDD
         Test Driven Development
+
+    SCAD
+        A file containing code for |OSC| to process. These files end with **.scad**.
 
     Script
         A text file containing instructions for the operating system. The

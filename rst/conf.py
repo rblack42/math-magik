@@ -29,7 +29,11 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinxcontrib.spelling',
     'sphinxcontrib.programoutput',
+    'sphinx_a4doc',
 ]
+
+from os.path import dirname
+a4_base_path = dirname(__file__) + 'grammars'
 
 linkckeck_timeout = 3
 linkcheck_retries = 2

@@ -138,3 +138,9 @@ def summary(ctx):
         click.echo(f"\t\t{asm_name}")
         sys.exit(0)
 
+@cli.command(help="Generate design Excel spreadsheet.")
+@pass_environment
+def gen_excel(ctx):
+    inv_path = os.path.join(ctx.model_path, ctx.model_name)
+    gen = Generator(inv_path)
+    gen.gen_excel(ctx.model_name)

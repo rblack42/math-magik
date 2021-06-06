@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx13.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/a4_railroad_diagram.css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -151,7 +152,68 @@
 <p>First, just typing <strong>mmd</strong> on the <a class="reference internal" href="../glossary.html#term-command-line"><span class="xref std std-term">command line</span></a> will display a help
 message to show you all available commands and options that can be used.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ mmd
-Running... all=False
+Generating inventory:
+	Model Path: /Users/rblack/_dev/math-magik/scad, Model name: math-magik-lpp
+	Parts list:
+		/prop/prop-blade-2/prop-blade-2.scad
+		/prop/prop-blade-1/prop-blade-1.scad
+		/prop/wire-shaft/wire-shaft.scad
+		/prop/prop-spar/prop-spar.scad
+		/stab/center/rib1/rib1.scad
+		/stab/center/le/le.scad
+		/stab/center/te/te.scad
+		/stab/center/center-covering/center-covering.scad
+		/stab/center/rib2/rib2.scad
+		/stab/center/rib3/rib3.scad
+		/stab/left-tip/rib1/rib1.scad
+		/stab/left-tip/le/le.scad
+		/stab/left-tip/te/te.scad
+		/stab/left-tip/left-tip-covering/left-tip-covering.scad
+		/stab/left-tip/rib2/rib2.scad
+		/stab/left-tip/arc/arc.scad
+		/stab/right-tip/rib1/rib1.scad
+		/stab/right-tip/le/le.scad
+		/stab/right-tip/te/te.scad
+		/stab/right-tip/right-tip-covering/right-tip-covering.scad
+		/stab/right-tip/rib2/rib2.scad
+		/stab/right-tip/arc/arc.scad
+		/fuselage/fin/rib1/rib1.scad
+		/fuselage/fin/fin-covering/fin-covering.scad
+		/fuselage/fin/le/le.scad
+		/fuselage/fin/te/te.scad
+		/fuselage/fin/rib2/rib2.scad
+		/fuselage/fin/arc/arc.scad
+		/fuselage/fin-post/fin-post.scad
+		/fuselage/tail-boom/tail-boom.scad
+		/fuselage/rear-hook/rear-hook.scad
+		/fuselage/thrust-bearing/thrust-bearing.scad
+		/fuselage/front-stab-post/front-stab-post.scad
+		/fuselage/front-wing-post/front-wing-post.scad
+		/fuselage/rear-stab-post/rear-stab-post.scad
+		/fuselage/rear-wing-post/rear-wing-post.scad
+		/fuselage/motor-stick/motor-stick.scad
+		/wing/center/rib1/rib1.scad
+		/wing/center/le/le.scad
+		/wing/center/te/te.scad
+		/wing/center/center-covering/center-covering.scad
+		/wing/center/rib5/rib5.scad
+		/wing/center/rib2/rib2.scad
+		/wing/center/rib3/rib3.scad
+		/wing/center/rib4/rib4.scad
+		/wing/left-tip/rib1/rib1.scad
+		/wing/left-tip/le/le.scad
+		/wing/left-tip/te/te.scad
+		/wing/left-tip/left-tip-covering/left-tip-covering.scad
+		/wing/left-tip/rib2/rib2.scad
+		/wing/left-tip/arc/arc.scad
+		/wing/right-tip/rib1/rib1.scad
+		/wing/right-tip/le/le.scad
+		/wing/right-tip/te/te.scad
+		/wing/right-tip/right-tip-covering/right-tip-covering.scad
+		/wing/right-tip/rib2/rib2.scad
+		/wing/right-tip/arc/arc.scad
+	Assembly list:
+		/math-magik-lpp.scad
 </pre></div>
 </div>
 <p>You can also ask for help explicitly”</p>
@@ -159,13 +221,17 @@ Running... all=False
 Usage: mmd [OPTIONS] COMMAND [ARGS]...
 
 Options:
-  --version  Display version info and exit.
-  --help     Show this message and exit.
+  --versions         Display version info and exit.
+  --model_path TEXT  Path to directory containing model to work on.
+  --model_name TEXT  Name of model in model_path to work on.
+  --help             Show this message and exit.
 
 Commands:
-  stl*     Generating part STL files
-  analyze  Analyze design
-  plan     Generate PDF templates
+  summary*   Display model summary
+  analyze    Analyze design
+  gen-excel  Generate design Excel spreadsheet.
+  plan       Generate PDF templates
+  stl        Generating part STL files
 </pre></div>
 </div>
 <p>Unfortunately, this help message does not show you everything about possible
@@ -178,6 +244,7 @@ Usage: mmd stl [OPTIONS]
 
 Options:
   --all   Force generating part and assembly STL files.
+  --inv   Generate inventory list.
   --help  Show this message and exit.
 </pre></div>
 </div>

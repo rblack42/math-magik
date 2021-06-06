@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx13.css" />
+    <link rel="stylesheet" type="text/css" href="_static/a4_railroad_diagram.css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -121,6 +122,7 @@
  | <a href="#M"><strong>M</strong></a>
  | <a href="#O"><strong>O</strong></a>
  | <a href="#P"><strong>P</strong></a>
+ | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
  | <a href="#T"><strong>T</strong></a>
  | <a href="#V"><strong>V</strong></a>
@@ -136,15 +138,21 @@
 </li>
       <li><a href="code/TreeWalker.html#mmdesigner.TreeWalker.TreeWalker.check_path">check_path() (mmdesigner.TreeWalker.TreeWalker method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="code/TreeWalker.html#mmdesigner.TreeWalker.TreeWalker.clean">clean() (mmdesigner.TreeWalker.TreeWalker method)</a>
 </li>
+      <li><a href="glossary.html#term-CLI"><strong>CLI</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="glossary.html#term-cloud"><strong>cloud</strong></a>
 </li>
       <li><a href="glossary.html#term-command-line"><strong>command line</strong></a>
 </li>
+      <li><a href="glossary.html#term-command-line-interface"><strong>command line interface</strong></a>
+</li>
       <li><a href="glossary.html#term-command-prompt"><strong>command prompt</strong></a>
+</li>
+      <li><a href="code/Generator.html#mmdesigner.Generator.Generator.copy_json">copy_json() (mmdesigner.Generator.Generator method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -172,7 +180,17 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="code/OpenSCAD.html#mmdesigner.OpenSCAD.OpenSCAD.gen_stl">gen_stl() (mmdesigner.OpenSCAD.OpenSCAD method)</a>
+      <li><a href="code/Generator.html#mmdesigner.Generator.Generator.gen_excel">gen_excel() (mmdesigner.Generator.Generator method)</a>
+</li>
+      <li><a href="code/Generator.html#mmdesigner.Generator.Generator.gen_properties">gen_properties() (mmdesigner.Generator.Generator method)</a>
+</li>
+      <li><a href="code/Generator.html#mmdesigner.Generator.Generator.gen_stl">gen_stl() (mmdesigner.Generator.Generator method)</a>
+
+      <ul>
+        <li><a href="code/OpenSCAD.html#mmdesigner.OpenSCAD.OpenSCAD.gen_stl">(mmdesigner.OpenSCAD.OpenSCAD method)</a>
+</li>
+      </ul></li>
+      <li><a href="code/Generator.html#mmdesigner.Generator.Generator.generate_all">generate_all() (mmdesigner.Generator.Generator method)</a>
 </li>
       <li><a href="code/Generator.html#mmdesigner.Generator.Generator">Generator (class in mmdesigner.Generator)</a>
 </li>
@@ -180,12 +198,12 @@
 </li>
       <li><a href="code/TreeWalker.html#mmdesigner.TreeWalker.TreeWalker.get_callback">get_callback() (mmdesigner.TreeWalker.TreeWalker method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="code/TreeWalker.html#mmdesigner.TreeWalker.TreeWalker.get_extension">get_extension() (mmdesigner.TreeWalker.TreeWalker method)</a>
 </li>
       <li><a href="code/TreeWalker.html#mmdesigner.TreeWalker.TreeWalker.get_file_list">get_file_list() (mmdesigner.TreeWalker.TreeWalker method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="code/TreeWalker.html#mmdesigner.TreeWalker.TreeWalker.get_leaf_file_list">get_leaf_file_list() (mmdesigner.TreeWalker.TreeWalker method)</a>
 </li>
       <li><a href="code/TreeWalker.html#mmdesigner.TreeWalker.TreeWalker.get_model_path">get_model_path() (mmdesigner.TreeWalker.TreeWalker method)</a>
@@ -317,6 +335,16 @@
 </li>
       <li><a href="code/TreeWalker.html#mmdesigner.TreeWalker.TreeWalker.process_leaf_files">process_leaf_files() (mmdesigner.TreeWalker.TreeWalker method)</a>
 </li>
+      <li><a href="code/Generator.html#mmdesigner.Generator.Generator.process_parts">process_parts() (mmdesigner.Generator.Generator method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-railroad-diagram"><strong>railroad diagram</strong></a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -365,9 +393,11 @@
 </li>
       <li><a href="code/unit-tests.html#tests.test_TreeWalker.test_model_file_list">test_model_file_list() (in module tests.test_TreeWalker)</a>
 </li>
+      <li><a href="code/unit-tests.html#tests.test_TreeWalker.test_non_lesf_file_list">test_non_lesf_file_list() (in module tests.test_TreeWalker)</a>
+</li>
       <li><a href="code/unit-tests.html#tests.test_OpenSCAD.test_OSC_STL_bad_file">test_OSC_STL_bad_file() (in module tests.test_OpenSCAD)</a>
 </li>
-      <li><a href="code/unit-tests.html#tests.test_OpenSCAD.test_OSC_STL_bd_stl_name">test_OSC_STL_bd_stl_name() (in module tests.test_OpenSCAD)</a>
+      <li><a href="code/unit-tests.html#tests.test_OpenSCAD.test_OSC_STL_bad_stl_name">test_OSC_STL_bad_stl_name() (in module tests.test_OpenSCAD)</a>
 </li>
       <li><a href="code/unit-tests.html#tests.test_OpenSCAD.test_OSC_STL_generator">test_OSC_STL_generator() (in module tests.test_OpenSCAD)</a>
 </li>
@@ -375,10 +405,10 @@
 </li>
       <li><a href="code/unit-tests.html#tests.test_TreeWalker.test_process_files">test_process_files() (in module tests.test_TreeWalker)</a>
 </li>
-      <li><a href="code/unit-tests.html#tests.test_TreeWalker.test_process_leaf_files">test_process_leaf_files() (in module tests.test_TreeWalker)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="code/unit-tests.html#tests.test_TreeWalker.test_process_leaf_files">test_process_leaf_files() (in module tests.test_TreeWalker)</a>
+</li>
       <li><a href="code/unit-tests.html#tests.test_TreeWalker.test_treewalker_callback">test_treewalker_callback() (in module tests.test_TreeWalker)</a>
 </li>
       <li><a href="code/unit-tests.html#tests.test_TreeWalker.test_treewalker_extension">test_treewalker_extension() (in module tests.test_TreeWalker)</a>

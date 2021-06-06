@@ -10,6 +10,7 @@ install:
   - pip install -r requirements.txt
   - sudo apt-get update
   - sudo apt-get install openscad
+    sudo apt-get install antlr4
 
 script:
     python -m pytest

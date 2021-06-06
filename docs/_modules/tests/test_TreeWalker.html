@@ -161,6 +161,13 @@
     <span class="n">files</span> <span class="o">=</span> <span class="n">tw</span><span class="o">.</span><span class="n">get_leaf_file_list</span><span class="p">()</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span></div>
 
+<div class="viewcode-block" id="test_non_lesf_file_list"><a class="viewcode-back" href="../../code/unit-tests.html#tests.test_TreeWalker.test_non_lesf_file_list">[docs]</a><span class="k">def</span> <span class="nf">test_non_lesf_file_list</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Test that non-leaf file list is correct&quot;&quot;&quot;</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="s2">&quot;tests/test_data/model&quot;</span>
+    <span class="n">tw</span> <span class="o">=</span> <span class="n">TreeWalker</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;scad&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="n">tw</span><span class="o">.</span><span class="n">get_non_leaf_file_list</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span></div>
+
 <span class="k">def</span> <span class="nf">bump_count</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">count</span>
 

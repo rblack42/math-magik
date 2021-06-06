@@ -1,3 +1,5 @@
+* 2021-06-05: Bump version: 0.1.9 → 0.1.10
+* 2021-06-05: Cli is functional now
 * 2021-06-04: refactor cli
 * 2021-06-03: working on CLI code and docs
 * 2021-06-02: missing dependency openpyxl

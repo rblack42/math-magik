@@ -5,6 +5,7 @@
 
 ..  |CI|                    replace::   *Continuous Integration*
 
+..  _Click:                  https://palletsprojects.com/p/click/
 ..  _Coveralls:             https://coveralls.io/
 
 ..  _FedEx:                 https://www.fedex.com/en-us/home.html
@@ -31,6 +32,8 @@
 
 ..  |MM|                    replace::   *Math-Magik*
 ..  _MM:                    https://github.com/rblack42/math-magik
+
+..  _numpy-stl:             https://pypi.org/project/numpy-stl/
 
 ..  _OpenSCAD:              https://openscad.org/
 
