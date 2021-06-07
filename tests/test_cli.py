@@ -2,11 +2,10 @@ from click.testing import CliRunner
 from mmdesigner.cli import cli
 from mmdesigner.cli import Environment
 
-from mmdesigner import __version__
 
 def test_cli_environment():
     env = Environment()
-    assert env.verbose == False
+    assert not env.debug
 
 
 def test_cli_running():
@@ -25,12 +24,14 @@ def test_cli_running():
     assert result.exit_code == 0
     assert "Generating inventory" in result.output
 
+
 def test_cli_version():
     """test cli version option"""
     runner = CliRunner()
     result = runner.invoke(cli, ["--versions"])
     assert result.exit_code == 0
     assert "mmdesigner version" in result.output
+
 
 def test_cli_help_option():
     """test cli help option"""

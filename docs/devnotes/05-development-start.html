@@ -258,152 +258,48 @@ parameter will be <strong>–version</strong>.</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id4">
 <div class="code-block-caption"><span class="caption-text">mmdesigner/cli.py</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="kn">import</span> <span class="nn">logging</span>
-<span class="linenos">  2</span><span class="kn">import</span> <span class="nn">os</span>
-<span class="linenos">  3</span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="linenos">  4</span><span class="kn">from</span> <span class="nn">mmdesigner</span> <span class="kn">import</span> <span class="n">__version__</span>
-<span class="linenos">  5</span><span class="kn">from</span> <span class="nn">mmdesigner.OpenSCAD</span> <span class="kn">import</span> <span class="n">OpenSCAD</span>
-<span class="linenos">  6</span><span class="kn">from</span> <span class="nn">mmdesigner.TreeWalker</span> <span class="kn">import</span> <span class="n">TreeWalker</span>
-<span class="linenos">  7</span><span class="kn">from</span> <span class="nn">mmdesigner.Generator</span> <span class="kn">import</span> <span class="n">Generator</span>
-<span class="linenos">  8</span><span class="kn">from</span> <span class="nn">stl</span> <span class="kn">import</span> <span class="n">__about__</span>
-<span class="linenos">  9</span>
-<span class="linenos"> 10</span><span class="kn">import</span> <span class="nn">click</span>
-<span class="linenos"> 11</span><span class="kn">from</span> <span class="nn">click_default_group</span> <span class="kn">import</span> <span class="n">DefaultGroup</span>
-<span class="linenos"> 12</span>
-<span class="linenos"> 13</span><span class="n">CONFIG_FILE</span> <span class="o">=</span> <span class="s2">&quot;mmdesigner.yml&quot;</span>
-<span class="linenos"> 14</span>
-<span class="linenos"> 15</span><span class="k">def</span> <span class="nf">print_version</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-<span class="linenos"> 16</span>    <span class="sd">&quot;&quot;&quot;Display version info for app and major dependencies&quot;&quot;&quot;</span>
-<span class="linenos"> 17</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">value</span> <span class="ow">or</span> <span class="n">ctx</span><span class="o">.</span><span class="n">resilient_parsing</span><span class="p">:</span>
-<span class="linenos"> 18</span>        <span class="k">return</span>
-<span class="linenos"> 19</span>    <span class="n">osc</span> <span class="o">=</span> <span class="n">OpenSCAD</span><span class="p">()</span>
-<span class="linenos"> 20</span>    <span class="n">osc_version</span> <span class="o">=</span> <span class="n">osc</span><span class="o">.</span><span class="n">get_version</span><span class="p">()</span>
-<span class="linenos"> 21</span>    <span class="n">stl_version</span> <span class="o">=</span> <span class="n">__about__</span><span class="o">.</span><span class="n">__version__</span>
-<span class="linenos"> 22</span>    <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mmdesigner version: </span><span class="si">{</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="linenos"> 23</span>    <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">OpenSCAD version: </span><span class="si">{</span><span class="n">osc_version</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="linenos"> 24</span>    <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">numpy_stl version: </span><span class="si">{</span><span class="n">stl_version</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="linenos"> 25</span>    <span class="n">ctx</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
-<span class="linenos"> 26</span>
-<span class="linenos"> 27</span><span class="k">class</span> <span class="nc">Environment</span><span class="p">:</span>
-<span class="linenos"> 28</span>    <span class="sd">&quot;&quot;&quot;Management class holding cli command context data&quot;&quot;&quot;</span>
-<span class="linenos"> 29</span>
-<span class="linenos"> 30</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos"> 31</span>        <span class="sd">&quot;&quot;&quot;Set initial context&quot;&quot;&quot;</span>
-<span class="linenos"> 32</span>        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="linenos"> 33</span>        <span class="bp">self</span><span class="o">.</span><span class="n">home</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
-<span class="linenos"> 34</span>        <span class="k">try</span><span class="p">:</span>
-<span class="linenos"> 35</span>            <span class="bp">self</span><span class="o">.</span><span class="n">model_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;MMDESIGNER_PATH&#39;</span><span class="p">]</span>
-<span class="linenos"> 36</span>        <span class="k">except</span><span class="p">:</span> <span class="c1"># pragma: no cover</span>
-<span class="linenos"> 37</span>            <span class="bp">self</span><span class="o">.</span><span class="n">model_path</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="linenos"> 38</span>        <span class="k">try</span><span class="p">:</span>
-<span class="linenos"> 39</span>            <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;MMDESIGNER_MODEL&#39;</span><span class="p">]</span>
-<span class="linenos"> 40</span>        <span class="k">except</span><span class="p">:</span> <span class="c1"># pragma: no cover</span>
-<span class="linenos"> 41</span>            <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="linenos"> 42</span>
-<span class="linenos"> 43</span><span class="n">pass_environment</span> <span class="o">=</span> <span class="n">click</span><span class="o">.</span><span class="n">make_pass_decorator</span><span class="p">(</span><span class="n">Environment</span><span class="p">,</span> <span class="n">ensure</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="linenos"> 44</span>
-<span class="linenos"> 45</span><span class="nd">@click</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="bp">cls</span><span class="o">=</span><span class="n">DefaultGroup</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;summary&quot;</span><span class="p">,</span> <span class="n">default_if_no_args</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="linenos"> 46</span><span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
-<span class="linenos"> 47</span>            <span class="s2">&quot;--versions&quot;</span><span class="p">,</span>
-<span class="linenos"> 48</span>            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Display version info and exit.&quot;</span><span class="p">,</span>
-<span class="linenos"> 49</span>            <span class="n">is_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="linenos"> 50</span>            <span class="n">expose_value</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="linenos"> 51</span>            <span class="n">is_eager</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="linenos"> 52</span>            <span class="n">callback</span><span class="o">=</span><span class="n">print_version</span>
-<span class="linenos"> 53</span><span class="p">)</span>
-<span class="linenos"> 54</span><span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
-<span class="linenos"> 55</span>        <span class="s2">&quot;--model_path&quot;</span><span class="p">,</span>
-<span class="linenos"> 56</span>        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Path to directory containing model to work on.&quot;</span>
-<span class="linenos"> 57</span><span class="p">)</span>
-<span class="linenos"> 58</span><span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
-<span class="linenos"> 59</span>        <span class="s2">&quot;--model_name&quot;</span><span class="p">,</span>
-<span class="linenos"> 60</span>        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Name of model in model_path to work on.&quot;</span>
-<span class="linenos"> 61</span><span class="p">)</span>
-<span class="linenos"> 62</span><span class="nd">@pass_environment</span>
-<span class="linenos"> 63</span><span class="k">def</span> <span class="nf">cli</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">model_path</span><span class="p">,</span> <span class="n">model_name</span><span class="p">):</span>
-<span class="linenos"> 64</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">model_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="linenos"> 65</span>        <span class="n">ctx</span><span class="o">.</span><span class="n">model_path</span> <span class="o">=</span> <span class="n">model_path</span>
-<span class="linenos"> 66</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">model_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="linenos"> 67</span>        <span class="n">ctx</span><span class="o">.</span><span class="n">model_name</span> <span class="o">=</span> <span class="n">model_name</span>
-<span class="linenos"> 68</span>
-<span class="linenos"> 69</span><span class="nd">@cli</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">help</span> <span class="o">=</span> <span class="s2">&quot;Generating part STL files&quot;</span><span class="p">)</span>
-<span class="linenos"> 70</span><span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;--all&quot;</span><span class="p">,</span> <span class="n">is_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Force generating part and assembly STL files.&quot;</span><span class="p">)</span>
-<span class="linenos"> 71</span><span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;--inv&quot;</span><span class="p">,</span> <span class="n">is_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Generate inventory list.&quot;</span><span class="p">)</span>
-<span class="linenos"> 72</span><span class="nd">@pass_environment</span>
-<span class="linenos"> 73</span><span class="k">def</span> <span class="nf">stl</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="nb">all</span><span class="p">,</span> <span class="n">inv</span><span class="p">):</span>
-<span class="linenos"> 74</span>    <span class="sd">&quot;&quot;&quot;Generate STL command&quot;&quot;&quot;</span>
-<span class="linenos"> 75</span>    <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Running... all=</span><span class="si">{</span><span class="nb">all</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="linenos"> 76</span>    <span class="n">inv_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ctx</span><span class="o">.</span><span class="n">model_path</span><span class="p">,</span> <span class="n">ctx</span><span class="o">.</span><span class="n">model_name</span><span class="p">)</span>
-<span class="linenos"> 77</span>    <span class="k">if</span> <span class="n">inv</span><span class="p">:</span>
-<span class="linenos"> 78</span>        <span class="n">tw</span> <span class="o">=</span> <span class="n">TreeWalker</span><span class="p">(</span><span class="n">inv_path</span><span class="p">,</span> <span class="s1">&#39;scad&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="linenos"> 79</span>        <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="s2">&quot;Generating inventory:&quot;</span><span class="p">)</span>
-<span class="linenos"> 80</span>        <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Model Path: </span><span class="si">{</span><span class="n">ctx</span><span class="o">.</span><span class="n">model_path</span><span class="si">}</span><span class="s2">, Model name: </span><span class="si">{</span><span class="n">ctx</span><span class="o">.</span><span class="n">model_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="linenos"> 81</span>        <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Parts list:&quot;</span><span class="p">)</span>
-<span class="linenos"> 82</span>        <span class="n">inv_parts</span> <span class="o">=</span> <span class="n">tw</span><span class="o">.</span><span class="n">get_leaf_file_list</span><span class="p">()</span>
-<span class="linenos"> 83</span>        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">inv_parts</span><span class="p">:</span>
-<span class="linenos"> 84</span>            <span class="n">part_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">f</span><span class="p">)[</span><span class="nb">len</span><span class="p">(</span><span class="n">inv_path</span><span class="p">):]</span>
-<span class="linenos"> 85</span>            <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="si">{</span><span class="n">part_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="linenos"> 86</span>        <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Assembly list:&quot;</span><span class="p">)</span>
-<span class="linenos"> 87</span>        <span class="n">asm_list</span> <span class="o">=</span> <span class="n">tw</span><span class="o">.</span><span class="n">get_non_leaf_file_list</span><span class="p">()</span>
-<span class="linenos"> 88</span>        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">asm_list</span><span class="p">:</span>
-<span class="linenos"> 89</span>            <span class="n">asm_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">f</span><span class="p">)[</span><span class="nb">len</span><span class="p">(</span><span class="n">inv_path</span><span class="p">):]</span>
-<span class="linenos"> 90</span>            <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="si">{</span><span class="n">asm_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="linenos"> 91</span>            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="linenos"> 92</span>    <span class="n">gen</span> <span class="o">=</span> <span class="n">Generator</span><span class="p">(</span><span class="n">inv_path</span><span class="p">)</span>
-<span class="linenos"> 93</span>    <span class="k">if</span> <span class="nb">all</span><span class="p">:</span>
-<span class="linenos"> 94</span>        <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="s2">&quot;generating STL files for parts and assemblies&quot;</span><span class="p">)</span>
-<span class="linenos"> 95</span>        <span class="n">gen</span><span class="o">.</span><span class="n">run_all</span><span class="p">(</span><span class="s2">&quot;stl&quot;</span><span class="p">)</span>
-<span class="linenos"> 96</span>    <span class="k">else</span><span class="p">:</span>
-<span class="linenos"> 97</span>        <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="s2">&quot;generating STL files for parts only&quot;</span><span class="p">)</span>
-<span class="linenos"> 98</span>        <span class="n">gen</span><span class="o">.</span><span class="n">run_leaf_stl</span><span class="p">(</span><span class="s2">&quot;stl&quot;</span><span class="p">)</span>
-<span class="linenos"> 99</span>
-<span class="linenos">100</span>
-<span class="linenos">101</span>
-<span class="linenos">102</span><span class="nd">@cli</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Analyze design&quot;</span><span class="p">)</span>
-<span class="linenos">103</span><span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;--all&quot;</span><span class="p">,</span> <span class="n">is_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;generate part and assembly property files.&quot;</span><span class="p">)</span>
-<span class="linenos">104</span><span class="nd">@pass_environment</span>
-<span class="linenos">105</span><span class="k">def</span> <span class="nf">analyze</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="nb">all</span><span class="p">):</span>
-<span class="linenos">106</span>    <span class="sd">&quot;&quot;&quot;Analyze design command&quot;&quot;&quot;</span>
-<span class="linenos">107</span>    <span class="n">inv_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ctx</span><span class="o">.</span><span class="n">model_path</span><span class="p">,</span> <span class="n">ctx</span><span class="o">.</span><span class="n">model_name</span><span class="p">)</span>
-<span class="linenos">108</span>    <span class="n">gen</span> <span class="o">=</span> <span class="n">Generator</span><span class="p">(</span><span class="n">inv_path</span><span class="p">)</span>
-<span class="linenos">109</span>    <span class="k">if</span> <span class="nb">all</span><span class="p">:</span>
-<span class="linenos">110</span>        <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="s2">&quot;Generating Property files for parts&quot;</span><span class="p">)</span>
-<span class="linenos">111</span>        <span class="n">gen</span><span class="o">.</span><span class="n">run_all</span><span class="p">(</span><span class="s2">&quot;mass&quot;</span><span class="p">)</span>
-<span class="linenos">112</span>    <span class="k">else</span><span class="p">:</span>
-<span class="linenos">113</span>        <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="s2">&quot;Generating mass property files for parts and assemblies&quot;</span><span class="p">)</span>
-<span class="linenos">114</span>        <span class="n">gen</span><span class="o">.</span><span class="n">run_leaf_stl</span><span class="p">(</span><span class="s2">&quot;mass&quot;</span><span class="p">)</span>
-<span class="linenos">115</span>
-<span class="linenos">116</span><span class="nd">@cli</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Generate PDF templates&quot;</span><span class="p">)</span>
-<span class="linenos">117</span><span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;--all&quot;</span><span class="p">,</span> <span class="n">is_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Generate full PDF plan.&quot;</span><span class="p">)</span>
-<span class="linenos">118</span><span class="nd">@pass_environment</span>
-<span class="linenos">119</span><span class="k">def</span> <span class="nf">plan</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
-<span class="linenos">120</span>    <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Generating PDF templates for  </span><span class="si">{</span><span class="n">ctx</span><span class="o">.</span><span class="n">model_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="linenos">121</span>
-<span class="linenos">122</span><span class="nd">@cli</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Display model summary&quot;</span><span class="p">)</span>
-<span class="linenos">123</span><span class="nd">@pass_environment</span>
-<span class="linenos">124</span><span class="k">def</span> <span class="nf">summary</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
-<span class="linenos">125</span>    <span class="n">inv_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ctx</span><span class="o">.</span><span class="n">model_path</span><span class="p">,</span> <span class="n">ctx</span><span class="o">.</span><span class="n">model_name</span><span class="p">)</span>
-<span class="linenos">126</span>    <span class="n">tw</span> <span class="o">=</span> <span class="n">TreeWalker</span><span class="p">(</span><span class="n">inv_path</span><span class="p">,</span> <span class="s1">&#39;scad&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="linenos">127</span>    <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="s2">&quot;Generating inventory:&quot;</span><span class="p">)</span>
-<span class="linenos">128</span>    <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Model Path: </span><span class="si">{</span><span class="n">ctx</span><span class="o">.</span><span class="n">model_path</span><span class="si">}</span><span class="s2">, Model name: </span><span class="si">{</span><span class="n">ctx</span><span class="o">.</span><span class="n">model_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="linenos">129</span>    <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Parts list:&quot;</span><span class="p">)</span>
-<span class="linenos">130</span>    <span class="n">inv_parts</span> <span class="o">=</span> <span class="n">tw</span><span class="o">.</span><span class="n">get_leaf_file_list</span><span class="p">()</span>
-<span class="linenos">131</span>    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">inv_parts</span><span class="p">:</span>
-<span class="linenos">132</span>        <span class="n">part_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">f</span><span class="p">)[</span><span class="nb">len</span><span class="p">(</span><span class="n">inv_path</span><span class="p">):]</span>
-<span class="linenos">133</span>        <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="si">{</span><span class="n">part_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="linenos">134</span>    <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Assembly list:&quot;</span><span class="p">)</span>
-<span class="linenos">135</span>    <span class="n">asm_list</span> <span class="o">=</span> <span class="n">tw</span><span class="o">.</span><span class="n">get_non_leaf_file_list</span><span class="p">()</span>
-<span class="linenos">136</span>    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">asm_list</span><span class="p">:</span>
-<span class="linenos">137</span>        <span class="n">asm_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">f</span><span class="p">)[</span><span class="nb">len</span><span class="p">(</span><span class="n">inv_path</span><span class="p">):]</span>
-<span class="linenos">138</span>        <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="si">{</span><span class="n">asm_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="linenos">139</span>        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="linenos">140</span>
-<span class="linenos">141</span><span class="nd">@cli</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Generate design Excel spreadsheet.&quot;</span><span class="p">)</span>
-<span class="linenos">142</span><span class="nd">@pass_environment</span>
-<span class="linenos">143</span><span class="k">def</span> <span class="nf">gen_excel</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
-<span class="linenos">144</span>    <span class="n">inv_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ctx</span><span class="o">.</span><span class="n">model_path</span><span class="p">,</span> <span class="n">ctx</span><span class="o">.</span><span class="n">model_name</span><span class="p">)</span>
-<span class="linenos">145</span>    <span class="n">gen</span> <span class="o">=</span> <span class="n">Generator</span><span class="p">(</span><span class="n">inv_path</span><span class="p">)</span>
-<span class="linenos">146</span>    <span class="n">gen</span><span class="o">.</span><span class="n">gen_excel</span><span class="p">(</span><span class="n">ctx</span><span class="o">.</span><span class="n">model_name</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">os</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">click</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="k">class</span> <span class="nc">Environment</span><span class="p">:</span>
+<span class="linenos"> 6</span>    <span class="sd">&quot;&quot;&quot;Context class holding state for cli commands&quot;&quot;&quot;</span>
+<span class="linenos"> 7</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 8</span>        <span class="bp">self</span><span class="o">.</span><span class="n">cwd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="linenos"> 9</span>        <span class="bp">self</span><span class="o">.</span><span class="n">part_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">10</span>        <span class="bp">self</span><span class="o">.</span><span class="n">assembly_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">11</span>        <span class="bp">self</span><span class="o">.</span><span class="n">model_path</span> <span class="o">=</span> <span class="s2">&quot;tests/test_data&quot;</span>
+<span class="linenos">12</span>        <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;model&quot;</span>
+<span class="linenos">13</span>        <span class="bp">self</span><span class="o">.</span><span class="n">debug</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="n">pass_environment</span> <span class="o">=</span> <span class="n">click</span><span class="o">.</span><span class="n">make_pass_decorator</span><span class="p">(</span><span class="n">Environment</span><span class="p">,</span> <span class="n">ensure</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="linenos">16</span><span class="n">cmd_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;commands&quot;</span><span class="p">))</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="k">class</span> <span class="nc">CLI</span><span class="p">(</span><span class="n">click</span><span class="o">.</span><span class="n">MultiCommand</span><span class="p">):</span>
+<span class="linenos">19</span>    <span class="sd">&quot;&quot;&quot;Modular CLI class&quot;&quot;&quot;</span>
+<span class="linenos">20</span>    <span class="k">def</span> <span class="nf">list_commands</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+<span class="linenos">21</span>        <span class="sd">&quot;&quot;&quot;scan command directory and list all cli commands&quot;&quot;&quot;</span>
+<span class="linenos">22</span>        <span class="n">rv</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos">23</span>        <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">cmd_folder</span><span class="p">):</span>
+<span class="linenos">24</span>            <span class="k">if</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.py&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">filename</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;cmd_&quot;</span><span class="p">):</span>
+<span class="linenos">25</span>                <span class="n">rv</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filename</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="o">-</span><span class="mi">3</span><span class="p">])</span>
+<span class="linenos">26</span>        <span class="n">rv</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="linenos">27</span>        <span class="k">return</span> <span class="n">rv</span>
+<span class="linenos">28</span>
+<span class="linenos">29</span>    <span class="k">def</span> <span class="nf">get_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="linenos">30</span>        <span class="sd">&quot;&quot;&quot;import cli command file on demand&quot;&quot;&quot;</span>
+<span class="linenos">31</span>        <span class="k">try</span><span class="p">:</span>
+<span class="linenos">32</span>            <span class="n">mod</span> <span class="o">=</span> <span class="nb">__import__</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mmdesigner.commands.cmd_</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;cli&quot;</span><span class="p">])</span>
+<span class="linenos">33</span>        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+<span class="linenos">34</span>            <span class="k">return</span>
+<span class="linenos">35</span>        <span class="k">return</span> <span class="n">mod</span><span class="o">.</span><span class="n">cli</span>
+<span class="linenos">36</span>
+<span class="linenos">37</span><span class="nd">@click</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="bp">cls</span><span class="o">=</span><span class="n">CLI</span><span class="p">)</span>
+<span class="linenos">38</span><span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;--debug&quot;</span><span class="p">,</span> <span class="n">is_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Enable debug output&quot;</span><span class="p">)</span>
+<span class="linenos">39</span><span class="nd">@pass_environment</span>
+<span class="linenos">40</span><span class="k">def</span> <span class="nf">cli</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">debug</span><span class="p">):</span>
+<span class="linenos">41</span>    <span class="sd">&quot;&quot;&quot;primary CLI interface&quot;&quot;&quot;</span>
+<span class="linenos">42</span>    <span class="n">ctx</span><span class="o">.</span><span class="n">debug</span> <span class="o">=</span> <span class="n">debug</span>
 </pre></div>
 </div>
 </div>

@@ -46,7 +46,8 @@ class TreeWalker(object):
         """Return list of leaf files (parts)"""
         llist = []
         for dirpath, dirnames, filenames in os.walk(self.model_path):
-            if len(dirnames) != 0: continue
+            if len(dirnames) != 0:
+                continue
             for f in filenames:
                 path = os.path.abspath(os.path.join(dirpath, f))
                 if path.endswith(self.ext):
@@ -56,7 +57,8 @@ class TreeWalker(object):
     def get_non_leaf_file_list(self):
         nllist = []
         for dirpath, dirnames, filenames in os.walk(self.model_path):
-            if len(dirnames) == 0: continue
+            if len(dirnames) == 0:
+                continue
             for f in filenames:
                 path = os.path.abspath(os.path.join(dirpath, f))
                 if path.endswith(self.ext):
@@ -69,14 +71,12 @@ class TreeWalker(object):
         for f in files:
             self.callback(f)
 
-
     def process_leaf_files(self):
         """Run callback on only leaf files"""
         files = self.get_leaf_file_list()
         for f in files:
             print("Processing:", f)
             self.callback(f)
-
 
     def clean(self, ext):
         """delete files with specified extension from tree"""
@@ -89,17 +89,18 @@ class TreeWalker(object):
 
 
 count = 0
+
+
 def bump_count(path):
     global count
-
     count += 1  # pragma: no cover
 
+
 if __name__ == "__main__":
-    tw = TreeWalker("../tests/test_data/model","scad",bump_count)
+    tw = TreeWalker("../tests/test_data/model", "scad", bump_count)
     print(tw.get_model_path)
     files = tw.get_leaf_file_list()
     print(files)
     count = 0
     tw.process_files()
     print(count)
-

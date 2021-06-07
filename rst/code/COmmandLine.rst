@@ -2,4 +2,10 @@ Command Line Interface
 ######################
 
 ..	automodule::	mmdesigner.cli
-	:members:
+..  autoclass::     Environment
+    :members:
+
+..  automodule::    mmdesigner.cli
+..  autoclass::     CLI
+
+ .. automodule::    mmdesigner.commands/cmd_init

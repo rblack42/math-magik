@@ -4,7 +4,8 @@ from mmdesigner.TreeWalker import TreeWalker
 from mmdesigner.OpenSCAD import OpenSCAD
 from openpyxl import Workbook
 
-count = 0;
+count = 0
+
 
 class Generator(object):
     """Management class for generating analysis files"""
@@ -17,7 +18,6 @@ class Generator(object):
         """Generate a single STL file"""
         osc = OpenSCAD()
         osc.gen_stl(param)
-
 
     def gen_properties(self, param):
         """Generate a single mass property file"""
@@ -80,5 +80,3 @@ if __name__ == '__main__':
     gen.run_all("stl")
     gen.run_all("mass")
     gen.gen_excel()
-
-

@@ -188,13 +188,14 @@ then run tests on your code.</p>
 <span class="linenos">22</span>        <span class="no">if [ -f requirements.txt ]; then pip install -r requirements.txt; fi</span>
 <span class="linenos">23</span>        <span class="no">sudo apt-get update</span>
 <span class="linenos">24</span>        <span class="no">sudo apt-get install openscad</span>
-<span class="linenos">25</span>    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Lint with flake8</span>
-<span class="linenos">26</span>      <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-<span class="linenos">27</span>        <span class="no">python -m flake8 tests --count --select=E9,F63,F7,F82 --show-source --statistics</span>
-<span class="linenos">28</span>        <span class="no">python -m flake8 tests --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics</span>
-<span class="linenos">29</span>    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Test with pytest</span>
-<span class="linenos">30</span>      <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-<span class="linenos">31</span>        <span class="no">python -m pytest</span>
+<span class="linenos">25</span>        <span class="no">sudo apt-get install antlr4</span>
+<span class="linenos">26</span>    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Lint with flake8</span>
+<span class="linenos">27</span>      <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+<span class="linenos">28</span>        <span class="no">python -m flake8 tests --count --select=E9,F63,F7,F82 --show-source --statistics</span>
+<span class="linenos">29</span>        <span class="no">python -m flake8 tests --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics</span>
+<span class="linenos">30</span>    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Test with pytest</span>
+<span class="linenos">31</span>      <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+<span class="linenos">32</span>        <span class="no">python -m pytest</span>
 </pre></div>
 </div>
 </section>
@@ -216,12 +217,13 @@ Linux host.</p>
 <span class="linenos">10</span>  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt</span>
 <span class="linenos">11</span>  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sudo apt-get update</span>
 <span class="linenos">12</span>  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sudo apt-get install openscad</span>
-<span class="linenos">13</span>
-<span class="linenos">14</span><span class="nt">script</span><span class="p">:</span>
-<span class="linenos">15</span>    <span class="l l-Scalar l-Scalar-Plain">python -m pytest</span>
-<span class="linenos">16</span>
-<span class="linenos">17</span><span class="nt">after_success</span><span class="p">:</span>
-<span class="linenos">18</span>  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">coveralls</span>
+<span class="linenos">13</span>  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sudo apt-get install antlr4</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="nt">script</span><span class="p">:</span>
+<span class="linenos">16</span>    <span class="l l-Scalar l-Scalar-Plain">python -m pytest</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="nt">after_success</span><span class="p">:</span>
+<span class="linenos">19</span>  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">coveralls</span>
 </pre></div>
 </div>
 <p>To activate testing, you need to set up an account on <a class="reference external" href="https://travis-ci.com/">Travis-CI</a>, which can be

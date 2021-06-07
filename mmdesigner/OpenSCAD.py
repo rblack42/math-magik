@@ -11,7 +11,7 @@ class OpenSCAD(object):
 
     def get_version(self):
         """return installed OpenScAD version"""
-        result = subprocess.run(['openscad','--version'], capture_output=True)
+        result = subprocess.run(['openscad', '--version'], capture_output=True)
         version = result.stderr.decode().split()[2]
         return version
 
@@ -23,7 +23,7 @@ class OpenSCAD(object):
             return err_code
         if scad_path.endswith(".scad"):
             base, ext = scad_path.split(".")
-            stl_path = base  + ".stl"
+            stl_path = base+".stl"
             cmd = [
                 'openscad',
                 scad_path,
@@ -33,7 +33,7 @@ class OpenSCAD(object):
 
             result = subprocess.run(cmd, capture_output=True)
             err_code = result.returncode
-            if not os.path.isfile(stl_path) or err_code != 0: # pragma: no cover
+            if not os.path.isfile(stl_path):  # pragme: no cover
                 err_code = 1
         return err_code
 
@@ -42,7 +42,6 @@ class OpenSCAD(object):
         minx = maxx = miny = maxy = minz = maxz = None
         obj = self.mesh
         for p in obj.points:
-            # p contains (x, y, z)
             if minx is None:
                 minx = p[stl.Dimension.X]
                 maxx = p[stl.Dimension.X]
@@ -87,10 +86,8 @@ class OpenSCAD(object):
         json += '  "izy": "%s",\n' % self.izy
         json += '  "izz": "%s"\n' % self.izz
         json += '}\n'
-
-        with open(json_path,'w') as fout:
+        with open(json_path, 'w') as fout:
             fout.write(json)
-
 
     def get_properties(self, scad_file):
         """Calculate mass properties from specified SCAD file"""
@@ -118,10 +115,9 @@ class OpenSCAD(object):
                 self.maxz, self.minz
         ]
 
+
 if __name__ == '__main__':
     mgr = OpenSCAD()
     print(mgr.get_version())
     mgr.get_properties("../tests/test_data/spar.scad")
     mgr.dump_to_json("../tests/test_data/spar.json")
-
-
