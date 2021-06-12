@@ -1,3 +1,4 @@
+* 2021-06-07: flake8 cleanup
 * 2021-06-06: typo in travis.yml
 * 2021-06-06: added cli docs using antlr4 sphinx extension
 * 2021-06-05: Bump version: 0.1.9 → 0.1.10

@@ -1,5 +1,5 @@
 from mmdesigner.cli import pass_environment
-
+import sys
 import click
 
 
@@ -14,3 +14,4 @@ def cli(ctx):
     click.echo(f"\tPart count: {ctx.part_count}")
     click.echo(f"\tAssembly count: {ctx.assembly_count}")
     click.echo(f"\tDebug: {ctx.debug}")
+    sys.exit(0)

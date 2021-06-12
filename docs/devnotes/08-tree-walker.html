@@ -146,7 +146,7 @@
 <section id="step-8-walking-the-model-tree">
 <h1>Step 8: Walking the Model Tree<a class="headerlink" href="#step-8-walking-the-model-tree" title="Permalink to this headline">¶</a></h1>
 <p>In thinking through the design of a model using <em>OpenSCAD</em>, I decided to generate a
-directory tree where each level contained at lease one <span class="xref std std-term">SCAD</span> file
+directory tree where each level contained at lease one <a class="reference internal" href="../glossary.html#term-SCAD"><span class="xref std std-term">SCAD</span></a> file
 defining either a single part to be constructed, or an assembly of parts producing
 something like a wing. Once that decision had been made the need
 for a routine that can “walk’ this design tree and process files became obvious.</p>
@@ -160,16 +160,16 @@ we are interested in, and the callback method to activate.</p>
 <p>The class constructor will take a single parameter, which is the root path to
 the model we are going to process. To make sure we actually point to a model
 directory, we will require that the specified directory contain at least on
-<span class="xref std std-term">SCAD</span> file</p>
+<a class="reference internal" href="../glossary.html#term-SCAD"><span class="xref std std-term">SCAD</span></a> file</p>
 <p>Here is a test that can verify this: <a class="reference internal" href="../code/unit-tests.html#tests.test_TreeWalker.test_valid_model_path" title="tests.test_TreeWalker.test_valid_model_path"><code class="xref py py-func docutils literal notranslate"><span class="pre">tests.test_TreeWalker.test_valid_model_path()</span></code></a></p>
 <p>Here is the code that confirms we have a valid model path:
 <a class="reference internal" href="../code/TreeWalker.html#mmdesigner.TreeWalker.TreeWalker.check_path" title="mmdesigner.TreeWalker.TreeWalker.check_path"><code class="xref py py-meth docutils literal notranslate"><span class="pre">mmdesigner.TreeWalker.TreeWalker.check_path()</span></code></a></p>
 <section id="validating-the-model-path">
 <h3>Validating the Model Path<a class="headerlink" href="#validating-the-model-path" title="Permalink to this headline">¶</a></h3>
-<p>All valid model directories must have at lease one <span class="xref std std-term">SCAD</span> file, so we
+<p>All valid model directories must have at lease one <a class="reference internal" href="../glossary.html#term-SCAD"><span class="xref std std-term">SCAD</span></a> file, so we
 will check that in the constructor. Tests should confirm that passing a model
 path that is not a directory, or a directory that contains mo valid
-<span class="xref std std-term">SCAD</span> file will be rejected. All methods should return immediately if
+<a class="reference internal" href="../glossary.html#term-SCAD"><span class="xref std std-term">SCAD</span></a> file will be rejected. All methods should return immediately if
 the registered model path is None.</p>
 </section>
 </section>

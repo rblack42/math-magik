@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Step 10: Managing Design Updates &#8212; Math Magik 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinx13.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx13.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/a4_railroad_diagram.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Contributing" href="../develop.html" />
+    <link rel="prev" title="Step 9: Command Line Interface" href="09-command-line-interface.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script>
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../usage/installation.html">Get it</a></li>
+    <li><a href="../contents.html">Docs</a></li>
+    <li><a href="../develop.html">Extend/Develop</a></li>
+  </ul>
+  <div>
+    <a href="../index.html">
+      <img src="../_static/logo.png" alt="PyLiT" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../develop.html" title="Contributing"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="09-command-line-interface.html" title="Step 9: Command Line Interface"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Home</a>&#160;|</li>
+        <li><a href="../contents.html">Documentation</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">Step 10: Managing Design Updates</a></li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../contents.html">
+              <img class="logo" src="../_static/badge.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../contents.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Step 10: Managing Design Updates</a><ul>
+<li><a class="reference internal" href="#basic-design-file-changes">Basic Design File Changes</a></li>
+<li><a class="reference internal" href="#osc-data-files"><em>OpenSCAD</em> Data Files</a></li>
+<li><a class="reference internal" href="#analysis-data-files">Analysis Data Files</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="09-command-line-interface.html"
+                        title="previous chapter">Step 9: Command Line Interface</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../develop.html"
+                        title="next chapter">Contributing</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/devnotes/10-managing-design-changes.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>Read time: 7.0 minutes (697 words)</p>
+<section id="step-10-managing-design-updates">
+<h1>Step 10: Managing Design Updates<a class="headerlink" href="#step-10-managing-design-updates" title="Permalink to this headline">¶</a></h1>
+<p>During the design process, the user’s primary focus is on the <a class="reference internal" href="../glossary.html#term-SCAD"><span class="xref std std-term">SCAD</span></a>
+files, and supporting data files needed to properly lat out and position every
+part in the design. As those <a class="reference internal" href="../glossary.html#term-SCAD"><span class="xref std std-term">SCAD</span></a> files change, various other files
+that may have been generated need to be updated as well. How do we make sure
+all files are  properly in sync?</p>
+<p>The easy way out is to place this burden on the user. They made the change,
+they should update the other files. This is easy on the designer, but not the
+user.</p>
+<p>We can add code that checks the state of the design and triggers an update on
+any other files that need to be updated when this code runs. If the user
+decides to use to use the <a class="reference internal" href="../glossary.html#term-command-line-interface"><span class="xref std std-term">command line interface</span></a> the application is
+only running during command invocations. So, on program startup, we need to run
+the check code before doing anything else.</p>
+<p>For the <a class="reference internal" href="../glossary.html#term-GUI"><span class="xref std std-term">GUI</span></a> interface, the code will be running an event loop, so we
+can add code that checks for changes as the user works within the <a class="reference internal" href="../glossary.html#term-GUI"><span class="xref std std-term">GUI</span></a>.
+The Python <strong>watchdog</strong> package could help here, however, that package looks
+for file system events, like a save to trigger actions.  That certainly will
+work, but not for the <a class="reference internal" href="../glossary.html#term-CLI"><span class="xref std std-term">CLI</span></a> user.</p>
+<p>There is another way to track changes, one used by <strong class="program">git</strong>.</p>
+<section id="basic-design-file-changes">
+<h2>Basic Design File Changes<a class="headerlink" href="#basic-design-file-changes" title="Permalink to this headline">¶</a></h2>
+<p>If we maintain a hash key for each design file, we can use that code to detect
+changes. All we need to do to implement this idea is come up with a place to
+store the hash code, and code that checks the design files and verifies that
+the hash is different, meaning a change took place. There are not going to be a
+large number of such files, so this process can be pretty fast.</p>
+<p>Calculating the hash code is simple enough using the <strong class="program">hashlib</strong>
+library:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="kn">import</span> <span class="nn">hashlib</span>
+
+    <span class="k">def</span> <span class="nf">generate_hash</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">fin</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">except</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="k">pass</span>
+<span class="nb">hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+    <span class="k">return</span> <span class="nb">hash</span>
+</pre></div>
+</div>
+<p>Generating the code is pretty easy, but we need a place to store it.</p>
+<p><em>OpenSCAD</em> lets you save constant definition data in files with any extension you
+like. To make it easier to distinguish design geometry files from data files, I
+decided to name all data files with an <strong>.data</strong> extension. When processing
+these data items in <em>Python</em>, we have another decision to make. We can teach Python
+to read the <strong>.data</strong> files, or we can generate the data files from something
+more natural for <em>Python</em>. My preference is to store data in <strong>.json</strong> files, since
+they are very common and easily read and written in python.</p>
+<p>Before settling on a scheme, we need to look at the <em>OpenSCAD</em> data setup.</p>
+</section>
+<section id="osc-data-files">
+<h2><em>OpenSCAD</em> Data Files<a class="headerlink" href="#osc-data-files" title="Permalink to this headline">¶</a></h2>
+<p>The scheme I initially settled on is pretty simple. In each design directory we
+will find an <a class="reference internal" href="../glossary.html#term-SCAD"><span class="xref std std-term">SCAD</span></a> file named the same as the directory holding it. This
+is the design file for either a part or an assembly. In that same directory, We
+will also set up a data file containing any constant data needed by that design
+file. Since the current part or assembly may depend on data from a parent
+directory (possible more than one level up!) we will <strong>include</strong> the parent
+data file in the current data file. If we are consistent doing this, all data
+running up the design tree will be available in the current file. This scheme
+seemed to work fairly well, until I discovered that the length of the motor
+stick depended on an unrelated part, the propeller. If the competition class
+limits the total length of the model, we will not know some of the data items
+until we figure out the design of the propeller and calculate the geometric
+bounds for that assembly!</p>
+<p>What this means is that we might need to let the analysis step modify data in
+some design files, and iterate the analysis until we have a stable design. This
+becomes manageable if we detect design file changes automatically and update the
+design, including the basic geometric analysis automatically.</p>
+</section>
+<section id="analysis-data-files">
+<h2>Analysis Data Files<a class="headerlink" href="#analysis-data-files" title="Permalink to this headline">¶</a></h2>
+<p>I decided to store all generated data from the analysis in <strong>.json</strong> files.
+These files will include a slot for the material density for part files. The
+user will need to enter this data manually, or use the <a class="reference internal" href="../glossary.html#term-GUI"><span class="xref std std-term">GUI</span></a> interface to
+make those changes. If this has not been done when <a class="reference internal" href="../glossary.html#term-Center-of-Gravity"><span class="xref std std-term">center of gravity</span></a>
+calculations are made, the resulting values will be wrong. We will have the
+application note that.</p>
+<p>To simplify locating these <strong>.json</strong> data files, they will also be named using
+the enclosing directory name.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../develop.html" title="Contributing"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="09-command-line-interface.html" title="Step 9: Command Line Interface"
+             >previous</a> |</li>
+        <li><a href="../index.html">Home</a>&#160;|</li>
+        <li><a href="../contents.html">Documentation</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">Step 10: Managing Design Updates</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Roie R. Black.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+    </div>
+  </body>
+</html>

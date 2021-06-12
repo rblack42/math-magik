@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx13.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/a4_railroad_diagram.css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -156,7 +157,8 @@
         <span class="sd">&quot;&quot;&quot;Return list of leaf files (parts)&quot;&quot;&quot;</span>
         <span class="n">llist</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">dirpath</span><span class="p">,</span> <span class="n">dirnames</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_path</span><span class="p">):</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dirnames</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span> <span class="k">continue</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dirnames</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">continue</span>
             <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
                 <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirpath</span><span class="p">,</span> <span class="n">f</span><span class="p">))</span>
                 <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ext</span><span class="p">):</span>
@@ -166,7 +168,8 @@
     <span class="k">def</span> <span class="nf">get_non_leaf_file_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">nllist</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">dirpath</span><span class="p">,</span> <span class="n">dirnames</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_path</span><span class="p">):</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dirnames</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">continue</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dirnames</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">continue</span>
             <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
                 <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirpath</span><span class="p">,</span> <span class="n">f</span><span class="p">))</span>
                 <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ext</span><span class="p">):</span>
@@ -179,14 +182,12 @@
         <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span><span class="n">f</span><span class="p">)</span></div>
 
-
 <div class="viewcode-block" id="TreeWalker.process_leaf_files"><a class="viewcode-back" href="../../code/TreeWalker.html#mmdesigner.TreeWalker.TreeWalker.process_leaf_files">[docs]</a>    <span class="k">def</span> <span class="nf">process_leaf_files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Run callback on only leaf files&quot;&quot;&quot;</span>
         <span class="n">files</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_leaf_file_list</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Processing:&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span><span class="n">f</span><span class="p">)</span></div>
-
 
 <div class="viewcode-block" id="TreeWalker.clean"><a class="viewcode-back" href="../../code/TreeWalker.html#mmdesigner.TreeWalker.TreeWalker.clean">[docs]</a>    <span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ext</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;delete files with specified extension from tree&quot;&quot;&quot;</span>
@@ -199,20 +200,21 @@
 
 
 <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+
 <span class="k">def</span> <span class="nf">bump_count</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">count</span>
-
     <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># pragma: no cover</span>
 
+
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">tw</span> <span class="o">=</span> <span class="n">TreeWalker</span><span class="p">(</span><span class="s2">&quot;../tests/test_data/model&quot;</span><span class="p">,</span><span class="s2">&quot;scad&quot;</span><span class="p">,</span><span class="n">bump_count</span><span class="p">)</span>
+    <span class="n">tw</span> <span class="o">=</span> <span class="n">TreeWalker</span><span class="p">(</span><span class="s2">&quot;../tests/test_data/model&quot;</span><span class="p">,</span> <span class="s2">&quot;scad&quot;</span><span class="p">,</span> <span class="n">bump_count</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">tw</span><span class="o">.</span><span class="n">get_model_path</span><span class="p">)</span>
     <span class="n">files</span> <span class="o">=</span> <span class="n">tw</span><span class="o">.</span><span class="n">get_leaf_file_list</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">files</span><span class="p">)</span>
     <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">tw</span><span class="o">.</span><span class="n">process_files</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
-
 </pre></div>
 
             <div class="clearer"></div>

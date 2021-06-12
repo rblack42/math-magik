@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx13.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/a4_railroad_diagram.css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -114,11 +115,12 @@
 
 <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
 
+
 <div class="viewcode-block" id="test_bad_model_path"><a class="viewcode-back" href="../../code/unit-tests.html#tests.test_TreeWalker.test_bad_model_path">[docs]</a><span class="k">def</span> <span class="nf">test_bad_model_path</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Check bad model path returns None&quot;&quot;&quot;</span>
     <span class="n">root</span> <span class="o">=</span> <span class="s2">&quot;bad&quot;</span>
     <span class="n">tw</span> <span class="o">=</span> <span class="n">TreeWalker</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="n">tw</span><span class="o">.</span><span class="n">get_model_path</span><span class="p">()</span><span class="o">==</span> <span class="kc">None</span></div>
+    <span class="k">assert</span> <span class="n">tw</span><span class="o">.</span><span class="n">get_model_path</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span></div>
 
 
 <div class="viewcode-block" id="test_valid_model_path"><a class="viewcode-back" href="../../code/unit-tests.html#tests.test_TreeWalker.test_valid_model_path">[docs]</a><span class="k">def</span> <span class="nf">test_valid_model_path</span><span class="p">():</span>
@@ -132,7 +134,7 @@
     <span class="sd">&quot;&quot;&quot;Test directory with no scad files returns None&quot;&quot;&quot;</span>
     <span class="n">root</span> <span class="o">=</span> <span class="s1">&#39;tests&#39;</span>
     <span class="n">tw</span> <span class="o">=</span> <span class="n">TreeWalker</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="n">tw</span><span class="o">.</span><span class="n">get_model_path</span><span class="p">()</span> <span class="o">==</span> <span class="kc">None</span></div>
+    <span class="k">assert</span> <span class="n">tw</span><span class="o">.</span><span class="n">get_model_path</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span></div>
 
 
 <div class="viewcode-block" id="test_treewalker_extension"><a class="viewcode-back" href="../../code/unit-tests.html#tests.test_TreeWalker.test_treewalker_extension">[docs]</a><span class="k">def</span> <span class="nf">test_treewalker_extension</span><span class="p">():</span>
@@ -141,25 +143,29 @@
     <span class="n">tw</span> <span class="o">=</span> <span class="n">TreeWalker</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;scad&quot;</span><span class="p">,</span> <span class="s2">&quot;gen_stl&quot;</span><span class="p">)</span>
     <span class="k">assert</span> <span class="n">tw</span><span class="o">.</span><span class="n">get_extension</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;scad&quot;</span></div>
 
+
 <div class="viewcode-block" id="test_treewalker_callback"><a class="viewcode-back" href="../../code/unit-tests.html#tests.test_TreeWalker.test_treewalker_callback">[docs]</a><span class="k">def</span> <span class="nf">test_treewalker_callback</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Check callback is registered&quot;&quot;&quot;</span>
     <span class="n">root</span> <span class="o">=</span> <span class="s2">&quot;tests/test_data/model&quot;</span>
     <span class="n">tw</span> <span class="o">=</span> <span class="n">TreeWalker</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;scad&quot;</span><span class="p">,</span> <span class="s2">&quot;gen_stl&quot;</span><span class="p">)</span>
     <span class="k">assert</span> <span class="n">tw</span><span class="o">.</span><span class="n">get_callback</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;gen_stl&quot;</span></div>
 
+
 <div class="viewcode-block" id="test_model_file_list"><a class="viewcode-back" href="../../code/unit-tests.html#tests.test_TreeWalker.test_model_file_list">[docs]</a><span class="k">def</span> <span class="nf">test_model_file_list</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Check file list is correct&quot;&quot;&quot;</span>
     <span class="n">root</span> <span class="o">=</span> <span class="s2">&quot;tests/test_data/model&quot;</span>
-    <span class="n">tw</span> <span class="o">=</span> <span class="n">TreeWalker</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;scad&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">tw</span> <span class="o">=</span> <span class="n">TreeWalker</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;scad&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
     <span class="n">files</span> <span class="o">=</span> <span class="n">tw</span><span class="o">.</span><span class="n">get_file_list</span><span class="p">()</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span> <span class="o">==</span> <span class="mi">6</span></div>
+
 
 <div class="viewcode-block" id="test_leaf_file_list"><a class="viewcode-back" href="../../code/unit-tests.html#tests.test_TreeWalker.test_leaf_file_list">[docs]</a><span class="k">def</span> <span class="nf">test_leaf_file_list</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Test that leaf list is correct&quot;&quot;&quot;</span>
     <span class="n">root</span> <span class="o">=</span> <span class="s2">&quot;tests/test_data/model&quot;</span>
-    <span class="n">tw</span> <span class="o">=</span> <span class="n">TreeWalker</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;scad&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">tw</span> <span class="o">=</span> <span class="n">TreeWalker</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;scad&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
     <span class="n">files</span> <span class="o">=</span> <span class="n">tw</span><span class="o">.</span><span class="n">get_leaf_file_list</span><span class="p">()</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span></div>
+
 
 <div class="viewcode-block" id="test_non_lesf_file_list"><a class="viewcode-back" href="../../code/unit-tests.html#tests.test_TreeWalker.test_non_lesf_file_list">[docs]</a><span class="k">def</span> <span class="nf">test_non_lesf_file_list</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Test that non-leaf file list is correct&quot;&quot;&quot;</span>
@@ -168,10 +174,12 @@
     <span class="n">files</span> <span class="o">=</span> <span class="n">tw</span><span class="o">.</span><span class="n">get_non_leaf_file_list</span><span class="p">()</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span></div>
 
+
 <span class="k">def</span> <span class="nf">bump_count</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">count</span>
 
     <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
 
 <div class="viewcode-block" id="test_process_files"><a class="viewcode-back" href="../../code/unit-tests.html#tests.test_TreeWalker.test_process_files">[docs]</a><span class="k">def</span> <span class="nf">test_process_files</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Check all selected files get processed&quot;&quot;&quot;</span>
@@ -183,6 +191,7 @@
     <span class="n">tw</span><span class="o">.</span><span class="n">process_files</span><span class="p">()</span>
     <span class="k">assert</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">6</span></div>
 
+
 <div class="viewcode-block" id="test_process_leaf_files"><a class="viewcode-back" href="../../code/unit-tests.html#tests.test_TreeWalker.test_process_leaf_files">[docs]</a><span class="k">def</span> <span class="nf">test_process_leaf_files</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Check all selected leaf files get processed&quot;&quot;&quot;</span>
     <span class="k">global</span> <span class="n">count</span>
@@ -193,24 +202,23 @@
     <span class="n">tw</span><span class="o">.</span><span class="n">process_leaf_files</span><span class="p">()</span>
     <span class="k">assert</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">4</span></div>
 
+
 <div class="viewcode-block" id="test_delete_files"><a class="viewcode-back" href="../../code/unit-tests.html#tests.test_TreeWalker.test_delete_files">[docs]</a><span class="k">def</span> <span class="nf">test_delete_files</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Check that clean removes selected files&quot;&quot;&quot;</span>
     <span class="n">root</span> <span class="o">=</span> <span class="s2">&quot;tests/test_data/model&quot;</span>
     <span class="n">p1</span> <span class="o">=</span> <span class="s2">&quot;tests/test_data/model&quot;</span>
     <span class="n">p2</span> <span class="o">=</span> <span class="s2">&quot;tests/test_data/model/wing&quot;</span>
-    <span class="n">f1</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span><span class="s2">&quot;clean1.tst&quot;</span><span class="p">)</span>
-    <span class="n">f2</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">p2</span><span class="p">,</span><span class="s2">&quot;clean2.tst&quot;</span><span class="p">)</span>
+    <span class="n">f1</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="s2">&quot;clean1.tst&quot;</span><span class="p">)</span>
+    <span class="n">f2</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">p2</span><span class="p">,</span> <span class="s2">&quot;clean2.tst&quot;</span><span class="p">)</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fout</span><span class="p">:</span>
         <span class="n">fout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;testing&quot;</span><span class="p">)</span>
-    <span class="n">shutil</span><span class="o">.</span><span class="n">copyfile</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span><span class="n">f2</span><span class="p">)</span>
+    <span class="n">shutil</span><span class="o">.</span><span class="n">copyfile</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">)</span>
     <span class="n">tw</span> <span class="o">=</span> <span class="n">TreeWalker</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;scad&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">current_ext</span> <span class="o">=</span> <span class="n">tw</span><span class="o">.</span><span class="n">get_extension</span><span class="p">()</span>
     <span class="n">tw</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="s2">&quot;tst&quot;</span><span class="p">)</span>
     <span class="k">assert</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">f1</span><span class="p">)</span>
     <span class="k">assert</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">f2</span><span class="p">)</span>
     <span class="k">assert</span> <span class="n">tw</span><span class="o">.</span><span class="n">get_extension</span><span class="p">()</span> <span class="o">==</span> <span class="n">current_ext</span></div>
-
-
 </pre></div>
 
             <div class="clearer"></div>

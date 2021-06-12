@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx13.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/a4_railroad_diagram.css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -117,19 +118,21 @@
     <span class="sd">&quot;&quot;&quot;Check generator builds all STL files&quot;&quot;&quot;</span>
     <span class="n">root</span> <span class="o">=</span> <span class="s2">&quot;tests/test_data/model&quot;</span>
     <span class="n">gen</span> <span class="o">=</span> <span class="n">Generator</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
-    <span class="n">tw</span> <span class="o">=</span> <span class="n">TreeWalker</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;stl&quot;</span><span class="p">,</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">tw</span> <span class="o">=</span> <span class="n">TreeWalker</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;stl&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">tw</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="s2">&quot;stl&quot;</span><span class="p">)</span>
     <span class="n">gen</span><span class="o">.</span><span class="n">generate_all</span><span class="p">(</span><span class="s2">&quot;stl&quot;</span><span class="p">)</span>
     <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;wing/wing.stl&quot;</span><span class="p">))</span></div>
+
 
 <div class="viewcode-block" id="test_generate_mass_properties"><a class="viewcode-back" href="../../code/unit-tests.html#tests.test_Generator.test_generate_mass_properties">[docs]</a><span class="k">def</span> <span class="nf">test_generate_mass_properties</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Check creates json file with mass properties&quot;&quot;&quot;</span>
     <span class="n">root</span> <span class="o">=</span> <span class="s2">&quot;tests/test_data/model&quot;</span>
     <span class="n">gen</span> <span class="o">=</span> <span class="n">Generator</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
-    <span class="n">tw</span> <span class="o">=</span> <span class="n">TreeWalker</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;stl&quot;</span><span class="p">,</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">tw</span> <span class="o">=</span> <span class="n">TreeWalker</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;stl&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">tw</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="s2">&quot;json&quot;</span><span class="p">)</span>
     <span class="n">gen</span><span class="o">.</span><span class="n">process_parts</span><span class="p">(</span><span class="s2">&quot;mass&quot;</span><span class="p">)</span>
     <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;wing/wing.json&quot;</span><span class="p">))</span></div>
+
 
 <div class="viewcode-block" id="test_generates_excel"><a class="viewcode-back" href="../../code/unit-tests.html#tests.test_Generator.test_generates_excel">[docs]</a><span class="k">def</span> <span class="nf">test_generates_excel</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Check generation of excel file&quot;&quot;&quot;</span>
@@ -138,14 +141,14 @@
     <span class="n">gen</span><span class="o">.</span><span class="n">gen_excel</span><span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">)</span>
     <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;model.xlsx&quot;</span><span class="p">))</span></div>
 
+
 <span class="k">def</span> <span class="nf">test_run_all</span><span class="p">():</span>
     <span class="n">root</span> <span class="o">=</span> <span class="s2">&quot;tests/test_data/model&quot;</span>
     <span class="n">gen</span> <span class="o">=</span> <span class="n">Generator</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
-    <span class="n">tw</span> <span class="o">=</span> <span class="n">TreeWalker</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;scad&#39;</span><span class="p">,</span><span class="kc">None</span><span class="p">)</span>
     <span class="n">gen</span><span class="o">.</span><span class="n">generate_all</span><span class="p">(</span><span class="s1">&#39;stl&#39;</span><span class="p">)</span>
     <span class="n">gen</span><span class="o">.</span><span class="n">generate_all</span><span class="p">(</span><span class="s1">&#39;mass&#39;</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="s2">&quot;body/rudder/rudder.stl&quot;</span><span class="p">))</span>
-    <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="s2">&quot;body/rudder/rudder.json&quot;</span><span class="p">))</span>
+    <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;body/rudder/rudder.stl&quot;</span><span class="p">))</span>
+    <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;body/rudder/rudder.json&quot;</span><span class="p">))</span>
 </pre></div>
 
             <div class="clearer"></div>

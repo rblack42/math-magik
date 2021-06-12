@@ -8,29 +8,20 @@ def test_cli_environment():
     assert not env.debug
 
 
-def test_cli_running():
-    """Test cli reports running"""
+def test_cli_test_model_status(testenv):
+    """Test cli summary report"""
     runner = CliRunner()
-    result = runner.invoke(
-                cli,
-                [
-                        "--model_path",
-                        "tests/test_data",
-                        "--model_name",
-                        "model",
-                        "summary"
-                ]
-    )
+    result = runner.invoke( cli, ["status"])
     assert result.exit_code == 0
-    assert "Generating inventory" in result.output
+    assert "Design summary" in result.output
 
 
-def test_cli_version():
+def test_cli_app_version():
     """test cli version option"""
     runner = CliRunner()
-    result = runner.invoke(cli, ["--versions"])
+    result = runner.invoke(cli, ["--version"])
     assert result.exit_code == 0
-    assert "mmdesigner version" in result.output
+    assert "cli, version" in result.output
 
 
 def test_cli_help_option():
@@ -39,3 +30,9 @@ def test_cli_help_option():
     result = runner.invoke(cli, ['--help'])
     assert result.exit_code == 0
     assert "Usage" in result.output
+
+# test individual commands
+
+def test_Generator_cmd():
+    """Test Generator"""
+    assert 1 == 1

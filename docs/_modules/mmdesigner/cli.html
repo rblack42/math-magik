@@ -111,6 +111,7 @@
   <h1>Source code for mmdesigner.cli</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">click</span>
+<span class="kn">from</span> <span class="nn">mmdesigner</span> <span class="kn">import</span> <span class="n">__version__</span>
 
 
 <div class="viewcode-block" id="Environment"><a class="viewcode-back" href="../../code/CommandLine.html#mmdesigner.cli.Environment">[docs]</a><span class="k">class</span> <span class="nc">Environment</span><span class="p">:</span>
@@ -126,7 +127,7 @@
 <span class="n">pass_environment</span> <span class="o">=</span> <span class="n">click</span><span class="o">.</span><span class="n">make_pass_decorator</span><span class="p">(</span><span class="n">Environment</span><span class="p">,</span> <span class="n">ensure</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">cmd_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;commands&quot;</span><span class="p">))</span>
 
-<span class="k">class</span> <span class="nc">CLI</span><span class="p">(</span><span class="n">click</span><span class="o">.</span><span class="n">MultiCommand</span><span class="p">):</span>
+<div class="viewcode-block" id="CLI"><a class="viewcode-back" href="../../code/CommandLine.html#mmdesigner.cli.CLI">[docs]</a><span class="k">class</span> <span class="nc">CLI</span><span class="p">(</span><span class="n">click</span><span class="o">.</span><span class="n">MultiCommand</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Modular CLI class&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">list_commands</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;scan command directory and list all cli commands&quot;&quot;&quot;</span>
@@ -143,14 +144,22 @@
             <span class="n">mod</span> <span class="o">=</span> <span class="nb">__import__</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mmdesigner.commands.cmd_</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;cli&quot;</span><span class="p">])</span>
         <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
             <span class="k">return</span>
-        <span class="k">return</span> <span class="n">mod</span><span class="o">.</span><span class="n">cli</span>
+        <span class="k">return</span> <span class="n">mod</span><span class="o">.</span><span class="n">cli</span></div>
+
+<span class="nd">@click</span><span class="o">.</span><span class="n">version_option</span><span class="p">(</span><span class="n">__version__</span><span class="p">,</span> <span class="s2">&quot;-v&quot;</span><span class="p">,</span> <span class="s2">&quot;--version&quot;</span><span class="p">)</span>
 
 <span class="nd">@click</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="bp">cls</span><span class="o">=</span><span class="n">CLI</span><span class="p">)</span>
 <span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;--debug&quot;</span><span class="p">,</span> <span class="n">is_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Enable debug output&quot;</span><span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;--model_path&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Path to model directory&quot;</span><span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;--model_name&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Name of model within model_path&quot;</span><span class="p">)</span>
 <span class="nd">@pass_environment</span>
-<span class="k">def</span> <span class="nf">cli</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">debug</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">cli</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">debug</span><span class="p">,</span> <span class="n">model_path</span><span class="p">,</span> <span class="n">model_name</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;primary CLI interface&quot;&quot;&quot;</span>
     <span class="n">ctx</span><span class="o">.</span><span class="n">debug</span> <span class="o">=</span> <span class="n">debug</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">model_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ctx</span><span class="o">.</span><span class="n">model_path</span> <span class="o">=</span> <span class="n">model_path</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">model_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ctx</span><span class="o">.</span><span class="n">model_name</span> <span class="o">=</span> <span class="n">model_name</span>
 </pre></div>
 
             <div class="clearer"></div>
