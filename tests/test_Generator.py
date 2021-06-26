@@ -9,7 +9,7 @@ def test_generate_stl():
     gen = Generator(root)
     tw = TreeWalker(root, "stl", None)
     tw.clean("stl")
-    gen.generate_all("stl")
+    gen.process_all("stl")
     assert os.path.isfile(os.path.join(root, "wing/wing.stl"))
 
 
@@ -31,10 +31,10 @@ def test_generates_excel():
     assert os.path.isfile(os.path.join(root, "model.xlsx"))
 
 
-def test_run_all():
+def test_process_all():
     root = "tests/test_data/model"
     gen = Generator(root)
-    gen.generate_all('stl')
-    gen.generate_all('mass')
+    gen.process_all('stl')
+    gen.process_all('mass')
     assert os.path.isfile(os.path.join(root, "body/rudder/rudder.stl"))
     assert os.path.isfile(os.path.join(root, "body/rudder/rudder.json"))

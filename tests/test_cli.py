@@ -35,4 +35,12 @@ def test_cli_help_option():
 
 def test_Generator_cmd():
     """Test Generator"""
-    assert 1 == 1
+    runner = CliRunner()
+    result = runner.invoke(cli, ['gen'])
+    assert result.exit_code == 0
+
+def test_deps_cmd():
+    runner = CliRunner()
+    result = runner.invoke(cli, ['deps'])
+    assert result.exit_code == 0
+    assert "OpenSCAD" in result.output

@@ -21,20 +21,19 @@ class OpenSCAD(object):
         err_code = 1
         if not os.path.isfile(scad_path):
             return err_code
-        if scad_path.endswith(".scad"):
-            base, ext = scad_path.split(".")
-            stl_path = base+".stl"
-            cmd = [
-                'openscad',
-                scad_path,
-                "-o",
-                stl_path
-            ]
+        if not scad_path.endswith(".scad"):
+            return err_code
+        base, ext = scad_path.split(".")
+        stl_path = base+".stl"
+        cmd = [
+            'openscad',
+            scad_path,
+            "-o",
+            stl_path
+        ]
 
-            result = subprocess.run(cmd, capture_output=True)
-            err_code = result.returncode
-            if not os.path.isfile(stl_path):  # pragme: no cover
-                err_code = 1
+        result = subprocess.run(cmd, capture_output=True)
+        err_code = result.returncode
         return err_code
 
     def _get_bounds(self):

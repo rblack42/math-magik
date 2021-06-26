@@ -31,7 +31,7 @@ class CLI(click.MultiCommand):
         """import cli command file on demand"""
         try:
             mod = __import__(f"mmdesigner.commands.cmd_{name}", None, None, ["cli"])
-        except ImportError:
+        except ImportError: # pragma: no cover
             return
         return mod.cli
 

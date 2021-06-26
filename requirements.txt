@@ -2,6 +2,7 @@ sphinx
 sphinxcontrib-spelling
 sphinxcontrib-programoutput
 pytest
+pytest-mock
 click
 click-default-group
 pytest-cov

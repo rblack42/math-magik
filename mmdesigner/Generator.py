@@ -19,7 +19,7 @@ class Generator(object):
         osc = OpenSCAD()
         osc.gen_stl(param)
 
-    def gen_properties(self, param):
+    def gen_property(self, param):
         """Generate a single mass property file"""
         osc = OpenSCAD()
         osc.get_properties(param)
@@ -29,19 +29,19 @@ class Generator(object):
         if run_type == "stl":
             tw = TreeWalker(self.root, "scad", self.gen_stl)
         else:
-            tw = TreeWalker(self.root, "stl", self.gen_properties)
+            tw = TreeWalker(self.root, "stl", self.gen_property)
         tw.process_leaf_files()
 
-    def generate_all(self, run_type):
+    def process_all(self, run_type):
         """Generate part and assembly files"""
         if run_type == "stl":
             tw = TreeWalker(self.root, "scad", self.gen_stl)
         else:
-            tw = TreeWalker(self.root, "stl", self.gen_properties)
+            tw = TreeWalker(self.root, "stl", self.gen_property)
         tw.process_files()
 
-    def copy_json(self, param):
-        """Generate Excel worksheet"""
+    def gen_json(self, param):
+        """Load JSON data file"""
         global count
 
         part = param[len(self.root):]
@@ -67,7 +67,7 @@ class Generator(object):
         self.ws = wb.active
         fname = os.path.join(self.root, model_name)
         fname += ".xlsx"
-        tw = TreeWalker(self.root, "json", self.copy_json)
+        tw = TreeWalker(self.root, "json", self.gen_json)
         count = 0
         tw.process_files()
 
@@ -77,6 +77,6 @@ class Generator(object):
 if __name__ == '__main__':
     root = "tests/test_data/model"
     gen = Generator(root)
-    gen.run_all("stl")
-    gen.run_all("mass")
-    gen.gen_excel()
+    gen.process_all("stl")
+    gen.process_all("mass")
+    gen.gen_excel("model")
