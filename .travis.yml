@@ -1,5 +1,8 @@
 dist: focal
 
+services:
+  - xvfb
+
 language: python
 
 python:
