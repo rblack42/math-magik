@@ -17,7 +17,7 @@
 ..	_GH:	                https://github.com/
 
 ..	_Git:	                https://git-scm.com/
-
+https://openscad.org/cheatsheet/
 ..  _given when then:       https://martinfowler.com/bliki/GivenWhenThen.html
 
 ..  _Homebrew:              https://brew.sh/

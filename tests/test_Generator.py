@@ -7,7 +7,7 @@ def test_generate_stl():
     """Check generator builds all STL files"""
     root = "tests/test_data/model"
     gen = Generator(root)
-    tw = TreeWalker(root, "stl", None)
+    tw = TreeWalker(root, "scad", None)
     tw.clean("stl")
     gen.process_all("stl")
     assert os.path.isfile(os.path.join(root, "wing/wing.stl"))

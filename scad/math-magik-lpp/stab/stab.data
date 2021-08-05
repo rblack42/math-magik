@@ -7,31 +7,15 @@ include <MMlib/functions.scad>
 
 stab_span = max_stab_span;
 
-stab_center_span = 6;
-stab_chord = max_stab_chord;
-stab_camber = 2;
+center_span = 6;
+spar_size = 1/32;
+rib_chord = max_stab_chord - 2 * spar_size;
+rib_camber = 2;
 rib_thickness = 1/32;
 num_center_ribs = 3;
-stab_spar_size = 1/32;
 
-//=====================================
-// calculated values
-tip_span = (max_stab_span - stab_center_span)/2;
-rib_spacing = stab_center_span / num_center_ribs;
+tip_radius = 1.5;
+tip_le_span = tip_span - tip_radius
+tip_te_span = tip_span
+tip_rib_chord = max_stab_chord = tip_radius - spar_size;
 
-r1c = stab_chord - 2 * stab_spar_size;
-r1y = -stab_center_span/2 + stab_spar_size/2;
-
-r2c = r1c;
-r2y = 0;
-
-r3c = r1c;
-r3y = -r1y;
-
-rib_radius = radius(r1c, stab_camber);
-
-
-pos1 = [stab_spar_size/2,0,0];
-pos2 = [r2c/2 + stab_spar_size,r2y,0];
-pos3 = [r3c/2 + stab_spar_size,r3y,0];
-pos_cov = [0,-3,0];
