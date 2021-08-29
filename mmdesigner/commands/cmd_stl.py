@@ -1,5 +1,6 @@
 from mmdesigner.cli import pass_environment
-
+from mmdesigner.Generator import Generator
+import os
 import click
 
 
@@ -7,4 +8,9 @@ import click
 @pass_environment
 def cli(ctx):
     """Generate STL files for parts, optionally for assemblies."""
-    click.echo("Generating sTL files...")
+    model_path = ctx.model_path
+    model_path = os.path.abspath(model_path)
+    click.echo(f"Working model path: {model_path}")
+    click.echo("Generating STL files...")
+    gen = Generator(model_path)
+    gen.process_parts("stl")

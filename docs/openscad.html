@@ -1,0 +1,364 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>OpenSCAD &#8212; Math Magik 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/sphinx13.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx13.css" />
+    <link rel="stylesheet" type="text/css" href="_static/a4_railroad_diagram.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Designing a Limited Pennyplane" href="lpp-design.html" />
+    <link rel="prev" title="Project Goals" href="project-goals.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script>
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="usage/installation.html">Get it</a></li>
+    <li><a href="contents.html">Docs</a></li>
+    <li><a href="develop.html">Extend/Develop</a></li>
+  </ul>
+  <div>
+    <a href="index.html">
+      <img src="_static/logo.png" alt="PyLiT" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="lpp-design.html" title="Designing a Limited Pennyplane"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="project-goals.html" title="Project Goals"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Home</a>&#160;|</li>
+        <li><a href="contents.html">Documentation</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">OpenSCAD</a></li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="contents.html">
+              <img class="logo" src="_static/badge.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="contents.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">OpenSCAD</a><ul>
+<li><a class="reference internal" href="#primitive-shapes">Primitive Shapes</a><ul>
+<li><a class="reference internal" href="#cubes">Cubes</a><ul>
+<li><a class="reference internal" href="#coordinate-system">Coordinate System</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#spheres">Spheres</a></li>
+<li><a class="reference internal" href="#cylinders">Cylinders</a></li>
+<li><a class="reference internal" href="#other-primitive-shapes">Other Primitive Shapes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#translating-and-rotating-a-model">translating and Rotating a model</a><ul>
+<li><a class="reference internal" href="#translations">Translations</a></li>
+<li><a class="reference internal" href="#rotations">Rotations</a></li>
+<li><a class="reference internal" href="#combining-movements">Combining Movements</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#combining-shapes">Combining Shapes</a><ul>
+<li><a class="reference internal" href="#union">Union</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#modules">Modules</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="project-goals.html"
+                        title="previous chapter">Project Goals</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="lpp-design.html"
+                        title="next chapter">Designing a Limited Pennyplane</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/openscad.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>Read time: 8.3 minutes (834 words)</p>
+<section id="id1">
+<h1><a class="reference external" href="https://openscad.org/">OpenSCAD</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://openscad.org/">OpenSCAD</a> is a 3D model design tool that is driven by a simple programming
+language. It supports something called “Constructive solid Geometry” which
+means that you form models using a small set of basic 3D shapes, then combine
+them with a few simple operations to form more complex shapes.</p>
+<p>Even for non-programmers, it is pretty easy to use this tool, so easy that even
+elementary school kids have used it successfully!</p>
+<section id="primitive-shapes">
+<h2>Primitive Shapes<a class="headerlink" href="#primitive-shapes" title="Permalink to this headline">¶</a></h2>
+<section id="cubes">
+<h3>Cubes<a class="headerlink" href="#cubes" title="Permalink to this headline">¶</a></h3>
+<p>Here is a simple example of an <a class="reference external" href="https://openscad.org/">OpenSCAD</a> “program showing what OpenSCAD calls a “cube”:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">cube</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>Looks simple enough, although why we need both parentheses and square brackets
+is a topic to be discussed later.</p>
+<p>Here is the result of running this code in <a class="reference external" href="https://openscad.org/">OpenSCAD</a>:</p>
+<img src="_images/scad/e4bdbf009d190e650b9abe28166c7cb4.png" width=500 class="align-center"/><p>The “cube” is not a simple cube. Maybe the shape should be named “box”.</p>
+<section id="coordinate-system">
+<h4>Coordinate System<a class="headerlink" href="#coordinate-system" title="Permalink to this headline">¶</a></h4>
+<p>Look at the lower left area in this image. You will see a set of axes labeled
+<strong>x</strong>, <strong>y</strong>, and <strong>z</strong>. This is the coordinate system <a class="reference external" href="https://openscad.org/">OpenSCAD</a> uses for
+defining and displaying models. In the command we used to generate this”cube”
+we set in three values inside of square brackets. These three values set the
+size of the “cube” in the <strong>x</strong>, <strong>y</strong>, and <strong>z</strong> directions. As seen in this
+image, the resulting model is 10 units long and one unit high and deep. We also
+see that the corner of the cube is located at the origin. This will be
+important later when we need to position shapes to create more complex models.</p>
+<p>When we need to specify a triple of numbers for a variety of purposes, we
+surround them with square brackets and separate the values with commas.</p>
+</section>
+</section>
+<section id="spheres">
+<h3>Spheres<a class="headerlink" href="#spheres" title="Permalink to this headline">¶</a></h3>
+<p>Next, we need to display a simple sphere:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">sphere</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here, we specify the radius, 5 units in this case. Let’s see what we get:</p>
+<img src="_images/scad/a5611a41c506588e25cc449297f39a70.png" width=500 class="align-center"/><p>This sphere is a little “boxy”. We can cure that by adding a special line that
+tells the program to use more segments in building round things. Here is the
+modification:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$fn</span><span class="o">=</span><span class="mi">100</span><span class="p">;</span>
+<span class="n">sphere</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>That additional line is only needed once in the file, and we usually place it at the top.</p>
+<p>Now we should see a nicer sphere:</p>
+<img src="_images/scad/0835767479f4256855345f4885460fa4.png" width=500 class="align-center"/><p>Much better.</p>
+<p>If you look closely at the sphere, you see that the center is at the origin.
+Again, this will be important as we position things.</p>
+</section>
+<section id="cylinders">
+<h3>Cylinders<a class="headerlink" href="#cylinders" title="Permalink to this headline">¶</a></h3>
+<p>There is another basic shape we can use, the cylinder:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$fn</span><span class="o">=</span><span class="mi">100</span><span class="p">;</span>
+<span class="n">cylinder</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">h</span><span class="o">=</span><span class="mi">5</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>And here is the result:</p>
+<img src="_images/scad/c7a724b604c96ac4c714417aea12de37.png" width=500 class="align-center"/><p>As you might expect, <strong>r</strong> is the radius of the cylinder, and <strong>h(</strong> is the
+height. Notice that the cylinder axis is aligned with the <strong>z</strong> axis. The
+bottom of the cylinder is sitting on the <strong>x-y</strong> plane, and the center of that
+circle is at the origin.</p>
+</section>
+<section id="other-primitive-shapes">
+<h3>Other Primitive Shapes<a class="headerlink" href="#other-primitive-shapes" title="Permalink to this headline">¶</a></h3>
+<p>There are other ways to define shapes, and we will examine them as we need them in building our airplane models.</p>
+</section>
+</section>
+<section id="translating-and-rotating-a-model">
+<h2>translating and Rotating a model<a class="headerlink" href="#translating-and-rotating-a-model" title="Permalink to this headline">¶</a></h2>
+<p>Each primitive shape has an origin. If we want to move the shape to some other
+position, we need to <strong>translate</strong> and/or <strong>rotate</strong> it into a new position and orientation.</p>
+<section id="translations">
+<h3>Translations<a class="headerlink" href="#translations" title="Permalink to this headline">¶</a></h3>
+<p>Translations are fairly simple. You need to specify how far in each direction
+you want to move the shape. It is important to consider where the origin of
+your shape is located to get proper placement.</p>
+<p>Here is an example:</p>
+<p>This code slides the cube to a new position. Look closely and you will see that
+we slid it along the <strong>x</strong> axis by 5 units, then along the <strong>y</strong> and <strong>z</strong>
+directions so the resulting “cube” is centered along the <strong>x</strong> axis, five units
+down. This takes practice and studying the coordinates to get right.</p>
+<p>Notice that we surrounded the shape we want to translate in curly brackets. If
+there is only one shape to translate, those braces can be eliminated. It is
+common to indent the thing (or things) being translated as seen above.</p>
+<p>Here is the result:</p>
+<img src="_images/scad/87b6b2cece2d17f7a16e24711a04082f.png" width=500 class="align-center"/></section>
+<section id="rotations">
+<h3>Rotations<a class="headerlink" href="#rotations" title="Permalink to this headline">¶</a></h3>
+<p>When we <strong>rotate</strong> a shape, we specify the number of degrees we want to rotate
+the object around each axis. Obviously, we can make several rotations all at
+once, and this can get a bit confusing.</p>
+<p>Let’s try a simple rotation to get our “cube sitting upright. Thta will involve
+rotation around the <strong>y</strong> axis only:</p>
+<img src="_images/scad/091ccf5ae72bc1d5c3afb4d5f0ebe605.png" width=500 class="align-center"/><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Rotations use the “right-hand rule”. Take your right thump and point it
+along the axis in question. Your fingers wrap around that axis in the
+positive direction. That explains why the cube was rotated downward. Use
+negative angles to make it rotate in the other direction.</p>
+</div>
+</section>
+<section id="combining-movements">
+<h3>Combining Movements<a class="headerlink" href="#combining-movements" title="Permalink to this headline">¶</a></h3>
+<p>We can combine movements in one operation:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">translate</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">rotate</span><span class="p">([</span><span class="mi">45</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">45</span><span class="p">])</span>
+        <span class="n">cube</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>Phew! What will this produce?</p>
+<img src="_images/scad/f393494b168ad32d9869d57005ffae92.png" width=500 class="align-center"/><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">rotate</span><span class="p">([</span><span class="mi">45</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">45</span><span class="p">])</span>
+    <span class="n">translate</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+        <span class="n">cube</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>The order in which you move things does matter. This is probably the biggest source of issues in building a complex model.</p>
+<img src="_images/scad/440e92849647e8575badd620b875d388.png" width=500 class="align-center"/></section>
+</section>
+<section id="combining-shapes">
+<h2>Combining Shapes<a class="headerlink" href="#combining-shapes" title="Permalink to this headline">¶</a></h2>
+<p>We will be building our model using a fairly large number of individual shapes. These will be combined in a variety of ways to produce more interesting combinations. Let’s explore the basic combining operations.</p>
+<section id="union">
+<h3>Union<a class="headerlink" href="#union" title="Permalink to this headline">¶</a></h3>
+<p>We merge two or more shapes into one bigger shape using the <strong>union</strong> operation. This operation has a slightly different setup.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$fn</span><span class="o">=</span><span class="mi">100</span><span class="p">;</span>
+<span class="k">union</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">cube</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="n">sphere</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img src="_images/scad/18da0aece6e42034336159316748aa27.png" width=500 class="align-center"/><p>This is not probably what I wanted. In order to center the cube in the sphere, we need to translate it:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$fn</span><span class="o">=</span><span class="mi">100</span><span class="p">;</span>
+<span class="k">union</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">translate</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">-0.5</span><span class="p">,</span><span class="mf">-0.5</span><span class="p">])</span>
+        <span class="n">cube</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="n">sphere</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img src="_images/scad/84097baa8631f30fc526bd19717535e7.png" width=500 class="align-center"/><p>That looks better!</p>
+</section>
+</section>
+<section id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+<p>If we want to use a shape multiple times, we can wrap it up in a <strong>module</strong> and
+treat that as a new shape:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$fn</span><span class="o">=</span><span class="mi">100</span><span class="p">;</span>
+
+<span class="n">module</span> <span class="nf">combo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">union</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">translate</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">-0.5</span><span class="p">,</span><span class="mf">-0.5</span><span class="p">])</span>
+            <span class="n">cube</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span>
+        <span class="n">sphere</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">combo</span><span class="p">();</span>
+<span class="n">translate</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">combo</span><span class="p">();</span>
+</pre></div>
+</div>
+<img src="_images/scad/4f3f8b58251cbc1d9dbea26c341a524d.png" width=500 class="align-center"/></section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="lpp-design.html" title="Designing a Limited Pennyplane"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="project-goals.html" title="Project Goals"
+             >previous</a> |</li>
+        <li><a href="index.html">Home</a>&#160;|</li>
+        <li><a href="contents.html">Documentation</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">OpenSCAD</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Roie R. Black.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+    </div>
+  </body>
+</html>

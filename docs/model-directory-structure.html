@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Model Directory Structure &#8212; Math Magik 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/sphinx13.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx13.css" />
+    <link rel="stylesheet" type="text/css" href="_static/a4_railroad_diagram.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script>
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="usage/installation.html">Get it</a></li>
+    <li><a href="contents.html">Docs</a></li>
+    <li><a href="develop.html">Extend/Develop</a></li>
+  </ul>
+  <div>
+    <a href="index.html">
+      <img src="_static/logo.png" alt="PyLiT" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Home</a>&#160;|</li>
+        <li><a href="contents.html">Documentation</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">Model Directory Structure</a></li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="contents.html">
+              <img class="logo" src="_static/badge.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="contents.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Model Directory Structure</a><ul>
+<li><a class="reference internal" href="#what-is-a-directory">What is a Directory?</a><ul>
+<li><a class="reference internal" href="#subdirectories">Subdirectories</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#step-1-create-a-project-directory">Step 1: Create a Project Directory</a></li>
+<li><a class="reference internal" href="#step-2-identify-major-components">Step 2: Identify Major Components</a></li>
+<li><a class="reference internal" href="#sub-subdirectories">Sub-Subdirectories</a></li>
+<li><a class="reference internal" href="#directory-trees">Directory Trees</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/model-directory-structure.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>Read time: 8.4 minutes (838 words)</p>
+<section id="model-directory-structure">
+<h1>Model Directory Structure<a class="headerlink" href="#model-directory-structure" title="Permalink to this headline">¶</a></h1>
+<p>Let’s get one thing straight now. I am going to discuss directories you use to
+manage your project. If you have worked on PCs long enough, you know that
+Microsoft decided we should call these things “folders”, in keeping with their
+goal of making computer management feel like something you do in your office.
+You know, you manage pieces of paper you put in “folders”, then stuff them away
+in filing cabinets. I have always wondered why they did not decide we should
+call our hard disks “cabinets” Oh well!</p>
+<section id="what-is-a-directory">
+<h2>What is a Directory?<a class="headerlink" href="#what-is-a-directory" title="Permalink to this headline">¶</a></h2>
+<p>A directory is a management structure on your systems hard disk that helps you
+organize (and find) things. You can place “files” in a directory, or other
+sub-directories. It really does not matter how a directory is actually set up
+on your system. Instead, what matters is how you “think” about things on your
+system. Microsoft wanted you to think like you do when working in an office
+environment using a computer (running Windows, of course).</p>
+<blockquote>
+<div><p>Hmmm! Wonder where the term “windows” came from. Maybe some developer was
+staring out the office window trying to come up with a name!</p>
+</div></blockquote>
+<p>Files can be programs, data, or just documents. In general, these things are
+not to be broken up onto smaller pieces. You would never tear a report apart and put
+the individual pages in separate folders, would you?</p>
+<p>Files are processed by some program on your system, like Word, or launched by
+your operating system when you double-click your mouse on some icon.</p>
+<section id="subdirectories">
+<h3>Subdirectories<a class="headerlink" href="#subdirectories" title="Permalink to this headline">¶</a></h3>
+<p>Directories can also contain other directories. We call these inner directories
+“subdirectories”. These subdirectories can contain more files, or more
+subdirectories, leading to a tree-like system (Ok, an upside down tree) of
+directories and subdirectories. The “root” of this tree is the top-most
+directory, the branches of this tree grow downward in most folks minds to other
+directories. The leaves of this tree are the files on your system. You cannot
+break things further down.</p>
+<p>Directories and files all have names. These names are supposed to be chosen by
+you to help you figure out what is being stored in them. A directory groups a
+possibly empty set of files and subdirectories. You grouped them for some
+reason, so name the directory something nice to help you remember what that
+group is about.</p>
+<p>Microsoft also decided that names on these directories and files should be able to have spaces in them. That is a nice feature in the office environment, but developers immediately run into problems what names have spaces in them.My afdvice is simple. If ypu stre s developer, asnd you think your nsme should hsv e a spade in it, put an underscore there instead. It will look almost the same whwn you see it on your system, but will cause you far fewer headaches later!&#64;</p>
+<p>When building a
+project involving computer code, an important decision needs to be made right
+at the start.</p>
+<blockquote>
+<div><p>How will you manage your code?</p>
+</div></blockquote>
+</section>
+</section>
+<section id="step-1-create-a-project-directory">
+<h2>Step 1: Create a Project Directory<a class="headerlink" href="#step-1-create-a-project-directory" title="Permalink to this headline">¶</a></h2>
+<p>Some developers take a baby step in this direction: they create one project directory and place every project file in this one place. The result over the course of development is <em>Chaos</em>!</p>
+<p>Why?</p>
+<p>Simply because no other developer will be able to figure out what relates to
+what. There will always be dependencies in your code: one file needs help from
+another file to do its work. Those dependencies are totally invisible to the
+reader who is scanning the list of files in your project. I have seen projects
+where the main entry point to the program was nearly impossible to locate
+without help from magical tools like <strong>grep</strong>, which is sadly missing on PC
+systems. (Yet another reason why I ditched my PC and switched to Macs for
+development!)</p>
+</section>
+<section id="step-2-identify-major-components">
+<h2>Step 2: Identify Major Components<a class="headerlink" href="#step-2-identify-major-components" title="Permalink to this headline">¶</a></h2>
+<p>Once you begin serious development of a project, you start to identify the
+major components you will build Each one of these components should end up in a
+subdirectory of its own. If code in a file in one of your subdirectories needs
+nelp from code in another place, that is a <em>dependency</em> that you need to
+document and implement. The reason for this is simple. Perhaps you are working
+on your code and some other developer is working on the code you depend on. If
+that other person changes the code you depend on, your code will break. The
+only hope is documentation and collaboration to clear up the disconnect.</p>
+</section>
+<section id="sub-subdirectories">
+<h2>Sub-Subdirectories<a class="headerlink" href="#sub-subdirectories" title="Permalink to this headline">¶</a></h2>
+<p>Big components are often broken up still further into smaller components.
+Again, create another subdirectory to manage this new smaller component.</p>
+<p>u can keep doing this as needed until it make no sense to go further.</p>
+</section>
+<section id="directory-trees">
+<h2>Directory Trees<a class="headerlink" href="#directory-trees" title="Permalink to this headline">¶</a></h2>
+<p>The result of all this decomposing a large project into a bunch of smaller
+projects is a structure we call a “directory tree”. The “root” of this tree is
+the top-most project directory. The branches lead to subdirectories off of the
+root, further branches take us to lower level subdirectories, and so on until
+we reach the leaves of this tree which are the files we really want to work on.</p>
+<p>There are nice tools available that will show you this tree for your project.
+For example, for my <em>Limited Pennyplane*</em> project, here is the tree showing the
+<strong>scad</strong> files in the project, produced on my Mac using such a tool oddly
+enough called <strong>tree</strong>.:</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Home</a>&#160;|</li>
+        <li><a href="contents.html">Documentation</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">Model Directory Structure</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Roie R. Black.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+    </div>
+  </body>
+</html>

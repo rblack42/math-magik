@@ -132,20 +132,19 @@
         <span class="n">err_code</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">scad_path</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">err_code</span>
-        <span class="k">if</span> <span class="n">scad_path</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.scad&quot;</span><span class="p">):</span>
-            <span class="n">base</span><span class="p">,</span> <span class="n">ext</span> <span class="o">=</span> <span class="n">scad_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
-            <span class="n">stl_path</span> <span class="o">=</span> <span class="n">base</span><span class="o">+</span><span class="s2">&quot;.stl&quot;</span>
-            <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span>
-                <span class="s1">&#39;openscad&#39;</span><span class="p">,</span>
-                <span class="n">scad_path</span><span class="p">,</span>
-                <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
-                <span class="n">stl_path</span>
-            <span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">scad_path</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.scad&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">err_code</span>
+        <span class="n">base</span><span class="p">,</span> <span class="n">ext</span> <span class="o">=</span> <span class="n">scad_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+        <span class="n">stl_path</span> <span class="o">=</span> <span class="n">base</span><span class="o">+</span><span class="s2">&quot;.stl&quot;</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;openscad&#39;</span><span class="p">,</span>
+            <span class="n">scad_path</span><span class="p">,</span>
+            <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
+            <span class="n">stl_path</span>
+        <span class="p">]</span>
 
-            <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-            <span class="n">err_code</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">returncode</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">stl_path</span><span class="p">):</span>  <span class="c1"># pragme: no cover</span>
-                <span class="n">err_code</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">err_code</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">returncode</span>
         <span class="k">return</span> <span class="n">err_code</span></div>
 
     <span class="k">def</span> <span class="nf">_get_bounds</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

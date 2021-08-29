@@ -13,6 +13,7 @@ class Generator(object):
     def __init__(self, root):
         """Class constructor normalizes input model path"""
         self.root = os.path.abspath(root)
+        self.ext = '.scad'
 
     def gen_stl(self, param):
         """Generate a single STL file"""
@@ -56,7 +57,7 @@ class Generator(object):
             row = []
             row.append(part)
             for key in jdata:
-                row.append(jdata[key])
+                row.append(float(jdata[key]))
             self.ws.append(row)
             count += 1
 
@@ -70,8 +71,23 @@ class Generator(object):
         tw = TreeWalker(self.root, "json", self.gen_json)
         count = 0
         tw.process_files()
-
+        print("Workbook:", fname)
         wb.save(fname)
+
+    def count_inv(self, ext):
+        pass
+
+    def inventory(self):
+        """scan model directory counting files"""
+        num_assemblies = 0
+        num_parrs = 0
+        num_data = 0
+        num_stl = 0
+        num_json = 0
+
+        for dirpath, dirnames, filenames in os.walk(self.root):
+            for f in filenames:
+                path = os.path.abspath(os.path.join(dirpath, f))
 
 
 if __name__ == '__main__':

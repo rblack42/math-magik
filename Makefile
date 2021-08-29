@@ -8,4 +8,8 @@ MK	:= mk
 -include $(MK)/version.mk
 -include $(MK)/sphinx.mk
 
+.PHONY: mass
+mass:
+	cd mmdesigner && \
+		python WeightBalance.py
 

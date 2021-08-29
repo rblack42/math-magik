@@ -142,7 +142,7 @@
         <span class="sd">&quot;&quot;&quot;import cli command file on demand&quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">mod</span> <span class="o">=</span> <span class="nb">__import__</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mmdesigner.commands.cmd_</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;cli&quot;</span><span class="p">])</span>
-        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span> <span class="c1"># pragma: no cover</span>
             <span class="k">return</span>
         <span class="k">return</span> <span class="n">mod</span><span class="o">.</span><span class="n">cli</span></div>
 

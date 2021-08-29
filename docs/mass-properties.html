@@ -102,7 +102,6 @@
   <ul>
 <li><a class="reference internal" href="#">Calculating Model Properties</a><ul>
 <li><a class="reference internal" href="#volume">Volume</a></li>
-<li><a class="reference internal" href="#weight">Weight</a></li>
 <li><a class="reference internal" href="#center-of-gravity">Center of Gravity</a><ul>
 <li><a class="reference internal" href="#rotations">Rotations</a></li>
 <li><a class="reference internal" href="#translations">translations</a></li>
@@ -110,6 +109,10 @@
 </li>
 <li><a class="reference internal" href="#moment-of-inertia">Moment of Inertia</a></li>
 <li><a class="reference internal" href="#bounds">Bounds</a></li>
+<li><a class="reference internal" href="#houston-we-have-a-problem">Houston - We have a Problem!</a><ul>
+<li><a class="reference internal" href="#parsing-osc-code">Parsing <em>OpenSCAD</em> code</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -145,7 +148,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <p>Read time: 4.3 minutes (426 words)</p>
+  <p>Read time: 6.8 minutes (675 words)</p>
 <section id="calculating-model-properties">
 <h1>Calculating Model Properties<a class="headerlink" href="#calculating-model-properties" title="Permalink to this headline">¶</a></h1>
 <p>For this project, we will want to calculate a few basic properties of the final
@@ -168,11 +171,9 @@ for all parts and assemblies.</p>
 <section id="volume">
 <h2>Volume<a class="headerlink" href="#volume" title="Permalink to this headline">¶</a></h2>
 <p>We can calculate the volume of each part using the associated <a class="reference internal" href="glossary.html#term-STL"><span class="xref std std-term">STL</span></a> file
-and the <strong>numpy-stl</strong> package. This needs to be multiplied by the selected
-material density to calculate the actual weight of the part.</p>
-</section>
-<section id="weight">
-<h2>Weight<a class="headerlink" href="#weight" title="Permalink to this headline">¶</a></h2>
+and the <strong>numpy-stl</strong> package. We will not generate volume data for assemblies. Instead we will generate the weight os an assembly by adding up the component weights for that assembly.
+Weight
+<strong>**</strong></p>
 <p>Designers select the “right” material for each part, and can provide the
 density of that material. Much of this data needs to be entered manually, but
 we can create a table of standard densities for materials like aluminum, music
@@ -208,9 +209,38 @@ move through space.</p>
 <p>The bounds of the model must be calculated to ensure the model meets the limits
 spelled out in the official rules for the class the model is designed for. For
 the <em>Limited Pennyplane</em> class, the rules limit the length of the model in an interesting way.
-The measurement is made from the forwardmost point on the propeller to the
+The measurement is made from the forward most point on the propeller to the
 rearmost point of the model structure. These dimensions can be provided for
-each part by the <strong>numpy-stl</strong> package</p>
+each part by the <strong>numpy-stl</strong> package.</p>
+</section>
+<section id="houston-we-have-a-problem">
+<h2>Houston - We have a Problem!<a class="headerlink" href="#houston-we-have-a-problem" title="Permalink to this headline">¶</a></h2>
+<p>There is one significant problem in working through the <a href="#id1"><span class="problematic" id="id2">|CG|</span></a> analysis. <a href="#id3"><span class="problematic" id="id4">|OCS|</span></a> does
+not provide an easy way to generate the data we need in a useful way. If we set
+up variables for all of our dimensions, and use the variable names in
+calculations within <em>OpenSCAD</em> code, the model will be generated correctly, but we
+have no way to extract the actual numbered used internally.</p>
+<p>So, how do we extract this data so we can do our calculations?</p>
+<p>One idea involved reading all the data and positioning files and extracting the
+names and values found there. Basically, that means we generate our own
+expressions in <em>Python</em> and perform the calculations as needed. This is a bit ugly
+because we do not have unique names for data files. Therefore, we must track
+the path to each data file.  In <em>OpenSCAD</em> code, we can use relative paths to
+indicate what file to <em>include</em> or <em>use</em>. THis must be considered when we examine data files.</p>
+<section id="parsing-osc-code">
+<h3>Parsing <em>OpenSCAD</em> code<a class="headerlink" href="#parsing-osc-code" title="Permalink to this headline">¶</a></h3>
+<p>SInce our data and position files only contain data declarations, it it
+possible to generate a parser that can read these files and get out values.</p>
+<p>The is a nice tool available that can generate a Python parser for our
+purposes. The <a class="reference external" href="https://www.antlr.org/"><em>ANother Tool for Language Recognition</em></a> project, created by Terence Parr, is just the tool we
+need!</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You will not need to install this project to follow along n this part of
+the project. I have set things up and generated the parser code we need for
+you!</p>
+</div>
+</section>
 </section>
 </section>
 

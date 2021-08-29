@@ -24,6 +24,7 @@ release = version
 
 extensions = [
     'sphinx_ext.wordcount',
+    'sphinx_ext.scad',
     'sphinx.ext.todo',
     'sphinx.ext.autodoc',
     'sphinx.ext.viewcode',

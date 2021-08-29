@@ -2,11 +2,11 @@ Step 1: Create |GH|_ Repo
 #########################
 
 To start a new project, in this case a |PY|_ project, we need to create a home
-for the code on |GH|_. All programming projects should be managed using some for
-of control system. Today, the most popular system is Git_, developed by `Linus
-Torvalds`_ of Linux fame. For projects managed using Git_ |GH| is probably the
-most popular site to host your |OS| code. (So popular that Microsoft bought
-|GH| a few years ago!)
+for the code on |GH|_. All programming projects should be managed using some
+form of source code control system. Today, the most popular system is Git_,
+developed by `Linus Torvalds`_ of Linux fame. For projects managed using Git_
+|GH| is probably the most popular site to host your |OS| code. (So popular that
+Microsoft bought |GH| a few years ago!)
 
 Create a |GH| Account
 *********************
@@ -22,7 +22,7 @@ so:
 
 ..	code-block:: text
 
-	https://githib.com/rblack42
+	https://github.com/rblack42
 
 You will need to provide your credentials to gain access, but you can add a
 public key to your account and set up things to allow immediate access. This is
@@ -31,7 +31,7 @@ very handy. See :ref:`github-setup` for more information.
 
 You can edit your public profile to provide an image of you and other
 information folks browsing your site may find interesting. |GH| is a great
-place to show off your skills and interests.
+place to show off your programming skills and interests.
 
 
 Create the Project Repository
@@ -47,7 +47,9 @@ later.
 Workstation setup
 *****************
 
-Before you proceed further in this project, you need to get a few tools installed on your development machine. Basically we will be using these tools for this project:
+Before you proceed further in this project, you need to get a few tools
+installed on your development machine. Basically we will be using these tools
+for this project:
 
     * |PY|_ - Needed for documentation and the project application
 
@@ -55,9 +57,11 @@ Before you proceed further in this project, you need to get a few tools installe
 
     * Git_ - for source code management
 
-I like to use the :term:`command line` for some things, but for this project, I will focus on using PyCharm_ as much as possible.
+I like to use the :term:`command line` for some things, but for this project, I
+will focus on using PyCharm_ as much as possible.
 
-Details on installing these tools on your machine are included in the Appendix (:ref:`tool-setup`)
+Details on installing these tools on your machine are included in the Appendix
+(:ref:`tool-setup`)
 
 Clone this Repo
 ***************
@@ -73,7 +77,7 @@ server.
 ..	note::
 
     if you are a developer and wish to contribute to the |MM| project, please
-    follow the instructions at :ref:develop to get properly set up. If you
+    follow the instructions at :ref:`develop` to get properly set up. If you
     "clone" the main project directly, you will not be able to post your
     changes in a way I can use.
 

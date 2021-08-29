@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Building an Indoor Model &#8212; Math Magik 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/sphinx13.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx13.css" />
+    <link rel="stylesheet" type="text/css" href="_static/a4_railroad_diagram.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script>
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="usage/installation.html">Get it</a></li>
+    <li><a href="contents.html">Docs</a></li>
+    <li><a href="develop.html">Extend/Develop</a></li>
+  </ul>
+  <div>
+    <a href="index.html">
+      <img src="_static/logo.png" alt="PyLiT" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Home</a>&#160;|</li>
+        <li><a href="contents.html">Documentation</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">Building an Indoor Model</a></li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="contents.html">
+              <img class="logo" src="_static/badge.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="contents.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Building an Indoor Model</a><ul>
+<li><a class="reference internal" href="#clear-off-your-workspace">1. Clear off your workspace</a></li>
+<li><a class="reference internal" href="#lay-out-your-plan">2. Lay out your plan</a></li>
+<li><a class="reference internal" href="#gather-your-materials">3. Gather your materials:</a></li>
+<li><a class="reference internal" href="#build-the-fuselage">4. Build the Fuselage</a><ul>
+<li><a class="reference internal" href="#motor-stick">4.1. Motor Stick</a></li>
+<li><a class="reference internal" href="#tail-boom">4.2. Tail Boom</a></li>
+<li><a class="reference internal" href="#mounting-posts-for-the-wing-and-stab">4.3. Mounting posts for the wing and stab</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#glue-the-wing-and-stab-posts-in-place">4.4. Glue the wing and stab posts in place</a></li>
+<li><a class="reference internal" href="#attach-front-bearing-and-rear-hook">4.5. Attach front bearing and rear hook</a><ul>
+<li><a class="reference internal" href="#attach-tail-boom-to-motor-stick">4.6. Attach tail boom to motor stick</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#build-the-wing">5. Build the Wing</a><ul>
+<li><a class="reference internal" href="#wing-spars">5.1. Wing spars</a></li>
+<li><a class="reference internal" href="#wing-ribs">5.2. Wing Ribs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/building-process.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>Read time: 6.0 minutes (598 words)</p>
+<section id="building-an-indoor-model">
+<h1>Building an Indoor Model<a class="headerlink" href="#building-an-indoor-model" title="Permalink to this headline">¶</a></h1>
+<p>We do not actually have a plan to work from yet, but pretend we do. How will you
+proceed in building this model?</p>
+<section id="clear-off-your-workspace">
+<h2>1. Clear off your workspace<a class="headerlink" href="#clear-off-your-workspace" title="Permalink to this headline">¶</a></h2>
+<p>Simple, we will set up on some flat surface we use for building.</p>
+</section>
+<section id="lay-out-your-plan">
+<h2>2. Lay out your plan<a class="headerlink" href="#lay-out-your-plan" title="Permalink to this headline">¶</a></h2>
+<p>For now, we will imagine placing a clean white page big enough to handle the
+complete airplane. We will draw two lines on this page. One runs from the nose
+of the airplane to the tip of the tail. The fuselage of our airplane will be
+placed on this line. We will call this the <strong>X axis</strong>. Perpendicular to this
+line, we draw another one that runs long enough to reach from wing tip to wing
+tip (with the wing flat - no dihedral. We will call this one the <strong>Y axis</strong>.
+There will be a third axis, one we cannot draw, that runs perpendicular to both
+of these two axes. We will call this one the <strong>Z-axis</strong>. The origin of this
+<em>coordinate system</em> is at the tip of the nose where all three axes come
+together. If this all sounds familiar, it is probably because you took geometry
+in high school! All measurements we will need to build our model will be
+defined in this system.</p>
+</section>
+<section id="gather-your-materials">
+<h2>3. Gather your materials:<a class="headerlink" href="#gather-your-materials" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><blockquote>
+<div><ul class="simple">
+<li><p>Balsa wood sheet stock</p></li>
+<li><p>balsa wood strip stock (maybe you cut this from sheet stock)</p></li>
+<li><p>Wire for the prop shaft, bearing, and rear hook</p></li>
+<li><p>Tissue to build paper tubes for mounting</p></li>
+</ul>
+</div></blockquote>
+<ul>
+<li><p>Mylar film for covering</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Glue (We wont be gluing anything for a while)</p></li>
+<li><p>Cutting and sanding gadgets</p></li>
+<li><p>An accurate measuring tool - ruler, digital caliper, etc.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</section>
+<section id="build-the-fuselage">
+<h2>4. Build the Fuselage<a class="headerlink" href="#build-the-fuselage" title="Permalink to this headline">¶</a></h2>
+<p>We will start off by building the fuselage of our model. This involves a motor
+stick, tail boom, and mounting posts for the flying surfaces.</p>
+<section id="motor-stick">
+<h3>4.1. Motor Stick<a class="headerlink" href="#motor-stick" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>Cut a rectangular strip for the basic stick.</p></li>
+<li><p>Trim it as needed using a knife blade</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="tail-boom">
+<h3>4.2. Tail Boom<a class="headerlink" href="#tail-boom" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>Again, cut a basic strip.</p></li>
+<li><p>Trim it as needed using a knife blade</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="mounting-posts-for-the-wing-and-stab">
+<h3>4.3. Mounting posts for the wing and stab<a class="headerlink" href="#mounting-posts-for-the-wing-and-stab" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>Cut square posts with rounded tops where we will mount the flying
+surfaces</p></li>
+<li><p>Sand the top part round for the mounting tubes</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+<section id="glue-the-wing-and-stab-posts-in-place">
+<h2>4.4. Glue the wing and stab posts in place<a class="headerlink" href="#glue-the-wing-and-stab-posts-in-place" title="Permalink to this headline">¶</a></h2>
+<p>This involves identifying where each post will go. On my design the posts are
+in front of the leading edge and behind the trailing edge of each flying
+surface.</p>
+</section>
+<section id="attach-front-bearing-and-rear-hook">
+<h2>4.5. Attach front bearing and rear hook<a class="headerlink" href="#attach-front-bearing-and-rear-hook" title="Permalink to this headline">¶</a></h2>
+<p>This will involve bending the wire parts, and attaching then to the motor stick
+centered to handle the loads imposed by the rubber motor.</p>
+<section id="attach-tail-boom-to-motor-stick">
+<h3>4.6. Attach tail boom to motor stick<a class="headerlink" href="#attach-tail-boom-to-motor-stick" title="Permalink to this headline">¶</a></h3>
+<p>Some builders use a butt joint for this, but I will use a bit of overlap and
+glue the tail boom to the aft side of the motor stick.</p>
+</section>
+</section>
+<section id="build-the-wing">
+<h2>5. Build the Wing<a class="headerlink" href="#build-the-wing" title="Permalink to this headline">¶</a></h2>
+<p>The wing is fairly easy, unless you really want to get into weight savings by
+using double-tapered spars. For now, let’s just use strip stock with constant
+thickness. Our wing will have a flat rectangular center section with five ribs,
+and wing tips tilted up to provide needed dihedral for stability. The wing will
+be constructed flat, covered, then dihedral will be added as a final step. We
+will use a simple circular arc airfoil, common in many indoor models. These may
+be formed by bending strip stock, or cut from sheet stock.</p>
+<section id="wing-spars">
+<h3>5.1. Wing spars<a class="headerlink" href="#wing-spars" title="Permalink to this headline">¶</a></h3>
+<p>We will use a rectangular center section meaning that the leading and trailing
+edges are straight in the center section.  The wing tips are going to be
+rounded at the forward tips. That means we will need to bend the spars around a
+template of some sort. (We will generate this template in our work with
+OpenSCAD.) Some builders use a full wing template to assemble the wing</p>
+</section>
+<section id="wing-ribs">
+<h3>5.2. Wing Ribs<a class="headerlink" href="#wing-ribs" title="Permalink to this headline">¶</a></h3>
+<p>The ribs are all identical circular arcs. Each rib will have a specified chord
+length, and camber. It will also have a specified strip height and thickness. We
+will not worry about how these ribs are formed. They could be cut from sheet
+balsa, or bent around a form.</p>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Home</a>&#160;|</li>
+        <li><a href="contents.html">Documentation</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">Building an Indoor Model</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Roie R. Black.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+    </div>
+  </body>
+</html>

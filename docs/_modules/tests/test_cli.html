@@ -146,7 +146,15 @@
 
 <div class="viewcode-block" id="test_Generator_cmd"><a class="viewcode-back" href="../../code/unit-tests.html#tests.test_cli.test_Generator_cmd">[docs]</a><span class="k">def</span> <span class="nf">test_Generator_cmd</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Test Generator&quot;&quot;&quot;</span>
-    <span class="k">assert</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span></div>
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">CliRunner</span><span class="p">()</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">cli</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;gen&#39;</span><span class="p">])</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">exit_code</span> <span class="o">==</span> <span class="mi">0</span></div>
+
+<span class="k">def</span> <span class="nf">test_deps_cmd</span><span class="p">():</span>
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">CliRunner</span><span class="p">()</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">cli</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;deps&#39;</span><span class="p">])</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">exit_code</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="k">assert</span> <span class="s2">&quot;OpenSCAD&quot;</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">output</span>
 </pre></div>
 
             <div class="clearer"></div>

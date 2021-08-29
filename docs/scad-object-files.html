@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>SCAD Object Files &#8212; Math Magik 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/sphinx13.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx13.css" />
+    <link rel="stylesheet" type="text/css" href="_static/a4_railroad_diagram.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script>
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="usage/installation.html">Get it</a></li>
+    <li><a href="contents.html">Docs</a></li>
+    <li><a href="develop.html">Extend/Develop</a></li>
+  </ul>
+  <div>
+    <a href="index.html">
+      <img src="_static/logo.png" alt="PyLiT" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Home</a>&#160;|</li>
+        <li><a href="contents.html">Documentation</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">SCAD Object Files</a></li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="contents.html">
+              <img class="logo" src="_static/badge.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="contents.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">SCAD Object Files</a><ul>
+<li><a class="reference internal" href="#object-directories">Object Directories</a></li>
+<li><a class="reference internal" href="#connecting-objects">Connecting Objects</a></li>
+<li><a class="reference internal" href="#object-shape-files">Object Shape Files</a><ul>
+<li><a class="reference internal" href="#object-position-and-orientation">Object Position and Orientation</a><ul>
+<li><a class="reference internal" href="#object-coordinate-system">Object Coordinate system</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#object-data-files">Object Data Files</a><ul>
+<li><a class="reference internal" href="#object-specific-data">Object Specific Data</a></li>
+<li><a class="reference internal" href="#object-derived-dimensions">Object Derived Dimensions</a></li>
+<li><a class="reference internal" href="#material-properties">Material Properties</a></li>
+<li><a class="reference internal" href="#position-and-orientation">Position and Orientation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/scad-object-files.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>Read time: 8.6 minutes (856 words)</p>
+<section id="scad-object-files">
+<h1>SCAD Object Files<a class="headerlink" href="#scad-object-files" title="Permalink to this headline">¶</a></h1>
+<p>Our design will be made up of a set of <em>objects</em>. These <em>objects will either be
+assemblies made up of other objects, or individual *parts</em> which we will
+manufacture. All objects will have a name, which will be used in several ways.</p>
+<section id="object-directories">
+<h2>Object Directories<a class="headerlink" href="#object-directories" title="Permalink to this headline">¶</a></h2>
+<p>Every <em>object</em> we create in our airplane design will be saved in a directory
+somewhere in the project directory tree. This directory will be named to
+indicate what the object is, and will contain a single SCAD file describing
+that object. In addition, there will be a second SCAD file with the object name
+followed by “-data”. This name will be used to check for various object
+properties when we process the design files later.</p>
+<p>If the object is a part, meaning something we would actually build, then there
+will be no subdirectories in this object directory. On the other hand, is this
+object is an assembly, each required dependent object will be stored in a
+subdirectory named after that dependent object.</p>
+<p>This structure can continue down until there are only parts remaining. The
+resulting tree-like structure of this system models how we build our airplanes.
+We break the overall design into major sections like a wing of a fuselage, then
+we break the wing down into fundamental parts like the leading and trailing
+edges and the ribs. When we build the airplane, we start by collecting all
+dependent parts to build an assembly, then we gather some assemblies to build
+larger assemblies until we finish the model.  In essence, we are traversing this
+directory structure from the bottom where the parts live up to the top where
+the finished model lives.</p>
+</section>
+<section id="connecting-objects">
+<h2>Connecting Objects<a class="headerlink" href="#connecting-objects" title="Permalink to this headline">¶</a></h2>
+<p>Objects in this system are either glued to other objects, or assembled using
+something like paper tubes for our indoor models, or rubber bands for other
+kinds of models.</p>
+<p>If they are glued, it will be important that our models line up properly. We
+will calculate the amount of glue required by nudging one object “into” a
+second object (which is actually a part) and calculating the intersection of
+the two object shapes. This will give us an estimate of the amount of glued
+required at this joint.</p>
+</section>
+<section id="object-shape-files">
+<h2>Object Shape Files<a class="headerlink" href="#object-shape-files" title="Permalink to this headline">¶</a></h2>
+<p>All objects will have a single <strong>scad</strong> file which contains the <a class="reference external" href="https://openscad.org/">OpenSCAD</a>
+commands needed to generate that object. Some objects use only <a class="reference external" href="https://openscad.org/">OpenSCAD</a>
+primitive shapes, but others might use library files stored in the projects
+<strong>MMlib</strong> directory.</p>
+<section id="object-position-and-orientation">
+<h3>Object Position and Orientation<a class="headerlink" href="#object-position-and-orientation" title="Permalink to this headline">¶</a></h3>
+<p>Every object will have a defined point which we will place at the origin of our
+coordinate system. when we write our shape code. When we assemble a part into an
+assembly, we will need to define a position and orientation for the actual part.
+We will  use a simple convention for this.</p>
+<section id="object-coordinate-system">
+<h4>Object Coordinate system<a class="headerlink" href="#object-coordinate-system" title="Permalink to this headline">¶</a></h4>
+<p>The coordinate system we will use is a simple 3D Cartesian system. For us
+aviation folks, assume you are sitting at the origin in an airplane looking out
+toward the nose. You are looking along the negative <strong>X</strong> axis. The positive
+<strong>Y</strong> axis is out your right window, and the <strong>Z</strong> axis is up. We will keep
+this reference system in mind when we generate parts, and hopefully orient our
+parts in a way that makes sense for the design.</p>
+<p>Rotations are also needed, so we need to define those as well. All rotations
+use something called the <em>right-hand rule</em>. You take your right hand and point
+the thumb along each of the positive coordinate axes. A positive rotation would
+follow the curl of your right-hand fingers around your thumb. That means a
+positive rotation along the <strong>X</strong> axis would roll the airplane to the left.
+(Think about it!) A positive rotation around the <strong>Y</strong> axis would pitch the
+nose up. (You should be able to figure out rotations around the <strong>Z</strong> axis!)</p>
+<p>Parts do not know anything about where they will end up in the  design. All we
+need to do is identify a reference point for each part. When we assemble a part
+into a larger object, we will need to define the position and orientation of
+the part in its place in the assembly. When we join assemblies into larger
+assemblies we will do the same thing: establish a reference point for the
+smaller assembly, then define the position and orientation of that assembly in
+the larger assembly.</p>
+</section>
+</section>
+</section>
+<section id="object-data-files">
+<h2>Object Data Files<a class="headerlink" href="#object-data-files" title="Permalink to this headline">¶</a></h2>
+<p>Each Object directory will contain an object data file which defines any
+parameters needed to manufacture the part.</p>
+<section id="object-specific-data">
+<h3>Object Specific Data<a class="headerlink" href="#object-specific-data" title="Permalink to this headline">¶</a></h3>
+<p>Some parameters will define any part specific dimensions. The values chosen for
+these dimensions are usually design decisions.</p>
+</section>
+<section id="object-derived-dimensions">
+<h3>Object Derived Dimensions<a class="headerlink" href="#object-derived-dimensions" title="Permalink to this headline">¶</a></h3>
+<p>Other dimensions must be calculated based on other dimensions found in the data
+files contained in the assembly object directories up the directory tree. We
+will <strong>include</strong> the parent assembly data file in the object data file. This
+will result in a system of <strong>includes</strong> that runs all the way up to the top
+level design directory.</p>
+<p>We will need to be careful in naming dimensions in each data file so we do not
+have name collisions.</p>
+</section>
+<section id="material-properties">
+<h3>Material Properties<a class="headerlink" href="#material-properties" title="Permalink to this headline">¶</a></h3>
+<p>All part object data files will contain material property values as well. These
+will always include:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>color</strong> - derived from the project <strong>colors.scad</strong> file.</p></li>
+<li><p><strong>density</strong> the weight per cubic foot of the selected material.</p></li>
+</ul>
+</div></blockquote>
+<p>If either of these two values is missing, project defaults will be used.</p>
+<p>Other properties can be included as needed.</p>
+</section>
+<section id="position-and-orientation">
+<h3>Position and Orientation<a class="headerlink" href="#position-and-orientation" title="Permalink to this headline">¶</a></h3>
+<p>Finally, all assembly data files will contain position and orientation
+definitions for all dependent objects. These values will be used when
+positioning the dependent objects as we create the assembly.</p>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Home</a>&#160;|</li>
+        <li><a href="contents.html">Documentation</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">SCAD Object Files</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Roie R. Black.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+    </div>
+  </body>
+</html>

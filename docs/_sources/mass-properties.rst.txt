@@ -25,9 +25,7 @@ Volume
 ******
 
 We can calculate the volume of each part using the associated :term:`STL` file
-and the **numpy-stl** package. This needs to be multiplied by the selected
-material density to calculate the actual weight of the part.
-
+and the **numpy-stl** package. We will not generate volume data for assemblies. Instead we will generate the weight os an assembly by adding up the component weights for that assembly.
 Weight
 ******
 
@@ -72,6 +70,42 @@ Bounds
 The bounds of the model must be calculated to ensure the model meets the limits
 spelled out in the official rules for the class the model is designed for. For
 the |LPP| class, the rules limit the length of the model in an interesting way.
-The measurement is made from the forwardmost point on the propeller to the
+The measurement is made from the forward most point on the propeller to the
 rearmost point of the model structure. These dimensions can be provided for
-each part by the **numpy-stl** package
+each part by the **numpy-stl** package.
+
+Houston - We have a Problem!
+****************************
+
+There is one significant problem in working through the |CG| analysis. |OCS| does
+not provide an easy way to generate the data we need in a useful way. If we set
+up variables for all of our dimensions, and use the variable names in
+calculations within |OSC| code, the model will be generated correctly, but we
+have no way to extract the actual numbered used internally.
+
+So, how do we extract this data so we can do our calculations?
+
+One idea involved reading all the data and positioning files and extracting the
+names and values found there. Basically, that means we generate our own
+expressions in |PY| and perform the calculations as needed. This is a bit ugly
+because we do not have unique names for data files. Therefore, we must track
+the path to each data file.  In |OSC| code, we can use relative paths to
+indicate what file to *include* or *use*. THis must be considered when we examine data files.
+
+Parsing |OSC| code
+==================
+
+SInce our data and position files only contain data declarations, it it
+possible to generate a parser that can read these files and get out values.
+
+The is a nice tool available that can generate a Python parser for our
+purposes. The |ANTLR|_ project, created by Terence Parr, is just the tool we
+need!
+
+..  note::
+
+    You will not need to install this project to follow along n this part of
+    the project. I have set things up and generated the parser code we need for
+    you!
+
+

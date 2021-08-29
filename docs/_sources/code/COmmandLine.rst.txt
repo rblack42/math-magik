@@ -1,10 +1,10 @@
 Command Line Interface
 ######################
 
-..	automodule::	mmdesigner.cli
+..	automodule::	scadparser.cli
 ..  autoclass::     Environment
     :members:
 
 ..  autoclass::     CLI
 
- .. module::    mmdesigner.commands/cmd_init
+ .. module::    scadparser.commands/cmd_deps

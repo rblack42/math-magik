@@ -7,10 +7,13 @@ Math-Magik Model Airplanes
     :maxdepth: 1
 
     preface
-
     introduction
-
-    basic-concepts
+    project-goals
+    openscad
+    building-process
+    model-directory-structure
+    scad-object-files
+    debugging-scad-code
 
     lpp-design
 

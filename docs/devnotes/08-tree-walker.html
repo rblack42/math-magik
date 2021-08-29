@@ -142,28 +142,36 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <p>Read time: 3.0 minutes (302 words)</p>
+  <p>Read time: 3.8 minutes (383 words)</p>
 <section id="step-8-walking-the-model-tree">
 <h1>Step 8: Walking the Model Tree<a class="headerlink" href="#step-8-walking-the-model-tree" title="Permalink to this headline">¶</a></h1>
 <p>In thinking through the design of a model using <em>OpenSCAD</em>, I decided to generate a
 directory tree where each level contained at lease one <a class="reference internal" href="../glossary.html#term-SCAD"><span class="xref std std-term">SCAD</span></a> file
-defining either a single part to be constructed, or an assembly of parts producing
-something like a wing. Once that decision had been made the need
-for a routine that can “walk’ this design tree and process files became obvious.</p>
+defining either a single part to be constructed, or an assembly of parts
+producing something like a wing. To make navigating easy, the directory name
+will describe the part or assembly, and the <a class="reference internal" href="../glossary.html#term-SCAD"><span class="xref std std-term">SCAD</span></a> file matching the
+directory name is the primary design file. Other files may be located next to
+this design file, but their names will be unique enough to distinguish then
+from a design file. For example, <strong>wing.scad</strong> is a design file located in a
+<strong>wing</strong> directory.  <strong>wing_data.scad</strong> is an associated data file, and
+<strong>wing_pos.scad</strong> defines data used to position parts that make up the wing.</p>
+<p>Once this directory organization structure was set, it became obvious that I
+needed a tool that could navigate the directory tree and provide a way to set a
+<em>callback*</em> function in each directory visited.</p>
 <p>In this section, we will develop the <strong>TreeWalker</strong> class which will manage
 navigating the directory tree and providing a way to activate a <em>callback</em>
 method to perform some action on files in each directory. This class will need
-to provide a way to specify the root directory for a model, the rile extension
+to provide a way to specify the root directory for a model, the file extension
 we are interested in, and the callback method to activate.</p>
 <section id="class-constructor">
 <h2>Class Constructor<a class="headerlink" href="#class-constructor" title="Permalink to this headline">¶</a></h2>
 <p>The class constructor will take a single parameter, which is the root path to
-the model we are going to process. To make sure we actually point to a model
-directory, we will require that the specified directory contain at least on
-<a class="reference internal" href="../glossary.html#term-SCAD"><span class="xref std std-term">SCAD</span></a> file</p>
-<p>Here is a test that can verify this: <a class="reference internal" href="../code/unit-tests.html#tests.test_TreeWalker.test_valid_model_path" title="tests.test_TreeWalker.test_valid_model_path"><code class="xref py py-func docutils literal notranslate"><span class="pre">tests.test_TreeWalker.test_valid_model_path()</span></code></a></p>
-<p>Here is the code that confirms we have a valid model path:
-<a class="reference internal" href="../code/TreeWalker.html#mmdesigner.TreeWalker.TreeWalker.check_path" title="mmdesigner.TreeWalker.TreeWalker.check_path"><code class="xref py py-meth docutils literal notranslate"><span class="pre">mmdesigner.TreeWalker.TreeWalker.check_path()</span></code></a></p>
+the model we are going to process. The constructor will verify that the
+provided path actually points to a directory.</p>
+<p>Here is a test that can verify this:
+<a class="reference internal" href="../code/unit-tests.html#tests.test_TreeWalker.test_valid_model_path" title="tests.test_TreeWalker.test_valid_model_path"><code class="xref py py-func docutils literal notranslate"><span class="pre">tests.test_TreeWalker.test_valid_model_path()</span></code></a></p>
+<p>Here is the code that confirms we have a valid directory specified for the constructor
+model path:</p>
 <section id="validating-the-model-path">
 <h3>Validating the Model Path<a class="headerlink" href="#validating-the-model-path" title="Permalink to this headline">¶</a></h3>
 <p>All valid model directories must have at lease one <a class="reference internal" href="../glossary.html#term-SCAD"><span class="xref std std-term">SCAD</span></a> file, so we

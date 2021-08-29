@@ -1,3 +1,5 @@
+..  |ANTLR|                 replace:: *ANother Tool for Language Recognition*
+..  _ANTLR:                 https://www.antlr.org/
 ..  _AppVeyor:              https://www.appveyor.com/
 
 ..  |CFD|                   replace::   *Computational Fluid Dynamics*
@@ -17,7 +19,7 @@
 ..	_GH:	                https://github.com/
 
 ..	_Git:	                https://git-scm.com/
-https://openscad.org/cheatsheet/
+
 ..  _given when then:       https://martinfowler.com/bliki/GivenWhenThen.html
 
 ..  _Homebrew:              https://brew.sh/

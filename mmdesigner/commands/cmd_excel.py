@@ -1,4 +1,5 @@
 from mmdesigner.cli import pass_environment
+from mmdesigner.Generator import Generator
 
 import click
 
@@ -8,3 +9,5 @@ import click
 def cli(ctx):
     """Shows file changes in the current working directory."""
     click.echo("Generating spreadsheet...")
+    gen = Generator(ctx.model_path)
+    gen.gen_excel(ctx.model_name)

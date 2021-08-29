@@ -1,6 +1,13 @@
 Preface
 #######
 
+..  warning::
+
+    This project is a work in progress. As of Aug 28, I have enough tools
+    devleoped to provide a command line application that can analyze the model
+    airplanes I am presenting here. If you are visiting this sit after reading
+    my NFFS Symposium article, please let me know what you think about all of
+    this, and what you might like to see added to the tool set.
 
 The |MM| Project
 **********************
