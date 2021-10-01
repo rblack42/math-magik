@@ -30,7 +30,6 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinxcontrib.spelling',
     'sphinxcontrib.programoutput',
-    'sphinx_a4doc',
 ]
 
 from os.path import dirname

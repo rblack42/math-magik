@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx13.css" />
-    <link rel="stylesheet" type="text/css" href="_static/a4_railroad_diagram.css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -18,6 +17,8 @@
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Designing a Limited Pennyplane" href="lpp-design.html" />
+    <link rel="prev" title="SCAD Object Files" href="scad-object-files.html" />
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
           rel='stylesheet' type='text/css' />
  
@@ -79,6 +80,12 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="lpp-design.html" title="Designing a Limited Pennyplane"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="scad-object-files.html" title="SCAD Object Files"
+             accesskey="P">previous</a> |</li>
         <li><a href="index.html">Home</a>&#160;|</li>
         <li><a href="contents.html">Documentation</a> &#187;</li>
 
@@ -94,10 +101,18 @@
   <ul>
 <li><a class="reference internal" href="#">Debugging OpenSCAD Code</a><ul>
 <li><a class="reference internal" href="#echo-output">Echo Output</a></li>
+<li><a class="reference internal" href="#debugging-difference-operations">Debugging Difference Operations</a></li>
+<li><a class="reference internal" href="#fixing-broken-code">Fixing Broken Code</a></li>
 </ul>
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="scad-object-files.html"
+                        title="previous chapter">SCAD Object Files</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="lpp-design.html"
+                        title="next chapter">Designing a Limited Pennyplane</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -109,7 +124,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -123,19 +138,90 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <p>Read time: 0.9 minutes (92 words)</p>
+  <p>Read time: 5.2 minutes (518 words)</p>
 <section id="debugging-openscad-code">
 <h1>Debugging OpenSCAD Code<a class="headerlink" href="#debugging-openscad-code" title="Permalink to this headline">¶</a></h1>
-<p>There are several features available that can be used to debug your code.
-Beginners often debug by adding a bit of code and processing that code to get a
-ook at the results. However, that does not always work, especially when you are
-trying o slice away pieces of a n object. Here are some smple tweaks you can
-make to simplify debugging:</p>
+<p>There are several features available in the <a class="reference external" href="https://openscad.org/"><em>OpenSCAD</em></a> tool that can be used to
+debug your code.  Beginners often debug by adding a bit of code and processing
+that code to get a quick look at the results. However, that does not always
+work, especially when you are trying o slice away pieces of a n object. Here
+are some simple tweaks you can make to simplify debugging:</p>
 <section id="echo-output">
 <h2>Echo Output<a class="headerlink" href="#echo-output" title="Permalink to this headline">¶</a></h2>
 <p>To display the results of calculations, or to see that your code has reached a
 particular spot, the <strong>echo</strong> command will cause display on the console at the
 lower right as your code is processed:</p>
+</section>
+<section id="debugging-difference-operations">
+<h2>Debugging Difference Operations<a class="headerlink" href="#debugging-difference-operations" title="Permalink to this headline">¶</a></h2>
+<p>When we use the <strong>difference</strong> operation to carve off part of a shape, it is
+useful to see both shapes. I use this feature a lot to create things like
+tapered spars. <a class="reference external" href="https://openscad.org/"><em>OpenSCAD</em></a> lets you mark the shape being used to remove part of a
+shape so it can be seen in a transparent phantom-like form. This is handy when
+writing the code. Here is an example:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">MMlib/single_taper_spar.scad</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="o">//</span><span class="c1">#######################################################################</span>
+<span class="linenos"> 2</span><span class="o">//</span> <span class="n">single_taper_spar</span><span class="o">.</span><span class="n">scad</span> <span class="o">-</span> <span class="n">spat</span> <span class="n">tapered</span> <span class="n">on</span> <span class="n">one</span> <span class="n">side</span>
+<span class="linenos"> 3</span><span class="o">//</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="mi">2021</span> <span class="o">-</span> <span class="n">Roie</span> <span class="n">R</span><span class="o">.</span> <span class="n">Black</span>
+<span class="linenos"> 4</span><span class="o">//</span> <span class="n">docs</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">rblack</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">math</span><span class="o">-</span><span class="n">magik</span><span class="o">/</span><span class="n">magik</span><span class="o">/</span><span class="n">single_taper_spar</span><span class="o">.</span><span class="n">html</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="n">module</span> <span class="n">single_taper_spar</span><span class="p">(</span><span class="n">l</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">z1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">z2</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">false</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos"> 7</span>  <span class="o">//</span> <span class="n">calculate</span> <span class="n">taper</span> <span class="n">angle</span>
+<span class="linenos"> 8</span>  <span class="n">ang</span> <span class="o">=</span> <span class="n">atan2</span><span class="p">(</span><span class="n">z1</span><span class="o">-</span><span class="n">z2</span><span class="p">,</span><span class="n">l</span><span class="p">);</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>  <span class="n">difference</span><span class="p">()</span> <span class="p">{</span>
+<span class="linenos">11</span>    <span class="o">//</span> <span class="n">basic</span> <span class="n">spar</span>
+<span class="linenos">12</span>    <span class="n">cube</span><span class="p">([</span><span class="n">l</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">z1</span><span class="p">]);</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span>    <span class="o">//</span> <span class="n">trimming</span> <span class="n">block</span>
+<span class="linenos">15</span>    <span class="n">translate</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="n">t</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">z1</span><span class="p">])</span>
+<span class="linenos">16</span>    <span class="n">rotate</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">ang</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="linenos">17</span>    <span class="k">if</span> <span class="p">(</span><span class="n">debug</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos">18</span>      <span class="c1">#cube([l+1, 2*t, z1]);</span>
+<span class="linenos">19</span>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="linenos">20</span>      <span class="n">cube</span><span class="p">([</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="p">,</span> <span class="n">z1</span><span class="p">]);</span>
+<span class="linenos">21</span>    <span class="p">}</span>
+<span class="linenos">22</span>  <span class="p">}</span>
+<span class="linenos">23</span><span class="p">}</span>
+<span class="linenos">24</span>
+<span class="linenos">25</span><span class="n">single_taper_spar</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="n">true</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<p>This is one of a number of useful files we will create for this project. They
+will all be stored in a special library directory so they can be used easily.
+This one creates a tapered spar by setting up a block used to trim away part of
+another block. You can see what will happen in this view:</p>
+<img src="_images/scad/2075a7e76c7ded0b1534d1bfc214b660.png" width=500 class="align-center"/><p>This code is a bit involved, but the key point is that single <strong>#</strong> character.
+Adding that shows the phantom trimming block, removing it shows the real shape
+we are after. In this example code I used a <em>conditional</em> <em>if-then-else</em> piece of
+code to allow showing the trimming block when we call this module with a
+<strong>debug</strong> parameter. More on all of that later!</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>OK, I admit that not much of that makes sense if you have never written a
+line of code.  Hopefully these nots will help you get over that problem.</p>
+</div>
+</section>
+<section id="fixing-broken-code">
+<h2>Fixing Broken Code<a class="headerlink" href="#fixing-broken-code" title="Permalink to this headline">¶</a></h2>
+<p>A common mistake made by all beginning programmers is to “blast” a bunch of
+code before even trying any of it. That is just plain silly.</p>
+<p>The right way to do things is to write very few lines of code, then run that
+code to see what happens. In using <a class="reference external" href="https://openscad.org/"><em>OpenSCAD</em></a>, I typically start off with a simple
+primitive shape, then add another one using combining or positioning operations
+to create something larger. It is very quick to try to process this code, just
+click on the phantom cube with the <strong>&gt;&gt;</strong> symbol and see what happens. You need
+to look at the information printed in the <em>console</em> box at the bottom of the
+<a class="reference external" href="https://openscad.org/"><em>OpenSCAD</em></a> window. Those messages tell you what happened. If you are lucky, you
+will see your creation in the display area. If not, the messages tell you what
+the problem is. Unfortunately, those messages can be a bit cryptic, and it
+takes practice to figure out what they mean. The key point is that you only
+added a few lines of code, so finding the problem is much easier than it would
+have been if you added a bunch of code.</p>
+<p>In fact, this idea is the new mantra of a development technique called <em>Test Driven Development</em>, which
+we will be using in the application development presented later in these notes.</p>
 </section>
 </section>
 
@@ -155,6 +241,12 @@ lower right as your code is processed:</p>
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="lpp-design.html" title="Designing a Limited Pennyplane"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="scad-object-files.html" title="SCAD Object Files"
+             >previous</a> |</li>
         <li><a href="index.html">Home</a>&#160;|</li>
         <li><a href="contents.html">Documentation</a> &#187;</li>
 
@@ -163,7 +255,7 @@ lower right as your code is processed:</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Roie R. Black.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

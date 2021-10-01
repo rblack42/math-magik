@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx13.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/a4_railroad_diagram.css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -123,7 +122,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -137,7 +136,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <p>Read time: 1.2 minutes (123 words)</p>
+  <p>Read time: 1.6 minutes (159 words)</p>
 <section id="math-magik-designer-cli">
 <h1>Math Magik Designer CLI<a class="headerlink" href="#math-magik-designer-cli" title="Permalink to this headline">¶</a></h1>
 <p>The <em>Math-Magik</em> design application, named <strong>mmd</strong>, can be launched as either a
@@ -151,66 +150,21 @@
 <p>In this section, we will show the <strong>mmd</strong> application can be used in your model design work.</p>
 <p>First, just typing <strong>mmd</strong> on the <a class="reference internal" href="../glossary.html#term-command-line"><span class="xref std std-term">command line</span></a> will display a help
 message to show you all available commands and options that can be used.</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ mmd
-Usage: mmd [OPTIONS] COMMAND [ARGS]...
-
-  primary CLI interface
-
-Options:
-  --debug            Enable debug output
-  --model_path TEXT  Path to model directory
-  --model_name TEXT  Name of model within model_path
-  -v, --version      Show the version and exit.
-  --help             Show this message and exit.
-
-Commands:
-  cog         Calculate model center of gravity.
-  deps        Display dependency versions.
-  excel       Generate Excel spreadsheet for current model.
-  gen         Generate properties for current model.
-  gui         Launch GUI interface.
-  init        Initializes a model directory with standard parts.
-  properties  Calculate design properties for current model.
-  status      Shows summary of current model.
-  stl         Generate STL files for current model.
-</pre></div>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/6 (<span class="docutils literal">/Users/rblack/_dev/math-magik/rst/mmdesigner/math-magik-designer-cli.rst</span>, line 112)</p>
+<p>Command ['mmd'] failed: [Errno 2] No such file or directory: 'mmd'</p>
 </div>
 <p>You can also ask for help explicitly”</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ mmd --help
-Usage: mmd [OPTIONS] COMMAND [ARGS]...
-
-  primary CLI interface
-
-Options:
-  --debug            Enable debug output
-  --model_path TEXT  Path to model directory
-  --model_name TEXT  Name of model within model_path
-  -v, --version      Show the version and exit.
-  --help             Show this message and exit.
-
-Commands:
-  cog         Calculate model center of gravity.
-  deps        Display dependency versions.
-  excel       Generate Excel spreadsheet for current model.
-  gen         Generate properties for current model.
-  gui         Launch GUI interface.
-  init        Initializes a model directory with standard parts.
-  properties  Calculate design properties for current model.
-  status      Shows summary of current model.
-  stl         Generate STL files for current model.
-</pre></div>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/6 (<span class="docutils literal">/Users/rblack/_dev/math-magik/rst/mmdesigner/math-magik-designer-cli.rst</span>, line 116)</p>
+<p>Command ['mmd', '--help'] failed: [Errno 2] No such file or directory: 'mmd'</p>
 </div>
 <p>Unfortunately, this help message does not show you everything about possible
 commands. The list of commands shown have additional parameters you can see by
 asking for help on them:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ mmd stl --help
-Usage: mmd stl [OPTIONS]
-
-  Generate STL files for parts, optionally for assemblies.
-
-Options:
-  --help  Show this message and exit.
-</pre></div>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/6 (<span class="docutils literal">/Users/rblack/_dev/math-magik/rst/mmdesigner/math-magik-designer-cli.rst</span>, line 122)</p>
+<p>Command ['mmd', 'stl', '--help'] failed: [Errno 2] No such file or directory: 'mmd'</p>
 </div>
 <p>Here the <strong>-all</strong> parameter will attempt to do a <a class="reference internal" href="../glossary.html#term-STL"><span class="xref std std-term">STL</span></a> files for the
 entire design. (This can take a while!)</p>
@@ -247,7 +201,7 @@ entire design. (This can take a while!)</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Roie R. Black.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx13.css" />
-    <link rel="stylesheet" type="text/css" href="_static/a4_railroad_diagram.css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -18,6 +17,8 @@
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Model Directory Structure" href="model-directory-structure.html" />
+    <link rel="prev" title="OpenSCAD" href="openscad.html" />
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
           rel='stylesheet' type='text/css' />
  
@@ -79,6 +80,12 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="model-directory-structure.html" title="Model Directory Structure"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="openscad.html" title="OpenSCAD"
+             accesskey="P">previous</a> |</li>
         <li><a href="index.html">Home</a>&#160;|</li>
         <li><a href="contents.html">Documentation</a> &#187;</li>
 
@@ -112,10 +119,22 @@
 <li><a class="reference internal" href="#wing-ribs">5.2. Wing Ribs</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#build-the-stabilizer">6. Build the Stabilizer</a></li>
+<li><a class="reference internal" href="#build-the-vertical-fin">7. Build the Vertical Fin</a></li>
+<li><a class="reference internal" href="#build-the-propeller">8. Build the Propeller</a></li>
+<li><a class="reference internal" href="#cover-the-model">9. Cover the Model</a></li>
+<li><a class="reference internal" href="#assembling-the-model">10. Assembling the Model</a></li>
+<li><a class="reference internal" href="#wrapping-up">Wrapping Up</a></li>
 </ul>
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="openscad.html"
+                        title="previous chapter"><em>OpenSCAD</em></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="model-directory-structure.html"
+                        title="next chapter">Model Directory Structure</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -127,7 +146,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -141,18 +160,24 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <p>Read time: 6.0 minutes (598 words)</p>
+  <p>Read time: 12.3 minutes (1230 words)</p>
 <section id="building-an-indoor-model">
 <h1>Building an Indoor Model<a class="headerlink" href="#building-an-indoor-model" title="Permalink to this headline">¶</a></h1>
-<p>We do not actually have a plan to work from yet, but pretend we do. How will you
-proceed in building this model?</p>
+<p>We do not actually have a plan to work from yet, but pretend we do. How will
+you proceed in building this model? Let’s walk through a typical building
+process, just to get a feel for the way we design indoor models. This
+discussion will help us figure out a reasonable way to create our 3D model
+later.</p>
 <section id="clear-off-your-workspace">
 <h2>1. Clear off your workspace<a class="headerlink" href="#clear-off-your-workspace" title="Permalink to this headline">¶</a></h2>
-<p>Simple, we will set up on some flat surface we use for building.</p>
+<p>Simple! We start off by picking some flat surface we will use for building. I
+use a sheet of tempered glass to do my building work. I will place the plan on
+this glass surface and cover it with parchment paper so glue does not stick to
+the plans.</p>
 </section>
 <section id="lay-out-your-plan">
 <h2>2. Lay out your plan<a class="headerlink" href="#lay-out-your-plan" title="Permalink to this headline">¶</a></h2>
-<p>For now, we will imagine placing a clean white page big enough to handle the
+<p>For now, we will imagine placing a clean white paper page big enough to handle the
 complete airplane. We will draw two lines on this page. One runs from the nose
 of the airplane to the tip of the tail. The fuselage of our airplane will be
 placed on this line. We will call this the <strong>X axis</strong>. Perpendicular to this
@@ -171,27 +196,35 @@ defined in this system.</p>
 <div><blockquote>
 <div><ul class="simple">
 <li><p>Balsa wood sheet stock</p></li>
-<li><p>balsa wood strip stock (maybe you cut this from sheet stock)</p></li>
+</ul>
+</div></blockquote>
+<ul>
+<li><p>balsa wood strip stock (maybe you cut this from sheet stock with a
+suitable stripping tool)</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>Wire for the prop shaft, bearing, and rear hook</p></li>
 <li><p>Tissue to build paper tubes for mounting</p></li>
 </ul>
 </div></blockquote>
-<ul>
+</li>
 <li><p>Mylar film for covering</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Glue (We wont be gluing anything for a while)</p></li>
+<li><p>Glue (We will not be gluing anything for a while)</p></li>
 <li><p>Cutting and sanding gadgets</p></li>
 <li><p>An accurate measuring tool - ruler, digital caliper, etc.</p></li>
 </ul>
 </div></blockquote>
 </li>
+<li><p>I digital scale for measuring weights. (Mine is accurate to one
+milligram.)</p></li>
 </ul>
 </div></blockquote>
 </section>
 <section id="build-the-fuselage">
 <h2>4. Build the Fuselage<a class="headerlink" href="#build-the-fuselage" title="Permalink to this headline">¶</a></h2>
-<p>We will start off by building the fuselage of our model. This involves a motor
+<p>We will might start off by building the fuselage of our model. This involves a motor
 stick, tail boom, and mounting posts for the flying surfaces.</p>
 <section id="motor-stick">
 <h3>4.1. Motor Stick<a class="headerlink" href="#motor-stick" title="Permalink to this headline">¶</a></h3>
@@ -217,7 +250,7 @@ stick, tail boom, and mounting posts for the flying surfaces.</p>
 <div><ul class="simple">
 <li><p>Cut square posts with rounded tops where we will mount the flying
 surfaces</p></li>
-<li><p>Sand the top part round for the mounting tubes</p></li>
+<li><p>Sand the top part round for mounting tubes which will make the connection</p></li>
 </ul>
 </div></blockquote>
 </section>
@@ -227,6 +260,12 @@ surfaces</p></li>
 <p>This involves identifying where each post will go. On my design the posts are
 in front of the leading edge and behind the trailing edge of each flying
 surface.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You might notice that having the wing and stab available when we do this
+will be handy. What that means is that we might be building things in a
+somewhat random order. There is not one right way to do this!</p>
+</div>
 </section>
 <section id="attach-front-bearing-and-rear-hook">
 <h2>4.5. Attach front bearing and rear hook<a class="headerlink" href="#attach-front-bearing-and-rear-hook" title="Permalink to this headline">¶</a></h2>
@@ -235,7 +274,7 @@ centered to handle the loads imposed by the rubber motor.</p>
 <section id="attach-tail-boom-to-motor-stick">
 <h3>4.6. Attach tail boom to motor stick<a class="headerlink" href="#attach-tail-boom-to-motor-stick" title="Permalink to this headline">¶</a></h3>
 <p>Some builders use a butt joint for this, but I will use a bit of overlap and
-glue the tail boom to the aft side of the motor stick.</p>
+glue the tail boom to the side of the motor stick.</p>
 </section>
 </section>
 <section id="build-the-wing">
@@ -253,7 +292,7 @@ be formed by bending strip stock, or cut from sheet stock.</p>
 edges are straight in the center section.  The wing tips are going to be
 rounded at the forward tips. That means we will need to bend the spars around a
 template of some sort. (We will generate this template in our work with
-OpenSCAD.) Some builders use a full wing template to assemble the wing</p>
+<a class="reference external" href="https://openscad.org/"><em>OpenSCAD</em></a>.) Some builders like to use a full wing template to assemble the wing</p>
 </section>
 <section id="wing-ribs">
 <h3>5.2. Wing Ribs<a class="headerlink" href="#wing-ribs" title="Permalink to this headline">¶</a></h3>
@@ -262,6 +301,66 @@ length, and camber. It will also have a specified strip height and thickness. We
 will not worry about how these ribs are formed. They could be cut from sheet
 balsa, or bent around a form.</p>
 </section>
+</section>
+<section id="build-the-stabilizer">
+<h2>6. Build the Stabilizer<a class="headerlink" href="#build-the-stabilizer" title="Permalink to this headline">¶</a></h2>
+<p>The stabilizer is going to be designed in the same was as the wing. However, we will use fewer ribs (three) and there i no tip dihedral in this design.</p>
+</section>
+<section id="build-the-vertical-fin">
+<h2>7. Build the Vertical Fin<a class="headerlink" href="#build-the-vertical-fin" title="Permalink to this headline">¶</a></h2>
+<p>This part looks exactly like the tip of the stabilizer, except we will add
+another rib to close the outline. Once covered, this will be glued to the tail
+boom.</p>
+</section>
+<section id="build-the-propeller">
+<h2>8. Build the Propeller<a class="headerlink" href="#build-the-propeller" title="Permalink to this headline">¶</a></h2>
+<p>For the <em>Limited Pennyplane</em> class, the propeller must be constructed using sheet balsa.
+Normally, the builders cut the bladed of the propeller and sand these blanks
+down so they have somewhat of an airfoil cross section, and are lighter. These
+blades are then wetted and formed over a form of some sort to give then
+something of a normal propeller form. Quite often that form is a simple can or
+tapered coffee cup.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Obviously, we cannot do this in <a class="reference external" href="https://openscad.org/"><em>OpenSCAD</em></a>, but I came up with a simple way to
+create a propeller blade that will be close to what we might build. We will
+see that in the actual model design notes.</p>
+</div>
+<p>Finally, these blades are glued to a wood spar to provide the desired pitch,
+and the wire drive shaft is glued in place to complete the propeller.</p>
+</section>
+<section id="cover-the-model">
+<h2>9. Cover the Model<a class="headerlink" href="#cover-the-model" title="Permalink to this headline">¶</a></h2>
+<p>In this step, we use a thin mylar film to cover the flying surfaces. Actually
+doing this is something of an art form involving thin mists of spray contact
+cement and gingerly dripping a pre-glued structure onto a piece of film
+attached to a wooden frame. Then the covered model structure is cut loose using
+a razor blade of soldering iron. (I said it was an art form!)</p>
+<p>Generating a 3D model of this covering turned out to be fairly simple once I
+found a neat piece of <a class="reference external" href="https://openscad.org/"><em>OpenSCAD</em></a> code created by <a class="reference external" href="https://openhome.cc/eGossip/OpenSCAD/FunctionGrapher.html">Justin Lin</a>. More on that later.</p>
+</section>
+<section id="assembling-the-model">
+<h2>10. Assembling the Model<a class="headerlink" href="#assembling-the-model" title="Permalink to this headline">¶</a></h2>
+<p>Assembling the completed model is pretty easy. The propeller drive shaft fits
+into the support bearing on the motor stick. The wing and stab are connected to
+the mounting posts using paper tubes that slide tightly over the mounting
+posts. Once all of these connections are made, all that remains is to create a
+suitable rubber motor, wind it up and turn it loose to watch it fly.</p>
+<p>Well, actually, it is not quite that simple. There is always a lot of fine
+tuning to get a model to fly the way it needs to, and picking the right
+combination of propeller and rubber motor is yet another piece of art work in
+this kind of competition event.</p>
+</section>
+<section id="wrapping-up">
+<h2>Wrapping Up<a class="headerlink" href="#wrapping-up" title="Permalink to this headline">¶</a></h2>
+<p>Seasoned modelers can put together a new model in a matter of hours, most of
+that time spent in cutting strips of wood and gluing things together. I have
+even seen it done in the middle of a multi-day competition event!</p>
+<p>Our goal here was just to get a feel for the parts we need to design and how
+those parts are combined to create the final model. We will need to generate
+code for each part and generate more code showing how those pars are connected
+to form the major components of the model. On last count there were over 70
+parts in my <em>Limited Pennyplane</em> design, so we have a fair amount of work to do!</p>
 </section>
 </section>
 
@@ -281,6 +380,12 @@ balsa, or bent around a form.</p>
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="model-directory-structure.html" title="Model Directory Structure"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="openscad.html" title="OpenSCAD"
+             >previous</a> |</li>
         <li><a href="index.html">Home</a>&#160;|</li>
         <li><a href="contents.html">Documentation</a> &#187;</li>
 
@@ -289,7 +394,7 @@ balsa, or bent around a form.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Roie R. Black.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

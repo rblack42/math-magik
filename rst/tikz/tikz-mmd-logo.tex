@@ -1,0 +1,19 @@
+\documentclass[border=5mm]{standalone}
+\usepackage{tikz}
+\usepackage{scalefnt}
+\usetikzlibrary{calc, intersections}
+\begin{document}
+\begin{tikzpicture}
+  {\scalefont{6}
+  \draw[fill=yellow] (0,0) circle (2.5);
+  \draw [align=center, font=\bf] (0,-0.75) node {mmd};
+  }
+  {\scalefont{4}
+  \draw [align=center] (0,0.75) node {$e^{i\pi} = -1$};
+  }
+  \draw[thin] (-2,0) -- (2,0);
+  \draw[thin] (0,2) -- (0,-2);
+  \draw[ultra thick, ->] (-2,0) -- (0,0);
+  \draw [ultra thick, ->]  (2,0) arc (0:180:2);
+\end{tikzpicture}
+\end{document}

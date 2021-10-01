@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx13.css" />
-    <link rel="stylesheet" type="text/css" href="_static/a4_railroad_diagram.css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -18,6 +17,8 @@
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="SCAD Object Files" href="scad-object-files.html" />
+    <link rel="prev" title="Building an Indoor Model" href="building-process.html" />
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
           rel='stylesheet' type='text/css' />
  
@@ -79,6 +80,12 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="scad-object-files.html" title="SCAD Object Files"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="building-process.html" title="Building an Indoor Model"
+             accesskey="P">previous</a> |</li>
         <li><a href="index.html">Home</a>&#160;|</li>
         <li><a href="contents.html">Documentation</a> &#187;</li>
 
@@ -97,6 +104,7 @@
 <li><a class="reference internal" href="#subdirectories">Subdirectories</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#organizing-program-code">Organizing Program Code</a></li>
 <li><a class="reference internal" href="#step-1-create-a-project-directory">Step 1: Create a Project Directory</a></li>
 <li><a class="reference internal" href="#step-2-identify-major-components">Step 2: Identify Major Components</a></li>
 <li><a class="reference internal" href="#sub-subdirectories">Sub-Subdirectories</a></li>
@@ -105,6 +113,12 @@
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="building-process.html"
+                        title="previous chapter">Building an Indoor Model</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="scad-object-files.html"
+                        title="next chapter">SCAD Object Files</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -116,7 +130,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -130,7 +144,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <p>Read time: 8.4 minutes (838 words)</p>
+  <p>Read time: 12.0 minutes (1200 words)</p>
 <section id="model-directory-structure">
 <h1>Model Directory Structure<a class="headerlink" href="#model-directory-structure" title="Permalink to this headline">¶</a></h1>
 <p>Let’s get one thing straight now. I am going to discuss directories you use to
@@ -163,42 +177,51 @@ your operating system when you double-click your mouse on some icon.</p>
 “subdirectories”. These subdirectories can contain more files, or more
 subdirectories, leading to a tree-like system (Ok, an upside down tree) of
 directories and subdirectories. The “root” of this tree is the top-most
-directory, the branches of this tree grow downward in most folks minds to other
+directory, the branches of this tree grow downward, in most folks minds, to other
 directories. The leaves of this tree are the files on your system. You cannot
-break things further down.</p>
+break those things further down.</p>
 <p>Directories and files all have names. These names are supposed to be chosen by
 you to help you figure out what is being stored in them. A directory groups a
 possibly empty set of files and subdirectories. You grouped them for some
 reason, so name the directory something nice to help you remember what that
 group is about.</p>
-<p>Microsoft also decided that names on these directories and files should be able to have spaces in them. That is a nice feature in the office environment, but developers immediately run into problems what names have spaces in them.My afdvice is simple. If ypu stre s developer, asnd you think your nsme should hsv e a spade in it, put an underscore there instead. It will look almost the same whwn you see it on your system, but will cause you far fewer headaches later!&#64;</p>
-<p>When building a
-project involving computer code, an important decision needs to be made right
-at the start.</p>
+<p>Microsoft also decided that names on these directories and files should be able
+to have spaces in them. That is a nice feature in the office environment, but
+developers immediately run into problems when names have spaces in them. My
+advice is simple. If you are a developer, and you think your name should have
+a space in it, put an underscore there instead. It will look almost the same
+when you see it on your system, but will cause you far fewer headaches later!</p>
+</section>
+</section>
+<section id="organizing-program-code">
+<h2>Organizing Program Code<a class="headerlink" href="#organizing-program-code" title="Permalink to this headline">¶</a></h2>
+<p>When building a project involving computer code, an important decision needs to
+be made right at the start.</p>
 <blockquote>
 <div><p>How will you manage your code?</p>
 </div></blockquote>
 </section>
-</section>
 <section id="step-1-create-a-project-directory">
 <h2>Step 1: Create a Project Directory<a class="headerlink" href="#step-1-create-a-project-directory" title="Permalink to this headline">¶</a></h2>
-<p>Some developers take a baby step in this direction: they create one project directory and place every project file in this one place. The result over the course of development is <em>Chaos</em>!</p>
+<p>Some developers take a baby step in this direction: they create one directory
+and place every project file they create in this one place. The result over the
+course of development is <em>Chaos</em>!</p>
 <p>Why?</p>
 <p>Simply because no other developer will be able to figure out what relates to
 what. There will always be dependencies in your code: one file needs help from
 another file to do its work. Those dependencies are totally invisible to the
 reader who is scanning the list of files in your project. I have seen projects
 where the main entry point to the program was nearly impossible to locate
-without help from magical tools like <strong>grep</strong>, which is sadly missing on PC
-systems. (Yet another reason why I ditched my PC and switched to Macs for
-development!)</p>
+without help from magical tools like <strong>grep</strong> which can locate strings inside
+of files. Sadly, this tool is missing on PC systems. (Yet another reason why I
+ditched my PC and switched to Macs for development!)</p>
 </section>
 <section id="step-2-identify-major-components">
 <h2>Step 2: Identify Major Components<a class="headerlink" href="#step-2-identify-major-components" title="Permalink to this headline">¶</a></h2>
 <p>Once you begin serious development of a project, you start to identify the
-major components you will build Each one of these components should end up in a
+major components you will build. Each one of these components should end up in a
 subdirectory of its own. If code in a file in one of your subdirectories needs
-nelp from code in another place, that is a <em>dependency</em> that you need to
+help from code in another place, that is a <em>dependency</em> that you need to
 document and implement. The reason for this is simple. Perhaps you are working
 on your code and some other developer is working on the code you depend on. If
 that other person changes the code you depend on, your code will break. The
@@ -208,7 +231,7 @@ only hope is documentation and collaboration to clear up the disconnect.</p>
 <h2>Sub-Subdirectories<a class="headerlink" href="#sub-subdirectories" title="Permalink to this headline">¶</a></h2>
 <p>Big components are often broken up still further into smaller components.
 Again, create another subdirectory to manage this new smaller component.</p>
-<p>u can keep doing this as needed until it make no sense to go further.</p>
+<p>You can keep doing this as needed until it make no sense to go further.</p>
 </section>
 <section id="directory-trees">
 <h2>Directory Trees<a class="headerlink" href="#directory-trees" title="Permalink to this headline">¶</a></h2>
@@ -221,6 +244,49 @@ we reach the leaves of this tree which are the files we really want to work on.<
 For example, for my <em>Limited Pennyplane*</em> project, here is the tree showing the
 <strong>scad</strong> files in the project, produced on my Mac using such a tool oddly
 enough called <strong>tree</strong>.:</p>
+<p>That is a lot of files and directories!</p>
+<p><a class="reference external" href="https://openscad.org/"><em>OpenSCAD</em></a> lets you <strong>include</strong> another file, which has the effect of copying that
+included file into the current file at the point where the <strong>include</strong> line is
+located. It also lets you <em>use</em> another file, which provides access to those
+<em>modules</em> we mentioned earlier from the <em>used</em> file. This allows you to <em>call</em>
+modules to do some work in the first file.  We will see a lot of this kind of
+code as we work through the design!</p>
+<p>In setting up this project, I decided to create four kinds of <strong>scad</strong> files:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Basic part file - <strong>include</strong> only data files, may <strong>use</strong> library files</p></li>
+<li><p>assembly files - <strong>include</strong> data and position files, <strong>use</strong> part or
+assembly files</p></li>
+<li><p>Data files - define various values used to size and position things, may
+<strong>include</strong> other data files</p></li>
+<li><p>Position files - used to properly position parts or assemblies.
+<strong>include</strong> data files only</p></li>
+</ul>
+</div></blockquote>
+<p>I also set up a naming convention to keep track of what is in each file:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>part or assembly - named to identify the component</p></li>
+<li><p>Data file - ends in <strong>_data.scad</strong></p></li>
+<li><p>Position file - ends with <strong>_pos.scad</strong></p></li>
+</ul>
+</div></blockquote>
+<p>This ended up generating a lot of files, and a future modification of this
+project may merge some of these.</p>
+<p>The important point to make here is that this directory structure allows
+repeated use of common part names. For instance, both the wing and stabilizer
+have leading edge parts, and making the names for these parts unique would make
+them longer than needed. In fact, I use a common abbreviation <strong>*le</strong> for each
+one, located in a <strong>wing</strong> or <strong>stab</strong> subdirectory.</p>
+<p>Notice also that the leading edge part is managed in a directory with the same
+name. This allows generated files from the analysis process we have not
+discussed yet to be stored with the associated part.</p>
+<p>I created this directory structure as I created each component for the design.
+My plan is to have the design application that is part of this project help
+manage this process.</p>
+<p>With this background, we can now start the actual design process. But before
+diving deep into that, we need to talk a bit about how you actually write and
+debug <a class="reference external" href="https://openscad.org/"><em>OpenSCAD</em></a> code, That comes next!</p>
 </section>
 </section>
 
@@ -240,6 +306,12 @@ enough called <strong>tree</strong>.:</p>
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="scad-object-files.html" title="SCAD Object Files"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="building-process.html" title="Building an Indoor Model"
+             >previous</a> |</li>
         <li><a href="index.html">Home</a>&#160;|</li>
         <li><a href="contents.html">Documentation</a> &#187;</li>
 
@@ -248,7 +320,7 @@ enough called <strong>tree</strong>.:</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Roie R. Black.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

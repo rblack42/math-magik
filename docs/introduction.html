@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx13.css" />
-    <link rel="stylesheet" type="text/css" href="_static/a4_railroad_diagram.css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -109,7 +108,7 @@
 </li>
 <li><a class="reference internal" href="#d-modeling">3D Modeling</a><ul>
 <li><a class="reference internal" href="#d-modeling-software">3D Modeling Software</a></li>
-<li><a class="reference internal" href="#id1">OpenSCAD</a></li>
+<li><a class="reference internal" href="#openscad">OpenSCAD</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#math-magik">Math Magik</a></li>
@@ -134,7 +133,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -148,15 +147,15 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <p>Read time: 11.5 minutes (1153 words)</p>
+  <p>Read time: 11.6 minutes (1162 words)</p>
 <section id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <p>In 1955, at the age of nine, I was introduced to the world of model airplanes
 by a neighbor who flew a model of the <a class="reference external" href="https://en.wikipedia.org/wiki/Henderson-Glenny_Gadfly">Hendersen-Glenny Gadfly</a> in front of his home.
 That fascinating flight marked the start of my career in Aerospace Engineering.
-I set out to build and fly my own model airplanes.  That experience taught me a
+I set out to build and fly my own model airplanes.  Doing so taught me a
 lot about the basics of flight.  Eventually, I began building gas-powered
-free-flight models and entering them in competitions around the East coast.</p>
+free flight models and entering them in competitions around the East coast.</p>
 <p>Then my local club, the Fairfax Model Associates, invited a guest speaker to a
 club meeting to speak on building and flying rubber-powered model airplanes
 designed to achieve very long flight times in indoor venues. The speaker was
@@ -180,9 +179,8 @@ model building was put on hold for a long spell.</p>
 <p>In 2018, I finally retired after spending 20 years in the USAF, several years
 consulting, then a 17 year period teaching Computer Science at Austin Community
 College, in Austin, Texas. My wife and I moved to Kansas City to be near family
-and I joined the Heart of America Free Flight Association. Once again, I was
-back in the world of model aviation, and again began building indoor and
-outdoor rubber-powered airplanes.</p>
+and I joined the <em>Heart of America Free Flight Association</em> group. Once again, I was back in the world of model
+aviation, and again began building indoor and outdoor rubber-powered airplanes.</p>
 <section id="building-plans">
 <h2>Building Plans<a class="headerlink" href="#building-plans" title="Permalink to this headline">¶</a></h2>
 <p>Most modelers build their airplanes using paper plans. These plans provide
@@ -210,7 +208,7 @@ building.</p>
 <h3>Original Design Plans<a class="headerlink" href="#original-design-plans" title="Permalink to this headline">¶</a></h3>
 <p>That leaves one category of model left. Suppose you want to build an original
 design. Now, we need to generate the plans from scratch. Most model plans are
-produced using a Computer Aided Design tool. Some of these tools are available
+produced using a <em>Computer Aided Design</em> tool. Some of these tools are available
 for free, but many modelers use professional CAD programs that are far from
 free.  In general all of these programs have a fairly steep learning curve, and
 it takes a lot of practice to master well enough to generate the needed plans.
@@ -240,9 +238,9 @@ verify that the model you have designed is what you want.</p>
 <p>Of course, using these tools, you can also generate a 3D print of that model,
 but we are not interested in that here - at least for now!</p>
 </section>
-<section id="id1">
-<h3>OpenSCAD<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>Some years back, I ran into a 3D modeling tool called <a class="reference external" href="https://openscad.org/">OpenSCAD</a>. This program
+<section id="openscad">
+<h3>OpenSCAD<a class="headerlink" href="#openscad" title="Permalink to this headline">¶</a></h3>
+<p>Some years back, I ran into a 3D modeling tool called <a class="reference internal" href="#openscad">OpenSCAD</a>. This program
 is designed for programmers in that you describe your model using code. This is
 not like a traditional CAD program that relies heavily on mouse movements to
 design things.</p>
@@ -260,20 +258,21 @@ much more intense, and working with that math can require very sophisticated
 computers. We will not be doing anything in this project that requires more
 than a typical home computer.</p>
 <p>This project will present a set of 3D models for airplanes that I am currently
-building and flying.  The models may be designed by others, in which case i try
-to derive the model using the original plans, or they may be of my own design.</p>
-<p>Here are the current models included in this project:</p>
+building and flying.  The mod eventually els may be designed by others, in
+which case i try to derive the model using the original plans, or they may be
+of my own design.</p>
+<p>Here are the current models to be included in this project:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Math-Magik-lpp - a Limited Pennyplane indoor model</p></li>
 <li><p>Slusarczyk-A6 - an A6 class indoor design by Don Slusarczyk</p></li>
-<li><p>Wart - an A-6 class design by Gary Hodson</p></li>
+<li><p>Wart - an A-6 class design by <a class="reference external" href="https://kcfreeflight.org/">HAFFA</a> club member Gary Hodson</p></li>
 <li><p>Math-Magik-Sport - a fun-fly rubber powered model suitable for indoor or
 outdoor flying</p></li>
 </ul>
 </div></blockquote>
 <p>The rest of the documentation presented here will introduce the basic concepts
-needed to understand how we use a tool like <a class="reference external" href="https://openscad.org/">OpenSCAD</a> to design a model, then we
+needed to understand how we use a tool like <a class="reference internal" href="#openscad">OpenSCAD</a> to design a model, then we
 will work through the design of the <em>Math Magik lpp</em> model. Following that, we
 will work through the analysis of the design to generate weight and balance
 data for the design. In the final section, we will work through the development
@@ -313,7 +312,7 @@ process.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Roie R. Black.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

@@ -2,11 +2,11 @@
 pyinit:	## Create Python virtual environment
 	test -d .direnv || \
 	echo 'layout python3' > .envrc && \
-	direnv allow && \
-	pip install --upgrade pip
+	direnv allow
 
 .PHONY: pyreqs
 pyreqs: requirements.txt 	## Load Python requirements
+	pip install -U pip
 	pip install -r requirements.txt
 
 .PHONY: test

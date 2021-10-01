@@ -1,0 +1,151 @@
+math-magik-lpp
+├── constraints.scad
+├── fuselage
+│   ├── fin
+│   │   ├── arc
+│   │   │   ├── arc.scad
+│   │   │   └── arc_data.scad
+│   │   ├── covering
+│   │   │   ├── cover_points.scad
+│   │   │   ├── covering.scad
+│   │   │   └── covering_data.scad
+│   │   ├── fin.scad
+│   │   ├── fin_data.scad
+│   │   ├── fin_pos.scad
+│   │   ├── leading_edge
+│   │   │   ├── leading_edge.scad
+│   │   │   └── leading_edge_data.scad
+│   │   ├── rib1
+│   │   │   ├── rib1.scad
+│   │   │   └── rib1_data.scad
+│   │   ├── rib2
+│   │   │   ├── rib2.scad
+│   │   │   └── rib2_data.scad
+│   │   └── trailing_edge
+│   │       ├── trailing_edge.scad
+│   │       └── trailing_edge_data.scad
+│   ├── fuselage.scad
+│   ├── fuselage_data.scad
+│   ├── fuselage_pos.scad
+│   ├── motor_stick
+│   │   ├── motor_stick.scad
+│   │   └── motor_stick_data.scad
+│   ├── rear_hook
+│   │   ├── rear_hook.scad
+│   │   └── rear_hook_data.scad
+│   ├── stab_post
+│   │   ├── stab_post.scad
+│   │   └── stab_post_data.scad
+│   ├── tail_boom
+│   │   ├── tail_boom.scad
+│   │   └── tail_boom_data.scad
+│   ├── thrust_bearing
+│   │   ├── thrust_bearing.scad
+│   │   └── thrust_bearing_data.scad
+│   └── wing_post
+│       ├── wing_post.scad
+│       └── wing_post_data.scad
+├── materials.scad
+├── math_magik_lpp.scad
+├── math_magik_lpp_data.scad
+├── math_magik_lpp_pos.scad
+├── prop
+│   ├── blade
+│   │   ├── blade.scad
+│   │   └── blade_data.scad
+│   ├── prop.scad
+│   ├── prop_data.scad
+│   ├── prop_pos.scad
+│   ├── spar
+│   │   ├── spar.scad
+│   │   └── spar_data.scad
+│   └── wire_shaft
+│       ├── wire_shaft.scad
+│       └── wire_shaft_data.scad
+├── rubber_motor
+│   ├── rubber_motor.scad
+│   └── rubber_motor_data.scad
+├── stab
+│   ├── center
+│   │   ├── center.scad
+│   │   ├── center_pos.scad
+│   │   ├── covering
+│   │   │   ├── cover_points.scad
+│   │   │   ├── covering.scad
+│   │   │   └── covering_data.scad
+│   │   ├── rib
+│   │   │   ├── rib.scad
+│   │   │   └── rib_data.scad
+│   │   └── spar
+│   │       ├── spar.scad
+│   │       └── spar_data.scad
+│   ├── left_tip
+│   │   ├── covering
+│   │   │   ├── cover_points.scad
+│   │   │   ├── covering.scad
+│   │   │   └── covering_data.scad
+│   │   ├── leading_edge
+│   │   │   ├── leading_edge.scad
+│   │   │   └── leading_edge_data.scad
+│   │   ├── left_tip.scad
+│   │   ├── left_tip_pos.scad
+│   │   ├── tip_arc
+│   │   │   ├── tip_arc.scad
+│   │   │   └── tip_arc_data.scad
+│   │   ├── tip_rib
+│   │   │   ├── tip_rib.scad
+│   │   │   └── tip_rib_data.scad
+│   │   └── trailing_edge
+│   │       ├── trailing_edge.scad
+│   │       └── trailing_edge_data.scad
+│   ├── right_tip
+│   │   ├── right_tip.scad
+│   │   └── right_tip_data.scad
+│   ├── stab.scad
+│   ├── stab_data.scad
+│   ├── stab_mount
+│   │   ├── stab_mount.scad
+│   │   └── stab_mount_data.scad
+│   └── stab_pos.scad
+├── wing
+    ├── center
+    │   ├── center.scad
+    │   ├── center_pos.scad
+    │   ├── covering
+    │   │   ├── cover_points.scad
+    │   │   ├── covering.scad
+    │   │   └── covering_data.scad
+    │   ├── rib
+    │   │   ├── rib.scad
+    │   │   └── rib_data.scad
+    │   └── spar
+    │       ├── spar.scad
+    │       └── spar_data.scad
+    ├── left_tip
+    │   ├── covering
+    │   │   ├── cover_points.scad
+    │   │   ├── covering.scad
+    │   │   └── covering_data.scad
+    │   ├── leading_edge
+    │   │   ├── leading_edge.scad
+    │   │   └── leading_edge_data.scad
+    │   ├── left_tip.scad
+    │   ├── left_tip_pos.scad
+    │   ├── tip_arc
+    │   │   ├── tip_arc.scad
+    │   │   └── tip_arc_data.scad
+    │   ├── tip_rib
+    │   │   ├── tip_rib.scad
+    │   │   └── tip_rib_data.scad
+    │   └── trailing_edge
+    │       ├── trailing_edge.scad
+    │       └── trailing_edge_data.scad
+    ├── right_tip
+    │   ├── right_tip.scad
+    │   └── right_tip_data.scad
+    ├── wing.scad
+    ├── wing_data.scad
+    ├── wing_mount
+    │   ├── wing_mount.scad
+    │   └── wing_mount_data.scad
+    └── wing_pos.scad

@@ -4,9 +4,9 @@ Introduction
 In 1955, at the age of nine, I was introduced to the world of model airplanes
 by a neighbor who flew a model of the |Gadfly|_ in front of his home.
 That fascinating flight marked the start of my career in Aerospace Engineering.
-I set out to build and fly my own model airplanes.  That experience taught me a
+I set out to build and fly my own model airplanes.  Doing so taught me a
 lot about the basics of flight.  Eventually, I began building gas-powered
-free-flight models and entering them in competitions around the East coast.
+free flight models and entering them in competitions around the East coast.
 
 Then my local club, the Fairfax Model Associates, invited a guest speaker to a
 club meeting to speak on building and flying rubber-powered model airplanes
@@ -34,9 +34,8 @@ model building was put on hold for a long spell.
 In 2018, I finally retired after spending 20 years in the USAF, several years
 consulting, then a 17 year period teaching Computer Science at Austin Community
 College, in Austin, Texas. My wife and I moved to Kansas City to be near family
-and I joined the Heart of America Free Flight Association. Once again, I was
-back in the world of model aviation, and again began building indoor and
-outdoor rubber-powered airplanes.
+and I joined the |HAFFA| group. Once again, I was back in the world of model
+aviation, and again began building indoor and outdoor rubber-powered airplanes.
 
 Building Plans
 **************
@@ -70,7 +69,7 @@ Original Design Plans
 
 That leaves one category of model left. Suppose you want to build an original
 design. Now, we need to generate the plans from scratch. Most model plans are
-produced using a Computer Aided Design tool. Some of these tools are available
+produced using a *Computer Aided Design* tool. Some of these tools are available
 for free, but many modelers use professional CAD programs that are far from
 free.  In general all of these programs have a fairly steep learning curve, and
 it takes a lot of practice to master well enough to generate the needed plans.
@@ -130,16 +129,17 @@ computers. We will not be doing anything in this project that requires more
 than a typical home computer.
 
 This project will present a set of 3D models for airplanes that I am currently
-building and flying.  The models may be designed by others, in which case i try
-to derive the model using the original plans, or they may be of my own design.
+building and flying.  The mod eventually els may be designed by others, in
+which case i try to derive the model using the original plans, or they may be
+of my own design.
 
-Here are the current models included in this project:
+Here are the current models to be included in this project:
 
     * Math-Magik-lpp - a Limited Pennyplane indoor model
 
     * Slusarczyk-A6 - an A6 class indoor design by Don Slusarczyk
 
-    * Wart - an A-6 class design by Gary Hodson
+    * Wart - an A-6 class design by HAFFA_ club member Gary Hodson
 
     * Math-Magik-Sport - a fun-fly rubber powered model suitable for indoor or
       outdoor flying

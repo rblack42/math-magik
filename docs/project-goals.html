@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx13.css" />
-    <link rel="stylesheet" type="text/css" href="_static/a4_railroad_diagram.css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -104,7 +103,7 @@
 <li><a class="reference internal" href="#visualize-the-model">Visualize the Model</a></li>
 <li><a class="reference internal" href="#ensure-conformance-to-rules">Ensure Conformance to Rules</a></li>
 <li><a class="reference internal" href="#estimate-model-weight">Estimate Model Weight</a></li>
-<li><a class="reference internal" href="#locating-center-of-gravity">Locating Center of Gravity</a></li>
+<li><a class="reference internal" href="#locating-center-of-gravity">Locating  Center of Gravity</a></li>
 <li><a class="reference internal" href="#perform-aerodynamic-analysis">Perform Aerodynamic Analysis</a></li>
 </ul>
 </li>
@@ -115,7 +114,7 @@
                         title="previous chapter">Introduction</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="openscad.html"
-                        title="next chapter">OpenSCAD</a></p>
+                        title="next chapter"><em>OpenSCAD</em></a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -127,7 +126,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -141,35 +140,41 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <p>Read time: 4.9 minutes (493 words)</p>
+  <p>Read time: 6.5 minutes (651 words)</p>
 <section id="project-goals">
 <h1>Project Goals<a class="headerlink" href="#project-goals" title="Permalink to this headline">¶</a></h1>
 <p>This project started off with a few goals in mind.</p>
 <section id="visualize-the-model">
 <h2>Visualize the Model<a class="headerlink" href="#visualize-the-model" title="Permalink to this headline">¶</a></h2>
-<p>Most modelers use plans to build their design. Those plans are flat and do not
-really show you what the model will look like in real life. I wanted to be able
-to see my design in a more realistic way. I want to be able to examine it from
-any angle I choose, and zoom in to see details. <a class="reference external" href="https://openscad.org/">OpenSCAD</a> gives me exactly that
-kind of capability.</p>
+<p>Most modelers use paper plans to build their design. Those plans are flat and
+do not really show you what the model will look like in real life. I started
+this project with one simple goal: I wanted to be able to see my design in a
+more realistic way. Furthermore, I want to be able to examine it from any angle
+I choose, and zoom in to see details. I knew that <a class="reference external" href="https://openscad.org/"><em>OpenSCAD</em></a> could give me that
+capability if I could convert my plans into a 3D model.  This was a good
+starting point, but I wanted to go further.</p>
 </section>
 <section id="ensure-conformance-to-rules">
 <h2>Ensure Conformance to Rules<a class="headerlink" href="#ensure-conformance-to-rules" title="Permalink to this headline">¶</a></h2>
-<p>The design I come up with will not be of much value unless it conforms to the
-rules. I want my design process to be able to check those constraints. By
-itself, <a class="reference external" href="https://openscad.org/">OpenSCAD</a> cannot help much here. However, it is possible to
-export your design into another format more suitable for making calculations
-that will help.</p>
-<p>We will export our design into something called an <em>STL</em> file (Standard
-Tessellation Library) format. We can then use another tool, <a href="#id1"><span class="problematic" id="id2">Python_</span></a> to process
-those files to get the data I need to check conformance with the rules.</p>
+<p>The designs I plan to come up with will not be of much value for use in
+competitions unless they conform to the rules for the chosen competition class.
+(Some modelers do not care about the rules, they only fly for fun. That is not
+going to be a problem.)</p>
+<p>I want my design process to be able to check the rule constraints. By itself,
+<a class="reference external" href="https://openscad.org/"><em>OpenSCAD</em></a> cannot help much here. However, it is possible to export your design
+into another format more suitable for making calculations that will help.</p>
+<p>We will export our design into something called an <a class="reference external" href="https://en.wikipedia.org/wiki/STL_(file_format)"><em>Standard Tessellation Library</em></a> file (<em>STL</em>) format.
+We can then create a simple program to process those files to get the data I
+need to check conformance with the rules. Since it is relatively simple to
+learn, I decided to use <a class="reference external" href="https://www.python.org/"><em>Python</em></a> as my programming tool.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><a href="#id3"><span class="problematic" id="id4">Python_</span></a> is another programming language, but one that is also simple enough
-that many kids manage to use it from a very early age. It is a very popular
-first language use din teaching computer programming. We will not cover
-Python in this work, but we will go over the code I generated so you can
-see how I use it in my analysis of the model design.</p>
+<p><a class="reference external" href="https://www.python.org/"><em>Python</em></a>  is simple enough that many kids manage to use it from a very early
+age. It is a very popular first language used in teaching computer
+programming. We will not cover <a class="reference external" href="https://www.python.org/"><em>Python</em></a> in this work, but I have lecture notes
+for a first course in <a class="reference external" href="https://www.python.org/"><em>Python</em></a> on my teaching website at
+<a class="reference external" href="https://www.co-pylit.org">https://www.co-pylit.org</a>.  I will go over the code I generated for this
+project so you can see how I use it in my analysis of a model design.</p>
 </div>
 </section>
 <section id="estimate-model-weight">
@@ -178,20 +183,26 @@ see how I use it in my analysis of the model design.</p>
 surprise. Anything that flies needs to be light, but strong enough to hold
 together under the stresses of flight. Lighter airplanes should fly longer than
 heavier ones.</p>
-<p>Again, <em>STL</em> files can be used to give us the weight estimate. If we identify
-the density of the material we will use for each part used in the design, we
-can add all of those up to get the overall weight. I found a nice Python
-support package that will process and <em>STL</em> file and give you the total volume
-of the design in that file. If we know the density of the material we will use
-for that part, we cna get an estimate of the weight,</p>
-<p>Unfortunately, estimating the weight of the glue is harder to do. To estimate
-the glue weight, we need to know the surface area of the joints we will be
-gluing together.  This is possible, but not completed for this project. (Yet!)</p>
+<p>Again, <a class="reference external" href="https://en.wikipedia.org/wiki/STL_(file_format)">STL</a> files can be used to give us the weight estimate.</p>
+<p>If we identify the density of the material we will use for each part used in
+the design, we can add all of those part weights up to get the overall model
+weight. I found a nice <a class="reference external" href="https://www.python.org/"><em>Python</em></a> support package that will process an <a class="reference external" href="https://en.wikipedia.org/wiki/STL_(file_format)">STL</a> file and
+give you the total volume of the part defined by that file. If we know the
+density of the material we will use when we build that part, we can get an
+estimate of the weight.</p>
+<p>Unfortunately, estimating the weight of the glue used to bind parts together is
+harder to do. Surprisingly, glue weight is a significant contributor to the
+final weight of a competition indoor model, so modelers pay attention to this.
+To estimate the glue weight, we need to know the surface area of the joints we
+will be gluing together and the weight of the glue itself. I have an idea about
+doing this which will be included here as I get things worked out.</p>
 </section>
 <section id="locating-center-of-gravity">
-<h2>Locating Center of Gravity<a class="headerlink" href="#locating-center-of-gravity" title="Permalink to this headline">¶</a></h2>
+<h2>Locating  Center of Gravity<a class="headerlink" href="#locating-center-of-gravity" title="Permalink to this headline">¶</a></h2>
 <p>We need to locate the center of gravity of our aircraft to ensure it will fly
-as desired. This is again something my Python support code will give us.</p>
+as desired. This is again something my <a class="reference external" href="https://www.python.org/"><em>Python</em></a> support code will give us.
+Basically, we use the weight and <em>Center of Mass</em> location data for each part
+in the model to calculate the overall model <em>center of gravity</em>.</p>
 </section>
 <section id="perform-aerodynamic-analysis">
 <h2>Perform Aerodynamic Analysis<a class="headerlink" href="#perform-aerodynamic-analysis" title="Permalink to this headline">¶</a></h2>
@@ -199,7 +210,7 @@ as desired. This is again something my Python support code will give us.</p>
 discipline, but warped into a computer geek instead. I still like to work on
 aerodynamics programs, and I would like to do some work on my indoor designs.
 However, that part of my goals is not included in this project at the present
-time.  Still having a complete computerized model of my design is a starting
+time.  Still, having a complete computerized model of my design is a starting
 point for further analysis work. Stay tuned to this channel for further
 bulletins!</p>
 </section>
@@ -235,7 +246,7 @@ bulletins!</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Roie R. Black.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>
