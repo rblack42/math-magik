@@ -42,7 +42,7 @@ another block. You can see what will happen in this view:
 ..  scad::
     :align: center
     :width: 500
-    :camera: 1.94,0.97,0.08,79.50,0.00,40.40.40,18.39
+    :camera: 1.39,1.78,0.94,80.20,0.00,42.50,25.32
     :axes: axes,scales
 
     module single_taper_spar(l=5, z1=1, z2=0.5, t=1, debug=false) {

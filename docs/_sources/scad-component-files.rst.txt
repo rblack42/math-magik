@@ -1,24 +1,25 @@
-SCAD Object Files
-#################
+SCAD COmponent Files
+####################
 
-Our design will be made up of a set of *objects*. These *objects will either be
-assemblies made up of other objects, or individual *parts* which we will
-manufacture. All objects will have a name, which will be used in several ways.
+Our design will be made up of a set of *components*. These *components* will either be
+assemblies made up of other *components*, or individual *parts* which we will
+manufacture. All *components* will have a name, which will be used in several
+ways.
 
-Object Directories
-******************
+Component Directories
+*********888*********
 
-Every *object* we create in our airplane design will be saved in a directory
+Every *component* we create in our airplane design will be saved in a directory
 somewhere in the project directory tree. This directory will be named to
-indicate what the object is, and will contain a single SCAD file describing
-that object. In addition, there will be a second SCAD file with the object name
-followed by "-data". This name will be used to check for various object
+indicate what the component is, and will contain a single SCAD file describing
+that component. In addition, there will be a second SCAD file with the component name
+followed by "-data". This name will be used to check for various component
 properties when we process the design files later.
 
-If the object is a part, meaning something we would actually build, then there
-will be no subdirectories in this object directory. On the other hand, is this
-object is an assembly, each required dependent object will be stored in a
-subdirectory named after that dependent object.
+If the component is a part, meaning something we would actually build, then there
+will be no subdirectories in this component directory. On the other hand, is this
+component is an assembly, each required dependent component will be stored in a
+subdirectory named after that dependent component.
 
 This structure can continue down until there are only parts remaining. The
 resulting tree-like structure of this system models how we build our airplanes.
@@ -33,28 +34,28 @@ the finished model lives.
 Connecting Objects
 ******************
 
-Objects in this system are either glued to other objects, or assembled using
+Objects in this system are either glued to other components, or assembled using
 something like paper tubes for our indoor models, or rubber bands for other
 kinds of models.
 
 If they are glued, it will be important that our models line up properly. We
-will calculate the amount of glue required by nudging one object "into" a
-second object (which is actually a part) and calculating the intersection of
-the two object shapes. This will give us an estimate of the amount of glued
+will calculate the amount of glue required by nudging one component "into" a
+second component (which is actually a part) and calculating the intersection of
+the two component shapes. This will give us an estimate of the amount of glued
 required at this joint.
 
 Object Shape Files
 ******************
 
-All objects will have a single **scad** file which contains the OpenSCAD_
-commands needed to generate that object. Some objects use only OpenSCAD_
+All components will have a single **scad** file which contains the OpenSCAD_
+commands needed to generate that component. Some components use only OpenSCAD_
 primitive shapes, but others might use library files stored in the projects
 **MMlib** directory.
 
 Object Position and Orientation
 ===============================
 
-Every object will have a defined point which we will place at the origin of our
+Every component will have a defined point which we will place at the origin of our
 coordinate system. when we write our shape code. When we assemble a part into an
 assembly, we will need to define a position and orientation for the actual part.
 We will  use a simple convention for this.
@@ -79,7 +80,7 @@ nose up. (You should be able to figure out rotations around the **Z** axis!)
 
 Parts do not know anything about where they will end up in the  design. All we
 need to do is identify a reference point for each part. When we assemble a part
-into a larger object, we will need to define the position and orientation of
+into a larger component, we will need to define the position and orientation of
 the part in its place in the assembly. When we join assemblies into larger
 assemblies we will do the same thing: establish a reference point for the
 smaller assembly, then define the position and orientation of that assembly in
@@ -88,31 +89,42 @@ the larger assembly.
 Object Data Files
 *****************
 
-Each Object directory will contain an object data file which defines any
-parameters needed to manufacture the part.
+Each component directory will contain a component data file which defines any
+parameters needed to manufacture the part. These files are named
+**componentname_data.scad**.
 
 Object Specific Data
 ====================
 
-Some parameters will define any part specific dimensions. The values chosen for
-these dimensions are usually design decisions.
+Some data parameters will define part specific dimensions. The values chosen
+for these dimensions are usually design decisions. As much as possible these dimensions will be the only place you will see raw numbers. These will look something like this:
 
-Object Derived Dimensions
-=========================
+..  code-block:: c
 
-Other dimensions must be calculated based on other dimensions found in the data
-files contained in the assembly object directories up the directory tree. We
-will **include** the parent assembly data file in the object data file. This
-will result in a system of **includes** that runs all the way up to the top
-level design directory.
+    stab_span = 18.0;
 
-We will need to be careful in naming dimensions in each data file so we do not
-have name collisions.
+Here, we are defining a value and giving that value a name. We will use that
+name in other places, in mathematical expressions needed to calculate some
+other value.
+
+
+Component Derived Dimensions
+============================
+
+Many dimensions must be calculated based on other dimensions found in some
+other data file. We will **include** those data files to provide access to the
+needed named values.
+
+Every component will be located in a directory with that component name. In
+that directory we will create a design file that creates part of the actual
+model. There will also be a data file with the same name, but ending with
+**_data.scad**. We will include this data file in the associated design file to
+make al the needed dimensions available when creating the part or assembly.
 
 Material Properties
 ===================
 
-All part object data files will contain material property values as well. These
+All part component data files will contain material property values as well. These
 will always include:
 
 	* **color** - derived from the project **colors.scad** file.
@@ -127,7 +139,15 @@ Position and Orientation
 ========================
 
 Finally, all assembly data files will contain position and orientation
-definitions for all dependent objects. These values will be used when
-positioning the dependent objects as we create the assembly.
+definitions for all dependent components. These values will be used when
+positioning the dependent components as we create the assembly. These position
+files all are named with the component name and end with **_pos.scad**.
+
+Hopefully, this description will help you locate data needed to understand the
+design. 
+
+I hope to streamline a lot of this when the final design application is created
+later in these notes.
+
 
 

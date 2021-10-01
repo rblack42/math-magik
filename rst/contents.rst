@@ -12,7 +12,7 @@ Math-Magik Model Airplanes
     openscad
     building-process
     model-directory-structure
-    scad-object-files
+    scad-component-files
     debugging-scad-code
 
     lpp-design
