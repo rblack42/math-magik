@@ -14,11 +14,7 @@ Math-Magik Model Airplanes
     model-directory-structure
     scad-component-files
     debugging-scad-code
-
-    lpp-design
-
     design-analysis
-
     mass-properties
 
 mmdesigner
@@ -30,22 +26,18 @@ mmdesigner
 
     mmdesigner/*
 
-Development Notes
-*****************
-
 ..  toctree::
-    :maxdepth: 1
-    :glob:
-
-
-    devnotes/*
-
-..  toctree::
-    :maxdepth: 1
     :hidden:
 
-    develop
     changes
+
+Model Gallery
+*************
+
+..  toctree::
+    :maxdepth: 1
+
+    model-gallery
 
 Appendix
 ********
@@ -64,6 +56,14 @@ Code
     :glob:
 
     code/*
+
+Contributing
+************
+
+..  toctree::
+    :maxdepth: 1
+
+    contributing
 
 Glossary
 ********

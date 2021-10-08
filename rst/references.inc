@@ -26,6 +26,8 @@
 
 ..  _given when then:       https://martinfowler.com/bliki/GivenWhenThen.html
 
+..  |GUI|                   replace:: *Graphical User Interface*
+
 ..  |HAFFA|                 replace::   *Heart of America Free Flight Association*
 ..  _HAFFA:                 https://kcfreeflight.org/
 
@@ -44,6 +46,9 @@
 
 ..  |MM|                    replace::   *Math-Magik*
 ..  _MM:                    https://github.com/rblack42/math-magik
+
+..  |MMD|                   replace::   *Math-Magik Designer*
+..  _MMD:                   https://pypi.org/project/mmdesigner/
 
 ..  |NFFS|                  replace::   *National Free Flight Society*
 ..  _NFFS:                  https://freeflight.org/

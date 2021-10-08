@@ -60,52 +60,19 @@ you get to the end of the top-level rule, the command is complete: press
 Basic Command Format
 ====================
 
-Here is our top-level rule:
-
-.. parser-rule-diagram::
-
-   'mmd' ( option )* ( command )*
-
-According to this rule, we can have zero or more options, and zero or more commands.
-
-Now, lets define the options:
-
-
-..  parser-rule-diagram::
-
-    ( '--help' | '--debug' )
-
-The only options we support are specified using two dashes followed (no spaces by either:
-
-    * help - display a help message and exit
-
-    * debug - enable debug output (not normally needed, but handy when things
-      go wrong).
-
 Program Commands
 ================
-
-Here are the supported commands:
-
-..  parser-rule-diagram::
-
-    ( 'versions'
-        | 'summary'
-        | 'stl' ( stl_option )*
-        | 'properties' ( prop_options )*
-        | 'cog' |
-        | 'excel' )
 
 Versions
 --------
 
-This command displays the program version, and the version data for OpenSCAD_,
+This command displays the program version, and the version data for |OSC|_,
 |PY|_,  and numpy-stl_ required to perform analysis work on the design.
 
 STL
 ===
 
-This command runs |OSC| to generate :term:`STL` files. Normally, only part
+This command runs |OSC|_ to generate :term:`STL` files. Normally, only part
 files are processed. However adding an **--all** option will force generation
 of :term:`STL` files for assemblies as well. Be warned that these can take some
 time to generate, and may fail if your design is not well structured.

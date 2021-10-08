@@ -1,3 +1,0 @@
-Designing a Limited Pennyplane
-##############################
-

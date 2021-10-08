@@ -1,0 +1,10 @@
+Creating the Basic User Interface
+#################################
+
+In this section we will create a basic application shell, suitable for testing
+the release process on all three platforms: Windows, Mac, and Linux. The
+application will be the smallest thing we can create that provides both a
+command line interface and a |GUI| launcher for those of you who cannot let go
+of your mouse!
+
+

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>SCAD COmponent Files &#8212; Math Magik 0.1.0 documentation</title>
+    <title>SCAD Component Files &#8212; Math Magik 0.1.0 documentation</title>
     <link rel="stylesheet" href="_static/sphinx13.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -89,7 +89,7 @@
         <li><a href="index.html">Home</a>&#160;|</li>
         <li><a href="contents.html">Documentation</a> &#187;</li>
 
-        <li class="nav-item nav-item-this"><a href="">SCAD COmponent Files</a></li> 
+        <li class="nav-item nav-item-this"><a href="">SCAD Component Files</a></li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -99,7 +99,8 @@
             </a></p>
   <h3><a href="contents.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">SCAD COmponent Files</a><ul>
+<li><a class="reference internal" href="#">SCAD Component Files</a><ul>
+<li><a class="reference internal" href="#component-directories">Component Directories</a></li>
 <li><a class="reference internal" href="#connecting-objects">Connecting Objects</a></li>
 <li><a class="reference internal" href="#object-shape-files">Object Shape Files</a><ul>
 <li><a class="reference internal" href="#object-position-and-orientation">Object Position and Orientation</a><ul>
@@ -150,21 +151,21 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <p>Read time: 9.7 minutes (971 words)</p>
+  <p>Read time: 9.7 minutes (970 words)</p>
 <section id="scad-component-files">
-<h1>SCAD COmponent Files<a class="headerlink" href="#scad-component-files" title="Permalink to this headline">¶</a></h1>
-<p>Our design will be made up of a set of <em>components</em>. These <em>components</em> will either be
-assemblies made up of other <em>components</em>, or individual <em>parts</em> which we will
-manufacture. All <em>components</em> will have a name, which will be used in several
-ways.</p>
-<p>Component Directories
-<strong>*******888*******</strong></p>
+<h1>SCAD Component Files<a class="headerlink" href="#scad-component-files" title="Permalink to this headline">¶</a></h1>
+<p>Our design will be made up of a set of <em>components</em>. These <em>components</em> will
+either be assemblies made up of other <em>components</em>, or individual <em>parts</em> which
+we will manufacture. All <em>components</em> will have a name, which will be used in
+several ways.</p>
+<section id="component-directories">
+<h2>Component Directories<a class="headerlink" href="#component-directories" title="Permalink to this headline">¶</a></h2>
 <p>Every <em>component</em> we create in our airplane design will be saved in a directory
 somewhere in the project directory tree. This directory will be named to
 indicate what the component is, and will contain a single SCAD file describing
-that component. In addition, there will be a second SCAD file with the component name
-followed by “-data”. This name will be used to check for various component
-properties when we process the design files later.</p>
+that component shape. In addition, there will be a second SCAD file with the
+component name followed by <strong>_data</strong>. This name will be used to check for
+various component properties when we process the design files later.</p>
 <p>If the component is a part, meaning something we would actually build, then there
 will be no subdirectories in this component directory. On the other hand, is this
 component is an assembly, each required dependent component will be stored in a
@@ -178,6 +179,7 @@ dependent parts to build an assembly, then we gather some assemblies to build
 larger assemblies until we finish the model.  In essence, we are traversing this
 directory structure from the bottom where the parts live up to the top where
 the finished model lives.</p>
+</section>
 <section id="connecting-objects">
 <h2>Connecting Objects<a class="headerlink" href="#connecting-objects" title="Permalink to this headline">¶</a></h2>
 <p>Objects in this system are either glued to other components, or assembled using
@@ -305,7 +307,7 @@ later in these notes.</p>
         <li><a href="index.html">Home</a>&#160;|</li>
         <li><a href="contents.html">Documentation</a> &#187;</li>
 
-        <li class="nav-item nav-item-this"><a href="">SCAD COmponent Files</a></li> 
+        <li class="nav-item nav-item-this"><a href="">SCAD Component Files</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

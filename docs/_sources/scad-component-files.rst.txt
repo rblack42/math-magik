@@ -1,20 +1,20 @@
-SCAD COmponent Files
+SCAD Component Files
 ####################
 
-Our design will be made up of a set of *components*. These *components* will either be
-assemblies made up of other *components*, or individual *parts* which we will
-manufacture. All *components* will have a name, which will be used in several
-ways.
+Our design will be made up of a set of *components*. These *components* will
+either be assemblies made up of other *components*, or individual *parts* which
+we will manufacture. All *components* will have a name, which will be used in
+several ways.
 
 Component Directories
-*********888*********
+*********************
 
 Every *component* we create in our airplane design will be saved in a directory
 somewhere in the project directory tree. This directory will be named to
 indicate what the component is, and will contain a single SCAD file describing
-that component. In addition, there will be a second SCAD file with the component name
-followed by "-data". This name will be used to check for various component
-properties when we process the design files later.
+that component shape. In addition, there will be a second SCAD file with the
+component name followed by **_data**. This name will be used to check for
+various component properties when we process the design files later.
 
 If the component is a part, meaning something we would actually build, then there
 will be no subdirectories in this component directory. On the other hand, is this

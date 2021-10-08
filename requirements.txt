@@ -1,17 +1,27 @@
-wheel
-sphinx
-sphinxcontrib-spelling
-sphinxcontrib-programoutput
+# Qt Gui requirements
+PyQt5
+
+# PyTest reqyuirements
 pytest
 pytest-mock
-click
-click-default-group
+pytest-qt
 pytest-cov
 coverage
 coveralls
+
+# cli requirements
+click
+click-default-group
+
+# Model analysis reqs
 numpy-stl
+openpyxl
+
+# Package management
 bump2version
 twine
-wheel
-openpyxl
-antlr4-python3-runtime==4.8
+
+# Documentation
+sphinx
+sphinxcontrib-spelling
+sphinxcontrib-programoutput

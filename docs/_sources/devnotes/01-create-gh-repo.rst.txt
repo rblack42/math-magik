@@ -77,7 +77,7 @@ server.
 ..	note::
 
     if you are a developer and wish to contribute to the |MM| project, please
-    follow the instructions at :ref:`develop` to get properly set up. If you
+    follow the instructions at :ref:`cintributing` to get properly set up. If you
     "clone" the main project directly, you will not be able to post your
     changes in a way I can use.
 

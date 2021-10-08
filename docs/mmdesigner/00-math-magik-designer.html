@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Math Magik Designer &#8212; Math Magik 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinx13.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx13.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Change Log" href="../changes.html" />
+    <link rel="prev" title="Calculating Model Properties" href="../mass-properties.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script>
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../usage/installation.html">Get it</a></li>
+    <li><a href="../contents.html">Docs</a></li>
+    <li><a href="../develop.html">Extend/Develop</a></li>
+  </ul>
+  <div>
+    <a href="../index.html">
+      <img src="../_static/logo.png" alt="PyLiT" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../changes.html" title="Change Log"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../mass-properties.html" title="Calculating Model Properties"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Home</a>&#160;|</li>
+        <li><a href="../contents.html">Documentation</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">Math Magik Designer</a></li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../contents.html">
+              <img class="logo" src="../_static/badge.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../contents.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Math Magik Designer</a><ul>
+<li><a class="reference internal" href="#getting-started">Getting Started</a><ul>
+<li><a class="reference internal" href="#installing-osc">Installing <em>OpenSCAD</em></a></li>
+<li><a class="reference internal" href="#intalling-mmd">Intalling <em>Math-Magik Designer</em></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mmd-user-interface"><em>Math-Magik Designer</em> User Interface</a></li>
+<li><a class="reference internal" href="#command-line-interface">Command Line Interface</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../mass-properties.html"
+                        title="previous chapter">Calculating Model Properties</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../changes.html"
+                        title="next chapter">Change Log</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/mmdesigner/00-math-magik-designer.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>Read time: 6.5 minutes (653 words)</p>
+<section id="math-magik-designer">
+<h1>Math Magik Designer<a class="headerlink" href="#math-magik-designer" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This project is a work in progress. The application described here is not
+quite ready to use, but that should change soon! You can test the
+installation process now, and update the program when it becomes more
+useful.</p>
+</div>
+<p>The <em>Math-Magik</em> design application, named <a class="reference external" href="https://pypi.org/project/mmdesigner/"><em>Math-Magik Designer</em></a> is being developed to assist in the
+design of a model using <a class="reference external" href="https://openscad.org/"><em>OpenSCAD</em></a>. The application is being written in <a class="reference external" href="https://www.python.org/"><em>Python</em></a> but
+most users will not need to worry about that. Instead, the application will be
+distributed as a self-contained package that can be installed like any other
+application on your chosen platform. Since most model builders are not
+developers, it is likely they use a Windows system, or possible a Mac. Rarely
+will they use Linux. In any case, I try to support all three platforms.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Unfortunately, there are many variations of Linux out there, so I will
+limit my testing to just <a class="reference external" href="https://ubuntu.com/">Ubuntu</a> which is what I had my students use while
+teaching software develipment!.</p>
+</div>
+<p>This section is intended for model building users of this project. Developers
+who might want to contribute to this project will be more interested in the
+development notes at <span class="xref std std-ref">development-notes</span>. Those notes walk you through the
+complete development of this application.</p>
+<section id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>Assuming you have a suitable computer, which can be running Windows, MacOS, or
+Linux, you will need to install just two components:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://openscad.org/"><em>OpenSCAD</em></a></p></li>
+<li><p><em>Math-Magik Designer</em></p></li>
+</ul>
+</div></blockquote>
+<section id="installing-osc">
+<h3>Installing <em>OpenSCAD</em><a class="headerlink" href="#installing-osc" title="Permalink to this headline">¶</a></h3>
+<p>Installing <a class="reference external" href="https://openscad.org/"><em>OpenSCAD</em></a> is pretty simple. Navigate to their website at
+<a class="reference external" href="https://openscad.org/downloads.html">https://openscad.org/downloads.html</a> and download the installer suitable for your
+system. Once it is on your system, run the installer to complete the installation.</p>
+</section>
+<section id="intalling-mmd">
+<h3>Intalling <em>Math-Magik Designer</em><a class="headerlink" href="#intalling-mmd" title="Permalink to this headline">¶</a></h3>
+<p>Installing <em>Math-Magik Designer</em> is similar. Navigate to
+<a class="reference external" href="https://www.co-pylit.org/mmdesigner.html">https://www.co-pylit.org/mmdesigner.html</a> and select the version for your
+system. Once the file is on your system, run it to complete the installation.</p>
+</section>
+</section>
+<section id="mmd-user-interface">
+<h2><em>Math-Magik Designer</em> User Interface<a class="headerlink" href="#mmd-user-interface" title="Permalink to this headline">¶</a></h2>
+<p>There are two ways to use this application. One involves typing commands on a
+<span class="xref std std-term">command line`</span>, and the second uses a traditional mouse-driven approach.</p>
+<p>I suspect most modelers are unfamiliar with the <a class="reference internal" href="../glossary.html#term-command-line"><span class="xref std std-term">command line</span></a>, since it
+dates back to the dawn of computing! Developers should be very familiar with
+this interface, and it is usually the first interface developed in many
+projects. The <a class="reference internal" href="../glossary.html#term-command-line"><span class="xref std std-term">command line</span></a> is available on all systems:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Windows: enter <strong>cmd</strong> in the Windows search box, then click on that program.</p></li>
+<li><p>Mac: Open the <strong>term</strong> application under Applications/Utilities</p></li>
+<li><p>Linux: Open up a new <strong>shell</strong></p></li>
+</ul>
+</div></blockquote>
+<p>On each of these systems, you will see a blank window with some kind of prompt.
+This prompt usually tells you where on your computer you are currently working.
+At the end of the prompt, you should see some kind of cursor marker indicating
+that the system is waiting for you to type in a command. That command will name
+some program and let you enter additional parameters that control how the
+program will work.</p>
+<p>As a simple example, let’s check the version of <em>Math-Magik Designer</em> currently installed:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ mmd --version
+</pre></div>
+</div>
+<dl class="simple">
+<dt>On any of these systems, you can verify that your installation is correct by typing in the following command.</dt><dd><p>name authorized to install programs. If you are the owner of the machine, this</p>
+</dd>
+</dl>
+<p>is not a problem.</p>
+<dl class="simple">
+<dt>Installing <em>Math-Magik Designer</em> is best done using the <span class="xref std std-term">command line`</span>. Many modelers may not be familiar with this</dt><dd><p>first two are covered in the Appendix</p>
+</dd>
+</dl>
+<p>The <em>Math-Magik Designer</em> application can be launched as either a
+<a class="reference internal" href="../glossary.html#term-command-line"><span class="xref std std-term">command line</span></a> tool, or as a <a class="reference internal" href="../glossary.html#term-graphical-user-interface"><span class="xref std std-term">graphical user interface</span></a> tool.</p>
+<p>In this section, we will work through the development of this application. These notes are intended for developers who might wish to contribute to the project. Model builders probably need to refer to the <span class="xref std std-ref">users-guide</span> instead.</p>
+</section>
+<section id="command-line-interface">
+<h2>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h2>
+<p>In this section, we will show the <strong>mmd</strong> application can be used in your model design work.</p>
+<p>First, just typing <strong>mmd</strong> on the <a class="reference internal" href="../glossary.html#term-command-line"><span class="xref std std-term">command line</span></a> will display a help
+message to show you all available commands and options that can be used.</p>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/6 (<span class="docutils literal">/Users/rblack/_dev/math-magik/rst/mmdesigner/00-math-magik-designer.rst</span>, line 202)</p>
+<p>Command ['mmd'] failed: [Errno 2] No such file or directory: 'mmd'</p>
+</div>
+<p>You can also ask for help explicitly”</p>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/6 (<span class="docutils literal">/Users/rblack/_dev/math-magik/rst/mmdesigner/00-math-magik-designer.rst</span>, line 206)</p>
+<p>Command ['mmd', '--help'] failed: [Errno 2] No such file or directory: 'mmd'</p>
+</div>
+<p>Unfortunately, this help message does not show you everything about possible
+commands. The list of commands shown have additional parameters you can see by
+asking for help on them:</p>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/6 (<span class="docutils literal">/Users/rblack/_dev/math-magik/rst/mmdesigner/00-math-magik-designer.rst</span>, line 212)</p>
+<p>Command ['mmd', 'stl', '--help'] failed: [Errno 2] No such file or directory: 'mmd'</p>
+</div>
+<p>Here the <strong>-all</strong> parameter will attempt to do a <a class="reference internal" href="../glossary.html#term-STL"><span class="xref std std-term">STL</span></a> files for the
+entire design. (This can take a while!)</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../changes.html" title="Change Log"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../mass-properties.html" title="Calculating Model Properties"
+             >previous</a> |</li>
+        <li><a href="../index.html">Home</a>&#160;|</li>
+        <li><a href="../contents.html">Documentation</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">Math Magik Designer</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Roie R. Black.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+    </div>
+  </body>
+</html>

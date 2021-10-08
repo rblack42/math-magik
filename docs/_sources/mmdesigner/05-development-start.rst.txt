@@ -1,0 +1,171 @@
+Step 4: Test Driven Development Start
+#####################################
+
+My plan for this project is to use a version of |TDD| known as `Given
+When Then`_. Basically, this requires identifying the state of the test world
+before a test (the *Given* part), then identifying the action to be taken (the
+*When* part. Finally, the expected results are defined 9the *When* part). All
+of these steps are set up before any code is even written. The idea is to make
+sure you really know what you are about to create and how to make sure your
+creation works as desired.
+
+Of course, this approach leaves open the entire issue of deciding what to add
+to your project at any point in the development process.
+
+Features
+********
+
+A primary focus in software development is the defining of specific set of
+"features" to be added to the project. We do not just blast code hoping
+something useful will result. Good software development involves much more
+thinking than coding.  We can identify specific components we know our project
+will need, or look at the project from the user's point of view and start
+looking at actions the user should be able to take. The order of development is
+up to the development team. Some do "top-down" development, refining an
+application as they go. Others do a "bottom-up" approach where a bunch of
+component parts are created, then integrated into the project providing more
+and more functionality. The is no one "right' approach.
+
+Since I am the "team" at present, I will do a mix of both approaches. This
+diary will show the reasoning behind each step I take.
+
+
+Versioning
+**********
+
+It is common in software development to assign specific version numbers to the
+project at points in the development. These versions serve as markers defining
+when the interface has changed substantially. They mark some milestone in the
+development. The most common format for version numbers is `semantic
+versioning`_:
+
+    * Major -  the user interface has changed substantially, breaking the old
+      interface.
+
+    * Minor - add functionality without changing old features
+
+    * Patch - bug fixes that do not change functionality
+
+Development Approach
+********************
+
+As much as possible, I will work this way:
+
+    * Identify a new feature I want the software to provide
+
+    * Write one or more tests that will confirm that the new feature works as
+      desired.
+
+    * Write code that implements this new feature. Commits can be made as each
+      test passes. Increment the *Patch* level when a test passes.
+
+    * When the tests all pass, commit the new code and increment the *Minor* level
+
+Deciding when enough functionality has been added to let the code go public will
+be the point in time where the *Major* level will be incremented.
+
+First Code
+**********
+
+Having worked through the development approach I will take, it is time to start real coding.
+
+The application to be provided with this project will be named **mmdesigner**.
+It will be made available on PyPi_ so any Python developer can install it
+easily using :command:`pip`. We will deal with publishing on PyPi_ later.
+
+For now, we start off be creating the python package structure:
+
+..  code-block:: shell
+
+    $ cd ~/_dev/math-magik
+    $ mkdir mmdesigner
+    $ touch mmdesigner/__init__.py
+
+At this point, the package can be imported into other |PY| code. That is not
+very useful with no real code available yet, so where do we start?
+
+Feature 1: Check Version
+========================
+
+Our first feature will simply report the current project version number.a We
+will be using the |PY| *Click* package to manage the command line interface, so
+we do not need to write much code to get this part working.
+
+..  note::
+
+    Add **click** to the **requirements.txt** file and make sure it is installed.
+
+Here is the test code
+
+..  literalinclude::    ../../tests/test_version.py
+    :linenos:
+    :language: python
+    :caption: tests/test_version.py
+
+Obviously, this is pretty simple, but it will work for now.
+
+However, we are not done with this step. I also want the user to be able to
+check the version from the command line. That means we need to set up a basic
+application that takes a parameter asking for the version. By convention, this
+parameter will be **--version**.
+
+Setting up the application involves adding two more files to the project.
+
+..  literalinclude::    ../../mmdesigner/__main__.py
+    :linenos:
+    :language: python
+    :caption: mmdesigner/__main__.py
+
+..  literalinclude::    ../../mmdesigner/cli.py
+    :linenos:
+    :language: python
+    :caption: mmdesigner/cli.py
+
+
+Test Coverage
+*************
+
+With some real code in place, it is time to set up test coverage, which checks your tests to make sure all of your code is covered by a test. There is an old saying among programmers:
+
+    If you have not tested it, it does not work!
+
+Adding coverage is fairly simple. We add two new packages to our **requirements.txt** file:
+
+..  code-block:: text
+
+    pytest-cov
+    coverage
+    coveralls
+
+Next, we create a **pytest** configuration file that will add the parameters
+needed to activate coverage reporting.
+
+
+..  literalinclude::    ../../pytest.ini
+    :caption: pytest.ini
+    :linenos:
+
+
+We also need a configuration file for the coverage tests:
+
+..  literalinclude::    ../../.coveragerc
+    :linenos:
+    :caption: .coveragerc
+
+Now when you run tests, you will see a report on the lines covered and missed.
+Many projects work to cover 100% of their code, but doing so can be difficult.
+A high percentage is a good indicator that testing is high quality.
+
+We can generate a badge for the **README** file by using another free service:
+Coveralls_
+
+Generating the badge will be done by Travis-CI_ by adding an **after-success**
+block t the **.travis.yml** file. All we need to do to set this up is log in on
+Coveralls_ and set up the project, then tell |GH| to allow Coveralls_ to access
+our project.
+
+..  todo::
+
+    Add full description on activating |CI| testing and badge generation in
+    the appendix
+
